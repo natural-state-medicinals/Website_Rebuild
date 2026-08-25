@@ -1672,7 +1672,7 @@ class Component extends DCLogic {
       onClick:()=>this.setState({strainEffect:f.val, expandedStrain:null}) }));
     const songLink=(kind,s)=>{ const q=encodeURIComponent(((s.song&&s.song.title)||'')+' '+((s.song&&s.song.artist)||'')); return kind==='spotify'?('https://open.spotify.com/search/'+q):('https://music.youtube.com/search?q='+q); };
     const RADAR_AXES=[['Myrcene','Myr'],['Caryophyllene','Car'],['Limonene','Lim'],['Terpinolene','Terp'],['Pinene','Pin'],['Ocimene','Oci']];
-    const productsUrl='https://www.naturalstatemeds.com/find-our-products';
+    const productsUrl='../find-our-flower.html';
     const strains=D.strains.filter(s=> (filterCat==='All'||s.cat===filterCat) && (!activeEff||(s.effects||[]).includes(activeEff)) ).map(s=>{
       const ex=st.expandedStrain===s.name;
       const prof=(s.terpProfile||[]).slice(0,5);
