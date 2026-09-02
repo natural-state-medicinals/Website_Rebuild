@@ -14,6 +14,7 @@ no package manager.
 | `Check Your Allotment.dc.html` | Check your allotment (state Limit Meter walkthrough) |
 | `Contact Us.dc.html` | Contact us (form posts to a Google Sheet) |
 | `Your Paperwork.dc.html` | Your paperwork (form checklist and downloads) |
+| `Find Our Flower.dc.html` | Find our flower (AskHoodie where-to-buy widget) |
 
 ## Supporting scripts
 
@@ -34,7 +35,7 @@ reduced-motion both land correctly.
 ## Published site
 
 GitHub Pages serves the repo root at
-https://mdedman-tech.github.io/Website_Rebuild/. Six single-file builds sit there with every asset inlined, plus the education
+https://mdedman-tech.github.io/Website_Rebuild/. Seven single-file builds sit there with every asset inlined, plus the education
 guide, which stays as loose files under `education/`:
 
 | URL | Page |
@@ -45,12 +46,13 @@ guide, which stays as loose files under `education/`:
 | `allotment.html` | Check your allotment |
 | `contact.html` | Contact us |
 | `paperwork.html` | Your paperwork |
+| `find-our-flower.html` | Find our flower |
 | `education/index.html` | Education guide (routes to desktop or mobile) |
 
 These are generated output, not source. Do not edit them. Regenerate from the
 `.dc.html` pages: each `*.src.html` is the inliner input, and it is the `.dc.html`
 plus a thumbnail template, with cross-page `.dc.html` links rewritten to the clean
-published filenames above. Rebuild all six whenever any page changes, so the links
+published filenames above. Rebuild all seven whenever any page changes, so the links
 between them stay consistent.
 
 `.nojekyll` keeps Pages from running the files through Jekyll.
@@ -118,9 +120,27 @@ instead of a link out to another host. In-site Education links point at
 Deep links still work: `education/index.html#strain/dogtown` survives the
 redirect. The Cloudflare Worker plan is no longer needed.
 
+## Find our flower
+
+`find-our-flower.html` hosts the AskHoodie where-to-buy widget. The host script
+(`askhoodie.com/assets/askhoodie.host.js`) is the one asset that stays remote, so the
+page needs a live connection. It injects an iframe into `#askhoodieDiv`; the logic
+class waits for `hoodieEmbedWtbV2` to exist before calling it, and swaps the loading
+line for a plain apology if the script never arrives. The embed id
+`e1fd34ad-dbd0-4329-8684-f3e573d68fba` is the brand account.
+
+Every "find our products" link in the site and the education guide points here. In the
+guide that is the `productsUrl` prop, defaulted to `../find-our-flower.html`.
+
+## Deploying
+
+`_deploy/` is the folder that goes to GitHub Pages: the seven built pages, `robots.txt`,
+`sitemap.xml`, `.nojekyll`, the loose `education/` guide, and the `assets/` and `_ds/`
+trees the guide reads. Camera masters are gitignored, so only the optimized tiers ship.
+
 ## Not yet built
 
-Find our product. The locator still points to a live external URL.
+Nothing outstanding.
 
 ## The contact form
 
