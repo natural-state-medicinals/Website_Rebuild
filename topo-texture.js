@@ -34,13 +34,39 @@
     return segs;
   }
 
+
+  // Two box passes. Raw DEM sampling leaves 1-cell speckle, and on flat ground
+  // (the Delta sits at 43-200 ft against a 2,694 ft high point) that speckle
+  // contours into a rash of tiny closed loops instead of open ground.
+  function smoothField(vals, cols, rows, passes) {
+    let src = vals;
+    for (let p = 0; p < (passes || 2); p++) {
+      const dst = new Float32Array(cols * rows);
+      for (let j = 0; j < rows; j++) {
+        for (let i = 0; i < cols; i++) {
+          let sum = 0, n = 0;
+          for (let dj = -1; dj <= 1; dj++) {
+            const jj = j + dj; if (jj < 0 || jj >= rows) continue;
+            for (let di = -1; di <= 1; di++) {
+              const ii = i + di; if (ii < 0 || ii >= cols) continue;
+              sum += src[jj * cols + ii]; n++;
+            }
+          }
+          dst[j * cols + i] = sum / n;
+        }
+      }
+      src = dst;
+    }
+    return src;
+  }
+
   function field() {
     const G = window.AR_ELEV;
     if (G && G.data) {
       const cols = G.cols, rows = G.rows;
-      const vals = new Float32Array(cols * rows);
-      for (let k = 0; k < cols * rows; k++) vals[k] = G.data.charCodeAt(k);
-      return { vals, cols, rows };
+      const raw = new Float32Array(cols * rows);
+      for (let k = 0; k < cols * rows; k++) raw[k] = G.data.charCodeAt(k);
+      return { vals: smoothField(raw, cols, rows, 2), cols, rows };
     }
     const cols = 64, rows = 44, vals = new Float32Array(cols * rows);
     for (let j = 0; j < rows; j++) {
@@ -95,10 +121,10 @@
       const gw = w * 1.35 * scale, gh = gw * (F.rows / F.cols);
       const sx = gw / (F.cols - 1), sy = gh / (F.rows - 1);
       const ox = (w - gw) / 2, oy = (h - gh) / 2;
-      const levels = 22;
+      const levels = 13;
 
       for (let l = 0; l < levels; l++) {
-        const level = lo + (hi - lo) * ((l + 1) / (levels + 1));
+        const level = lo + (hi - lo) * (0.15 + 0.85 * Math.pow((l + 1) / (levels + 1), 1.3));
         const major = l % 5 === 0;
         const segs = isolines(F.vals, F.cols, F.rows, level);
         ctx.beginPath();

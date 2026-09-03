@@ -175,3 +175,13 @@ To verify a real submission, check the response sheet.
 - Voice pass on the landing page and About us. Allotment and the card page are done.
 - Performance: subset the fonts, serve photography as WebP or AVIF, lazy-load
   below the fold. Fold this into any Wix or Cloudflare migration.
+
+## Last sync
+
+date: 2026-09-03T00:00:00Z
+
+### Updated in this project
+- Find our flower page added; every products link in the site and guide points to it
+- State Line carts (CCell distillate, ten flavors) and Midway Apple Pie added to the guide
+- Tincture and concentrate lab photos added; crew pile now 35 photos in even rows
+- Letterpress headings carried to all six pages and both guide files; relief contours rebuilt seam-free

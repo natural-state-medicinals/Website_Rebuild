@@ -67,20 +67,44 @@
     return { proj, ring, path, gridH: (y1 - y0) * k, gridTop: oy };
   }
 
+
+  // Two box passes. Raw DEM sampling leaves 1-cell speckle, and on flat ground
+  // (the Delta sits at 43-200 ft against a 2,694 ft high point) that speckle
+  // contours into a rash of tiny closed loops instead of open ground.
+  function smoothField(vals, cols, rows, passes) {
+    let src = vals;
+    for (let p = 0; p < (passes || 2); p++) {
+      const dst = new Float32Array(cols * rows);
+      for (let j = 0; j < rows; j++) {
+        for (let i = 0; i < cols; i++) {
+          let sum = 0, n = 0;
+          for (let dj = -1; dj <= 1; dj++) {
+            const jj = j + dj; if (jj < 0 || jj >= rows) continue;
+            for (let di = -1; di <= 1; di++) {
+              const ii = i + di; if (ii < 0 || ii >= cols) continue;
+              sum += src[jj * cols + ii]; n++;
+            }
+          }
+          dst[j * cols + i] = sum / n;
+        }
+      }
+      src = dst;
+    }
+    return src;
+  }
+
   function contourPaths(proj, G) {
     const cols = G.cols, rows = G.rows;
-    const vals = new Float32Array(cols * rows);
+    const raw = new Float32Array(cols * rows);
+    for (let k = 0; k < cols * rows; k++) raw[k] = G.data.charCodeAt(k);
+    const vals = smoothField(raw, cols, rows, 2);
     let lo = Infinity, hi = -Infinity;
-    for (let k = 0; k < cols * rows; k++) {
-      const v = G.data.charCodeAt(k);
-      vals[k] = v;
-      if (v < lo) lo = v; if (v > hi) hi = v;
-    }
+    for (let k = 0; k < cols * rows; k++) { const v = vals[k]; if (v < lo) lo = v; if (v > hi) hi = v; }
     const tl = proj(G.lon0, G.lat1), br = proj(G.lon1, G.lat0);
     const sx = (br[0] - tl[0]) / (cols - 1), sy = (br[1] - tl[1]) / (rows - 1);
     const out = [];
     for (let l = 0; l < LEVELS; l++) {
-      const level = lo + (hi - lo) * Math.pow((l + 1) / (LEVELS + 1), 1.15);
+      const level = lo + (hi - lo) * (0.15 + 0.85 * Math.pow((l + 1) / (LEVELS + 1), 1.3));
       const segs = isolines(vals, cols, rows, level);
       const p = new Path2D();
       for (let s = 0; s < segs.length; s++) {
@@ -167,41 +191,39 @@
       host.appendChild(cream);
       this._cream = cream;
       {
-        // Fit the relief to the page width, then repeat it downward so the
-        // contours carry all the way to the dark footer.
-        const g = geometry(w, hostH, 1.22, false, true);
+        // One pass, no tiling. Mirrored tiles met at a seam and the contours
+        // turned back on themselves there, which read as chevrons rather than
+        // ground. Instead the relief is enlarged until a single sheet covers the
+        // whole column and the sides are cropped: what you see is a real slice
+        // of Arkansas, Ozarks at the top, Ouachita ridges through the middle,
+        // Delta running out flat to the east.
+        const g0 = geometry(w, hostH, 1.22, false, true);
+        const grow = Math.min(3.4, Math.max(1, hostH / g0.gridH));
+        const g = geometry(w * grow, hostH, 1.22, false, true);
         const bands = contourPaths(g.proj, G);
-        const tile = g.gridH;
-        const reps = Math.ceil((hostH - g.gridTop) / tile) + 1;
-        for (let r = 0; r < reps; r++) {
+        wx.save();
+        wx.translate(-(w * grow - w) / 2, 0);
+        // if the column is taller than even the grown sheet, take up the last of
+        // it with a gentle vertical stretch instead of a second tile
+        const fill = hostH / (g.gridH || hostH);
+        if (fill > 1.02) { wx.translate(0, g.gridTop); wx.scale(1, fill); wx.translate(0, -g.gridTop); }
+        for (let l = 0; l < bands.length; l++) {
+          const major = l % 5 === 0;
+          // A printed line, not an embossed haze: the ink carries the shape and
+          // the pale edge is only there to seat it in the paper.
           wx.save();
-          // Every other pass is mirrored, so the contours meet exactly at each
-          // seam and the relief reads as one continuous sheet rather than a
-          // stack of tiles.
-          if (r % 2 === 1) {
-            wx.translate(0, 2 * g.gridTop + tile * (r + 1));
-            wx.scale(1, -1);
-          } else if (r > 0) {
-            wx.translate(0, tile * r);
-          }
-          for (let l = 0; l < bands.length; l++) {
-            const major = l % 5 === 0;
-            // A printed line, not an embossed haze: the ink carries the shape and
-            // the pale edge is only there to seat it in the paper.
-            wx.save();
-            wx.translate(0, 0.75);
-            wx.globalAlpha = major ? 0.3 : 0.18;
-            wx.lineWidth = major ? 1 : 0.6;
-            wx.strokeStyle = 'rgba(255,253,244,0.9)';
-            wx.stroke(bands[l]);
-            wx.restore();
-            wx.globalAlpha = major ? 0.3 : 0.17;
-            wx.lineWidth = major ? 1 : 0.6;
-            wx.strokeStyle = 'rgb(32,37,58)';
-            wx.stroke(bands[l]);
-          }
+          wx.translate(0, 0.75);
+          wx.globalAlpha = major ? 0.3 : 0.18;
+          wx.lineWidth = major ? 1 : 0.6;
+          wx.strokeStyle = 'rgba(255,253,244,0.9)';
+          wx.stroke(bands[l]);
           wx.restore();
+          wx.globalAlpha = major ? 0.3 : 0.17;
+          wx.lineWidth = major ? 1 : 0.6;
+          wx.strokeStyle = 'rgb(32,37,58)';
+          wx.stroke(bands[l]);
         }
+        wx.restore();
       }
 
       // ---------- Act 1 + 2 layer: midnight plate

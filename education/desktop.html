@@ -337,6 +337,20 @@
     [data-chapter] { padding-top: 28px !important; padding-bottom: 28px !important; }
   }
   @media (max-width: 860px) { .nsm-recipe-intro { grid-template-columns: 1fr !important; } }
+
+  /* Letterpress, carried over from the landing page stations: a paper highlight
+     under the glyph and a soft ink shade above it. Light and shadow only.
+     The hero keeps its own drop-shadow treatment. */
+  h1:not(.nsm-hero-title), h2 {
+    text-shadow:0 1px 0 rgba(255,255,255,.85), 0 2px 1px rgba(255,255,255,.5), 0 -1px 1px rgba(32,37,58,.22); }
+  /* On midnight ground the press runs the other way: debossed, not raised. */
+  h1.ns-press-dark, h2.ns-press-dark,
+  h1[style*="arctic"], h2[style*="arctic"],
+  h1[style*="F5F4E1"], h2[style*="F5F4E1"],
+  h1[style*="245,244,225"], h2[style*="245,244,225"],
+  h1[style*="F1EBD4"], h2[style*="F1EBD4"],
+  h1[style*="#d8bd82"], h2[style*="#d8bd82"] {
+    text-shadow:0 1px 1px rgba(11,14,24,.55), 0 -1px 0 rgba(245,244,225,.16); }
 </style>
 </helmet>
 
