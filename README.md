@@ -181,7 +181,7 @@ To verify a real submission, check the response sheet.
 date: 2026-09-03T00:00:00Z
 
 ### Updated in this project
-- Find our flower page added; every products link in the site and guide points to it
-- State Line carts (CCell distillate, ten flavors) and Midway Apple Pie added to the guide
-- Tincture and concentrate lab photos added; crew pile now 35 photos in even rows
-- Letterpress headings carried to all six pages and both guide files; relief contours rebuilt seam-free
+- Find our flower page: search-by-store or by-product guidance added to the intro copy
+- Crew pile at 35 photos, six even rows, bottom row clamped inside the pile box
+- Letterpress headings across all six pages and both guide files
+- Seam-free Arkansas relief; contour density now reads as slope
