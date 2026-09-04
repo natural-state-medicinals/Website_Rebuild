@@ -23,6 +23,15 @@
 (function () {
   if (customElements.get('ns-age-gate')) return;
 
+  // Read config off this script tag, so the gate needs no markup in the page.
+  var SELF = document.currentScript;
+  var CFG = {
+    variant: (SELF && SELF.getAttribute('data-variant')) || 'b',
+    noHref: (SELF && SELF.getAttribute('data-no-href')) || 'rules.html',
+    leaf: (SELF && SELF.getAttribute('data-leaf')) || null,
+    delay: (SELF && SELF.getAttribute('data-delay')) || null
+  };
+
   var KEY = 'nsm-age-ok';
   var DAYS = 30;
 
@@ -286,4 +295,16 @@
   }
 
   customElements.define('ns-age-gate', NsAgeGate);
+
+  function mount() {
+    if (document.querySelector('ns-age-gate')) return;
+    var el = document.createElement('ns-age-gate');
+    el.setAttribute('variant', CFG.variant);
+    el.setAttribute('no-href', CFG.noHref);
+    if (CFG.leaf) el.setAttribute('leaf', CFG.leaf);
+    if (CFG.delay) el.setAttribute('delay', CFG.delay);
+    document.body.appendChild(el);
+  }
+  if (document.body) mount();
+  else document.addEventListener('DOMContentLoaded', mount);
 })();

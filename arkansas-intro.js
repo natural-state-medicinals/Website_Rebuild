@@ -140,6 +140,11 @@
         }
         return;
       }
+      // A re-parse of the host keeps the markup but loses every JS property, so
+      // the guard above reads as "never booted" while the previous run's canvases
+      // are still sitting in the element. Building again then stacks a live
+      // sequence under a frozen one, and the frozen frame is what you see.
+      while (this.firstChild) this.removeChild(this.firstChild);
       this._booted = true;
       // The gate and the intro mount in either order (<x-import> resolves async),
       // so neither may assume the other exists yet. A passed gate leaves a flag,
