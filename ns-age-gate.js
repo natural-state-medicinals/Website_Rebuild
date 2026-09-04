@@ -52,8 +52,14 @@
 
   class NsAgeGate extends HTMLElement {
     connectedCallback() {
+      // A re-parse of the host (React writing markup back out) produces an
+      // element that kept its children but lost its JS state, so it builds a
+      // second box on top of the first and the visible one is not the one wired
+      // to anything. Clearing first makes the newest build the live one.
       if (this._up) return;
       this._up = true;
+      if (window.__nsGatePassed) { this._pass(true); return; }
+      while (this.firstChild) this.removeChild(this.firstChild);
 
       // The host element cannot style itself: React reconciliation on the page
       // rewrites its style attribute and the gate collapses to a static 0x0
@@ -63,10 +69,16 @@
         var st = document.createElement('style');
         st.id = 'ns-gate-css';
         st.textContent =
-          'ns-age-gate { position:fixed; inset:0; z-index:2147483000; display:block; }' +
-          'ns-age-gate[data-passed] { display:none; }' +
+          'ns-age-gate { display:none; pointer-events:none; }' +
+          'html.ns-gated ns-age-gate { position:fixed; inset:0; z-index:2147483000; display:block; pointer-events:auto; }' +
           'html.ns-gated .ns-skipbtn, html.ns-gated [data-gate-hide] { visibility:hidden !important; }' +
-          'html.ns-gated { overflow:hidden; }';
+          'html.ns-gated { overflow:hidden; }' +
+          // The page's own entrance animations run on a fixed clock from load, so
+          // the lockup would fly in behind the closed gate and be spent by the
+          // time anyone answered. Freeze everything outside the box; paused
+          // animations hold at frame zero and play in full once the door opens.
+          'html.ns-gated *, html.ns-gated *::before, html.ns-gated *::after { animation-play-state:paused !important; }' +
+          'html.ns-gated ns-age-gate, html.ns-gated ns-age-gate *, html.ns-gated ns-age-gate *::before, html.ns-gated ns-age-gate *::after { animation-play-state:running !important; }';
         document.head.appendChild(st);
       }
 
@@ -80,7 +92,8 @@
       if (remembered()) { this._pass(true); return; }
 
       // Nothing on the page should be reachable while the door is shut. The
-      // landing page's skip control in particular sits above everything.
+      // landing page's skip control in particular sits above everything. This
+      // class is also what makes the host visible at all.
       document.documentElement.classList.add('ns-gated');
 
       var onLanding = !!intro;
@@ -257,8 +270,8 @@
       // Flag first: the intro may not have mounted yet, and it reads this on boot.
       this._passed = true;
       window.__nsGatePassed = true;
-      this.setAttribute('data-passed', '');
       document.documentElement.classList.remove('ns-gated');
+      if (this.parentNode) this.parentNode.removeChild(this);
       var back2 = document.querySelectorAll('.ns-skipbtn, [data-gate-hide]');
       for (var bi = 0; bi < back2.length; bi++) back2[bi].style.visibility = '';
       var intro = this._intro || document.querySelector('arkansas-intro');
