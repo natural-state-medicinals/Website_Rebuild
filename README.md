@@ -192,6 +192,7 @@ posture for a site about to move.
 date: 2026-09-03T00:00:00Z
 
 ### Updated in this project
+- Gate script now loads from the page head; it had been injected into the bundler splash block, so no built page ever loaded it
 - Age gate on every page: 18-or-Arkansas-patient wording, remember me 30 days, rules.html for a no
 - Landing intro holds on the drawn outline behind the gate, then runs its normal sequence
 - Guide plays its own opening first, then the gate appears
