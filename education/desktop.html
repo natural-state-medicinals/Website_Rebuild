@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Education guide, Natural State Medicinals</title>
 <meta name="description" content="A patient’s guide to Arkansas medical cannabis: how the plant works, how to read a label, dosing, and what we grow.">
-<link rel="canonical" href="https://mdedman-tech.github.io/Website_Rebuild/education/desktop.html">
+<link rel="canonical" href="https://www.naturalstatemedicinals.com/education/desktop.html">
 <link rel="icon" type="image/png" href="../assets/icon-ns-dark.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Natural State Medicinals">
 <meta property="og:title" content="Education guide, Natural State Medicinals">
 <meta property="og:description" content="A patient’s guide to Arkansas medical cannabis: how the plant works, how to read a label, dosing, and what we grow.">
-<meta property="og:url" content="https://mdedman-tech.github.io/Website_Rebuild/education/desktop.html">
-<meta property="og:image" content="https://mdedman-tech.github.io/Website_Rebuild/assets/brand/primary-lockup-dark.png">
+<meta property="og:url" content="https://www.naturalstatemedicinals.com/education/desktop.html">
+<meta property="og:image" content="https://www.naturalstatemedicinals.com/assets/brand/primary-lockup-dark.png">
 <meta name="twitter:card" content="summary_large_image">
 <script src="./support.js"></script>
 </head>
@@ -121,8 +121,6 @@
 <meta name="ext-resource-dependency" content="../assets/packaging/tins-hero.jpg" data-resource-id="../assets/packaging/tins-hero.jpg">
 <meta name="ext-resource-dependency" content="../assets/lab/carts.jpg" data-resource-id="../assets/lab/carts.jpg">
 <meta name="ext-resource-dependency" content="../assets/lab/concentrates.jpg" data-resource-id="../assets/lab/concentrates.jpg">
-<meta name="ext-resource-dependency" content="../assets/lab/conc-badder.jpg" data-resource-id="../assets/lab/conc-badder.jpg">
-<meta name="ext-resource-dependency" content="../assets/lab/conc-crumble.jpg" data-resource-id="../assets/lab/conc-crumble.jpg">
 <meta name="ext-resource-dependency" content="../assets/lab/tinctures-sativa.jpg" data-resource-id="../assets/lab/tinctures-sativa.jpg">
 <meta name="ext-resource-dependency" content="../assets/lab/stone.jpg" data-resource-id="../assets/lab/stone.jpg">
 <meta name="ext-resource-dependency" content="../assets/lab/troches.jpg" data-resource-id="../assets/lab/troches.jpg">
@@ -237,7 +235,7 @@
   @media (max-height: 660px) {
     #chap-welcome { padding-top:44px !important; padding-bottom:56px !important; }
     #chap-welcome .nsm-hero-stack { gap:11px !important; }
-    #chap-welcome .nsm-hero-title { font-size:clamp(calc(28px * var(--text-scale)),5vw,calc(44px * var(--text-scale))) !important; }
+    #chap-welcome .nsm-hero-title { font-size:clamp(calc(28px * var(--text-scale)), calc(5vw * var(--text-scale)), calc(44px * var(--text-scale))) !important; }
     #chap-welcome .nsm-hero-logo { width:clamp(112px,13vw,158px) !important; }
     #chap-welcome .nsm-hero-sub { font-size:calc(14px * var(--text-scale)) !important; max-width:44ch !important; }
   }
@@ -352,6 +350,7 @@
   h1[style*="#d8bd82"], h2[style*="#d8bd82"] {
     text-shadow:0 1px 1px rgba(11,14,24,.55), 0 -1px 0 rgba(245,244,225,.16); }
 </style>
+<script src="../ns-age-gate.js"></script>
 </helmet>
 
 <template id="__bundler_thumbnail">
@@ -400,7 +399,7 @@
   <sc-if value="{{ navOpen }}" hint-placeholder-val="{{ false }}">
     <div id="nsm-overlay" onClick="{{ bgNav }}" style="position:fixed;inset:0;z-index:90;background:rgba(22,26,43,0.97);backdrop-filter:blur(6px);display:flex;flex-direction:column;padding:clamp(28px,6vh,64px) clamp(20px,6vw,80px);overflow-y:auto;">
       <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:clamp(28px,5vh,56px);">
-        <span style="display:inline-flex;align-items:center;gap:clamp(14px,2vw,22px);"><img src="../assets/brand/contents-lockup.png" alt="Natural State Medicinals" style="flex:none;width:clamp(64px,8vw,96px);height:auto;display:block;"><span style="font-family:var(--font-display);font-weight:400;font-size:clamp(calc(24px * var(--text-scale)),3.4vw,calc(40px * var(--text-scale)));line-height:1.04;letter-spacing:0.05em;color:var(--ns-bronze);">The Doobie<br>Decimal System</span></span>
+        <span style="display:inline-flex;align-items:center;gap:clamp(14px,2vw,22px);"><img src="../assets/brand/contents-lockup.png" alt="Natural State Medicinals" style="flex:none;width:clamp(64px,8vw,96px);height:auto;display:block;"><span style="font-family:var(--font-display);font-weight:400;font-size:clamp(calc(24px * var(--text-scale)), calc(3.4vw * var(--text-scale)), calc(40px * var(--text-scale)));line-height:1.04;letter-spacing:0.05em;color:var(--ns-bronze);">The Doobie<br>Decimal System</span></span>
         <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end;">
           <a href="../index.html#doors" style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--ns-bronze);text-decoration:none;padding:10px 16px;border:1px solid rgba(183,149,80,0.5);border-radius:4px;">Back to the site</a>
           <div style="display:inline-flex;align-items:center;gap:8px;">
@@ -422,10 +421,10 @@
           <div style="border-top:1px solid var(--border-on-dark);">
             <div style="display:flex;align-items:center;gap:10px;">
               <button onClick="{{ c.onClick }}" style="flex:1;display:flex;align-items:baseline;gap:clamp(16px,3vw,40px);background:none;border:none;padding:clamp(16px,2.4vh,26px) 4px;cursor:pointer;text-align:left;">
-                <span style="font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)),1.6vw,calc(18px * var(--text-scale)));color:var(--ns-bronze);letter-spacing:0.04em;min-width:40px;">{{ c.num }}</span>
+                <span style="font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)), calc(1.6vw * var(--text-scale)), calc(18px * var(--text-scale)));color:var(--ns-bronze);letter-spacing:0.04em;min-width:40px;">{{ c.num }}</span>
                 <span style="flex:1;display:flex;flex-direction:column;gap:4px;">
-                  <span style="font-family:var(--font-display);font-size:clamp(calc(30px * var(--text-scale)),5vw,calc(52px * var(--text-scale)));line-height:1.04;letter-spacing:-0.01em;color:var(--ns-arctic);">{{ c.label }}</span>
-                  <span style="font-family:var(--font-sans);font-size:clamp(calc(13px * var(--text-scale)),1.5vw,calc(16px * var(--text-scale)));color:var(--text-on-dark-mut);">{{ c.desc }}</span>
+                  <span style="font-family:var(--font-display);font-size:clamp(calc(30px * var(--text-scale)), calc(5vw * var(--text-scale)), calc(52px * var(--text-scale)));line-height:1.04;letter-spacing:-0.01em;color:var(--ns-arctic);">{{ c.label }}</span>
+                  <span style="font-family:var(--font-sans);font-size:clamp(calc(13px * var(--text-scale)), calc(1.5vw * var(--text-scale)), calc(16px * var(--text-scale)));color:var(--text-on-dark-mut);">{{ c.desc }}</span>
                 </span>
                 <span style="font-family:var(--font-sans);color:var(--ns-bronze);font-size:calc(18px * var(--text-scale));">→</span>
               </button>
@@ -459,7 +458,7 @@
         </div>
         <div style="display:flex;align-items:center;gap:14px;border-bottom:2px solid var(--ns-bronze);padding-bottom:16px;">
           <span style="color:var(--ns-bronze);font-size:calc(24px * var(--text-scale));line-height:1;">⌕</span>
-          <input id="nsm-search-input" value="{{ searchQuery }}" onInput="{{ onSearch }}" autoFocus="{{ true }}" placeholder="Strains, terpenes, products, terms" style="flex:1;border:none;background:none;outline:none;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(22px * var(--text-scale)),3.2vw,calc(38px * var(--text-scale)));letter-spacing:0.01em;color:var(--ns-arctic);min-width:0;">
+          <input id="nsm-search-input" value="{{ searchQuery }}" onInput="{{ onSearch }}" autoFocus="{{ true }}" placeholder="Strains, terpenes, products, terms" style="flex:1;border:none;background:none;outline:none;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(22px * var(--text-scale)), calc(3.2vw * var(--text-scale)), calc(38px * var(--text-scale)));letter-spacing:0.01em;color:var(--ns-arctic);min-width:0;">
           <sc-if value="{{ searchHasQuery }}" hint-placeholder-val="{{ false }}">
             <button onClick="{{ clearSearch }}" aria-label="Clear search" style="background:none;border:none;cursor:pointer;color:var(--text-on-dark-mut);font-size:calc(20px * var(--text-scale));line-height:1;padding:4px;">✕</button>
           </sc-if>
@@ -474,7 +473,7 @@
                   <sc-for list="{{ grp.items }}" as="r" hint-placeholder-count="4">
                     <button onClick="{{ r.onClick }}" style="display:flex;align-items:center;gap:16px;width:100%;background:none;border:none;border-top:1px solid var(--border-on-dark);padding:15px 4px;cursor:pointer;text-align:left;" style-hover="background:rgba(245,244,225,0.05);">
                       <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:3px;">
-                        <span style="font-family:var(--font-sans);font-size:clamp(calc(17px * var(--text-scale)),2vw,calc(23px * var(--text-scale)));line-height:1.05;letter-spacing:0.01em;color:var(--ns-arctic);">{{ r.title }}</span>
+                        <span style="font-family:var(--font-sans);font-size:clamp(calc(17px * var(--text-scale)), calc(2vw * var(--text-scale)), calc(23px * var(--text-scale)));line-height:1.05;letter-spacing:0.01em;color:var(--ns-arctic);">{{ r.title }}</span>
                         <span style="font-family:var(--font-sans);font-size:calc(13px * var(--text-scale));line-height:1.4;color:var(--text-on-dark-mut);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{ r.sub }}</span>
                       </span>
                       <span style="color:var(--ns-bronze);font-size:calc(18px * var(--text-scale));flex:none;">→</span>
@@ -488,7 +487,7 @@
 
         <sc-if value="{{ searchNoResults }}" hint-placeholder-val="{{ false }}">
           <div style="margin-top:clamp(36px,6vh,64px);text-align:center;">
-            <p style="margin:0;font-family:var(--font-sans);font-size:clamp(calc(20px * var(--text-scale)),3vw,calc(30px * var(--text-scale)));color:var(--text-on-dark-mut);">No matches found</p>
+            <p style="margin:0;font-family:var(--font-sans);font-size:clamp(calc(20px * var(--text-scale)), calc(3vw * var(--text-scale)), calc(30px * var(--text-scale)));color:var(--text-on-dark-mut);">No matches found</p>
             <p style="margin:14px 0 0;font-family:var(--font-sans);font-size:calc(15px * var(--text-scale));color:rgba(245,244,225,0.5);">Try a strain name, a terpene, a product, or a glossary term.</p>
           </div>
         </sc-if>
@@ -549,7 +548,7 @@
               <div style="display:flex;flex-direction:column;gap:12px;">
                 <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;border-left:3px solid {{ c.catColor }};padding-left:12px;">
                   <div>
-                    <div style="font-family:var(--font-display);font-weight:400;font-size:clamp(calc(20px * var(--text-scale)),2.6vw,calc(30px * var(--text-scale)));line-height:1;color:var(--ns-arctic);">{{ c.name }}</div>
+                    <div style="font-family:var(--font-display);font-weight:400;font-size:clamp(calc(20px * var(--text-scale)), calc(2.6vw * var(--text-scale)), calc(30px * var(--text-scale)));line-height:1;color:var(--ns-arctic);">{{ c.name }}</div>
                     <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));letter-spacing:0.04em;color:rgba(245,244,225,0.6);">{{ c.type }}</span>
                   </div>
                   <button onClick="{{ c.onRemove }}" aria-label="Remove" style="background:none;border:none;cursor:pointer;color:rgba(245,244,225,0.5);font-size:calc(16px * var(--text-scale));">✕</button>
@@ -558,7 +557,7 @@
                   <img src="{{ c.photo }}" alt="{{ c.name }}" loading="lazy" style="width:100%;aspect-ratio:16/10;object-fit:cover;display:block;">
                 </sc-if>
                 <sc-if value="{{ c.hasThc }}" hint-placeholder-val="{{ false }}">
-                  <div><span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.18em;color:var(--ns-bronze);">THC Range</span><div style="font-family:var(--font-display);font-size:clamp(calc(20px * var(--text-scale)),2.6vw,calc(28px * var(--text-scale)));line-height:1;color:var(--ns-arctic);margin-top:5px;">{{ c.thcText }}</div><sc-if value="{{ c.hasTerp }}" hint-placeholder-val="{{ false }}"><div style="margin-top:9px;"><span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.18em;color:var(--ns-bronze);">Total Terpenes</span><div style="font-family:var(--font-display);font-size:clamp(calc(16px * var(--text-scale)),2vw,calc(21px * var(--text-scale)));line-height:1;color:rgba(245,244,225,0.85);margin-top:5px;">{{ c.terpText }}</div></div></sc-if></div>
+                  <div><span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.18em;color:var(--ns-bronze);">THC Range</span><div style="font-family:var(--font-display);font-size:clamp(calc(20px * var(--text-scale)), calc(2.6vw * var(--text-scale)), calc(28px * var(--text-scale)));line-height:1;color:var(--ns-arctic);margin-top:5px;">{{ c.thcText }}</div><sc-if value="{{ c.hasTerp }}" hint-placeholder-val="{{ false }}"><div style="margin-top:9px;"><span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.18em;color:var(--ns-bronze);">Total Terpenes</span><div style="font-family:var(--font-display);font-size:clamp(calc(16px * var(--text-scale)), calc(2vw * var(--text-scale)), calc(21px * var(--text-scale)));line-height:1;color:rgba(245,244,225,0.85);margin-top:5px;">{{ c.terpText }}</div></div></sc-if></div>
                 </sc-if>
                 <sc-if value="{{ c.hasTerps }}" hint-placeholder-val="{{ false }}">
                   <div><span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.18em;color:var(--ns-bronze);">Terpene profile</span>
@@ -601,10 +600,10 @@
         <div style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));letter-spacing:0.1em;color:rgba(245,244,225,0.5);margin-top:8px;">{{ quiz.progressLabel }}</div>
 
         <sc-if value="{{ quiz.question }}" hint-placeholder-val="{{ true }}">
-          <h3 style="margin:20px 0 0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(26px * var(--text-scale)),4vw,calc(40px * var(--text-scale)));line-height:1.1;letter-spacing:-0.005em;color:var(--ns-arctic);">{{ quiz.question }}</h3>
+          <h3 style="margin:20px 0 0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(26px * var(--text-scale)), calc(4vw * var(--text-scale)), calc(40px * var(--text-scale)));line-height:1.1;letter-spacing:-0.005em;color:var(--ns-arctic);">{{ quiz.question }}</h3>
           <div style="display:flex;flex-direction:column;gap:10px;margin-top:clamp(22px,4vh,32px);">
             <sc-for list="{{ quiz.options }}" as="o" hint-placeholder-count="4">
-              <button onClick="{{ o.onPick }}" style="display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:52px;background:rgba(245,244,225,0.05);border:1px solid var(--border-on-dark);border-radius:6px;padding:14px 20px;cursor:pointer;text-align:left;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)),1.7vw,calc(18px * var(--text-scale)));color:var(--ns-arctic);" style-hover="border-color:var(--ns-bronze);background:rgba(183,149,80,0.12);"><span>{{ o.label }}</span><span style="color:var(--ns-bronze);font-size:calc(16px * var(--text-scale));">→</span></button>
+              <button onClick="{{ o.onPick }}" style="display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:52px;background:rgba(245,244,225,0.05);border:1px solid var(--border-on-dark);border-radius:6px;padding:14px 20px;cursor:pointer;text-align:left;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)), calc(1.7vw * var(--text-scale)), calc(18px * var(--text-scale)));color:var(--ns-arctic);" style-hover="border-color:var(--ns-bronze);background:rgba(183,149,80,0.12);"><span>{{ o.label }}</span><span style="color:var(--ns-bronze);font-size:calc(16px * var(--text-scale));">→</span></button>
             </sc-for>
           </div>
           <sc-if value="{{ quiz.canBack }}" hint-placeholder-val="{{ false }}">
@@ -619,7 +618,7 @@
                 <img data-src="{{ quiz.result.photoSrc }}" alt="{{ quiz.result.name }}" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;margin:0 0 18px;">
               </sc-if>
               <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.18em;color:var(--ns-bronze);">{{ quiz.result.type }}</span>
-              <h3 style="margin:8px 0 0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(30px * var(--text-scale)),5vw,calc(52px * var(--text-scale)));line-height:0.98;letter-spacing:-0.01em;color:var(--text-strong);">{{ quiz.result.name }}</h3>
+              <h3 style="margin:8px 0 0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(30px * var(--text-scale)), calc(5vw * var(--text-scale)), calc(52px * var(--text-scale)));line-height:0.98;letter-spacing:-0.01em;color:var(--text-strong);">{{ quiz.result.name }}</h3>
               <p style="margin:14px 0 0;font-family:var(--font-sans);font-size:calc(15px * var(--text-scale));line-height:1.6;color:var(--text-body);">{{ quiz.result.bestUse }}</p>
               <p style="margin:14px 0 0;font-family:var(--font-sans);font-size:calc(13px * var(--text-scale));line-height:1.55;color:var(--text-muted);">{{ quiz.why }} {{ quiz.delivery }}</p>
               <sc-if value="{{ quiz.result.hasDom }}" hint-placeholder-val="{{ false }}">
@@ -653,12 +652,12 @@
     <div class="nsm-hero-stack" style="position:relative;display:flex;flex-direction:column;align-items:center;gap:clamp(16px,2.4vh,24px);max-width:860px;">
       <img class="nsm-hero-logo" style="width:clamp(200px,26vw,330px);height:auto;display:block;filter:drop-shadow(0 18px 48px rgba(0,0,0,0.55));" src="../assets/brand/primary-logo-light.png" alt="Natural State Medicinals">
 
-      <h1 class="nsm-hero-title" style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(42px * var(--text-scale)),8vw,calc(104px * var(--text-scale)));line-height:0.94;letter-spacing:0.005em;color:var(--ns-arctic);">
+      <h1 class="nsm-hero-title" style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(42px * var(--text-scale)), calc(8vw * var(--text-scale)), calc(104px * var(--text-scale)));line-height:0.94;letter-spacing:0.005em;color:var(--ns-arctic);">
         <span class="nsm-hero-line"><span>Education</span></span>
         <span class="nsm-hero-line"><span>Guide</span></span>
       </h1>
 
-      <p class="nsm-hero-sub" style="margin:0;font-family:var(--font-sans);font-weight:300;font-size:clamp(calc(16px * var(--text-scale)),2vw,calc(23px * var(--text-scale)));line-height:1.5;letter-spacing:0.01em;color:var(--ns-bronze-light);max-width:32ch;text-wrap:balance;">A patient's companion to the plant, the practice, and the products.</p>
+      <p class="nsm-hero-sub" style="margin:0;font-family:var(--font-sans);font-weight:300;font-size:clamp(calc(16px * var(--text-scale)), calc(2vw * var(--text-scale)), calc(23px * var(--text-scale)));line-height:1.5;letter-spacing:0.01em;color:var(--ns-bronze-light);max-width:32ch;text-wrap:balance;">A patient's companion to the plant, the practice, and the products.</p>
     </div>
 
     <button class="nsm-hero-begin" onClick="{{ toggleNav }}" style="position:absolute;bottom:max(30px,env(safe-area-inset-bottom,30px));left:0;right:0;margin-inline:auto;width:max-content;display:flex;flex-direction:column;align-items:center;gap:8px;background:none;border:none;cursor:pointer;animation:nsmFloat 2.6s ease-in-out infinite;">
@@ -672,10 +671,10 @@
     <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(40px,6vw,90px);align-items:start;">
       <div data-reveal="" style="opacity:0;transform:translateY(22px);">
         <span style="font-family:var(--font-sans);font-size:calc(12px * var(--text-scale));font-weight:600;letter-spacing:0.22em;color:var(--ns-bronze);">A note before you begin</span>
-        <h2 style="margin:18px 0 0;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(28px * var(--text-scale)),4vw,calc(48px * var(--text-scale)));line-height:1.18;letter-spacing:-0.01em;color:var(--text-strong);">We love our plants, our people, and our patients, in that order, and all at once.</h2>
+        <h2 style="margin:18px 0 0;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(28px * var(--text-scale)), calc(4vw * var(--text-scale)), calc(48px * var(--text-scale)));line-height:1.18;letter-spacing:-0.01em;color:var(--text-strong);">We love our plants, our people, and our patients, in that order, and all at once.</h2>
         <div style="width:54px;height:2px;background:var(--ns-bronze);margin:26px 0;"></div>
-        <p style="margin:0 0 18px;font-size:clamp(calc(16px * var(--text-scale)),1.5vw,calc(19px * var(--text-scale)));line-height:1.7;color:var(--text-body);">This guide is not a sales sheet. It is a patient's companion, a calm, unhurried walk through how cannabis meets the body, what the plant is actually made of, and how to use it with intention rather than guesswork.</p>
-        <p style="margin:0;font-size:clamp(calc(16px * var(--text-scale)),1.5vw,calc(19px * var(--text-scale)));line-height:1.7;color:var(--text-body);">Read it cover to cover, or keep it nearby and return to the parts you need. However you use it, our hope is the same: that it helps you find your natural state, of wellness, balance, and relief.</p>
+        <p style="margin:0 0 18px;font-size:clamp(calc(16px * var(--text-scale)), calc(1.5vw * var(--text-scale)), calc(19px * var(--text-scale)));line-height:1.7;color:var(--text-body);">This guide is not a sales sheet. It is a patient's companion, a calm, unhurried walk through how cannabis meets the body, what the plant is actually made of, and how to use it with intention rather than guesswork.</p>
+        <p style="margin:0;font-size:clamp(calc(16px * var(--text-scale)), calc(1.5vw * var(--text-scale)), calc(19px * var(--text-scale)));line-height:1.7;color:var(--text-body);">Read it cover to cover, or keep it nearby and return to the parts you need. However you use it, our hope is the same: that it helps you find your natural state, of wellness, balance, and relief.</p>
         
         <p style="margin:28px 0 0;font-family:var(--font-sans);font-size:calc(17px * var(--text-scale));color:var(--text-muted);">From your neighbors at <strong style="font-weight:700;color:var(--text-body);">Natural State Medicinals</strong></p>
       </div>
@@ -704,8 +703,8 @@
       <img src="../assets/facility/cultivation-rows.jpg" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
       <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(22,26,43,0.74) 0%, rgba(22,26,43,0.62) 45%, rgba(22,26,43,0.82) 100%);"></div>
       <div style="position:relative;max-width:1000px;text-align:center;">
-        <span style="font-family:var(--font-sans);font-size:clamp(calc(11px * var(--text-scale)),1.2vw,calc(13px * var(--text-scale)));font-weight:600;letter-spacing:0.3em;color:#d8bd82;">The NSM standard</span>
-        <h2 style="margin:clamp(20px,2.6vh,30px) auto 0;max-width:20ch;font-family:var(--font-sans);font-weight:200;font-size:clamp(calc(32px * var(--text-scale)),5.6vw,calc(68px * var(--text-scale)));line-height:1.08;letter-spacing:-0.01em;color:var(--ns-arctic);text-wrap:balance;">Held to a pharmaceutical standard, grown with a cultivator's hands.</h2>
+        <span style="font-family:var(--font-sans);font-size:clamp(calc(11px * var(--text-scale)), calc(1.2vw * var(--text-scale)), calc(13px * var(--text-scale)));font-weight:600;letter-spacing:0.3em;color:#d8bd82;">The NSM standard</span>
+        <h2 style="margin:clamp(20px,2.6vh,30px) auto 0;max-width:20ch;font-family:var(--font-sans);font-weight:200;font-size:clamp(calc(32px * var(--text-scale)), calc(5.6vw * var(--text-scale)), calc(68px * var(--text-scale)));line-height:1.08;letter-spacing:-0.01em;color:var(--ns-arctic);text-wrap:balance;">Held to a pharmaceutical standard, grown with a cultivator's hands.</h2>
       </div>
     </div>
     
@@ -719,13 +718,13 @@
         <!-- sticky left panel -->
         <div class="nsm-ecs-left" style="position:sticky;top:clamp(84px,12vh,116px);background:var(--ns-arctic);">
           <div data-reveal="" style="opacity:0;transform:translateY(22px);display:flex;align-items:flex-end;gap:clamp(14px,2vw,28px);border-bottom:1px solid var(--ns-bronze);padding-bottom:22px;">
-            <span style="font-family:var(--font-sans);font-size:clamp(calc(36px * var(--text-scale)),6vw,calc(72px * var(--text-scale)));line-height:0.8;color:var(--ns-bronze);">01</span>
+            <span style="font-family:var(--font-sans);font-size:clamp(calc(36px * var(--text-scale)), calc(6vw * var(--text-scale)), calc(72px * var(--text-scale)));line-height:0.8;color:var(--ns-bronze);">01</span>
             <div style="flex:1;">
               <span style="font-family:var(--font-sans);font-size:calc(12px * var(--text-scale));font-weight:600;letter-spacing:0.22em;color:var(--text-muted);">Chapter One</span>
-              <h2 style="margin:6px 0 0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(30px * var(--text-scale)),5vw,calc(60px * var(--text-scale)));line-height:0.98;letter-spacing:-0.01em;color:var(--text-strong);">The System</h2>
+              <h2 style="margin:6px 0 0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(30px * var(--text-scale)), calc(5vw * var(--text-scale)), calc(60px * var(--text-scale)));line-height:0.98;letter-spacing:-0.01em;color:var(--text-strong);">The System</h2>
             </div>
           </div>
-          <p data-reveal="" data-rd="80" style="opacity:0;transform:translateY(22px);margin:clamp(28px,4vh,44px) 0 0;max-width:22ch;font-family:var(--font-sans);font-weight:300;font-size:clamp(calc(23px * var(--text-scale)),2.8vw,calc(36px * var(--text-scale)));line-height:1.24;letter-spacing:-0.01em;color:var(--text-strong);">You were born with the lock. The plant simply brought a key.</p>
+          <p data-reveal="" data-rd="80" style="opacity:0;transform:translateY(22px);margin:clamp(28px,4vh,44px) 0 0;max-width:22ch;font-family:var(--font-sans);font-weight:300;font-size:clamp(calc(23px * var(--text-scale)), calc(2.8vw * var(--text-scale)), calc(36px * var(--text-scale)));line-height:1.24;letter-spacing:-0.01em;color:var(--text-strong);">You were born with the lock. The plant simply brought a key.</p>
 
           <!-- progress rail -->
           <div class="nsm-ecs-rail" data-reveal="" data-rd="140" style="opacity:0;transform:translateY(22px);margin-top:clamp(30px,4.5vh,52px);">
@@ -753,27 +752,27 @@
         <div>
           <div class="nsm-ecs-step" data-ecs-step="0" id="ecs-0" style="min-height:76vh;display:flex;flex-direction:column;justify-content:center;opacity:0.26;transition:opacity .5s ease;">
             <span data-ecs-eye="0" style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.22em;color:var(--text-muted);transition:color .4s ease;">The background system</span>
-            <p style="margin:20px 0 18px;font-size:clamp(calc(18px * var(--text-scale)),1.7vw,calc(22px * var(--text-scale)));line-height:1.72;color:var(--text-body);max-width:52ch;">Most people go through life without knowing this system exists. It works in the background, tending small fires before they become large ones. Appetite, mood, sleep, discomfort: there is a set of receptors and signaling compounds helping keep these things in balance.</p>
-            <p style="margin:0;font-size:clamp(calc(18px * var(--text-scale)),1.7vw,calc(22px * var(--text-scale)));line-height:1.72;color:var(--text-body);max-width:52ch;">You notice it most when something is off, in the same way you only think about a roof when it starts to leak. This network is called the <strong style="font-weight:600;">endocannabinoid system</strong>, and it is the reason cannabis can do what it does.</p>
+            <p style="margin:20px 0 18px;font-size:clamp(calc(18px * var(--text-scale)), calc(1.7vw * var(--text-scale)), calc(22px * var(--text-scale)));line-height:1.72;color:var(--text-body);max-width:52ch;">Most people go through life without knowing this system exists. It works in the background, tending small fires before they become large ones. Appetite, mood, sleep, discomfort: there is a set of receptors and signaling compounds helping keep these things in balance.</p>
+            <p style="margin:0;font-size:clamp(calc(18px * var(--text-scale)), calc(1.7vw * var(--text-scale)), calc(22px * var(--text-scale)));line-height:1.72;color:var(--text-body);max-width:52ch;">You notice it most when something is off, in the same way you only think about a roof when it starts to leak. This network is called the <strong style="font-weight:600;">endocannabinoid system</strong>, and it is the reason cannabis can do what it does.</p>
           </div>
 
           <div class="nsm-ecs-step" data-ecs-step="1" id="ecs-1" style="min-height:76vh;display:flex;flex-direction:column;justify-content:center;opacity:0.26;transition:opacity .5s ease;">
             <span data-ecs-eye="1" style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.22em;color:var(--text-muted);transition:color .4s ease;">The first receptor</span>
             <div style="display:flex;align-items:baseline;gap:clamp(16px,2vw,26px);margin:18px 0 4px;">
-              <span style="font-family:var(--font-display);font-weight:400;font-size:clamp(calc(56px * var(--text-scale)),9vw,calc(120px * var(--text-scale)));line-height:0.82;color:var(--ns-bronze);">CB1</span>
-              <span style="font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)),1.5vw,calc(18px * var(--text-scale)));color:var(--text-muted);">the mind</span>
+              <span style="font-family:var(--font-display);font-weight:400;font-size:clamp(calc(56px * var(--text-scale)), calc(9vw * var(--text-scale)), calc(120px * var(--text-scale)));line-height:0.82;color:var(--ns-bronze);">CB1</span>
+              <span style="font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)), calc(1.5vw * var(--text-scale)), calc(18px * var(--text-scale)));color:var(--text-muted);">the mind</span>
             </div>
-            <p style="margin:14px 0 0;font-size:clamp(calc(18px * var(--text-scale)),1.7vw,calc(22px * var(--text-scale)));line-height:1.72;color:var(--text-body);max-width:50ch;">Concentrated in the brain and nervous system. This is where the mind-level effects of THC take hold, the shift in mood, perception, and appetite that people most associate with cannabis.</p>
+            <p style="margin:14px 0 0;font-size:clamp(calc(18px * var(--text-scale)), calc(1.7vw * var(--text-scale)), calc(22px * var(--text-scale)));line-height:1.72;color:var(--text-body);max-width:50ch;">Concentrated in the brain and nervous system. This is where the mind-level effects of THC take hold, the shift in mood, perception, and appetite that people most associate with cannabis.</p>
           </div>
 
           <div class="nsm-ecs-step" data-ecs-step="2" id="ecs-2" style="min-height:76vh;display:flex;flex-direction:column;justify-content:center;opacity:0.26;transition:opacity .5s ease;">
             <span data-ecs-eye="2" style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.22em;color:var(--text-muted);transition:color .4s ease;">The second receptor</span>
             <div style="display:flex;align-items:baseline;gap:clamp(16px,2vw,26px);margin:18px 0 4px;">
-              <span style="font-family:var(--font-display);font-weight:400;font-size:clamp(calc(56px * var(--text-scale)),9vw,calc(120px * var(--text-scale)));line-height:0.82;color:var(--ns-bronze);">CB2</span>
-              <span style="font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)),1.5vw,calc(18px * var(--text-scale)));color:var(--text-muted);">the body</span>
+              <span style="font-family:var(--font-display);font-weight:400;font-size:clamp(calc(56px * var(--text-scale)), calc(9vw * var(--text-scale)), calc(120px * var(--text-scale)));line-height:0.82;color:var(--ns-bronze);">CB2</span>
+              <span style="font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)), calc(1.5vw * var(--text-scale)), calc(18px * var(--text-scale)));color:var(--text-muted);">the body</span>
             </div>
-            <p style="margin:14px 0 26px;font-size:clamp(calc(18px * var(--text-scale)),1.7vw,calc(22px * var(--text-scale)));line-height:1.72;color:var(--text-body);max-width:50ch;">Found mostly in immune tissue and the periphery. Tied to inflammation and bodily relief, the quieter, physical side of how cannabis works.</p>
-            <p style="margin:0;padding-top:26px;border-top:1px solid var(--border-hairline);font-family:var(--font-sans);font-weight:300;font-size:clamp(calc(20px * var(--text-scale)),2.3vw,calc(30px * var(--text-scale)));line-height:1.32;letter-spacing:-0.005em;color:var(--text-strong);max-width:46ch;">Together they are the lock to cannabis's key, and it turns out we were born with the lock already installed.</p>
+            <p style="margin:14px 0 26px;font-size:clamp(calc(18px * var(--text-scale)), calc(1.7vw * var(--text-scale)), calc(22px * var(--text-scale)));line-height:1.72;color:var(--text-body);max-width:50ch;">Found mostly in immune tissue and the periphery. Tied to inflammation and bodily relief, the quieter, physical side of how cannabis works.</p>
+            <p style="margin:0;padding-top:26px;border-top:1px solid var(--border-hairline);font-family:var(--font-sans);font-weight:300;font-size:clamp(calc(20px * var(--text-scale)), calc(2.3vw * var(--text-scale)), calc(30px * var(--text-scale)));line-height:1.32;letter-spacing:-0.005em;color:var(--text-strong);max-width:46ch;">Together they are the lock to cannabis's key, and it turns out we were born with the lock already installed.</p>
           </div>
         </div>
 
@@ -790,14 +789,14 @@
         <!-- sticky left panel -->
         <div class="nsm-ecs-left" style="position:sticky;top:clamp(84px,12vh,116px);background:var(--ns-midnight);">
           <div data-reveal="" style="opacity:0;transform:translateY(22px);display:flex;align-items:flex-end;gap:clamp(14px,2vw,28px);border-bottom:1px solid var(--border-on-dark);padding-bottom:22px;">
-            <span style="font-family:var(--font-sans);font-size:clamp(calc(36px * var(--text-scale)),6vw,calc(72px * var(--text-scale)));line-height:0.8;color:var(--ns-bronze);">02</span>
+            <span style="font-family:var(--font-sans);font-size:clamp(calc(36px * var(--text-scale)), calc(6vw * var(--text-scale)), calc(72px * var(--text-scale)));line-height:0.8;color:var(--ns-bronze);">02</span>
             <div style="flex:1;">
               <span style="font-family:var(--font-sans);font-size:calc(12px * var(--text-scale));font-weight:600;letter-spacing:0.22em;color:rgba(245,244,225,0.85);">Chapter Two</span>
-              <h2 style="margin:6px 0 0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(30px * var(--text-scale)),5vw,calc(60px * var(--text-scale)));line-height:0.98;color:var(--ns-arctic);">The Entourage Effect</h2>
+              <h2 style="margin:6px 0 0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(30px * var(--text-scale)), calc(5vw * var(--text-scale)), calc(60px * var(--text-scale)));line-height:0.98;color:var(--ns-arctic);">The Entourage Effect</h2>
             </div>
           </div>
-          <p data-reveal="" data-rd="80" style="opacity:0;transform:translateY(22px);margin:clamp(28px,4vh,44px) 0 0;max-width:22ch;font-family:var(--font-sans);font-weight:300;font-size:clamp(calc(23px * var(--text-scale)),2.8vw,calc(38px * var(--text-scale)));line-height:1.22;letter-spacing:-0.01em;color:var(--ns-arctic);">Think of the plant as an orchestra, not a soloist.</p>
-          <p data-reveal="" data-rd="120" style="opacity:0;transform:translateY(22px);margin:20px 0 0;max-width:44ch;font-size:clamp(calc(15px * var(--text-scale)),1.5vw,calc(18px * var(--text-scale)));line-height:1.7;color:rgba(245,244,225,0.82);">No single compound tells the whole story. THC, the minor cannabinoids, and the aromatic terpenes each play a part, and they shape one another as they play. That cooperation has a name.</p>
+          <p data-reveal="" data-rd="80" style="opacity:0;transform:translateY(22px);margin:clamp(28px,4vh,44px) 0 0;max-width:22ch;font-family:var(--font-sans);font-weight:300;font-size:clamp(calc(23px * var(--text-scale)), calc(2.8vw * var(--text-scale)), calc(38px * var(--text-scale)));line-height:1.22;letter-spacing:-0.01em;color:var(--ns-arctic);">Think of the plant as an orchestra, not a soloist.</p>
+          <p data-reveal="" data-rd="120" style="opacity:0;transform:translateY(22px);margin:20px 0 0;max-width:44ch;font-size:clamp(calc(15px * var(--text-scale)), calc(1.5vw * var(--text-scale)), calc(18px * var(--text-scale)));line-height:1.7;color:rgba(245,244,225,0.82);">No single compound tells the whole story. THC, the minor cannabinoids, and the aromatic terpenes each play a part, and they shape one another as they play. That cooperation has a name.</p>
           <div class="nsm-ecs-rail" data-reveal="" data-rd="160" style="opacity:0;transform:translateY(22px);margin-top:clamp(30px,4.5vh,52px);">
             <div style="display:flex;gap:8px;">
               <div data-ent-tick="0" style="flex:1;height:3px;background:rgba(245,244,225,0.16);transition:background .35s ease;"></div>
@@ -812,31 +811,31 @@
         <!-- movements as cumulative scroll steps -->
         <div>
           <div class="nsm-ecs-step" data-ent-step="0" style="min-height:64vh;display:grid;grid-template-columns:clamp(54px,8vw,110px) 1fr;gap:clamp(20px,4vw,56px);align-items:center;opacity:0.24;transition:opacity .55s ease;">
-            <span data-ent-num="" style="font-family:var(--font-sans);font-size:clamp(calc(44px * var(--text-scale)),6vw,calc(92px * var(--text-scale)));line-height:0.85;color:rgba(183,149,80,0.3);transition:color .5s ease, text-shadow .5s ease;">I</span>
+            <span data-ent-num="" style="font-family:var(--font-sans);font-size:clamp(calc(44px * var(--text-scale)), calc(6vw * var(--text-scale)), calc(92px * var(--text-scale)));line-height:0.85;color:rgba(183,149,80,0.3);transition:color .5s ease, text-shadow .5s ease;">I</span>
             <div>
               <span style="font-family:var(--font-sans);font-size:calc(12px * var(--text-scale));font-weight:600;letter-spacing:0.2em;color:var(--ns-bronze);">A single instrument</span>
-              <p style="margin:12px 0 0;font-family:var(--font-sans);font-weight:300;font-size:clamp(calc(20px * var(--text-scale)),2.3vw,calc(30px * var(--text-scale)));line-height:1.34;color:var(--ns-arctic);max-width:40ch;">A single instrument can carry a tune. THC alone will get the job done.</p>
+              <p style="margin:12px 0 0;font-family:var(--font-sans);font-weight:300;font-size:clamp(calc(20px * var(--text-scale)), calc(2.3vw * var(--text-scale)), calc(30px * var(--text-scale)));line-height:1.34;color:var(--ns-arctic);max-width:40ch;">A single instrument can carry a tune. THC alone will get the job done.</p>
             </div>
           </div>
           <div class="nsm-ecs-step" data-ent-step="1" style="min-height:64vh;display:grid;grid-template-columns:clamp(54px,8vw,110px) 1fr;gap:clamp(20px,4vw,56px);align-items:center;opacity:0.24;transition:opacity .55s ease;">
-            <span data-ent-num="" style="font-family:var(--font-sans);font-size:clamp(calc(44px * var(--text-scale)),6vw,calc(92px * var(--text-scale)));line-height:0.85;color:rgba(183,149,80,0.3);transition:color .5s ease, text-shadow .5s ease;">II</span>
+            <span data-ent-num="" style="font-family:var(--font-sans);font-size:clamp(calc(44px * var(--text-scale)), calc(6vw * var(--text-scale)), calc(92px * var(--text-scale)));line-height:0.85;color:rgba(183,149,80,0.3);transition:color .5s ease, text-shadow .5s ease;">II</span>
             <div>
               <span style="font-family:var(--font-sans);font-size:calc(12px * var(--text-scale));font-weight:600;letter-spacing:0.2em;color:var(--ns-bronze);">The supporting cast arrives</span>
-              <p style="margin:12px 0 0;font-family:var(--font-sans);font-weight:300;font-size:clamp(calc(20px * var(--text-scale)),2.3vw,calc(30px * var(--text-scale)));line-height:1.34;color:var(--ns-arctic);max-width:40ch;">Then the minor cannabinoids join in. CBD, CBG, CBN, and CBC each add a different color to the sound.</p>
+              <p style="margin:12px 0 0;font-family:var(--font-sans);font-weight:300;font-size:clamp(calc(20px * var(--text-scale)), calc(2.3vw * var(--text-scale)), calc(30px * var(--text-scale)));line-height:1.34;color:var(--ns-arctic);max-width:40ch;">Then the minor cannabinoids join in. CBD, CBG, CBN, and CBC each add a different color to the sound.</p>
             </div>
           </div>
           <div class="nsm-ecs-step" data-ent-step="2" style="min-height:64vh;display:grid;grid-template-columns:clamp(54px,8vw,110px) 1fr;gap:clamp(20px,4vw,56px);align-items:center;opacity:0.24;transition:opacity .55s ease;">
-            <span data-ent-num="" style="font-family:var(--font-sans);font-size:clamp(calc(44px * var(--text-scale)),6vw,calc(92px * var(--text-scale)));line-height:0.85;color:rgba(183,149,80,0.3);transition:color .5s ease, text-shadow .5s ease;">III</span>
+            <span data-ent-num="" style="font-family:var(--font-sans);font-size:clamp(calc(44px * var(--text-scale)), calc(6vw * var(--text-scale)), calc(92px * var(--text-scale)));line-height:0.85;color:rgba(183,149,80,0.3);transition:color .5s ease, text-shadow .5s ease;">III</span>
             <div>
               <span style="font-family:var(--font-sans);font-size:calc(12px * var(--text-scale));font-weight:600;letter-spacing:0.2em;color:var(--ns-bronze);">The terpenes shape the room</span>
-              <p style="margin:12px 0 0;font-family:var(--font-sans);font-weight:300;font-size:clamp(calc(20px * var(--text-scale)),2.3vw,calc(30px * var(--text-scale)));line-height:1.34;color:var(--ns-arctic);max-width:40ch;">Aromatic terpenes fill the spaces between, steering the experience toward calm, focus, or ease.</p>
+              <p style="margin:12px 0 0;font-family:var(--font-sans);font-weight:300;font-size:clamp(calc(20px * var(--text-scale)), calc(2.3vw * var(--text-scale)), calc(30px * var(--text-scale)));line-height:1.34;color:var(--ns-arctic);max-width:40ch;">Aromatic terpenes fill the spaces between, steering the experience toward calm, focus, or ease.</p>
             </div>
           </div>
           <div class="nsm-ecs-step" data-ent-step="3" style="min-height:70vh;display:grid;grid-template-columns:clamp(54px,8vw,110px) 1fr;gap:clamp(20px,4vw,56px);align-items:center;opacity:0.24;transition:opacity .55s ease;border-top:1px solid var(--ns-bronze);padding-top:clamp(30px,5vh,56px);margin-top:clamp(20px,4vh,44px);">
-            <span data-ent-num="" style="font-family:var(--font-sans);font-size:clamp(calc(64px * var(--text-scale)),9vw,calc(140px * var(--text-scale)));line-height:0.8;color:rgba(183,149,80,0.3);transition:color .5s ease, text-shadow .5s ease;">IV</span>
+            <span data-ent-num="" style="font-family:var(--font-sans);font-size:clamp(calc(64px * var(--text-scale)), calc(9vw * var(--text-scale)), calc(140px * var(--text-scale)));line-height:0.8;color:rgba(183,149,80,0.3);transition:color .5s ease, text-shadow .5s ease;">IV</span>
             <div>
               <span style="font-family:var(--font-sans);font-size:calc(13px * var(--text-scale));font-weight:600;letter-spacing:0.26em;color:var(--ns-bronze);">An orchestra, together</span>
-              <p style="margin:16px 0 0;font-family:var(--font-sans);font-weight:300;font-size:clamp(calc(25px * var(--text-scale)),3.3vw,calc(46px * var(--text-scale)));line-height:1.24;letter-spacing:-0.01em;color:var(--ns-arctic);max-width:26ch;text-wrap:balance;">Played together, the compounds shape one another and create something fuller than any one could alone. <strong style="display:block;margin-top:0.35em;font-weight:500;color:var(--ns-bronze);text-wrap:balance;">That is the entourage effect.</strong></p>
+              <p style="margin:16px 0 0;font-family:var(--font-sans);font-weight:300;font-size:clamp(calc(25px * var(--text-scale)), calc(3.3vw * var(--text-scale)), calc(46px * var(--text-scale)));line-height:1.24;letter-spacing:-0.01em;color:var(--ns-arctic);max-width:26ch;text-wrap:balance;">Played together, the compounds shape one another and create something fuller than any one could alone. <strong style="display:block;margin-top:0.35em;font-weight:500;color:var(--ns-bronze);text-wrap:balance;">That is the entourage effect.</strong></p>
             </div>
           </div>
         </div>
@@ -849,13 +848,13 @@
   <section id="chap-cannabinoids" data-chapter="cannabinoids" data-screen-label="03 Cannabinoids" style="position:relative;background:var(--ns-arctic);padding:clamp(80px,11vh,140px) clamp(20px,6vw,80px);">
     <div style="max-width:1180px;margin:0 auto;">
       <div data-reveal="" style="opacity:0;transform:translateY(22px);display:flex;align-items:flex-end;gap:clamp(16px,3vw,36px);border-bottom:1px solid var(--ns-bronze);padding-bottom:26px;">
-        <span style="font-family:var(--font-sans);font-size:clamp(calc(36px * var(--text-scale)),7vw,calc(82px * var(--text-scale)));line-height:0.8;color:var(--ns-bronze);">03</span>
+        <span style="font-family:var(--font-sans);font-size:clamp(calc(36px * var(--text-scale)), calc(7vw * var(--text-scale)), calc(82px * var(--text-scale)));line-height:0.8;color:var(--ns-bronze);">03</span>
         <div style="flex:1;">
           <span style="font-family:var(--font-sans);font-size:calc(12px * var(--text-scale));font-weight:600;letter-spacing:0.22em;color:var(--text-muted);">Chapter Three</span>
-          <h2 style="margin:6px 0 0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(30px * var(--text-scale)),5.4vw,calc(68px * var(--text-scale)));line-height:0.98;color:var(--text-strong);">Cannabinoids</h2>
+          <h2 style="margin:6px 0 0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(30px * var(--text-scale)), calc(5.4vw * var(--text-scale)), calc(68px * var(--text-scale)));line-height:0.98;color:var(--text-strong);">Cannabinoids</h2>
         </div>
       </div>
-      <p data-reveal="" data-rd="80" style="opacity:0;transform:translateY(22px);margin:clamp(36px,5vh,60px) 0 clamp(36px,5vh,56px);max-width:54ch;font-size:clamp(calc(17px * var(--text-scale)),1.7vw,calc(21px * var(--text-scale)));line-height:1.7;color:var(--text-body);">The headlines usually belong to THC, yet much of the plant's character comes from lesser-known cannabinoids. There are more than one hundred identified so far. These five do most of the talking. Scroll to move through each one.</p>
+      <p data-reveal="" data-rd="80" style="opacity:0;transform:translateY(22px);margin:clamp(36px,5vh,60px) 0 clamp(36px,5vh,56px);max-width:54ch;font-size:clamp(calc(17px * var(--text-scale)), calc(1.7vw * var(--text-scale)), calc(21px * var(--text-scale)));line-height:1.7;color:var(--text-body);">The headlines usually belong to THC, yet much of the plant's character comes from lesser-known cannabinoids. There are more than one hundred identified so far. These five do most of the talking. Scroll to move through each one.</p>
 
       <div class="nsm-cb-grid" style="display:grid;grid-template-columns:0.85fr 1.15fr;gap:clamp(24px,4vw,72px);align-items:start;margin-top:clamp(20px,3vh,36px);">
         <!-- sticky left panel: active cannabinoid -->
@@ -863,8 +862,8 @@
           <sc-for list="{{ cannabinoids }}" as="c" hint-placeholder-count="5">
             <div data-cb-panel="{{ c.idx }}" style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;opacity:0;transition:opacity 0.4s ease;">
               <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.16em;color:var(--ns-bronze);">{{ c.tag }}</span>
-              <span style="font-family:var(--font-sans);font-size:clamp(calc(80px * var(--text-scale)),14vw,calc(160px * var(--text-scale)));line-height:0.82;color:var(--text-strong);margin-top:10px;">{{ c.abbr }}</span>
-              <span style="font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)),1.6vw,calc(19px * var(--text-scale)));color:var(--text-muted);margin-top:8px;">{{ c.full }}</span>
+              <span style="font-family:var(--font-sans);font-size:clamp(calc(80px * var(--text-scale)), calc(14vw * var(--text-scale)), calc(160px * var(--text-scale)));line-height:0.82;color:var(--text-strong);margin-top:10px;">{{ c.abbr }}</span>
+              <span style="font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)), calc(1.6vw * var(--text-scale)), calc(19px * var(--text-scale)));color:var(--text-muted);margin-top:8px;">{{ c.full }}</span>
               <div style="margin-top:clamp(20px,3vh,30px);border-top:1px solid var(--border-hairline);padding-top:18px;">
                 <span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.18em;color:var(--ns-bronze);">Often sought for</span>
                 <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:11px;">
@@ -882,11 +881,11 @@
           <sc-for list="{{ cannabinoids }}" as="c" hint-placeholder-count="5">
             <div data-cb-step="{{ c.idx }}" style="min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:8vh 0;opacity:0.4;transition:opacity 0.4s ease;">
               <div class="nsm-cb-mobhd" style="display:none;align-items:baseline;gap:14px;margin-bottom:14px;">
-                <span style="font-family:var(--font-sans);font-size:clamp(calc(44px * var(--text-scale)),12vw,calc(66px * var(--text-scale)));line-height:0.82;color:var(--text-strong);">{{ c.abbr }}</span>
+                <span style="font-family:var(--font-sans);font-size:clamp(calc(44px * var(--text-scale)), calc(12vw * var(--text-scale)), calc(66px * var(--text-scale)));line-height:0.82;color:var(--text-strong);">{{ c.abbr }}</span>
                 <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.16em;color:var(--ns-bronze);">{{ c.tag }}</span>
               </div>
-              <p style="margin:0;font-family:var(--font-sans);font-size:clamp(calc(17px * var(--text-scale)),1.9vw,calc(22px * var(--text-scale)));line-height:1.5;color:var(--text-strong);">{{ c.short }}</p>
-              <p style="margin:clamp(16px,2.4vh,24px) 0 0;font-family:var(--font-sans);max-width:64ch;font-size:clamp(calc(14.5px * var(--text-scale)),1.5vw,calc(16.5px * var(--text-scale)));line-height:1.72;color:var(--text-body);">{{ c.detail }}</p>
+              <p style="margin:0;font-family:var(--font-sans);font-size:clamp(calc(17px * var(--text-scale)), calc(1.9vw * var(--text-scale)), calc(22px * var(--text-scale)));line-height:1.5;color:var(--text-strong);">{{ c.short }}</p>
+              <p style="margin:clamp(16px,2.4vh,24px) 0 0;font-family:var(--font-sans);max-width:64ch;font-size:clamp(calc(14.5px * var(--text-scale)), calc(1.5vw * var(--text-scale)), calc(16.5px * var(--text-scale)));line-height:1.72;color:var(--text-body);">{{ c.detail }}</p>
               <sc-if value="{{ c.hasStudies }}" hint-placeholder-val="{{ false }}">
                 <div style="border-top:1px solid var(--border-hairline);padding-top:18px;margin-top:clamp(20px,3vh,30px);">
                   <span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.18em;color:var(--ns-bronze);">Selected research</span>
@@ -915,7 +914,7 @@
     <div aria-hidden="true" style="position:absolute;top:-20%;left:50%;transform:translateX(-50%);width:90%;height:70%;background:radial-gradient(closest-side, rgba(183,149,80,0.05), rgba(32,37,58,0) 72%);pointer-events:none;"></div>
     <div style="position:relative;max-width:820px;margin:0 auto;">
       <span style="display:block;font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.3em;color:#d8bd82;margin-bottom:clamp(18px,3vh,30px);">Chapter Four &nbsp;·&nbsp; That was the theory</span>
-      <p style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(28px * var(--text-scale)),5vw,calc(64px * var(--text-scale)));line-height:1.08;letter-spacing:0.005em;color:var(--ns-arctic);text-wrap:balance;">Before the catalog, a quick orientation.</p>
+      <p style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(28px * var(--text-scale)), calc(5vw * var(--text-scale)), calc(64px * var(--text-scale)));line-height:1.08;letter-spacing:0.005em;color:var(--ns-arctic);text-wrap:balance;">Before the catalog, a quick orientation.</p>
     </div>
   </div>
 
@@ -924,8 +923,8 @@
     <div style="max-width:820px;margin:0 auto;padding:clamp(70px,12vh,140px) clamp(20px,6vw,80px);text-align:center;">
       <div data-reveal="" style="opacity:0;transform:translateY(22px);">
         <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.28em;color:var(--ns-bronze);">The three words</span>
-        <h3 id="sec-types-three" style="margin:18px 0 0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(30px * var(--text-scale)),5.2vw,calc(60px * var(--text-scale)));line-height:1.0;letter-spacing:-0.01em;color:var(--text-strong);">Sativa, Hybrid, Indica</h3>
-        <p style="margin:22px auto 0;max-width:62ch;font-size:clamp(calc(16px * var(--text-scale)),1.6vw,calc(19px * var(--text-scale)));line-height:1.72;color:var(--text-body);">Every conversation about cannabis starts here. These three words are shorthand, not science, a way to set expectations before the terpenes and cannabinoids tell the real story. Modern genetics have made the lines blurry enough that most researchers have moved on from the taxonomy entirely. But the categories stick because they are useful, the same way cardinal directions are useful even though the world is more complicated than north and south.</p>
+        <h3 id="sec-types-three" style="margin:18px 0 0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(30px * var(--text-scale)), calc(5.2vw * var(--text-scale)), calc(60px * var(--text-scale)));line-height:1.0;letter-spacing:-0.01em;color:var(--text-strong);">Sativa, Hybrid, Indica</h3>
+        <p style="margin:22px auto 0;max-width:62ch;font-size:clamp(calc(16px * var(--text-scale)), calc(1.6vw * var(--text-scale)), calc(19px * var(--text-scale)));line-height:1.72;color:var(--text-body);">Every conversation about cannabis starts here. These three words are shorthand, not science, a way to set expectations before the terpenes and cannabinoids tell the real story. Modern genetics have made the lines blurry enough that most researchers have moved on from the taxonomy entirely. But the categories stick because they are useful, the same way cardinal directions are useful even though the world is more complicated than north and south.</p>
         <span style="display: block; margin-top: 22px; font-family: var(--font-sans); font-size: calc(15px * var(--text-scale)); font-weight: 800; letter-spacing: 0.18em; color: var(--ns-bronze)">You will see these colors again throughout the flower library</span>
       </div>
     </div>
@@ -936,9 +935,9 @@
   <div style="position:sticky;top:0;height:100vh;min-height:100vh;background:var(--ns-bronze);padding:clamp(54px,9vh,110px) clamp(20px,6vw,80px);display:flex;align-items:center;justify-content:center;">
     <div data-reveal="" style="opacity:0;transform:translateY(22px);max-width:900px;margin:0 auto;text-align:center;">
       <img src="../assets/type-sativa-sm.png" alt="Sativa, day" style="display:block;width:clamp(64px,8vw,92px);height:auto;margin:0 auto clamp(14px,2.4vh,22px);">
-      <div style="font-family:var(--font-display);font-weight:400;font-size:clamp(calc(64px * var(--text-scale)),13vw,calc(140px * var(--text-scale)));line-height:0.88;letter-spacing:-0.02em;color:var(--ns-midnight);">Sativa</div>
-      <p style="margin:clamp(20px,3vh,30px) auto 0;max-width:54ch;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)),1.55vw,calc(18px * var(--text-scale)));line-height:1.72;color:rgba(32,37,58,0.82);">Traditionally associated with daytime use, brighter, more cerebral, more likely to keep you moving than slow you down. The plants grow tall and thin with long, narrow leaves and a longer flowering cycle. Energetic and uplifting are the words most patients reach for. The science says the terpene profile matters more than the label, but in practice sativas tend to carry higher concentrations of limonene and terpinolene, which track with those brighter, more head-forward effects.</p>
-      <p style="margin:clamp(24px,3.5vh,36px) auto 0;max-width:30ch;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(22px * var(--text-scale)),3vw,calc(38px * var(--text-scale)));line-height:1.2;letter-spacing:-0.005em;color:var(--ns-midnight);">The strain you reach for when you have somewhere to be, and want to actually want to go there.</p>
+      <div style="font-family:var(--font-display);font-weight:400;font-size:clamp(calc(64px * var(--text-scale)), calc(13vw * var(--text-scale)), calc(140px * var(--text-scale)));line-height:0.88;letter-spacing:-0.02em;color:var(--ns-midnight);">Sativa</div>
+      <p style="margin:clamp(20px,3vh,30px) auto 0;max-width:54ch;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)), calc(1.55vw * var(--text-scale)), calc(18px * var(--text-scale)));line-height:1.72;color:rgba(32,37,58,0.82);">Traditionally associated with daytime use, brighter, more cerebral, more likely to keep you moving than slow you down. The plants grow tall and thin with long, narrow leaves and a longer flowering cycle. Energetic and uplifting are the words most patients reach for. The science says the terpene profile matters more than the label, but in practice sativas tend to carry higher concentrations of limonene and terpinolene, which track with those brighter, more head-forward effects.</p>
+      <p style="margin:clamp(24px,3.5vh,36px) auto 0;max-width:30ch;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(22px * var(--text-scale)), calc(3vw * var(--text-scale)), calc(38px * var(--text-scale)));line-height:1.2;letter-spacing:-0.005em;color:var(--ns-midnight);">The strain you reach for when you have somewhere to be, and want to actually want to go there.</p>
     </div>
   </div>
   </div>
@@ -947,9 +946,9 @@
   <div style="position:sticky;top:0;height:100vh;min-height:100vh;background:#1faa6b;padding:clamp(54px,9vh,110px) clamp(20px,6vw,80px);display:flex;align-items:center;justify-content:center;">
     <div data-reveal="" style="opacity:0;transform:translateY(22px);max-width:900px;margin:0 auto;text-align:center;">
       <img src="../assets/type-hybrid-sm.png" alt="Hybrid, balance" style="display:block;width:clamp(64px,8vw,92px);height:auto;margin:0 auto clamp(14px,2.4vh,22px);">
-      <div style="font-family:var(--font-display);font-weight:400;font-size:clamp(calc(64px * var(--text-scale)),13vw,calc(140px * var(--text-scale)));line-height:0.88;letter-spacing:-0.02em;color:var(--ns-arctic);">Hybrid</div>
-      <p style="margin:clamp(20px,3vh,30px) auto 0;max-width:54ch;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)),1.55vw,calc(18px * var(--text-scale)));line-height:1.72;color:rgba(245,244,225,0.9);">A cross of the two, bred to carry qualities from both sides of the family. Most of what you will find in the flower library is a hybrid, leaning one direction or the other depending on its parents. The middle path, and by far the most common one. This is also where the category system starts to show its limits: a hybrid leaning hard indica feels nothing like one leaning sativa, even if both carry the same label. The terpene profile and cannabinoid ratios are where the actual answer lives.</p>
-      <p style="margin:clamp(24px,3.5vh,36px) auto 0;max-width:30ch;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(22px * var(--text-scale)),3vw,calc(38px * var(--text-scale)));line-height:1.2;letter-spacing:-0.005em;color:var(--ns-arctic);">The honest workhorse of the catalog, versatile by design.</p>
+      <div style="font-family:var(--font-display);font-weight:400;font-size:clamp(calc(64px * var(--text-scale)), calc(13vw * var(--text-scale)), calc(140px * var(--text-scale)));line-height:0.88;letter-spacing:-0.02em;color:var(--ns-arctic);">Hybrid</div>
+      <p style="margin:clamp(20px,3vh,30px) auto 0;max-width:54ch;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)), calc(1.55vw * var(--text-scale)), calc(18px * var(--text-scale)));line-height:1.72;color:rgba(245,244,225,0.9);">A cross of the two, bred to carry qualities from both sides of the family. Most of what you will find in the flower library is a hybrid, leaning one direction or the other depending on its parents. The middle path, and by far the most common one. This is also where the category system starts to show its limits: a hybrid leaning hard indica feels nothing like one leaning sativa, even if both carry the same label. The terpene profile and cannabinoid ratios are where the actual answer lives.</p>
+      <p style="margin:clamp(24px,3.5vh,36px) auto 0;max-width:30ch;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(22px * var(--text-scale)), calc(3vw * var(--text-scale)), calc(38px * var(--text-scale)));line-height:1.2;letter-spacing:-0.005em;color:var(--ns-arctic);">The honest workhorse of the catalog, versatile by design.</p>
     </div>
   </div>
   </div>
@@ -958,9 +957,9 @@
   <div style="position:sticky;top:0;height:100vh;min-height:100vh;background:var(--ns-midnight);padding:clamp(54px,9vh,110px) clamp(20px,6vw,80px);display:flex;align-items:center;justify-content:center;">
     <div data-reveal="" style="opacity:0;transform:translateY(22px);max-width:900px;margin:0 auto;text-align:center;">
       <img src="../assets/type-indica-sm.png" alt="Indica, night" style="display:block;width:clamp(64px,8vw,92px);height:auto;margin:0 auto clamp(14px,2.4vh,22px);">
-      <div style="font-family:var(--font-display);font-weight:400;font-size:clamp(calc(64px * var(--text-scale)),13vw,calc(140px * var(--text-scale)));line-height:0.88;letter-spacing:-0.02em;color:var(--ns-arctic);">Indica</div>
+      <div style="font-family:var(--font-display);font-weight:400;font-size:clamp(calc(64px * var(--text-scale)), calc(13vw * var(--text-scale)), calc(140px * var(--text-scale)));line-height:0.88;letter-spacing:-0.02em;color:var(--ns-arctic);">Indica</div>
       
-      <p style="margin:clamp(20px,3vh,30px) auto 0;max-width:54ch;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)),1.55vw,calc(18px * var(--text-scale)));line-height:1.72;color:rgba(245,244,225,0.82);">Traditionally associated with evenings, heavier, more physical, more body than brain. The plants are shorter and bushier than sativas with broader leaves and a faster flowering time. Relaxing, sedating, and couch-friendly are the words that follow indica around. There is a reason the old joke calls it in-da-couch.&nbsp;<br><br>Myrcene, the most common terpene in cannabis and one that carries a pronounced sedating quality, tends to run higher in indica-dominant cultivars, which is probably where the reputation comes from. That said, a low-myrcene indica can feel surprisingly clear-headed, and a high-myrcene sativa can put you on the couch just as fast.&nbsp;</p><p style="margin:clamp(24px,3.5vh,36px) auto 0;max-width:30ch;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(22px * var(--text-scale)),3vw,calc(38px * var(--text-scale)));line-height:1.2;letter-spacing:-0.005em;color:var(--ns-arctic);">The one that makes resting feel like something you chose.</p>
+      <p style="margin:clamp(20px,3vh,30px) auto 0;max-width:54ch;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)), calc(1.55vw * var(--text-scale)), calc(18px * var(--text-scale)));line-height:1.72;color:rgba(245,244,225,0.82);">Traditionally associated with evenings, heavier, more physical, more body than brain. The plants are shorter and bushier than sativas with broader leaves and a faster flowering time. Relaxing, sedating, and couch-friendly are the words that follow indica around. There is a reason the old joke calls it in-da-couch.&nbsp;<br><br>Myrcene, the most common terpene in cannabis and one that carries a pronounced sedating quality, tends to run higher in indica-dominant cultivars, which is probably where the reputation comes from. That said, a low-myrcene indica can feel surprisingly clear-headed, and a high-myrcene sativa can put you on the couch just as fast.&nbsp;</p><p style="margin:clamp(24px,3.5vh,36px) auto 0;max-width:30ch;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(22px * var(--text-scale)), calc(3vw * var(--text-scale)), calc(38px * var(--text-scale)));line-height:1.2;letter-spacing:-0.005em;color:var(--ns-arctic);">The one that makes resting feel like something you chose.</p>
     </div>
   </div>
   </div>
@@ -968,8 +967,8 @@
     <div aria-hidden="true" class="nsm-damask" style="--damask-w:clamp(240px,24vw,340px);position:absolute;inset:0;background-image:url('../assets/brand/leaf-lattice-gold.png');background-repeat:repeat;background-size:var(--damask-w) var(--damask-w);opacity:0.30;pointer-events:none;"></div>
     <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(62% 56% at 50% 46%, var(--ns-cream) 42%, rgba(246,231,215,0.72) 70%, transparent 100%);pointer-events:none;"></div>
     <span style="position:relative;font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:var(--ns-bronze);">The point of all this</span>
-        <p class="nsm-quote" style="position:relative;margin:0;max-width:20ch;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(28px * var(--text-scale)),4.8vw,calc(64px * var(--text-scale)));line-height:1.06;letter-spacing:-0.005em;color:var(--text-strong);text-wrap:balance;">Two indicas can feel completely different.</p>
-    <p style="position: relative; margin: clamp(18px,2.6vh,28px) auto 0; max-width: 46ch; font-family: var(--font-sans); font-size: clamp(calc(15px * var(--text-scale)),1.55vw,calc(18px * var(--text-scale))); line-height: 1.7; color: var(--text-body); text-wrap: pretty;">The category sets an expectation. The terpenes and cannabinoids inside decide the experience. <span style="color:var(--ns-bronze);">That is why this guide leans on lab data, not just the label.</span></p>
+        <p class="nsm-quote" style="position:relative;margin:0;max-width:20ch;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(28px * var(--text-scale)), calc(4.8vw * var(--text-scale)), calc(64px * var(--text-scale)));line-height:1.06;letter-spacing:-0.005em;color:var(--text-strong);text-wrap:balance;">Two indicas can feel completely different.</p>
+    <p style="position: relative; margin: clamp(18px,2.6vh,28px) auto 0; max-width: 46ch; font-family: var(--font-sans); font-size: clamp(calc(15px * var(--text-scale)), calc(1.55vw * var(--text-scale)), calc(18px * var(--text-scale))); line-height: 1.7; color: var(--text-body); text-wrap: pretty;">The category sets an expectation. The terpenes and cannabinoids inside decide the experience. <span style="color:var(--ns-bronze);">That is why this guide leans on lab data, not just the label.</span></p>
     <a href="#chap-terpenes" style="position:relative;display:inline-block;margin-top:clamp(24px,3.5vh,34px);font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.14em;color:var(--ns-bronze);text-decoration:none;border-bottom:1px solid rgba(183,149,80,0.4);padding-bottom:3px;">Read about terpenes →</a>
   </div>
   </div>
@@ -980,13 +979,13 @@
   <section id="chap-terpenes" data-chapter="terpenes" data-screen-label="05 Terpenes" style="position:relative;background:var(--ns-arctic);padding:clamp(80px,11vh,140px) clamp(20px,6vw,80px);">
     <div style="max-width:1180px;margin:0 auto;">
       <div data-reveal="" style="opacity:0;transform:translateY(22px);display:flex;align-items:flex-end;gap:clamp(16px,3vw,36px);border-bottom:1px solid var(--ns-bronze);padding-bottom:26px;">
-        <span style="font-family:var(--font-sans);font-size:clamp(calc(36px * var(--text-scale)),7vw,calc(82px * var(--text-scale)));line-height:0.8;color:var(--ns-bronze);">05</span>
+        <span style="font-family:var(--font-sans);font-size:clamp(calc(36px * var(--text-scale)), calc(7vw * var(--text-scale)), calc(82px * var(--text-scale)));line-height:0.8;color:var(--ns-bronze);">05</span>
         <div style="flex:1;">
           <span style="font-family:var(--font-sans);font-size:calc(12px * var(--text-scale));font-weight:600;letter-spacing:0.22em;color:var(--text-muted);">Chapter Five</span>
-          <h2 style="margin:6px 0 0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(30px * var(--text-scale)),5.4vw,calc(68px * var(--text-scale)));line-height:0.98;color:var(--text-strong);">Terpenes</h2>
+          <h2 style="margin:6px 0 0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(30px * var(--text-scale)), calc(5.4vw * var(--text-scale)), calc(68px * var(--text-scale)));line-height:0.98;color:var(--text-strong);">Terpenes</h2>
         </div>
       </div>
-      <p data-reveal="" data-rd="80" style="opacity:0;transform:translateY(22px);margin:clamp(36px,5vh,60px) 0 clamp(32px,4vh,48px);max-width:56ch;font-size:clamp(calc(17px * var(--text-scale)),1.7vw,calc(21px * var(--text-scale)));line-height:1.7;color:var(--text-body);">Terpenes are the aromatic oils that give each cultivar its smell, its flavor, and much of its feel. They are the fingerprint of a strain. Choose one to explore.</p>
+      <p data-reveal="" data-rd="80" style="opacity:0;transform:translateY(22px);margin:clamp(36px,5vh,60px) 0 clamp(32px,4vh,48px);max-width:56ch;font-size:clamp(calc(17px * var(--text-scale)), calc(1.7vw * var(--text-scale)), calc(21px * var(--text-scale)));line-height:1.7;color:var(--text-body);">Terpenes are the aromatic oils that give each cultivar its smell, its flavor, and much of its feel. They are the fingerprint of a strain. Choose one to explore.</p>
 
       <div data-reveal="" data-rd="120" class="nsm-terp-grid" style="opacity:0;transform:translateY(22px);display:grid;grid-template-columns:minmax(0,300px) 1fr;gap:clamp(24px,3vw,52px);align-items:start;">
         <!-- terpene list -->
@@ -1000,11 +999,11 @@
         </div>
         <!-- detail panel -->
         <div style="position:relative;overflow:hidden;background:{{ activeTerp.panelBg }};border:1px solid var(--border-hairline);box-shadow:var(--shadow-md);padding:clamp(28px,3.5vw,48px);min-height:340px;transition:background 0.4s ease;">
-          <span aria-hidden="true" style="position:absolute;top:0;left:50%;transform:translateX(-50%);font-family:var(--font-display);font-weight:400;font-size:clamp(calc(70px * var(--text-scale)),11vw,calc(130px * var(--text-scale)));line-height:0.9;letter-spacing:-0.02em;color:currentColor;opacity:{{ activeTerp.ghostOpacity }};white-space:nowrap;pointer-events:none;user-select:none;overflow:hidden;max-width:100%;transition:opacity .3s ease;">{{ activeTerp.name }}</span>
+          <span aria-hidden="true" style="position:absolute;top:0;left:50%;transform:translateX(-50%);font-family:var(--font-display);font-weight:400;font-size:clamp(calc(70px * var(--text-scale)), calc(11vw * var(--text-scale)), calc(130px * var(--text-scale)));line-height:0.9;letter-spacing:-0.02em;color:currentColor;opacity:{{ activeTerp.ghostOpacity }};white-space:nowrap;pointer-events:none;user-select:none;overflow:hidden;max-width:100%;transition:opacity .3s ease;">{{ activeTerp.name }}</span>
           <div id="nsm-terp-panelbody" class="nsm-tabfade" style="position:relative;z-index:1;">
           <div style="display:flex;align-items:center;gap:14px;border-bottom:2px solid {{ activeTerp.accent }};padding-bottom:22px;">
             <span aria-hidden="true" style="width:6px;height:34px;background:{{ activeTerp.accent }};flex:none;border-radius:1px;"></span>
-            <h3 style="margin:0;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(28px * var(--text-scale)),4vw,calc(46px * var(--text-scale)));line-height:0.95;color:var(--text-strong);">{{ activeTerp.name }}</h3>
+            <h3 style="margin:0;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(28px * var(--text-scale)), calc(4vw * var(--text-scale)), calc(46px * var(--text-scale)));line-height:0.95;color:var(--text-strong);">{{ activeTerp.name }}</h3>
           </div>
           <div style="margin-top:26px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:clamp(22px,3vw,40px);">
             <div>
@@ -1023,16 +1022,16 @@
           <sc-if value="{{ activeTerp.hasFoundIn }}" hint-placeholder-val="{{ false }}">
             <div style="margin-top:26px;border-top:2px solid {{ activeTerp.accent }};padding-top:24px;">
               <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px;">
-                <h4 id="sec-terp-strains" style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(22px * var(--text-scale)),2.8vw,calc(34px * var(--text-scale)));line-height:1;color:var(--text-strong);">Found in these strains</h4>
+                <h4 id="sec-terp-strains" style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(22px * var(--text-scale)), calc(2.8vw * var(--text-scale)), calc(34px * var(--text-scale)));line-height:1;color:var(--text-strong);">Found in these strains</h4>
                 <span style="font-family:var(--font-sans);font-size:calc(10.5px * var(--text-scale));font-weight:600;letter-spacing:0.16em;color:var(--ns-bronze);">TAP ANY STRAIN FOR DETAIL</span>
               </div>
               <div style="display:flex;flex-direction:column;gap:1px;">
                 <sc-for list="{{ activeTerp.foundIn }}" as="f" hint-placeholder-count="3">
                   <button onClick="{{ f.onClick }}" title="Jump to this strain" style="display:flex;align-items:center;gap:12px;padding:13px 8px;border:none;border-bottom:1px solid var(--border-hairline);background:none;width:100%;text-align:left;cursor:pointer;transition:background .18s ease;" style-hover="background:rgba(183,149,80,0.09);">
                     <img src="{{ f.leafSrc }}" loading="lazy" alt="{{ f.type }}" style="width:24px;height:22px;object-fit:contain;flex:none;">
-                    <span style="flex:1;font-family:var(--font-sans);font-size:clamp(calc(16px * var(--text-scale)),1.8vw,calc(19px * var(--text-scale)));letter-spacing:0.01em;color:var(--text-strong);">{{ f.strain }}</span>
+                    <span style="flex:1;font-family:var(--font-display);font-size:clamp(calc(16px * var(--text-scale)), calc(1.8vw * var(--text-scale)), calc(19px * var(--text-scale)));letter-spacing:0.005em;color:var(--text-strong);">{{ f.strain }}</span>
                     <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));letter-spacing:0.04em;color:var(--text-muted);">{{ f.type }}</span>
-                    <span style="font-family:var(--font-display);font-size:clamp(calc(18px * var(--text-scale)),2vw,calc(24px * var(--text-scale)));color:var(--ns-bronze);min-width:58px;text-align:right;">{{ f.pctText }}</span>
+                    <span style="font-family:var(--font-display);font-size:clamp(calc(18px * var(--text-scale)), calc(2vw * var(--text-scale)), calc(24px * var(--text-scale)));color:var(--ns-bronze);min-width:58px;text-align:right;">{{ f.pctText }}</span>
                     <span aria-hidden="true" style="font-size:calc(15px * var(--text-scale));color:var(--ns-bronze);flex:none;">→</span>
                   </button>
                 </sc-for>
@@ -1057,7 +1056,7 @@
     <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(22,26,43,0.7) 0%, rgba(22,26,43,0.45) 50%, rgba(22,26,43,0.82) 100%);"></div>
     <div data-reveal="" style="position:relative;opacity:0;transform:translateY(22px);max-width:920px;text-align:center;">
       
-      <p class="nsm-quote" style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(30px * var(--text-scale)),5.2vw,calc(64px * var(--text-scale)));line-height:1.1;letter-spacing:0.01em;color:var(--ns-arctic);text-wrap:balance;">The plant does not ask to be understood. It simply offers, and rewards those who pay attention.</p>
+      <p class="nsm-quote" style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(30px * var(--text-scale)), calc(5.2vw * var(--text-scale)), calc(64px * var(--text-scale)));line-height:1.1;letter-spacing:0.01em;color:var(--ns-arctic);text-wrap:balance;">The plant does not ask to be understood. It simply offers, and rewards those who pay attention.</p>
     </div>
   </section>
 
@@ -1065,19 +1064,19 @@
   <section id="chap-flower" data-chapter="flower" data-screen-label="06 The Flower" style="position:relative;background:var(--ns-arctic);padding:clamp(80px,11vh,140px) clamp(20px,6vw,80px);">
     <div style="max-width:1240px;margin:0 auto;">
       <div data-reveal="" style="opacity:0;transform:translateY(22px);display:flex;align-items:flex-end;gap:clamp(16px,3vw,36px);border-bottom:1px solid var(--ns-bronze);padding-bottom:26px;">
-        <span style="font-family:var(--font-sans);font-size:clamp(calc(36px * var(--text-scale)),7vw,calc(82px * var(--text-scale)));line-height:0.8;color:var(--ns-bronze);">06</span>
+        <span style="font-family:var(--font-sans);font-size:clamp(calc(36px * var(--text-scale)), calc(7vw * var(--text-scale)), calc(82px * var(--text-scale)));line-height:0.8;color:var(--ns-bronze);">06</span>
         <div style="flex:1;">
           <span style="font-family:var(--font-sans);font-size:calc(12px * var(--text-scale));font-weight:600;letter-spacing:0.22em;color:var(--text-muted);">Chapter Six</span>
-          <h2 style="margin:6px 0 0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(30px * var(--text-scale)),5.4vw,calc(68px * var(--text-scale)));line-height:0.98;color:var(--text-strong);">The Flower</h2>
+          <h2 style="margin:6px 0 0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(30px * var(--text-scale)), calc(5.4vw * var(--text-scale)), calc(68px * var(--text-scale)));line-height:0.98;color:var(--text-strong);">The Flower</h2>
         </div>
-        <span style="font-family:var(--font-sans);font-size:clamp(calc(20px * var(--text-scale)),2.4vw,calc(30px * var(--text-scale)));color:var(--text-muted);white-space:nowrap;">{{ strainTotal }} cultivars</span>
+        <span style="font-family:var(--font-sans);font-size:clamp(calc(20px * var(--text-scale)), calc(2.4vw * var(--text-scale)), calc(30px * var(--text-scale)));color:var(--text-muted);white-space:nowrap;">{{ strainTotal }} cultivars</span>
       </div>
       <div data-reveal="" data-rd="80" style="opacity:0;transform:translateY(22px);margin:clamp(32px,4vh,52px) 0 clamp(28px,3.5vh,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));align-items:center;gap:clamp(24px,3.5vw,48px);">
-        <p style="margin:0;max-width:48ch;font-size:clamp(calc(17px * var(--text-scale)),1.7vw,calc(21px * var(--text-scale)));line-height:1.7;color:var(--text-body);">Every cultivar carries its own lineage and character. Filter by type, search by name or trait, and select any strain to read its story and lab results.</p>
+        <p style="margin:0;max-width:48ch;font-size:clamp(calc(17px * var(--text-scale)), calc(1.7vw * var(--text-scale)), calc(21px * var(--text-scale)));line-height:1.7;color:var(--text-body);">Every cultivar carries its own lineage and character. Filter by type, search by name or trait, and select any strain to read its story and lab results.</p>
         <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;background:var(--ns-midnight);padding:clamp(20px,3vw,30px) clamp(22px,3.5vw,34px);">
           <div>
             <span id="sec-quiz" style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.2em;color:var(--ns-bronze);">Not sure where to start?</span>
-            <div style="margin-top:7px;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(19px * var(--text-scale)),2.4vw,calc(27px * var(--text-scale)));line-height:1.12;color:var(--ns-arctic);">Answer five quick questions and we will point you to a strain.</div>
+            <div style="margin-top:7px;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(19px * var(--text-scale)), calc(2.4vw * var(--text-scale)), calc(27px * var(--text-scale)));line-height:1.12;color:var(--ns-arctic);">Answer five quick questions and we will point you to a strain.</div>
           </div>
           <button onClick="{{ openQuiz }}" style="flex:none;background:var(--ns-bronze);color:var(--ns-midnight);border:none;border-radius:4px;padding:14px 26px;cursor:pointer;font-family:var(--font-sans);font-size:calc(12px * var(--text-scale));font-weight:600;letter-spacing:0.12em;" style-hover="background:var(--ns-arctic);">Find my strain →</button>
         </div>
@@ -1088,7 +1087,7 @@
         <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(32,37,58,0.15) 0%, rgba(32,37,58,0.05) 40%, rgba(32,37,58,0.88) 100%);"></div>
         <figcaption style="position:absolute;left:0;right:0;bottom:0;padding:clamp(22px,4vw,44px);">
           <span style="font-family:var(--font-sans);font-size:calc(12px * var(--text-scale));font-weight:600;letter-spacing:0.24em;color:#d8bd82;">From our grow rooms</span>
-          <div style="margin-top:10px;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(26px * var(--text-scale)),4.4vw,calc(52px * var(--text-scale)));line-height:1;color:var(--ns-arctic);">Where every cultivar begins</div>
+          <div style="margin-top:10px;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(26px * var(--text-scale)), calc(4.4vw * var(--text-scale)), calc(52px * var(--text-scale)));line-height:1;color:var(--ns-arctic);">Where every cultivar begins</div>
         </figcaption>
       </figure>
 
@@ -1146,7 +1145,7 @@
               </div>
               <div style="padding:18px 22px 20px;display:flex;flex-direction:column;gap:14px;width:100%;box-sizing:border-box;">
                 <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
-                  <span style="flex:1;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(20px * var(--text-scale)),2vw,calc(25px * var(--text-scale)));line-height:1.02;letter-spacing:0.01em;color:var(--text-strong);">{{ s.name }}</span>
+                  <span style="flex:1;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(20px * var(--text-scale)), calc(2vw * var(--text-scale)), calc(25px * var(--text-scale)));line-height:1.04;letter-spacing:0.005em;color:var(--text-strong);">{{ s.name }}</span>
                   <span style="font-family:var(--font-sans);font-size:calc(18px * var(--text-scale));color:var(--ns-bronze);line-height:1;margin-top:2px;">{{ s.toggleIcon }}</span>
                 </div>
                 <div style="display:flex;flex-wrap:wrap;gap:8px;">
@@ -1163,7 +1162,7 @@
 
       <sc-if value="{{ noStrains }}" hint-placeholder-val="{{ false }}">
         <div style="text-align:center;padding:clamp(40px,8vh,80px) 20px;">
-          <p style="margin:0 0 18px;font-family:var(--font-sans);font-size:clamp(calc(22px * var(--text-scale)),3vw,calc(32px * var(--text-scale)));color:var(--text-muted);">No strains match</p>
+          <p style="margin:0 0 18px;font-family:var(--font-sans);font-size:clamp(calc(22px * var(--text-scale)), calc(3vw * var(--text-scale)), calc(32px * var(--text-scale)));color:var(--text-muted);">No strains match</p>
           <button onClick="{{ clearStrain }}" style="background:var(--ns-midnight);color:var(--ns-arctic);border:none;border-radius:4px;padding:12px 24px;cursor:pointer;font-family:var(--font-sans);font-size:calc(12px * var(--text-scale));letter-spacing:0.12em;">Clear filters</button>
         </div>
       </sc-if>
@@ -1178,7 +1177,7 @@
       <sc-for list="{{ activeList }}" as="s" hint-placeholder-count="1">
         <div style="flex:none;display:flex;align-items:center;justify-content:space-between;gap:14px;border-bottom:1px solid var(--border-hairline);border-top:3px solid {{ s.catColor }};padding:clamp(16px,2.4vw,24px) clamp(18px,4vw,40px);background:var(--ns-cream);">
           <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;">
-            <span style="font-family:var(--font-display);font-weight:400;font-size:clamp(calc(25px * var(--text-scale)),3.3vw,calc(38px * var(--text-scale)));line-height:1;letter-spacing:0.01em;color:var(--text-strong);">{{ s.dispName }}</span>
+            <span style="font-family:var(--font-display);font-weight:400;font-size:clamp(calc(25px * var(--text-scale)), calc(3.3vw * var(--text-scale)), calc(38px * var(--text-scale)));line-height:1;letter-spacing:0.01em;color:var(--text-strong);">{{ s.dispName }}</span>
             <span style="font-family:var(--font-sans);font-size:calc(12px * var(--text-scale));letter-spacing:0.06em;color:var(--text-muted);">{{ s.type }}</span>
           </div>
           <button onClick="{{ closeStrain }}" aria-label="Close" style="flex:none;width:40px;height:40px;border-radius:50%;border:1px solid var(--border-hairline);background:none;cursor:pointer;font-size:calc(20px * var(--text-scale));line-height:1;color:var(--text-strong);">✕</button>
@@ -1243,12 +1242,12 @@
                       <div style="display:flex;gap:28px;flex-wrap:wrap;align-items:flex-end;border-bottom:1px solid var(--border-on-dark);padding-bottom:16px;margin-bottom:16px;">
                         <div>
                           <span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.18em;color:var(--ns-bronze);">THC Range</span>
-                          <div style="font-family:var(--font-display);font-size:clamp(calc(24px * var(--text-scale)),3vw,calc(34px * var(--text-scale)));line-height:1;color:var(--ns-arctic);margin-top:6px;">{{ s.thcRangeText }}</div>
+                          <div style="font-family:var(--font-display);font-size:clamp(calc(24px * var(--text-scale)), calc(3vw * var(--text-scale)), calc(34px * var(--text-scale)));line-height:1;color:var(--ns-arctic);margin-top:6px;">{{ s.thcRangeText }}</div>
                         </div>
                         <sc-if value="{{ s.hasTerpRange }}" hint-placeholder-val="{{ false }}">
                           <div>
                             <span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.18em;color:var(--ns-bronze);">Total Terpenes</span>
-                            <div style="font-family:var(--font-display);font-size:clamp(calc(18px * var(--text-scale)),2.3vw,calc(24px * var(--text-scale)));line-height:1;color:rgba(245,244,225,0.85);margin-top:6px;">{{ s.terpRangeText }}</div>
+                            <div style="font-family:var(--font-display);font-size:clamp(calc(18px * var(--text-scale)), calc(2.3vw * var(--text-scale)), calc(24px * var(--text-scale)));line-height:1;color:rgba(245,244,225,0.85);margin-top:6px;">{{ s.terpRangeText }}</div>
                           </div>
                         </sc-if>
                       </div>
@@ -1330,7 +1329,7 @@
       <div style="flex:none;display:flex;align-items:center;justify-content:space-between;gap:14px;border-bottom:1px solid var(--border-hairline);padding:clamp(18px,2.4vw,26px) clamp(20px,4vw,44px);">
         <div>
           <span style="font-family:var(--font-sans);font-size:calc(10.5px * var(--text-scale));font-weight:600;letter-spacing:0.16em;color:var(--ns-bronze);">{{ prodDrawer.kicker }}</span>
-          <h3 style="margin:5px 0 0;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(24px * var(--text-scale)),3vw,calc(36px * var(--text-scale)));line-height:1;color:var(--text-strong);">{{ prodDrawer.name }}</h3>
+          <h3 style="margin:5px 0 0;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(24px * var(--text-scale)), calc(3vw * var(--text-scale)), calc(36px * var(--text-scale)));line-height:1;color:var(--text-strong);">{{ prodDrawer.name }}</h3>
         </div>
         <button onClick="{{ prodDrawer.onClose }}" aria-label="Close" style="flex:none;width:42px;height:42px;border-radius:50%;border:1px solid var(--border-hairline);background:var(--ns-arctic);color:var(--text-strong);font-size:calc(17px * var(--text-scale));line-height:1;cursor:pointer;">✕</button>
       </div>
@@ -1358,7 +1357,7 @@
               <img src="../assets/brand/leaf-branch-midnight.png" alt="" aria-hidden="true" style="width:44%;height:auto;object-fit:contain;opacity:0.5;filter:brightness(1.5) saturate(0.85);">
             </div>
           </sc-if>
-          <p style="margin:0;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)),1.7vw,calc(18px * var(--text-scale)));line-height:1.7;color:var(--text-body);">{{ prodDrawer.description }}</p>
+          <p style="margin:0;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)), calc(1.7vw * var(--text-scale)), calc(18px * var(--text-scale)));line-height:1.7;color:var(--text-body);">{{ prodDrawer.description }}</p>
 
           <sc-if value="{{ prodDrawer.hasSpecs }}" hint-placeholder-val="{{ false }}">
             <div style="border-top:1px solid var(--border-hairline);padding-top:16px;display:flex;flex-direction:column;gap:11px;">
@@ -1429,15 +1428,15 @@
       <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(32,37,58,0.18) 0%, rgba(32,37,58,0.04) 42%, rgba(32,37,58,0.82) 100%);"></div>
       <div data-reveal="" style="opacity:0;transform:translateY(22px);position:absolute;left:0;right:0;bottom:0;padding:clamp(28px,6vw,80px);max-width:1180px;margin:0 auto;">
         <span style="font-family:var(--font-sans);font-size:calc(12px * var(--text-scale));font-weight:600;letter-spacing:0.24em;color:#d8bd82;">Chapter Seven &nbsp;·&nbsp; The people behind the plant</span>
-        <h2 style="margin:14px 0 0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(40px * var(--text-scale)),8vw,calc(104px * var(--text-scale)));line-height:0.92;letter-spacing:0.01em;color:var(--ns-arctic);">How it's grown</h2>
-        <p style="margin:18px 0 0;max-width:52ch;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)),1.7vw,calc(19px * var(--text-scale)));line-height:1.6;color:rgba(245,244,225,0.9);">Every gram that reaches you started as a cutting in someone's gloved hands. Here at Natural State, the people who grow your medicine are your neighbors, and they treat the plant that way.</p>
+        <h2 style="margin:14px 0 0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(40px * var(--text-scale)), calc(8vw * var(--text-scale)), calc(104px * var(--text-scale)));line-height:0.92;letter-spacing:0.01em;color:var(--ns-arctic);">How it's grown</h2>
+        <p style="margin:18px 0 0;max-width:52ch;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)), calc(1.7vw * var(--text-scale)), calc(19px * var(--text-scale)));line-height:1.6;color:rgba(245,244,225,0.9);">Every gram that reaches you started as a cutting in someone's gloved hands. Here at Natural State, the people who grow your medicine are your neighbors, and they treat the plant that way.</p>
       </div>
     </div>
 
     <div style="max-width:1180px;margin:0 auto;padding:clamp(56px,10vh,120px) clamp(20px,6vw,80px);">
 
       <!-- intro line -->
-      <p data-reveal="" style="opacity:0;transform:translateY(22px);margin:0 0 clamp(28px,4vh,44px);max-width:34ch;font-family:var(--font-sans);font-size:clamp(calc(24px * var(--text-scale)),3.4vw,calc(42px * var(--text-scale)));line-height:1.24;letter-spacing:0.005em;color:var(--ns-arctic);">Good flower is not a one-and-done crop. It is months of small, repeated steps between the seed and the shelf, and dozens of hands along the way.</p>
+      <p data-reveal="" style="opacity:0;transform:translateY(22px);margin:0 0 clamp(28px,4vh,44px);max-width:34ch;font-family:var(--font-sans);font-size:clamp(calc(24px * var(--text-scale)), calc(3.4vw * var(--text-scale)), calc(42px * var(--text-scale)));line-height:1.24;letter-spacing:0.005em;color:var(--ns-arctic);">Good flower is not a one-and-done crop. It is months of small, repeated steps between the seed and the shelf, and dozens of hands along the way.</p>
 
       
 
@@ -1458,7 +1457,7 @@
           </div>
           <div style="position:absolute;left:0;right:0;bottom:0;padding:clamp(18px,3vw,32px);">
             <span class="nsm-grow-cap-num" style="display:block;font-family:var(--font-sans);font-size:calc(12px * var(--text-scale));font-weight:600;letter-spacing:0.2em;color:var(--ns-bronze);">01 / 07</span>
-            <div class="nsm-grow-cap-title" style="font-family:var(--font-sans);font-size:clamp(calc(17px * var(--text-scale)),2vw,calc(24px * var(--text-scale)));color:var(--ns-arctic);margin-top:5px;">It starts with a cutting</div>
+            <div class="nsm-grow-cap-title" style="font-family:var(--font-sans);font-size:clamp(calc(17px * var(--text-scale)), calc(2vw * var(--text-scale)), calc(24px * var(--text-scale)));color:var(--ns-arctic);margin-top:5px;">It starts with a cutting</div>
           </div>
         </div>
       </div>
@@ -1467,71 +1466,71 @@
       <div class="nsm-grow-stage" data-grow-stage="0" data-title="It starts with a cutting">
         <div data-reveal="" style="opacity:0;transform:translateY(22px);">
           <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:0 0 16px;">
-            <span style="font-family:var(--font-sans);font-size:clamp(calc(28px * var(--text-scale)),3.4vw,calc(44px * var(--text-scale)));line-height:0.9;color:var(--ns-bronze);">01</span>
-            <h3 id="sec-grow-clone" style="margin:0;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(24px * var(--text-scale)),3vw,calc(38px * var(--text-scale)));line-height:1.05;color:var(--ns-arctic);">It starts with a cutting</h3>
+            <span style="font-family:var(--font-sans);font-size:clamp(calc(28px * var(--text-scale)), calc(3.4vw * var(--text-scale)), calc(44px * var(--text-scale)));line-height:0.9;color:var(--ns-bronze);">01</span>
+            <h3 id="sec-grow-clone" style="margin:0;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(24px * var(--text-scale)), calc(3vw * var(--text-scale)), calc(38px * var(--text-scale)));line-height:1.05;color:var(--ns-arctic);">It starts with a cutting</h3>
             <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.05em;color:var(--ns-bronze);border:1px solid var(--border-on-dark);border-radius:999px;padding:3px 11px;">10 to 14 days to root</span>
           </div>
-          <p style="margin:0;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)),1.55vw,calc(18px * var(--text-scale)));line-height:1.72;color:rgba(245,244,225,0.82);max-width:60ch;">Nothing is left to chance. Every plant begins as a clone taken from a healthy mother, so the flower you eventually meet is the same cultivar, batch after batch. The cuttings root in clean rockwool, hand-set one cell at a time, and spend their first weeks under a careful eye.</p>
+          <p style="margin:0;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)), calc(1.55vw * var(--text-scale)), calc(18px * var(--text-scale)));line-height:1.72;color:rgba(245,244,225,0.82);max-width:60ch;">Nothing is left to chance. Every plant begins as a clone taken from a healthy mother, so the flower you eventually meet is the same cultivar, batch after batch. The cuttings root in clean rockwool, hand-set one cell at a time, and spend their first weeks under a careful eye.</p>
         </div>
       </div>
       <div class="nsm-grow-stage" data-grow-stage="1" data-title="The vegetative weeks">
         <div data-reveal="" style="opacity:0;transform:translateY(22px);">
           <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:0 0 16px;">
-            <span style="font-family:var(--font-sans);font-size:clamp(calc(28px * var(--text-scale)),3.4vw,calc(44px * var(--text-scale)));line-height:0.9;color:var(--ns-bronze);">02</span>
-            <h3 style="margin:0;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(24px * var(--text-scale)),3vw,calc(38px * var(--text-scale)));line-height:1.05;color:var(--ns-arctic);">The vegetative weeks</h3>
+            <span style="font-family:var(--font-sans);font-size:clamp(calc(28px * var(--text-scale)), calc(3.4vw * var(--text-scale)), calc(44px * var(--text-scale)));line-height:0.9;color:var(--ns-bronze);">02</span>
+            <h3 style="margin:0;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(24px * var(--text-scale)), calc(3vw * var(--text-scale)), calc(38px * var(--text-scale)));line-height:1.05;color:var(--ns-arctic);">The vegetative weeks</h3>
             <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.05em;color:var(--ns-bronze);border:1px solid var(--border-on-dark);border-radius:999px;padding:3px 11px;">3 to 8 weeks</span>
           </div>
-          <p style="margin:0;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)),1.55vw,calc(18px * var(--text-scale)));line-height:1.72;color:rgba(245,244,225,0.82);max-width:60ch;">Under long days of light the plants stretch, branch, and build the frame that will one day carry flower. They are topped and trained by hand, fed and watched daily, and given room to grow strong before they are ever asked to bloom. It is patient, unglamorous work, and it is where quality is quietly decided.</p>
+          <p style="margin:0;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)), calc(1.55vw * var(--text-scale)), calc(18px * var(--text-scale)));line-height:1.72;color:rgba(245,244,225,0.82);max-width:60ch;">Under long days of light the plants stretch, branch, and build the frame that will one day carry flower. They are topped and trained by hand, fed and watched daily, and given room to grow strong before they are ever asked to bloom. It is patient, unglamorous work, and it is where quality is quietly decided.</p>
         </div>
       </div>
       <div class="nsm-grow-stage" data-grow-stage="2" data-title="Into flower">
         <div data-reveal="" style="opacity:0;transform:translateY(22px);">
           <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:0 0 16px;">
-            <span style="font-family:var(--font-sans);font-size:clamp(calc(28px * var(--text-scale)),3.4vw,calc(44px * var(--text-scale)));line-height:0.9;color:var(--ns-bronze);">03</span>
-            <h3 style="margin:0;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(24px * var(--text-scale)),3vw,calc(38px * var(--text-scale)));line-height:1.05;color:var(--ns-arctic);">Into flower</h3>
+            <span style="font-family:var(--font-sans);font-size:clamp(calc(28px * var(--text-scale)), calc(3.4vw * var(--text-scale)), calc(44px * var(--text-scale)));line-height:0.9;color:var(--ns-bronze);">03</span>
+            <h3 style="margin:0;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(24px * var(--text-scale)), calc(3vw * var(--text-scale)), calc(38px * var(--text-scale)));line-height:1.05;color:var(--ns-arctic);">Into flower</h3>
             <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.05em;color:var(--ns-bronze);border:1px solid var(--border-on-dark);border-radius:999px;padding:3px 11px;">7 to 10 weeks</span>
           </div>
-          <p style="margin:0;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)),1.55vw,calc(18px * var(--text-scale)));line-height:1.72;color:rgba(245,244,225,0.82);max-width:60ch;">When the light shortens, the plant turns its energy to flower. Over the following weeks the canopy fills in, the buds swell, and trichomes frost over with the cannabinoids and terpenes that define each strain. Our growers read the plants by sight and by nose, deciding harvest not by the calendar but by the trichomes themselves.</p>
+          <p style="margin:0;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)), calc(1.55vw * var(--text-scale)), calc(18px * var(--text-scale)));line-height:1.72;color:rgba(245,244,225,0.82);max-width:60ch;">When the light shortens, the plant turns its energy to flower. Over the following weeks the canopy fills in, the buds swell, and trichomes frost over with the cannabinoids and terpenes that define each strain. Our growers read the plants by sight and by nose, deciding harvest not by the calendar but by the trichomes themselves.</p>
         </div>
       </div>
       <div class="nsm-grow-stage" data-grow-stage="3" data-title="Harvest, by hand">
         <div data-reveal="" style="opacity:0;transform:translateY(22px);">
           <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:0 0 16px;">
-            <span style="font-family:var(--font-sans);font-size:clamp(calc(28px * var(--text-scale)),3.4vw,calc(44px * var(--text-scale)));line-height:0.9;color:var(--ns-bronze);">04</span>
-            <h3 id="sec-grow-harvest" style="margin:0;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(24px * var(--text-scale)),3vw,calc(38px * var(--text-scale)));line-height:1.05;color:var(--ns-arctic);">Harvest, by hand</h3>
+            <span style="font-family:var(--font-sans);font-size:clamp(calc(28px * var(--text-scale)), calc(3.4vw * var(--text-scale)), calc(44px * var(--text-scale)));line-height:0.9;color:var(--ns-bronze);">04</span>
+            <h3 id="sec-grow-harvest" style="margin:0;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(24px * var(--text-scale)), calc(3vw * var(--text-scale)), calc(38px * var(--text-scale)));line-height:1.05;color:var(--ns-arctic);">Harvest, by hand</h3>
             <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.05em;color:var(--ns-bronze);border:1px solid var(--border-on-dark);border-radius:999px;padding:3px 11px;">cut by hand, over days</span>
           </div>
-          <p style="margin:0;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)),1.55vw,calc(18px * var(--text-scale)));line-height:1.72;color:rgba(245,244,225,0.82);max-width:60ch;">There is no machine for this part. Plants are cut and hung whole, branch by branch, in a climate held steady for a slow start to the dry. Handling stays gentle so the delicate trichomes and terpenes survive the trip from grow room to drying room intact.</p>
+          <p style="margin:0;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)), calc(1.55vw * var(--text-scale)), calc(18px * var(--text-scale)));line-height:1.72;color:rgba(245,244,225,0.82);max-width:60ch;">There is no machine for this part. Plants are cut and hung whole, branch by branch, in a climate held steady for a slow start to the dry. Handling stays gentle so the delicate trichomes and terpenes survive the trip from grow room to drying room intact.</p>
         </div>
       </div>
       <div class="nsm-grow-stage" data-grow-stage="4" data-title="Trimmed and slow-cured">
         <div data-reveal="" style="opacity:0;transform:translateY(22px);">
           <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:0 0 16px;">
-            <span style="font-family:var(--font-sans);font-size:clamp(calc(28px * var(--text-scale)),3.4vw,calc(44px * var(--text-scale)));line-height:0.9;color:var(--ns-bronze);">05</span>
-            <h3 style="margin:0;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(24px * var(--text-scale)),3vw,calc(38px * var(--text-scale)));line-height:1.05;color:var(--ns-arctic);">Trimmed and slow-cured</h3>
+            <span style="font-family:var(--font-sans);font-size:clamp(calc(28px * var(--text-scale)), calc(3.4vw * var(--text-scale)), calc(44px * var(--text-scale)));line-height:0.9;color:var(--ns-bronze);">05</span>
+            <h3 style="margin:0;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(24px * var(--text-scale)), calc(3vw * var(--text-scale)), calc(38px * var(--text-scale)));line-height:1.05;color:var(--ns-arctic);">Trimmed and slow-cured</h3>
             <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.05em;color:var(--ns-bronze);border:1px solid var(--border-on-dark);border-radius:999px;padding:3px 11px;">2 to 4 weeks, then longer</span>
           </div>
-          <p style="margin:0;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)),1.55vw,calc(18px * var(--text-scale)));line-height:1.72;color:rgba(245,244,225,0.82);max-width:60ch;">Once dry, the flower is hand-trimmed and moved into a slow cure, where time does the last of the work. Rushing here costs aroma and smoothness, so we do not. The cure is what turns good flower into flower worth remembering, and it cannot be hurried.</p>
+          <p style="margin:0;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)), calc(1.55vw * var(--text-scale)), calc(18px * var(--text-scale)));line-height:1.72;color:rgba(245,244,225,0.82);max-width:60ch;">Once dry, the flower is hand-trimmed and moved into a slow cure, where time does the last of the work. Rushing here costs aroma and smoothness, so we do not. The cure is what turns good flower into flower worth remembering, and it cannot be hurried.</p>
         </div>
       </div>
       <div class="nsm-grow-stage" data-grow-stage="5" data-title="The hands behind it">
         <div data-reveal="" style="opacity:0;transform:translateY(22px);">
           <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:0 0 16px;">
-            <span style="font-family:var(--font-sans);font-size:clamp(calc(28px * var(--text-scale)),3.4vw,calc(44px * var(--text-scale)));line-height:0.9;color:var(--ns-bronze);">06</span>
-            <h3 style="margin:0;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(24px * var(--text-scale)),3vw,calc(38px * var(--text-scale)));line-height:1.05;color:var(--ns-arctic);">The hands behind it</h3>
+            <span style="font-family:var(--font-sans);font-size:clamp(calc(28px * var(--text-scale)), calc(3.4vw * var(--text-scale)), calc(44px * var(--text-scale)));line-height:0.9;color:var(--ns-bronze);">06</span>
+            <h3 style="margin:0;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(24px * var(--text-scale)), calc(3vw * var(--text-scale)), calc(38px * var(--text-scale)));line-height:1.05;color:var(--ns-arctic);">The hands behind it</h3>
             <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.05em;color:var(--ns-bronze);border:1px solid var(--border-on-dark);border-radius:999px;padding:3px 11px;">every single day</span>
           </div>
-          <p style="margin:0;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)),1.55vw,calc(18px * var(--text-scale)));line-height:1.72;color:rgba(245,244,225,0.82);max-width:60ch;">Behind every eighth is a person who chose this work: growers, trimmers, and packagers who are veterans, parents, and neighbors from right here in Arkansas. They know these patients are people managing real pain, real sleep, real quality of life, and they grow like it matters. Because it does.</p>
+          <p style="margin:0;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)), calc(1.55vw * var(--text-scale)), calc(18px * var(--text-scale)));line-height:1.72;color:rgba(245,244,225,0.82);max-width:60ch;">Behind every eighth is a person who chose this work: growers, trimmers, and packagers who are veterans, parents, and neighbors from right here in Arkansas. They know these patients are people managing real pain, real sleep, real quality of life, and they grow like it matters. Because it does.</p>
         </div>
       </div>
       <div class="nsm-grow-stage" data-grow-stage="6" data-title="Tested, then finished">
         <div data-reveal="" style="opacity:0;transform:translateY(22px);">
           <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:0 0 16px;">
-            <span style="font-family:var(--font-sans);font-size:clamp(calc(28px * var(--text-scale)),3.4vw,calc(44px * var(--text-scale)));line-height:0.9;color:var(--ns-bronze);">07</span>
-            <h3 id="sec-grow-finished" style="margin:0;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(24px * var(--text-scale)),3vw,calc(38px * var(--text-scale)));line-height:1.05;color:var(--ns-arctic);">Tested, then finished</h3>
+            <span style="font-family:var(--font-sans);font-size:clamp(calc(28px * var(--text-scale)), calc(3.4vw * var(--text-scale)), calc(44px * var(--text-scale)));line-height:0.9;color:var(--ns-bronze);">07</span>
+            <h3 id="sec-grow-finished" style="margin:0;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(24px * var(--text-scale)), calc(3vw * var(--text-scale)), calc(38px * var(--text-scale)));line-height:1.05;color:var(--ns-arctic);">Tested, then finished</h3>
             <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.05em;color:var(--ns-bronze);border:1px solid var(--border-on-dark);border-radius:999px;padding:3px 11px;">before it ever ships</span>
           </div>
-          <p style="margin:0;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)),1.55vw,calc(18px * var(--text-scale)));line-height:1.72;color:rgba(245,244,225,0.82);max-width:60ch;">Before anything is packaged, every batch is lab-tested for potency, terpenes, and safety, the same numbers you can read on each strain in this guide. We put our entire, unedited testing results on every product as a scannable QR code, so nothing is hidden and you can read the full panel yourself. Only then is it weighed, sealed, and labeled for the dispensary shelf. From a cutting in a gloved hand to the jar in yours, it stays in careful hands the whole way.</p>
+          <p style="margin:0;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)), calc(1.55vw * var(--text-scale)), calc(18px * var(--text-scale)));line-height:1.72;color:rgba(245,244,225,0.82);max-width:60ch;">Before anything is packaged, every batch is lab-tested for potency, terpenes, and safety, the same numbers you can read on each strain in this guide. We put our entire, unedited testing results on every product as a scannable QR code, so nothing is hidden and you can read the full panel yourself. Only then is it weighed, sealed, and labeled for the dispensary shelf. From a cutting in a gloved hand to the jar in yours, it stays in careful hands the whole way.</p>
         </div>
       </div>
       </div>
@@ -1551,10 +1550,10 @@
   <section id="chap-process" data-chapter="process" data-screen-label="08 Plant to Product" style="position:relative;background:var(--ns-midnight);padding:clamp(80px,11vh,140px) clamp(20px,6vw,80px) clamp(50px,7vh,90px);">
     <div style="position:relative;max-width:1180px;margin:0 auto;">
       <div data-reveal="" style="opacity:0;transform:translateY(22px);display:flex;align-items:flex-end;gap:clamp(16px,3vw,36px);border-bottom:1px solid var(--border-on-dark);padding-bottom:26px;">
-        <span style="font-family:var(--font-sans);font-size:clamp(calc(36px * var(--text-scale)),7vw,calc(82px * var(--text-scale)));line-height:0.8;color:var(--ns-bronze);">08</span>
+        <span style="font-family:var(--font-sans);font-size:clamp(calc(36px * var(--text-scale)), calc(7vw * var(--text-scale)), calc(82px * var(--text-scale)));line-height:0.8;color:var(--ns-bronze);">08</span>
         <div style="flex:1;">
           <span style="font-family:var(--font-sans);font-size:calc(12px * var(--text-scale));font-weight:600;letter-spacing:0.22em;color:rgba(245,244,225,0.85);">Chapter Eight</span>
-          <h2 style="margin:6px 0 0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(30px * var(--text-scale)),5.4vw,calc(68px * var(--text-scale)));line-height:0.98;color:var(--ns-arctic);">Plant to Product</h2>
+          <h2 style="margin:6px 0 0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(30px * var(--text-scale)), calc(5.4vw * var(--text-scale)), calc(68px * var(--text-scale)));line-height:0.98;color:var(--ns-arctic);">Plant to Product</h2>
         </div>
       </div>
       <figure data-reveal="" data-rd="60" style="opacity:0;transform:translateY(22px);margin:clamp(32px,4.5vh,56px) 0 0;position:relative;overflow:hidden;border:1px solid var(--border-on-dark);">
@@ -1562,10 +1561,10 @@
         <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(32,37,58,0.2) 0%, rgba(32,37,58,0.05) 40%, rgba(32,37,58,0.9) 100%);"></div>
         <figcaption style="position:absolute;left:0;right:0;bottom:0;padding:clamp(22px,4vw,44px);">
           <span style="font-family:var(--font-sans);font-size:calc(12px * var(--text-scale));font-weight:600;letter-spacing:0.24em;color:var(--ns-bronze);">One harvest, many forms</span>
-          <div style="margin-top:10px;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(26px * var(--text-scale)),4.4vw,calc(52px * var(--text-scale)));line-height:1;color:var(--ns-arctic);">From flower to finished</div>
+          <div style="margin-top:10px;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(26px * var(--text-scale)), calc(4.4vw * var(--text-scale)), calc(52px * var(--text-scale)));line-height:1;color:var(--ns-arctic);">From flower to finished</div>
         </figcaption>
       </figure>
-      <p data-reveal="" data-rd="80" style="opacity:0;transform:translateY(22px);margin:clamp(36px,5vh,60px) 0 clamp(32px,4vh,48px);max-width:56ch;font-size:clamp(calc(17px * var(--text-scale)),1.7vw,calc(21px * var(--text-scale)));line-height:1.7;color:rgba(245,244,225,0.86);">Before flower becomes a cartridge, a gummy, or a dabbable syringe, it is extracted. How that extraction is done shapes everything that follows.</p>
+      <p data-reveal="" data-rd="80" style="opacity:0;transform:translateY(22px);margin:clamp(36px,5vh,60px) 0 clamp(32px,4vh,48px);max-width:56ch;font-size:clamp(calc(17px * var(--text-scale)), calc(1.7vw * var(--text-scale)), calc(21px * var(--text-scale)));line-height:1.7;color:rgba(245,244,225,0.86);">Before flower becomes a cartridge, a gummy, or a dabbable syringe, it is extracted. How that extraction is done shapes everything that follows.</p>
 
       <!-- sticky two-column extraction sequence (same pattern as How It's Grown) -->
       <!-- extraction comparison table -->
@@ -1583,7 +1582,7 @@
             <button onClick="{{ x.onToggle }}" aria-expanded="{{ x.open }}" class="nsm-ext-row" style="width:100%;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1.5fr) repeat(3,minmax(0,0.7fr)) 34px;gap:clamp(10px,1.6vw,22px);align-items:center;text-align:left;background:{{ x.rowBg }};border:none;cursor:pointer;padding:clamp(15px,1.9vw,20px) clamp(16px,2.2vw,26px);min-height:56px;transition:background .22s ease;" style-hover="background:rgba(183,149,80,0.07);">
               <span style="display:inline-flex;align-items:baseline;gap:10px;">
                 <span style="font-family:var(--font-sans);font-size:calc(12px * var(--text-scale));color:var(--ns-bronze);">{{ x.numDisp }}</span>
-                <span style="font-family:var(--font-sans);font-weight:500;font-size:clamp(calc(15px * var(--text-scale)),1.7vw,calc(19px * var(--text-scale)));color:var(--ns-arctic);">{{ x.name }}</span>
+                <span style="font-family:var(--font-sans);font-weight:500;font-size:clamp(calc(15px * var(--text-scale)), calc(1.7vw * var(--text-scale)), calc(19px * var(--text-scale)));color:var(--ns-arctic);">{{ x.name }}</span>
               </span>
               <span style="font-family:var(--font-sans);font-size:calc(13.5px * var(--text-scale));line-height:1.45;color:rgba(245,244,225,0.72);">{{ x.separator }}</span>
               <span style="display:inline-flex;flex-direction:column;gap:5px;min-width:0;"><span style="font-family:var(--font-sans);font-size:calc(11.5px * var(--text-scale));color:rgba(245,244,225,0.72);">{{ x.flavor }}</span><span aria-hidden="true" style="display:block;height:4px;width:100%;max-width:74px;background:rgba(245,244,225,0.14);border-radius:999px;overflow:hidden;"><span style="display:block;height:100%;width:{{ x.flavorW }};background:var(--ns-bronze);border-radius:999px;"></span></span></span>
@@ -1596,7 +1595,7 @@
                 <img src="{{ x.photo }}" alt="{{ x.photoAlt }}" loading="lazy" style="display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border:1px solid var(--border-on-dark);">
                 <div>
                   <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.2em;color:var(--ns-bronze);">{{ x.tag }}</span>
-                  <p style="margin:12px 0 0;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)),1.55vw,calc(18px * var(--text-scale)));line-height:1.72;color:rgba(245,244,225,0.82);text-wrap:pretty;">{{ x.desc }}</p>
+                  <p style="margin:12px 0 0;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)), calc(1.55vw * var(--text-scale)), calc(18px * var(--text-scale)));line-height:1.72;color:rgba(245,244,225,0.82);text-wrap:pretty;">{{ x.desc }}</p>
                   <p style="margin:16px 0 0;font-family:var(--font-sans);font-size:calc(13.5px * var(--text-scale));line-height:1.6;color:rgba(245,244,225,0.6);text-wrap:pretty;">{{ x.tradeoff }}</p>
                 </div>
               </div>
@@ -1618,7 +1617,7 @@
     <div style="max-width:1180px;margin:0 auto;">
       <div data-reveal="" style="opacity:0;transform:translateY(22px);display:flex;flex-direction:column;align-items:center;text-align:center;margin-bottom:clamp(32px,4vh,48px);">
         <span style="font-family:var(--font-sans);font-size:calc(12px * var(--text-scale));font-weight:600;letter-spacing:0.22em;color:var(--ns-bronze);">The product family</span>
-        <h3 id="sec-formats" style="margin:10px 0 0;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(24px * var(--text-scale)),3.4vw,calc(44px * var(--text-scale)));line-height:1;color:var(--text-strong);">Every format, one craft</h3>
+        <h3 id="sec-formats" style="margin:10px 0 0;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(24px * var(--text-scale)), calc(3.4vw * var(--text-scale)), calc(44px * var(--text-scale)));line-height:1;color:var(--text-strong);">Every format, one craft</h3>
       </div>
 
       <!-- From the lab -->
@@ -1701,11 +1700,11 @@
       <div data-reveal="" style="opacity:0;transform:translateY(22px);display:flex;align-items:baseline;gap:12px;border-bottom:1px solid var(--ns-bronze);padding-bottom:14px;margin:clamp(56px,8vh,96px) 0 clamp(20px,3vh,30px);">
         <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.2em;color:var(--ns-bronze);">Know your concentrate</span>
       </div>
-      <p data-reveal="" style="opacity:0;transform:translateY(22px);margin:0 0 clamp(28px,4vh,44px);max-width:64ch;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)),1.6vw,calc(18px * var(--text-scale)));line-height:1.7;color:rgba(245,244,225,0.82);">The same oil can be finished a dozen ways. Texture is mostly a matter of how it is agitated, purged, and held as it comes off the extraction, and it changes how a concentrate handles, tastes, and dabs. Here is the whole shelf, side by side.</p>
+      <p data-reveal="" style="opacity:0;transform:translateY(22px);margin:0 0 clamp(28px,4vh,44px);max-width:64ch;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)), calc(1.6vw * var(--text-scale)), calc(18px * var(--text-scale)));line-height:1.7;color:rgba(245,244,225,0.82);">The same oil can be finished a dozen ways. Texture is mostly a matter of how it is agitated, purged, and held as it comes off the extraction, and it changes how a concentrate handles, tastes, and dabs. Here is the whole shelf, side by side.</p>
       <!-- consistency scale selector -->
       <div data-reveal="" style="opacity:0;transform:translateY(22px);border:1px solid var(--border-on-dark);background:rgba(245,244,225,0.03);padding:clamp(26px,3.4vw,44px);margin-bottom:clamp(24px,3.4vh,36px);">
         <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:clamp(26px,3.6vh,40px);">
-          <h3 id="sec-consistency" style="margin:0;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(19px * var(--text-scale)),2.2vw,calc(26px * var(--text-scale)));color:var(--ns-arctic);">The consistency scale</h3>
+          <h3 id="sec-consistency" style="margin:0;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(19px * var(--text-scale)), calc(2.2vw * var(--text-scale)), calc(26px * var(--text-scale)));color:var(--ns-arctic);">The consistency scale</h3>
           <span style="font-family:var(--font-sans);font-size:calc(13px * var(--text-scale));color:var(--text-on-dark-mut);">Pick a format to read it.</span>
         </div>
         <div class="nsm-conc-scale" style="position:relative;padding:0 6px;">
@@ -1726,10 +1725,10 @@
         <div class="nsm-conc-detail" style="margin-top:clamp(30px,4vh,46px);border-top:1px solid var(--border-on-dark);padding-top:clamp(24px,3.2vh,34px);display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,0.95fr);gap:clamp(24px,4vw,60px);align-items:start;">
           <div>
             <div style="display:flex;align-items:baseline;gap:13px;flex-wrap:wrap;margin-bottom:14px;">
-              <span style="font-family:var(--font-display);font-weight:400;font-size:clamp(calc(28px * var(--text-scale)),3.4vw,calc(42px * var(--text-scale)));line-height:1;color:var(--ns-arctic);">{{ conc.cur.name }}</span>
+              <span style="font-family:var(--font-display);font-weight:400;font-size:clamp(calc(28px * var(--text-scale)), calc(3.4vw * var(--text-scale)), calc(42px * var(--text-scale)));line-height:1;color:var(--ns-arctic);">{{ conc.cur.name }}</span>
               <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.05em;color:var(--ns-bronze);border:1px solid var(--border-on-dark);border-radius:999px;padding:3px 11px;">{{ conc.cur.tag }}</span>
             </div>
-            <p style="margin:0;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)),1.55vw,calc(18px * var(--text-scale)));line-height:1.72;color:rgba(245,244,225,0.82);text-wrap:pretty;">{{ conc.cur.description }}</p>
+            <p style="margin:0;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)), calc(1.55vw * var(--text-scale)), calc(18px * var(--text-scale)));line-height:1.72;color:rgba(245,244,225,0.82);text-wrap:pretty;">{{ conc.cur.description }}</p>
             <sc-if value="{{ conc.cur.hasPhoto }}" hint-placeholder-val="{{ false }}">
               <div style="margin-top:clamp(18px,2.4vh,26px);max-width:330px;background:#F5F4E1;border:1px solid var(--border-on-dark);overflow:hidden;">
                 <img src="{{ conc.cur.photo }}" alt="{{ conc.cur.name }}, Natural State Medicinals live concentrate" loading="lazy" style="display:block;width:100%;aspect-ratio:1/1;object-fit:cover;">
@@ -1815,10 +1814,10 @@
   <section id="chap-practice" data-chapter="practice" data-screen-label="09 Using It Well" style="position:relative;background:var(--ns-arctic);padding:clamp(80px,11vh,140px) clamp(20px,6vw,80px);">
     <div style="max-width:1180px;margin:0 auto;">
       <div data-reveal="" style="opacity:0;transform:translateY(22px);display:flex;align-items:flex-end;gap:clamp(16px,3vw,36px);border-bottom:1px solid var(--ns-bronze);padding-bottom:26px;">
-        <span style="font-family:var(--font-sans);font-size:clamp(calc(36px * var(--text-scale)),7vw,calc(82px * var(--text-scale)));line-height:0.8;color:var(--ns-bronze);">09</span>
+        <span style="font-family:var(--font-sans);font-size:clamp(calc(36px * var(--text-scale)), calc(7vw * var(--text-scale)), calc(82px * var(--text-scale)));line-height:0.8;color:var(--ns-bronze);">09</span>
         <div style="flex:1;">
           <span style="font-family:var(--font-sans);font-size:calc(12px * var(--text-scale));font-weight:600;letter-spacing:0.22em;color:var(--text-muted);">Chapter Nine</span>
-          <h2 style="margin:6px 0 0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(30px * var(--text-scale)),5.4vw,calc(68px * var(--text-scale)));line-height:0.98;color:var(--text-strong);">Using It Well</h2>
+          <h2 style="margin:6px 0 0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(30px * var(--text-scale)), calc(5.4vw * var(--text-scale)), calc(68px * var(--text-scale)));line-height:0.98;color:var(--text-strong);">Using It Well</h2>
         </div>
       </div>
 
@@ -1827,13 +1826,13 @@
         <div class="nsm-dose-hd" style="display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,0.95fr);gap:clamp(24px,4vw,64px);align-items:end;margin:0 0 clamp(30px,4.5vh,52px);">
           <div style="display:flex;flex-direction:column;gap:16px;">
             <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.24em;color:var(--ns-bronze);">Dosing guidance</span>
-            <p class="nsm-quote" style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(32px * var(--text-scale)),4.2vw,calc(58px * var(--text-scale)));line-height:1.02;letter-spacing:0.01em;color:var(--ns-arctic);text-wrap:balance;">Start low. Go slow. The body rarely rewards impatience.</p>
+            <p class="nsm-quote" style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(32px * var(--text-scale)), calc(4.2vw * var(--text-scale)), calc(58px * var(--text-scale)));line-height:1.02;letter-spacing:0.01em;color:var(--ns-arctic);text-wrap:balance;">Start low. Go slow. The body rarely rewards impatience.</p>
           </div>
-          <p style="margin:0 0 6px;font-size:clamp(calc(15px * var(--text-scale)),1.5vw,calc(18px * var(--text-scale)));line-height:1.7;color:rgba(245,244,225,0.82);text-wrap:pretty;">A modest dose leaves room to learn how a product affects you. A large one can turn an experiment into an ordeal. Most experienced patients arrived at their preferred dose gradually, not all at once.</p>
+          <p style="margin:0 0 6px;font-size:clamp(calc(15px * var(--text-scale)), calc(1.5vw * var(--text-scale)), calc(18px * var(--text-scale)));line-height:1.7;color:rgba(245,244,225,0.82);text-wrap:pretty;">A modest dose leaves room to learn how a product affects you. A large one can turn an experiment into an ordeal. Most experienced patients arrived at their preferred dose gradually, not all at once.</p>
         </div>
         <div style="border-top:1px solid rgba(183,149,80,0.5);padding-top:clamp(28px,4vh,44px);">
         <div style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:22px;">
-          <h3 id="sec-onset" style="margin:0;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(20px * var(--text-scale)),2.4vw,calc(30px * var(--text-scale)));color:var(--ns-arctic);">Onset explorer</h3>
+          <h3 id="sec-onset" style="margin:0;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(20px * var(--text-scale)), calc(2.4vw * var(--text-scale)), calc(30px * var(--text-scale)));color:var(--ns-arctic);">Onset explorer</h3>
           <span style="font-family:var(--font-sans);font-size:calc(14px * var(--text-scale));color:var(--text-on-dark-mut);">The route matters more than the dose.</span>
         </div>
         <div style="display:flex;gap:10px;flex-wrap:wrap;">
@@ -1843,7 +1842,7 @@
         </div>
         <div style="margin-top:26px;">
           <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;">
-            <span style="font-family:var(--font-display);font-size:clamp(calc(26px * var(--text-scale)),3vw,calc(34px * var(--text-scale)));color:var(--ns-arctic);line-height:1;">{{ onset.cur.name }}</span>
+            <span style="font-family:var(--font-display);font-size:clamp(calc(26px * var(--text-scale)), calc(3vw * var(--text-scale)), calc(34px * var(--text-scale)));color:var(--ns-arctic);line-height:1;">{{ onset.cur.name }}</span>
             <span style="font-family:var(--font-sans);font-size:calc(13px * var(--text-scale));letter-spacing:0.02em;color:var(--ns-bronze);">{{ onset.cur.sub }}</span>
           </div>
           <div style="margin-top:22px;display:flex;flex-direction:column;gap:18px;">
@@ -1867,7 +1866,7 @@
               <div><div style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ns-bronze);">Peaks</div><div style="margin-top:5px;font-family:var(--font-sans);font-size:calc(15px * var(--text-scale));color:var(--ns-arctic);">{{ onset.cur.peak }}</div></div>
               <div><div style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ns-bronze);">Character</div><div style="margin-top:5px;font-family:var(--font-sans);font-size:calc(15px * var(--text-scale));color:var(--ns-arctic);">{{ onset.cur.feel }}</div></div>
             </div>
-            <p style="margin:0;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)),1.5vw,calc(18px * var(--text-scale)));line-height:1.68;color:rgba(245,244,225,0.82);text-wrap:pretty;">{{ onset.cur.note }}</p>
+            <p style="margin:0;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)), calc(1.5vw * var(--text-scale)), calc(18px * var(--text-scale)));line-height:1.68;color:rgba(245,244,225,0.82);text-wrap:pretty;">{{ onset.cur.note }}</p>
           </div>
         </div>
         </div>
@@ -1875,18 +1874,18 @@
 
       <!-- practical cards -->
       <div data-reveal="" style="opacity:0;transform:translateY(22px);display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;border-top:1px solid var(--ns-bronze);padding-top:22px;margin:clamp(46px,7vh,80px) 0 clamp(22px,3vh,32px);max-width:1240px;">
-        <h3 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(24px * var(--text-scale)),3.2vw,calc(40px * var(--text-scale)));line-height:1;letter-spacing:0.01em;color:var(--text-strong);">Good to know</h3>
+        <h3 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(24px * var(--text-scale)), calc(3.2vw * var(--text-scale)), calc(40px * var(--text-scale)));line-height:1;letter-spacing:0.01em;color:var(--text-strong);">Good to know</h3>
         <span style="font-family:var(--font-sans);font-size:calc(13px * var(--text-scale));color:var(--text-muted);">Five things worth knowing that do not fit anywhere else.</span>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:clamp(16px,1.8vw,22px);align-items:stretch;max-width:1240px;">
         <div data-reveal="" style="opacity:0;transform:translateY(22px);background:var(--ns-cream);border:1px solid var(--border-hairline);box-shadow:var(--shadow-sm);padding:clamp(24px,2.6vw,32px);display:flex;flex-direction:column;">
           <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.18em;color:var(--ns-bronze);">Barking on the grass</span>
-          <h4 style="margin:12px 0 12px;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(19px * var(--text-scale)),2vw,calc(24px * var(--text-scale)));color:var(--text-strong);">A lot of noise, not much happening</h4>
+          <h4 style="margin:12px 0 12px;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(19px * var(--text-scale)), calc(2vw * var(--text-scale)), calc(24px * var(--text-scale)));color:var(--text-strong);">A lot of noise, not much happening</h4>
           <p style="margin:0;font-size:calc(15px * var(--text-scale));line-height:1.65;color:var(--text-body);">Old stoner slang, in the same family as bogarting a joint. Barking on the grass is the person in the circle who is all talk, plenty of noise, plenty of opinions, holding court while the joint slowly burns down in their hand and never makes it around. It is a social habit, not a strain effect. The cure is simple: less talking, more passing. Keep it moving, and keep it kind.</p>
         </div>
         <div data-reveal="" data-rd="60" style="opacity:0;transform:translateY(22px);background:var(--ns-cream);border:1px solid var(--border-hairline);box-shadow:var(--shadow-sm);padding:clamp(24px,2.6vw,32px);display:flex;flex-direction:column;">
           <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.18em;color:var(--ns-bronze);">Storage</span>
-          <h4 style="margin:12px 0 12px;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(19px * var(--text-scale)),2vw,calc(24px * var(--text-scale)));color:var(--text-strong);">Cool, dark, and sealed</h4>
+          <h4 style="margin:12px 0 12px;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(19px * var(--text-scale)), calc(2vw * var(--text-scale)), calc(24px * var(--text-scale)));color:var(--text-strong);">Cool, dark, and sealed</h4>
           <p style="margin:0;font-size:calc(15px * var(--text-scale));line-height:1.65;color:var(--text-body);">Cannabis does not ask for much. A cool, dark place and a sealed container do most of the work. Heat, light, and air slowly diminish quality over time.</p>
           <button onClick="{{ toggleStorage }}" style="margin-top:16px;display:inline-flex;align-items:center;gap:7px;background:none;border:none;padding:0;cursor:pointer;font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.12em;color:var(--ns-bronze);" style-hover="color:var(--ns-bronze-dark);">How to store it well <span style="font-size:calc(15px * var(--text-scale));line-height:1;">{{ storageCaret }}</span></button>
           <sc-if value="{{ storageOpen }}" hint-placeholder-val="{{ false }}">
@@ -1908,7 +1907,7 @@
         </div>
         <div data-reveal="" data-rd="120" style="opacity:0;transform:translateY(22px);background:var(--ns-cream);border:1px solid var(--border-hairline);box-shadow:var(--shadow-sm);padding:clamp(24px,2.6vw,32px);display:flex;flex-direction:column;">
           <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.18em;color:var(--ns-bronze);">Arkansas</span>
-          <h4 style="margin:12px 0 12px;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(19px * var(--text-scale)),2vw,calc(24px * var(--text-scale)));color:var(--text-strong);">A responsible patient</h4>
+          <h4 style="margin:12px 0 12px;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(19px * var(--text-scale)), calc(2vw * var(--text-scale)), calc(24px * var(--text-scale)));color:var(--text-strong);">A responsible patient</h4>
           <p style="margin:0;font-size:calc(15px * var(--text-scale));line-height:1.65;color:var(--text-body);">Medical cannabis is legal here because Arkansas voters wrote it into the state constitution. That gives patients real protection, and it comes with rules. Knowing them is part of using it well.</p>
           <button onClick="{{ toggleAmend }}" style="margin-top:16px;display:inline-flex;align-items:center;gap:7px;background:none;border:none;padding:0;cursor:pointer;font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.12em;color:var(--ns-bronze);" style-hover="color:var(--ns-bronze-dark);">On the law, plainly <span style="font-size:calc(15px * var(--text-scale));line-height:1;">{{ amendCaret }}</span></button>
           <sc-if value="{{ amendOpen }}" hint-placeholder-val="{{ false }}">
@@ -1941,7 +1940,7 @@
                 <span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.16em;color:var(--ns-bronze);">Read it yourself</span>
                 <p style="margin:8px 0 0;font-size:calc(14px * var(--text-scale));line-height:1.66;color:var(--text-body);">You do not have to take our word for any of this. Here is the amendment in its own words, and the state portal where you apply, renew, or check on your card. This page is a plain summary for patients, not legal advice.</p>
                 <div style="margin-top:12px;display:flex;flex-direction:column;gap:9px;">
-                  <a href="https://law.justia.com/constitution/arkansas/amendments/amendment-98.html" target="_blank" rel="noopener" style="display:inline-flex;align-items:baseline;gap:7px;font-family:var(--font-sans);font-size:calc(13px * var(--text-scale));font-weight:600;color:var(--ns-bronze);text-decoration:none;border-bottom:1px solid var(--border-hairline);padding-bottom:8px;" style-hover="color:var(--ns-bronze-dark);">Amendment 98, Section 3, patient protections <span style="font-size:calc(11px * var(--text-scale));">&#8599;</span></a>
+                  <a href="https://codes.findlaw.com/ar/arkansas-constitution-of-1874/ar-const-amend-98-sect-3/" target="_blank" rel="noopener" style="display:inline-flex;align-items:baseline;gap:7px;font-family:var(--font-sans);font-size:calc(13px * var(--text-scale));font-weight:600;color:var(--ns-bronze);text-decoration:none;border-bottom:1px solid var(--border-hairline);padding-bottom:8px;" style-hover="color:var(--ns-bronze-dark);">Amendment 98, Section 3, patient protections <span style="font-size:calc(11px * var(--text-scale));">&#8599;</span></a>
                   <a href="https://www.healthy.arkansas.gov/programs-services/topics/medical-marijuana" target="_blank" rel="noopener" style="display:inline-flex;align-items:baseline;gap:7px;font-family:var(--font-sans);font-size:calc(13px * var(--text-scale));font-weight:600;color:var(--ns-bronze);text-decoration:none;" style-hover="color:var(--ns-bronze-dark);">Arkansas patient registry, apply or renew <span style="font-size:calc(11px * var(--text-scale));">&#8599;</span></a>
                 </div>
               </div>
@@ -1963,7 +1962,7 @@
         </div>
         <div data-reveal="" data-rd="40" style="opacity:0;transform:translateY(22px);background:var(--ns-cream);border:1px solid var(--border-hairline);box-shadow:var(--shadow-sm);padding:clamp(24px,2.6vw,32px);display:flex;flex-direction:column;">
           <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.18em;color:var(--ns-bronze);">Anxiety</span>
-          <h4 style="margin:12px 0 12px;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(19px * var(--text-scale)),2vw,calc(24px * var(--text-scale)));color:var(--text-strong);">If it comes on too strong</h4>
+          <h4 style="margin:12px 0 12px;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(19px * var(--text-scale)), calc(2vw * var(--text-scale)), calc(24px * var(--text-scale)));color:var(--text-strong);">If it comes on too strong</h4>
           <p style="margin:0;font-size:calc(15px * var(--text-scale));line-height:1.65;color:var(--text-body);">Too much THC at once can tip a good feeling into a racing, uneasy one. It passes, and it is not dangerous, but it is worth avoiding. The fix is almost always less: a smaller dose, more time between, and a strain that leans calm rather than racy.</p>
           <button onClick="{{ toggleAnx }}" style="margin-top:16px;display:inline-flex;align-items:center;gap:7px;background:none;border:none;padding:0;cursor:pointer;font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.12em;color:var(--ns-bronze);" style-hover="color:var(--ns-bronze-dark);">If you feel it coming on <span style="font-size:calc(15px * var(--text-scale));line-height:1;">{{ anxCaret }}</span></button>
           <sc-if value="{{ anxOpen }}" hint-placeholder-val="{{ false }}">
@@ -1986,7 +1985,7 @@
         </div>
         <div data-reveal="" data-rd="60" style="grid-column:1/-1;opacity:0;transform:translateY(22px);background:var(--ns-cream);border:1px solid var(--border-hairline);box-shadow:var(--shadow-sm);padding:clamp(24px,2.6vw,32px);display:flex;flex-direction:column;">
           <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.18em;color:var(--ns-bronze);">Your doctor</span>
-          <h4 style="margin:12px 0 12px;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(19px * var(--text-scale)),2vw,calc(24px * var(--text-scale)));color:var(--text-strong);">Fill in the picture</h4>
+          <h4 style="margin:12px 0 12px;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(19px * var(--text-scale)), calc(2vw * var(--text-scale)), calc(24px * var(--text-scale)));color:var(--text-strong);">Fill in the picture</h4>
           <p style="margin:0;font-size:calc(15px * var(--text-scale));line-height:1.65;color:var(--text-body);">If you use cannabis, say so. Mention what you use, how often, and what effects you notice. Useful medical advice depends on accurate information. Guesswork helps no one.</p>
           <button onClick="{{ toggleDoc }}" style="margin-top:16px;display:inline-flex;align-items:center;gap:7px;background:none;border:none;padding:0;cursor:pointer;font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.12em;color:var(--ns-bronze);" style-hover="color:var(--ns-bronze-dark);">Why it matters <span style="font-size:calc(15px * var(--text-scale));line-height:1;">{{ docCaret }}</span></button>
           <sc-if value="{{ docOpen }}" hint-placeholder-val="{{ false }}">
@@ -2017,7 +2016,7 @@
         <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;border-bottom:1px solid var(--border-on-dark);padding-bottom:16px;margin-bottom:clamp(18px,3vh,28px);">
           <div>
             <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.24em;color:var(--ns-bronze);">Need a distraction?</span>
-            <div style="margin-top:8px;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(24px * var(--text-scale)),4vw,calc(40px * var(--text-scale)));line-height:1;color:var(--ns-arctic);">The Natural State Crossword</div>
+            <div style="margin-top:8px;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(24px * var(--text-scale)), calc(4vw * var(--text-scale)), calc(40px * var(--text-scale)));line-height:1;color:var(--ns-arctic);">The Natural State Crossword</div>
             <div style="margin-top:11px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
               <span style="font-family:var(--font-sans);font-size:calc(10.5px * var(--text-scale));font-weight:600;letter-spacing:0.14em;color:var(--ns-midnight);background:var(--ns-bronze);border-radius:999px;padding:5px 12px;">{{ xword.puzzleLabel }}</span>
               <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.16em;color:rgba(245,244,225,0.65);">{{ xword.theme }}</span>
@@ -2039,7 +2038,7 @@
                         <sc-if value="{{ cell.hasNum }}" hint-placeholder-val="{{ false }}">
                           <span style="position:absolute;top:1px;left:2px;font-family:var(--font-sans);font-size:calc(8px * var(--text-scale));line-height:1;color:var(--text-muted);pointer-events:none;z-index:1;">{{ cell.num }}</span>
                         </sc-if>
-                        <input data-xw-key="{{ cell.k }}" onInput="{{ cell.onInput }}" maxlength="1" autocomplete="off" autocapitalize="characters" style="width:100%;height:100%;border:1px solid {{ cell.border }};background:transparent;text-align:center;font-family:var(--font-sans);font-size:clamp(calc(13px * var(--text-scale)),2vw,calc(17px * var(--text-scale)));font-weight:600;text-transform:uppercase;color:var(--ns-midnight);padding:0;outline:none;box-sizing:border-box;">
+                        <input data-xw-key="{{ cell.k }}" onInput="{{ cell.onInput }}" maxlength="1" autocomplete="off" autocapitalize="characters" style="width:100%;height:100%;border:1px solid {{ cell.border }};background:transparent;text-align:center;font-family:var(--font-sans);font-size:clamp(calc(13px * var(--text-scale)), calc(2vw * var(--text-scale)), calc(17px * var(--text-scale)));font-weight:600;text-transform:uppercase;color:var(--ns-midnight);padding:0;outline:none;box-sizing:border-box;">
                       </div>
                     </sc-if>
                     <sc-if value="{{ cell.black }}" hint-placeholder-val="{{ false }}">
@@ -2093,7 +2092,7 @@
       <!-- decision guide -->
       <div data-reveal="" style="opacity:0;transform:translateY(22px);margin-top:clamp(28px,4vh,44px);background:var(--ns-midnight);padding:clamp(30px,4vw,56px);display:flex;flex-direction:column;gap:14px;">
         <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.24em;color:var(--ns-bronze);">Which product is right for me?</span>
-        <p style="margin:0;max-width:60ch;font-family:var(--font-sans);font-weight:300;font-size:clamp(calc(20px * var(--text-scale)),2.6vw,calc(32px * var(--text-scale)));line-height:1.3;color:var(--ns-arctic);">There usually is not one universal answer. The best product is the one that fits your needs, your schedule, and your tolerance, not the one with the loudest claims.</p>
+        <p style="margin:0;max-width:60ch;font-family:var(--font-sans);font-weight:300;font-size:clamp(calc(20px * var(--text-scale)), calc(2.6vw * var(--text-scale)), calc(32px * var(--text-scale)));line-height:1.3;color:var(--ns-arctic);">There usually is not one universal answer. The best product is the one that fits your needs, your schedule, and your tolerance, not the one with the loudest claims.</p>
       </div>
     </div>
   </section>
@@ -2103,20 +2102,20 @@
     <div aria-hidden="true" style="position:absolute;top:-15%;right:-8%;width:55%;height:70%;background:radial-gradient(closest-side, rgba(183,149,80,0.08), rgba(32,37,58,0) 70%);pointer-events:none;"></div>
     <div style="position:relative;max-width:1180px;margin:0 auto;">
       <div data-reveal="" style="opacity:0;transform:translateY(22px);display:flex;align-items:flex-end;gap:clamp(16px,3vw,36px);border-bottom:1px solid var(--border-on-dark);padding-bottom:26px;">
-        <span style="font-family:var(--font-sans);font-size:clamp(calc(36px * var(--text-scale)),7vw,calc(82px * var(--text-scale)));line-height:0.8;color:var(--ns-bronze);">10</span>
+        <span style="font-family:var(--font-sans);font-size:clamp(calc(36px * var(--text-scale)), calc(7vw * var(--text-scale)), calc(82px * var(--text-scale)));line-height:0.8;color:var(--ns-bronze);">10</span>
         <div style="flex:1;">
           <span style="font-family:var(--font-sans);font-size:calc(12px * var(--text-scale));font-weight:600;letter-spacing:0.22em;color:rgba(245,244,225,0.85);">Chapter Ten</span>
-          <h2 style="margin:6px 0 0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(30px * var(--text-scale)),5.4vw,calc(68px * var(--text-scale)));line-height:0.98;color:var(--ns-arctic);">The Joint Journal</h2>
+          <h2 style="margin:6px 0 0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(30px * var(--text-scale)), calc(5.4vw * var(--text-scale)), calc(68px * var(--text-scale)));line-height:0.98;color:var(--ns-arctic);">The Joint Journal</h2>
         </div>
       </div>
 
       <div style="margin-top:clamp(36px,5vh,60px);">
         <div data-reveal="" data-rd="60" style="opacity:0;transform:translateY(22px);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,56px);align-items:center;">
           <div>
-            <p style="margin:0 0 18px;font-size:clamp(calc(16px * var(--text-scale)),1.6vw,calc(20px * var(--text-scale)));line-height:1.7;color:rgba(245,244,225,0.86);">The body keeps no record, so it helps to keep one yourself. A short note after each session turns scattered impressions into a pattern you can actually use.</p>
-            <p style="margin:0;font-size:clamp(calc(16px * var(--text-scale)),1.6vw,calc(20px * var(--text-scale)));line-height:1.7;color:rgba(245,244,225,0.86);">Over time, the journal becomes the most personal page in this guide: your own map to what works.</p>
+            <p style="margin:0 0 18px;font-size:clamp(calc(16px * var(--text-scale)), calc(1.6vw * var(--text-scale)), calc(20px * var(--text-scale)));line-height:1.7;color:rgba(245,244,225,0.86);">The body keeps no record, so it helps to keep one yourself. A short note after each session turns scattered impressions into a pattern you can actually use.</p>
+            <p style="margin:0;font-size:clamp(calc(16px * var(--text-scale)), calc(1.6vw * var(--text-scale)), calc(20px * var(--text-scale)));line-height:1.7;color:rgba(245,244,225,0.86);">Over time, the journal becomes the most personal page in this guide: your own map to what works.</p>
             <figure style="margin:clamp(26px,3.5vh,40px) 0 0;border-top:1px solid var(--border-on-dark);padding-top:clamp(20px,2.6vh,28px);">
-              <p class="nsm-quote" style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(20px * var(--text-scale)),2.4vw,calc(30px * var(--text-scale)));line-height:1.22;letter-spacing:-0.005em;color:var(--ns-arctic);text-wrap:balance;">"Peace is our natural state of being."</p>
+              <p class="nsm-quote" style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(20px * var(--text-scale)), calc(2.4vw * var(--text-scale)), calc(30px * var(--text-scale)));line-height:1.22;letter-spacing:-0.005em;color:var(--ns-arctic);text-wrap:balance;">"Peace is our natural state of being."</p>
               <figcaption style="margin-top:12px;font-family:var(--font-sans);font-size:calc(12px * var(--text-scale));font-weight:600;letter-spacing:0.2em;color:var(--ns-bronze);">LAOZI</figcaption>
             </figure>
           </div>
@@ -2139,7 +2138,7 @@
         <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px;border-bottom:1px solid var(--border-on-dark);padding-bottom:16px;margin-bottom:clamp(20px,3vh,30px);">
           <div>
             <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.22em;color:var(--ns-bronze);">Step 1 of 2</span>
-            <h3 id="sec-journal-fields" style="margin:11px 0 0;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(22px * var(--text-scale)),2.8vw,calc(32px * var(--text-scale)));line-height:1.02;color:var(--ns-arctic);">Choose what you track</h3>
+            <h3 id="sec-journal-fields" style="margin:11px 0 0;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(22px * var(--text-scale)), calc(2.8vw * var(--text-scale)), calc(32px * var(--text-scale)));line-height:1.02;color:var(--ns-arctic);">Choose what you track</h3>
           </div>
           <span style="font-family:var(--font-sans);font-size:calc(12.5px * var(--text-scale));letter-spacing:0.04em;color:rgba(245,244,225,0.6);white-space:nowrap;">{{ jSelectedCount }} of {{ jTotalCount }} fields</span>
         </div>
@@ -2148,7 +2147,7 @@
             <div data-reveal="" style="opacity:0;transform:translateY(22px);background:rgba(245,244,225,0.04);border:1px solid var(--border-on-dark);padding:clamp(22px,2.4vw,30px);">
               <button onClick="{{ g.onExpand }}" style="display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;background:none;border:none;padding:0;cursor:pointer;text-align:left;">
                 <span style="display:inline-flex;flex-direction:column;gap:5px;">
-                  <span style="display:inline-flex;align-items:baseline;gap:11px;"><span style="font-family:var(--font-sans);font-size:calc(14px * var(--text-scale));color:var(--ns-bronze);">{{ g.num }}</span><span style="font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(16px * var(--text-scale)),1.7vw,calc(20px * var(--text-scale)));letter-spacing:0.02em;color:var(--ns-arctic);">{{ g.title }}</span></span>
+                  <span style="display:inline-flex;align-items:baseline;gap:11px;"><span style="font-family:var(--font-sans);font-size:calc(14px * var(--text-scale));color:var(--ns-bronze);">{{ g.num }}</span><span style="font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(16px * var(--text-scale)), calc(1.7vw * var(--text-scale)), calc(20px * var(--text-scale)));letter-spacing:0.02em;color:var(--ns-arctic);">{{ g.title }}</span></span>
                   <span style="font-family:var(--font-sans);font-size:calc(11.5px * var(--text-scale));letter-spacing:0.04em;color:rgba(245,244,225,0.5);">{{ g.fieldSummary }}</span>
                 </span>
                 <span aria-hidden="true" style="flex:none;width:28px;height:28px;border:1px solid var(--ns-bronze);border-radius:999px;display:grid;place-items:center;font-family:var(--font-sans);font-size:calc(16px * var(--text-scale));line-height:1;color:var(--ns-bronze);">{{ g.caret }}</span>
@@ -2182,8 +2181,8 @@
         <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:22px;">
           <div style="flex:1;min-width:240px;">
             <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.22em;color:var(--ns-bronze);">Step 2 of 2</span>
-            <h3 style="margin:12px 0 10px;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(22px * var(--text-scale)),3vw,calc(36px * var(--text-scale)));line-height:1.02;color:var(--ns-arctic);">Copy it into your phone's notes</h3>
-            <p style="margin:0;max-width:54ch;font-size:clamp(calc(14px * var(--text-scale)),1.4vw,calc(16px * var(--text-scale)));line-height:1.65;color:rgba(245,244,225,0.8);">Choose the fields you want above, then tap copy. Open a new note on your phone and paste. No app, no account, no tracking, just a simple record that stays with you.</p>
+            <h3 style="margin:12px 0 10px;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(22px * var(--text-scale)), calc(3vw * var(--text-scale)), calc(36px * var(--text-scale)));line-height:1.02;color:var(--ns-arctic);">Copy it into your phone's notes</h3>
+            <p style="margin:0;max-width:54ch;font-size:clamp(calc(14px * var(--text-scale)), calc(1.4vw * var(--text-scale)), calc(16px * var(--text-scale)));line-height:1.65;color:rgba(245,244,225,0.8);">Choose the fields you want above, then tap copy. Open a new note on your phone and paste. No app, no account, no tracking, just a simple record that stays with you.</p>
           </div>
           <button onClick="{{ copyJournal }}" style="display:inline-flex;align-items:center;gap:9px;background:var(--ns-bronze);color:var(--ns-midnight);border:none;border-radius:4px;padding:14px 26px;cursor:pointer;font-family:var(--font-sans);font-size:calc(12px * var(--text-scale));font-weight:600;letter-spacing:0.12em;white-space:nowrap;box-shadow:var(--shadow-bronze);">{{ copyLabel }}</button>
         </div>
@@ -2199,16 +2198,16 @@
   <section id="chap-recipes" data-chapter="recipes" data-screen-label="11 Recipes" style="position:relative;background:var(--ns-midnight);padding:clamp(80px,11vh,140px) clamp(20px,6vw,80px);">
     <div style="max-width:1180px;margin:0 auto;">
       <div data-reveal="" style="opacity:0;transform:translateY(22px);display:flex;align-items:flex-end;gap:clamp(16px,3vw,36px);border-bottom:1px solid var(--ns-bronze);padding-bottom:26px;">
-        <span style="font-family:var(--font-sans);font-size:clamp(calc(36px * var(--text-scale)),7vw,calc(82px * var(--text-scale)));line-height:0.8;color:var(--ns-bronze);">11</span>
+        <span style="font-family:var(--font-sans);font-size:clamp(calc(36px * var(--text-scale)), calc(7vw * var(--text-scale)), calc(82px * var(--text-scale)));line-height:0.8;color:var(--ns-bronze);">11</span>
         <div style="flex:1;">
           <span style="font-family:var(--font-sans);font-size:calc(12px * var(--text-scale));font-weight:600;letter-spacing:0.22em;color:rgba(245,244,225,0.7);">Chapter Eleven &nbsp;·&nbsp; From the Kitchen</span>
-          <h2 style="margin:6px 0 0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(30px * var(--text-scale)),5.4vw,calc(68px * var(--text-scale)));line-height:0.98;color:var(--ns-arctic);">Recipes</h2>
+          <h2 style="margin:6px 0 0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(30px * var(--text-scale)), calc(5.4vw * var(--text-scale)), calc(68px * var(--text-scale)));line-height:0.98;color:var(--ns-arctic);">Recipes</h2>
         </div>
       </div>
 
       <div data-reveal="" data-rd="60" class="nsm-recipe-intro" style="opacity:0;transform:translateY(22px);margin:clamp(28px,4vh,44px) 0 clamp(26px,3.4vh,38px);display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);align-items:start;">
-        <p style="margin:0;font-size:clamp(calc(18px * var(--text-scale)),2.1vw,calc(26px * var(--text-scale)));line-height:1.45;color:var(--ns-arctic);">Fifteen ways to put NSM products to work. Start low on the dose, give it time, and eat something good.</p>
-        <p style="margin:0;font-size:clamp(calc(15px * var(--text-scale)),1.4vw,calc(17px * var(--text-scale)));line-height:1.75;color:rgba(245,244,225,0.82);">Cooking with cannabis is its own kind of dosing. Make your base, dose it right, then scroll through the fifteen recipes built on it below. Start low, label everything, and keep it away from anyone it is not meant for.</p>
+        <p style="margin:0;font-size:clamp(calc(18px * var(--text-scale)), calc(2.1vw * var(--text-scale)), calc(26px * var(--text-scale)));line-height:1.45;color:var(--ns-arctic);">Fifteen ways to put NSM products to work. Start low on the dose, give it time, and eat something good.</p>
+        <p style="margin:0;font-size:clamp(calc(15px * var(--text-scale)), calc(1.4vw * var(--text-scale)), calc(17px * var(--text-scale)));line-height:1.75;color:rgba(245,244,225,0.82);">Cooking with cannabis is its own kind of dosing. Make your base, dose it right, then scroll through the fifteen recipes built on it below. Start low, label everything, and keep it away from anyone it is not meant for.</p>
       </div>
 
       <!-- recipes -->
@@ -2219,13 +2218,13 @@
         <!-- make your base: extraction + infused oils -->
         <div style="background:var(--ns-midnight);padding:clamp(26px,3.4vw,44px);margin-bottom:clamp(20px,3vh,30px);">
           <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.2em;color:var(--ns-bronze);">Start here, make your base</span>
-          <h3 id="sec-decarb" style="margin:10px 0 14px;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(24px * var(--text-scale)),3vw,calc(38px * var(--text-scale)));letter-spacing:0.01em;color:var(--ns-arctic);">Before you cook, make the medicine</h3>
+          <h3 id="sec-decarb" style="margin:10px 0 14px;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(24px * var(--text-scale)), calc(3vw * var(--text-scale)), calc(38px * var(--text-scale)));letter-spacing:0.01em;color:var(--ns-arctic);">Before you cook, make the medicine</h3>
           <p style="margin:0 0 8px;font-family:var(--font-sans);max-width:88ch;font-size:calc(15px * var(--text-scale));line-height:1.7;color:rgba(245,244,225,0.82);">Almost every recipe below is built on an infused base, a fat or a sweetener that carries the cannabinoids into the dish. We make an infused <strong style="color:var(--ns-arctic);">tincture</strong> you can substitute straight in, but the oil, butter, sugar, and cooking tincture you will make yourself. Here is the whole base, start to finish.</p>
           <div style="display:flex;flex-direction:column;gap:10px;margin-top:clamp(18px,2.4vh,26px);">
             <sc-for list="{{ baseSteps }}" as="b" hint-placeholder-count="5">
               <div style="background:var(--ns-midnight);border:1px solid var(--border-on-dark);">
                 <button onClick="{{ b.onToggle }}" style="display:flex;align-items:center;gap:14px;width:100%;background:none;border:none;padding:clamp(16px,2vw,22px) clamp(18px,2.2vw,26px);cursor:pointer;text-align:left;">
-                  <span style="font-family:var(--font-sans);font-size:clamp(calc(20px * var(--text-scale)),2vw,calc(26px * var(--text-scale)));color:rgba(183,149,80,0.7);flex:none;">{{ b.num }}</span>
+                  <span style="font-family:var(--font-sans);font-size:clamp(calc(20px * var(--text-scale)), calc(2vw * var(--text-scale)), calc(26px * var(--text-scale)));color:rgba(183,149,80,0.7);flex:none;">{{ b.num }}</span>
                   <span style="flex:1;font-family:var(--font-sans);font-weight:400;font-size:calc(19px * var(--text-scale));color:var(--ns-arctic);">{{ b.title }}</span>
                   <span aria-hidden="true" style="flex:none;width:28px;height:28px;border:1px solid var(--ns-bronze);border-radius:999px;display:grid;place-items:center;font-family:var(--font-sans);font-size:calc(16px * var(--text-scale));line-height:1;color:var(--ns-bronze);">{{ b.caret }}</span>
                 </button>
@@ -2249,7 +2248,7 @@
         <!-- dosage calculator -->
         <div data-reveal="" style="opacity:0;transform:translateY(22px);background:var(--ns-cream);border:1px solid var(--border-hairline);box-shadow:var(--shadow-sm);padding:clamp(26px,3.4vw,44px);margin-bottom:clamp(24px,3.4vh,40px);">
           <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.2em;color:var(--ns-bronze);">Dose it right</span>
-          <h3 id="sec-calculator" style="margin:10px 0 6px;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(22px * var(--text-scale)),2.6vw,calc(34px * var(--text-scale)));letter-spacing:0.01em;color:var(--text-strong);">Edible milligram calculator</h3>
+          <h3 id="sec-calculator" style="margin:10px 0 6px;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(22px * var(--text-scale)), calc(2.6vw * var(--text-scale)), calc(34px * var(--text-scale)));letter-spacing:0.01em;color:var(--text-strong);">Edible milligram calculator</h3>
           <p style="margin:0 0 clamp(20px,2.6vh,28px);max-width:64ch;font-family:var(--font-sans);font-size:calc(14.5px * var(--text-scale));line-height:1.65;color:var(--text-body);">Work in two steps, just like the pros. First tell it about your infusion to get the strength per teaspoon. Then tell it how much of that oil goes into your recipe and how many servings you cut it into. These are theoretical maximums, real home infusion loses some potency, so treat the numbers as a ceiling and start low.</p>
 
           <!-- STEP 1: the infusion -->
@@ -2277,17 +2276,17 @@
             <div style="background:var(--ns-midnight);padding:clamp(22px,2.8vw,34px);display:flex;flex-direction:column;gap:clamp(16px,2.4vh,24px);height:100%;justify-content:center;">
               <div>
                 <span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.18em;color:var(--ns-bronze);">Total THC in the infusion</span>
-                <div style="font-family:var(--font-display);font-size:clamp(calc(30px * var(--text-scale)),3.8vw,calc(46px * var(--text-scale)));line-height:1;color:var(--ns-arctic);margin-top:8px;">{{ calcTotalThc }}<span style="font-family:var(--font-sans);font-size:calc(16px * var(--text-scale));color:rgba(245,244,225,0.6);"> mg</span></div>
+                <div style="font-family:var(--font-display);font-size:clamp(calc(30px * var(--text-scale)), calc(3.8vw * var(--text-scale)), calc(46px * var(--text-scale)));line-height:1;color:var(--ns-arctic);margin-top:8px;">{{ calcTotalThc }}<span style="font-family:var(--font-sans);font-size:calc(16px * var(--text-scale));color:rgba(245,244,225,0.6);"> mg</span></div>
               </div>
               <sc-if value="{{ calcHasCbd }}" hint-placeholder-val="{{ false }}">
                 <div style="border-top:1px solid var(--border-on-dark);padding-top:clamp(12px,1.8vh,18px);">
                   <span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.18em;color:var(--ns-bronze);">Total CBD in the infusion</span>
-                  <div style="font-family:var(--font-display);font-size:clamp(calc(26px * var(--text-scale)),3vw,calc(38px * var(--text-scale)));line-height:1;color:var(--ns-arctic);margin-top:8px;">{{ calcTotalCbd }}<span style="font-family:var(--font-sans);font-size:calc(15px * var(--text-scale));color:rgba(245,244,225,0.6);"> mg</span></div>
+                  <div style="font-family:var(--font-display);font-size:clamp(calc(26px * var(--text-scale)), calc(3vw * var(--text-scale)), calc(38px * var(--text-scale)));line-height:1;color:var(--ns-arctic);margin-top:8px;">{{ calcTotalCbd }}<span style="font-family:var(--font-sans);font-size:calc(15px * var(--text-scale));color:rgba(245,244,225,0.6);"> mg</span></div>
                 </div>
               </sc-if>
               <div style="border-top:1px solid var(--border-on-dark);padding-top:clamp(12px,1.8vh,18px);">
                 <span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.18em;color:var(--ns-bronze);">THC per teaspoon of oil</span>
-                <div style="font-family:var(--font-display);font-size:clamp(calc(28px * var(--text-scale)),3.4vw,calc(42px * var(--text-scale)));line-height:1;color:var(--ns-arctic);margin-top:8px;">{{ calcThcPerTsp }}<span style="font-family:var(--font-sans);font-size:calc(16px * var(--text-scale));color:rgba(245,244,225,0.6);"> mg/tsp</span></div>
+                <div style="font-family:var(--font-display);font-size:clamp(calc(28px * var(--text-scale)), calc(3.4vw * var(--text-scale)), calc(42px * var(--text-scale)));line-height:1;color:var(--ns-arctic);margin-top:8px;">{{ calcThcPerTsp }}<span style="font-family:var(--font-sans);font-size:calc(16px * var(--text-scale));color:rgba(245,244,225,0.6);"> mg/tsp</span></div>
               </div>
             </div>
           </div>
@@ -2309,16 +2308,16 @@
             <div style="background:var(--ns-midnight);padding:clamp(22px,2.8vw,34px);display:flex;flex-direction:column;gap:clamp(16px,2.4vh,24px);height:100%;justify-content:center;">
               <div>
                 <span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.18em;color:var(--ns-bronze);">THC in the whole recipe</span>
-                <div style="font-family:var(--font-display);font-size:clamp(calc(28px * var(--text-scale)),3.4vw,calc(42px * var(--text-scale)));line-height:1;color:var(--ns-arctic);margin-top:8px;">{{ calcRecipeThc }}<span style="font-family:var(--font-sans);font-size:calc(16px * var(--text-scale));color:rgba(245,244,225,0.6);"> mg</span></div>
+                <div style="font-family:var(--font-display);font-size:clamp(calc(28px * var(--text-scale)), calc(3.4vw * var(--text-scale)), calc(42px * var(--text-scale)));line-height:1;color:var(--ns-arctic);margin-top:8px;">{{ calcRecipeThc }}<span style="font-family:var(--font-sans);font-size:calc(16px * var(--text-scale));color:rgba(245,244,225,0.6);"> mg</span></div>
               </div>
               <div style="border-top:1px solid var(--border-on-dark);padding-top:clamp(12px,1.8vh,18px);">
                 <span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.18em;color:var(--ns-bronze);">THC per serving</span>
-                <div style="font-family:var(--font-display);font-size:clamp(calc(36px * var(--text-scale)),4.6vw,calc(56px * var(--text-scale)));line-height:1;color:var(--ns-bronze);margin-top:8px;">{{ calcPerServing }}<span style="font-family:var(--font-sans);font-size:calc(18px * var(--text-scale));color:rgba(245,244,225,0.6);"> mg each</span></div>
+                <div style="font-family:var(--font-display);font-size:clamp(calc(36px * var(--text-scale)), calc(4.6vw * var(--text-scale)), calc(56px * var(--text-scale)));line-height:1;color:var(--ns-bronze);margin-top:8px;">{{ calcPerServing }}<span style="font-family:var(--font-sans);font-size:calc(18px * var(--text-scale));color:rgba(245,244,225,0.6);"> mg each</span></div>
               </div>
               <sc-if value="{{ calcHasCbd }}" hint-placeholder-val="{{ false }}">
                 <div style="border-top:1px solid var(--border-on-dark);padding-top:clamp(12px,1.8vh,18px);">
                   <span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.18em;color:var(--ns-bronze);">CBD per serving</span>
-                  <div style="font-family:var(--font-display);font-size:clamp(calc(26px * var(--text-scale)),3vw,calc(38px * var(--text-scale)));line-height:1;color:var(--ns-arctic);margin-top:8px;">{{ calcCbdPerServing }}<span style="font-family:var(--font-sans);font-size:calc(15px * var(--text-scale));color:rgba(245,244,225,0.6);"> mg each</span></div>
+                  <div style="font-family:var(--font-display);font-size:clamp(calc(26px * var(--text-scale)), calc(3vw * var(--text-scale)), calc(38px * var(--text-scale)));line-height:1;color:var(--ns-arctic);margin-top:8px;">{{ calcCbdPerServing }}<span style="font-family:var(--font-sans);font-size:calc(15px * var(--text-scale));color:rgba(245,244,225,0.6);"> mg each</span></div>
                 </div>
               </sc-if>
             </div>
@@ -2337,7 +2336,7 @@
           <div style="border-top:1px solid var(--border-hairline);">
             <button onClick="{{ cat.onToggle }}" style="display:flex;align-items:center;justify-content:space-between;gap:14px;width:100%;background:none;border:none;padding:clamp(18px,2.4vh,28px) 4px;cursor:pointer;text-align:left;">
               <span style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;">
-                <span style="font-family:var(--font-display);font-weight:400;font-size:clamp(calc(24px * var(--text-scale)),4vw,calc(44px * var(--text-scale)));line-height:1;letter-spacing:-0.01em;color:var(--text-strong);">{{ cat.name }}</span>
+                <span style="font-family:var(--font-display);font-weight:400;font-size:clamp(calc(24px * var(--text-scale)), calc(4vw * var(--text-scale)), calc(44px * var(--text-scale)));line-height:1;letter-spacing:-0.01em;color:var(--text-strong);">{{ cat.name }}</span>
                 <span style="font-family:var(--font-sans);font-size:calc(13px * var(--text-scale));letter-spacing:0.04em;color:var(--text-muted);">{{ cat.label }}</span>
               </span>
               <span aria-hidden="true" style="flex:none;width:34px;height:34px;border:1px solid var(--ns-bronze);border-radius:999px;display:grid;place-items:center;font-family:var(--font-sans);font-size:calc(18px * var(--text-scale));line-height:1;color:var(--ns-bronze);">{{ cat.caret }}</span>
@@ -2348,7 +2347,7 @@
                   <div style="background:var(--ns-cream);border:1px solid var(--border-hairline);box-shadow:var(--shadow-sm);display:flex;flex-direction:column;">
               <button onClick="{{ r.onToggle }}" style="background:none;border:none;cursor:pointer;text-align:left;padding:clamp(22px,2.4vw,30px);display:flex;flex-direction:column;gap:11px;">
                 <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
-                  <h4 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(21px * var(--text-scale)),2.4vw,calc(28px * var(--text-scale)));line-height:1.05;letter-spacing:-0.01em;color:var(--text-strong);">{{ r.name }}</h4>
+                  <h4 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(21px * var(--text-scale)), calc(2.4vw * var(--text-scale)), calc(28px * var(--text-scale)));line-height:1.05;letter-spacing:-0.01em;color:var(--text-strong);">{{ r.name }}</h4>
                   <span style="font-family:var(--font-sans);font-size:calc(20px * var(--text-scale));line-height:1;color:var(--ns-bronze);flex:none;">{{ r.caret }}</span>
                 </div>
                 <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
@@ -2412,10 +2411,10 @@
       <div data-reveal="" style="opacity:0;transform:translateY(22px);position:relative;background:#1F4B82;border-radius:6px;overflow:hidden;padding:clamp(30px,4.4vw,56px) clamp(24px,4vw,54px);box-shadow:0 24px 60px -34px rgba(31,75,130,0.9);">
         <div style="position:absolute;inset:0;background-image:radial-gradient(circle at 50% -30%, rgba(255,255,255,0.10), transparent 60%), repeating-linear-gradient(90deg, rgba(110,155,201,0.12) 0 1px, transparent 1px 64px);pointer-events:none;"></div>
         <div style="position:relative;display:flex;align-items:flex-end;flex-wrap:wrap;gap:clamp(14px,3vw,36px);">
-          <span style="font-family:var(--font-varsity);font-size:clamp(calc(40px * var(--text-scale)),7.5vw,calc(92px * var(--text-scale)));line-height:0.72;color:#C9A04A;">12</span>
+          <span style="font-family:var(--font-varsity);font-size:clamp(calc(40px * var(--text-scale)), calc(7.5vw * var(--text-scale)), calc(92px * var(--text-scale)));line-height:0.72;color:#C9A04A;">12</span>
           <div style="flex:1 1 200px;">
             <span style="font-family:var(--font-banner);font-size:calc(14px * var(--text-scale));font-weight:400;letter-spacing:0.34em;color:#7E97C2;">CHAPTER TWELVE</span>
-            <h2 style="margin:4px 0 0;font-family:var(--font-varsity);font-weight:400;font-size:clamp(calc(32px * var(--text-scale)),6vw,calc(74px * var(--text-scale)));line-height:0.9;letter-spacing:0.01em;color:#F1EBD4;">State&nbsp;Line</h2>
+            <h2 style="margin:4px 0 0;font-family:var(--font-varsity);font-weight:400;font-size:clamp(calc(32px * var(--text-scale)), calc(6vw * var(--text-scale)), calc(74px * var(--text-scale)));line-height:0.9;letter-spacing:0.01em;color:#F1EBD4;">State&nbsp;Line</h2>
           </div>
           <span style="align-self:flex-start;font-family:var(--font-banner);font-size:calc(13px * var(--text-scale));letter-spacing:0.26em;color:#0F0F10;background:#C9A04A;border-radius:3px;padding:7px 14px 5px;white-space:nowrap;">★ MADE FOR GOOD TIMES</span>
         </div>
@@ -2427,28 +2426,28 @@
       </div>
 
       <div data-reveal="" data-rd="80" style="opacity:0;transform:translateY(22px);display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(28px,4vw,64px);margin-top:clamp(36px,5vh,60px);align-items:start;">
-        <p style="margin:0;font-family:var(--font-sans);font-weight:300;font-size:clamp(calc(22px * var(--text-scale)),2.8vw,calc(34px * var(--text-scale)));line-height:1.22;letter-spacing:-0.01em;color:var(--text-strong);">Named for the Arkansas towns and back roads we love, and made for the easy days in between.</p>
+        <p style="margin:0;font-family:var(--font-sans);font-weight:300;font-size:clamp(calc(22px * var(--text-scale)), calc(2.8vw * var(--text-scale)), calc(34px * var(--text-scale)));line-height:1.22;letter-spacing:-0.01em;color:var(--text-strong);">Named for the Arkansas towns and back roads we love, and made for the easy days in between.</p>
         <div>
-          <p style="margin:0 0 16px;font-size:clamp(calc(16px * var(--text-scale)),1.6vw,calc(19px * var(--text-scale)));line-height:1.7;letter-spacing:0.015em;color:var(--text-body);">State Line keeps it simple and keeps it fun. Crafted with the same care as everything else we make, just looser, friendlier, and built for hanging out. Good flavors, easy formats, nothing fussy: chews, carts, and disposables.</p>
-          <p style="margin:0;font-family:var(--font-banner);font-size:clamp(calc(20px * var(--text-scale)),2.4vw,calc(26px * var(--text-scale)));letter-spacing:0.08em;color:#946F1F;">GRAB A COUPLE, CALL YOUR PEOPLE, GO ENJOY THE DAY.</p>
+          <p style="margin:0 0 16px;font-size:clamp(calc(16px * var(--text-scale)), calc(1.6vw * var(--text-scale)), calc(19px * var(--text-scale)));line-height:1.7;letter-spacing:0.015em;color:var(--text-body);">State Line keeps it simple and keeps it fun. Crafted with the same care as everything else we make, just looser, friendlier, and built for hanging out. Good flavors, easy formats, nothing fussy: chews, carts, and disposables.</p>
+          <p style="margin:0;font-family:var(--font-banner);font-size:clamp(calc(20px * var(--text-scale)), calc(2.4vw * var(--text-scale)), calc(26px * var(--text-scale)));letter-spacing:0.08em;color:#946F1F;">GRAB A COUPLE, CALL YOUR PEOPLE, GO ENJOY THE DAY.</p>
         </div>
       </div>
 
       <!-- recurring banner tagline -->
       <div data-reveal="" data-rd="40" style="opacity:0;transform:translateY(22px);margin-top:clamp(40px,6vh,72px);display:flex;align-items:center;gap:16px;">
         <span style="height:1px;flex:1;background:rgba(31,75,130,0.28);"></span>
-        <span style="font-family:var(--font-banner);font-size:clamp(calc(15px * var(--text-scale)),1.9vw,calc(20px * var(--text-scale)));letter-spacing:0.3em;color:#1F4B82;white-space:nowrap;">FROM GAMEDAY TO EVERYDAY</span>
+        <span style="font-family:var(--font-banner);font-size:clamp(calc(15px * var(--text-scale)), calc(1.9vw * var(--text-scale)), calc(20px * var(--text-scale)));letter-spacing:0.3em;color:#1F4B82;white-space:nowrap;">FROM GAMEDAY TO EVERYDAY</span>
         <span style="height:1px;flex:1;background:rgba(31,75,130,0.28);"></span>
       </div>
 
       <!-- three products, ticket cards -->
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:clamp(22px,3vw,34px);margin-top:clamp(28px,4vh,44px);">
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));align-items:start;gap:clamp(22px,3vw,34px);margin-top:clamp(28px,4vh,44px);">
         <sc-for list="{{ stateLine }}" as="p" hint-placeholder-count="3">
           <div data-reveal="" style="opacity:0;transform:translateY(22px);background:#D5D6D2;border:2.5px solid #0F0F10;border-radius:10px;display:flex;flex-direction:column;overflow:hidden;box-shadow:6px 6px 0 rgba(15,15,16,0.14);">
             <button onClick="{{ p.onToggle }}" style="background:none;border:none;cursor:pointer;text-align:left;padding:clamp(26px,3.2vw,40px);display:flex;flex-direction:column;gap:16px;">
-              <div style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;border-bottom:2px dashed #0F0F10;padding-bottom:16px;">
-                <h3 style="margin:0;font-family:var(--font-banner);font-weight:400;font-size:clamp(calc(26px * var(--text-scale)),3.4vw,calc(42px * var(--text-scale)));line-height:0.9;letter-spacing:0.04em;text-transform:uppercase;color:#0F0F10;">{{ p.name }}</h3>
-                <span style="font-family:var(--font-banner);font-size:calc(13px * var(--text-scale));letter-spacing:0.14em;color:#F1EBD4;background:#1F4B82;border-radius:3px;padding:6px 11px 4px;white-space:nowrap;">{{ p.kicker }}</span>
+              <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap;border-bottom:2px dashed #0F0F10;padding-bottom:16px;">
+                <h3 style="margin:0;font-family:var(--font-banner);font-weight:400;font-size:clamp(calc(26px * var(--text-scale)), calc(3.4vw * var(--text-scale)), calc(42px * var(--text-scale)));line-height:0.9;letter-spacing:0.04em;text-transform:uppercase;color:#0F0F10;">{{ p.name }}</h3>
+                <span style="max-width:100%;font-family:var(--font-banner);font-size:calc(13px * var(--text-scale));letter-spacing:0.12em;line-height:1.25;color:#F1EBD4;background:#1F4B82;border-radius:3px;padding:6px 11px 4px;">{{ p.kicker }}</span>
               </div>
               <p style="margin:0;font-family:var(--font-sans);font-size:calc(15.5px * var(--text-scale));line-height:1.7;color:#2A2A28;">{{ p.description }}</p>
               <div style="display:flex;flex-wrap:wrap;gap:8px;">
@@ -2463,7 +2462,8 @@
                 <span style="font-family:var(--font-banner);font-size:calc(14px * var(--text-scale));letter-spacing:0.14em;color:#946F1F;">VIEW FLAVORS {{ p.caret }}</span>
               </sc-if>
               <sc-if value="{{ p.hasBlends }}" hint-placeholder-val="{{ false }}">
-            </sc-if></button>
+                <span style="font-family:var(--font-banner);font-size:calc(14px * var(--text-scale));letter-spacing:0.14em;color:#946F1F;">VIEW BLENDS {{ p.caret }}</span>
+              </sc-if></button>
             <sc-if value="{{ p.open }}" hint-placeholder-val="{{ false }}">
               <div style="padding:0 clamp(26px,3.2vw,40px) clamp(22px,2.6vw,30px);display:flex;flex-direction:column;gap:14px;">
                 <sc-if value="{{ p.hasTickets }}" hint-placeholder-val="{{ false }}">
@@ -2512,12 +2512,12 @@
   <section id="chap-glossary" data-chapter="glossary" data-screen-label="13 Glossary" style="position:relative;background:var(--ns-arctic);padding:clamp(80px,11vh,140px) clamp(20px,6vw,80px);">
     <div style="max-width:1180px;margin:0 auto;">
       <div data-reveal="" style="opacity:0;transform:translateY(22px);display:flex;align-items:flex-end;gap:clamp(16px,3vw,36px);border-bottom:1px solid var(--ns-bronze);padding-bottom:26px;">
-        <span style="font-family:var(--font-sans);font-size:clamp(calc(36px * var(--text-scale)),7vw,calc(82px * var(--text-scale)));line-height:0.8;color:var(--ns-bronze);">13</span>
+        <span style="font-family:var(--font-sans);font-size:clamp(calc(36px * var(--text-scale)), calc(7vw * var(--text-scale)), calc(82px * var(--text-scale)));line-height:0.8;color:var(--ns-bronze);">13</span>
         <div style="flex:1;">
           <span style="font-family:var(--font-sans);font-size:calc(12px * var(--text-scale));font-weight:600;letter-spacing:0.22em;color:var(--text-muted);">Chapter Thirteen</span>
-          <h2 style="margin:6px 0 0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(30px * var(--text-scale)),5.4vw,calc(68px * var(--text-scale)));line-height:0.98;color:var(--text-strong);">Glossary</h2>
+          <h2 style="margin:6px 0 0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(30px * var(--text-scale)), calc(5.4vw * var(--text-scale)), calc(68px * var(--text-scale)));line-height:0.98;color:var(--text-strong);">Glossary</h2>
         </div>
-        <span style="font-family:var(--font-sans);font-size:clamp(calc(20px * var(--text-scale)),2.4vw,calc(30px * var(--text-scale)));color:var(--text-muted);white-space:nowrap;">{{ glossCount }} terms</span>
+        <span style="font-family:var(--font-sans);font-size:clamp(calc(20px * var(--text-scale)), calc(2.4vw * var(--text-scale)), calc(30px * var(--text-scale)));color:var(--text-muted);white-space:nowrap;">{{ glossCount }} terms</span>
       </div>
 
       <!-- search + letters -->
@@ -2546,7 +2546,7 @@
         <sc-for list="{{ glossary }}" as="g" hint-placeholder-count="12">
           <div data-reveal="" style="opacity:0;transform:translateY(14px);align-self:start;border-bottom:1px solid var(--border-hairline);width:100%;">
             <button onClick="{{ g.onToggle }}" style="display:flex;align-items:center;justify-content:space-between;gap:14px;width:100%;background:none;border:none;padding:16px 0;cursor:pointer;text-align:left;">
-              <h4 style="margin:0;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(17px * var(--text-scale)),1.8vw,calc(22px * var(--text-scale)));letter-spacing:0.02em;color:var(--text-strong);">{{ g.term }}</h4>
+              <h4 style="margin:0;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(17px * var(--text-scale)), calc(1.8vw * var(--text-scale)), calc(22px * var(--text-scale)));letter-spacing:0.02em;color:var(--text-strong);">{{ g.term }}</h4>
               <sc-if value="{{ g.hasPron }}" hint-placeholder-val="{{ false }}">
                 <span style="font-family:var(--font-sans);font-style:italic;font-size:calc(12.5px * var(--text-scale));color:var(--text-muted);">{{ g.pron }}</span>
               </sc-if>
@@ -2577,7 +2577,7 @@
 
       <sc-if value="{{ noGloss }}" hint-placeholder-val="{{ false }}">
         <div style="text-align:center;padding:clamp(40px,8vh,80px) 20px;">
-          <p style="margin:0;font-family:var(--font-sans);font-size:clamp(calc(22px * var(--text-scale)),3vw,calc(32px * var(--text-scale)));color:var(--text-muted);">No terms match your search</p>
+          <p style="margin:0;font-family:var(--font-sans);font-size:clamp(calc(22px * var(--text-scale)), calc(3vw * var(--text-scale)), calc(32px * var(--text-scale)));color:var(--text-muted);">No terms match your search</p>
         </div>
       </sc-if>
       </sc-if>
@@ -2589,9 +2589,9 @@
     <div aria-hidden="true" style="position:absolute;top:-25%;left:50%;transform:translateX(-50%);width:90%;height:70%;background:radial-gradient(closest-side, rgba(183,149,80,0.10), rgba(32,37,58,0) 70%);pointer-events:none;"></div>
     <div style="position:relative;display:flex;flex-direction:column;align-items:center;gap:clamp(18px,3vh,30px);max-width:760px;margin:0 auto;">
       <a href="../index.html#doors" title="Back to naturalstatemeds.com" style="display:block;text-decoration:none;"><img src="../assets/brand/ns-monogram-gold.png" alt="Natural State Medicinals" style="width:clamp(96px,13vw,150px);height:auto;display:block;filter:drop-shadow(0 14px 38px rgba(0,0,0,0.5));"></a>
-      <h2 data-reveal="" style="opacity:0;transform:translateY(22px);margin:0;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(38px * var(--text-scale)),7vw,calc(92px * var(--text-scale)));line-height:0.96;letter-spacing:0.02em;color:var(--ns-arctic);">Find your<br>natural state.</h2>
+      <h2 data-reveal="" style="opacity:0;transform:translateY(22px);margin:0;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(38px * var(--text-scale)), calc(7vw * var(--text-scale)), calc(92px * var(--text-scale)));line-height:0.96;letter-spacing:0.02em;color:var(--ns-arctic);">Find your<br>natural state.</h2>
       <div style="width:54px;height:2px;background:var(--ns-bronze);"></div>
-      <p style="margin:0;font-family:var(--font-sans);font-size:clamp(calc(16px * var(--text-scale)),1.8vw,calc(20px * var(--text-scale)));color:var(--ns-bronze-light);">Of wellness, balance, and relief.</p>
+      <p style="margin:0;font-family:var(--font-sans);font-size:clamp(calc(16px * var(--text-scale)), calc(1.8vw * var(--text-scale)), calc(20px * var(--text-scale)));color:var(--ns-bronze-light);">Of wellness, balance, and relief.</p>
       
     </div>
     <button onClick="{{ goHome }}" style="position:absolute;bottom:max(30px,env(safe-area-inset-bottom,30px));left:50%;transform:translateX(-50%);background:none;border:1px solid var(--border-on-dark);border-radius:999px;padding:12px 26px;cursor:pointer;color:var(--ns-arctic);font-family:var(--font-sans);font-size:calc(12px * var(--text-scale));letter-spacing:0.14em;">Back to top ↑</button>
@@ -2604,6 +2604,7 @@
   <!-- INSERT-POINT -->
 
 </div>
+<ns-age-gate variant="b" no-href="../rules.html" leaf="../assets/brand/nav-mark-fanleaf-gold.png" delay="2200"></ns-age-gate>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:900},&quot;showProgress&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;productsUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;../find-our-flower.html&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
 class Component extends DCLogic {
@@ -4374,9 +4375,9 @@ class Component extends DCLogic {
               { file: '../assets/kitchen/bites/bite-dreamsicle.jpg', alt: 'Dreamsicle Bites gummies' }
             ],
             groups: [ { label: 'Flavors', items: ['Dreamsicle + Melatonin (2:1 Indica, for sleep)', 'Passion Fruit Mango Margarita', 'Strawberry Cheesecake', 'Blueberry Açaí', 'Black Cherry Kola'] } ] },
-          { key: 'micro', name: 'Micro Fruits', kicker: '400mg · 20 pk · 20mg each', photo: '../assets/kitchen/micro.jpg',
-            description: 'Do not let their size fool you. These little soft pieces pack a punch at 20mg each, made for the experienced edible fan. One crunch and they dissolve fast, unloading a burst of fruit flavor and a quick sublingual hit.',
-            howTo: 'At 20mg each these are built for experienced patients. One is plenty: chew it and let it sit a moment for the sublingual hit, then wait an hour or two.',
+          { key: 'micro', name: 'Micro Fruits', kicker: '400mg · 20 pk · two 10mg servings each', photo: '../assets/kitchen/micro.jpg',
+            description: 'Do not let their size fool you. Each piece is 20mg total, which is two 10mg servings, so a whole one is two doses. Made for the experienced edible fan: one crunch and they dissolve fast, unloading a burst of fruit flavor and a quick sublingual hit.',
+            howTo: 'Each piece is two 10mg servings, so half a piece is one serving. Start with half, let it sit a moment under the tongue for the sublingual hit, then wait an hour or two before deciding on the rest.',
             photos: [
               { file: '../assets/kitchen/micro/micro-packshot.jpg', alt: 'Micro Fruits jar, Natural State Medicinals' },
               { file: '../assets/kitchen/micro/micro-green-apple.jpg', alt: 'Green Apple Micro Fruits tablets' },
@@ -4408,7 +4409,7 @@ class Component extends DCLogic {
           { name: 'Wax', lo: 560, hi: 600 },
           { name: 'Crumble', lo: 560, hi: 600 }
         ];
-        const concPhoto = { 'Badder': '../assets/lab/conc-badder.jpg', 'Crumble': '../assets/lab/conc-crumble.jpg' };
+        const concPhoto = {};
         const ordered = meta.map(m => { const ph = concPhoto[m.name]; return Object.assign({}, rows.find(r => r.name === m.name), { lo: m.lo, hi: m.hi,
           photo: ph ? ((window.__resources && window.__resources[ph]) || ph) : '', hasPhoto: !!ph }); });
         const act = Math.min(st.concActive || 0, ordered.length - 1);
@@ -4554,7 +4555,7 @@ class Component extends DCLogic {
         { num: "01", title: "Decarb", lead: "Raw flower is full of THCA, not THC, so it will do almost nothing in food until it is heated.", steps: ["Break the flower into small, even pieces by hand. There is no need to grind it to powder.","Spread it in a single loose layer on a parchment-lined tray.","Bake at 240F for about 40 minutes, shaking the tray gently halfway through so it toasts evenly.","It is ready when it turns light golden brown and smells nutty and fragrant."], note: "Slow, low heat converts THCA into active THC without burning off the good stuff. Skip this step and your edibles will not work, no matter how much flower you use." },
         { num: "02", title: "Infused oil", lead: "A neutral base that drops into anything calling for oil.", steps: ["Combine decarbed flower with a carrier oil, about one cup of oil per quarter ounce. Coconut, MCT, or a mild olive oil all work.","Warm the two together in a double boiler, a slow cooker on low, or a sealed mason jar set in a pot of water.","Hold between 160 and 200F for two to three hours, stirring now and then.","Strain through cheesecloth into a clean jar, squeezing the flower to get every last drop."], note: "Never let it simmer. Too much heat destroys both THC and the terpenes that carry flavor and effect." },
         { num: "03", title: "Canna butter", lead: "The same gentle method, made with butter.", steps: ["Melt one cup of butter with one cup of water in a saucepan.","Add the decarbed flower and hold everything at a bare, lazy simmer for two to three hours, topping up the water if it runs low.","Strain through cheesecloth into a heatproof bowl.","Refrigerate until the butter sets into a firm layer, lift it off, and scrape the water residue from the underside."], note: "The water buffers the heat and keeps the milk solids from scorching. This is the workhorse of the kitchen: baking, spreading, and savory dishes alike." },
-        { num: "04", title: "Cooking tincture", lead: "An alcohol extraction that keeps well and doses precisely.", steps: ["Place decarbed flower in a clean glass jar and cover it completely with a high-proof, food-grade grain alcohol.","Seal it tight and let it steep somewhere cool and dark, shaking it once a day.","Strain through cheesecloth, then again through a coffee filter for a cleaner pour.","Store in a dark glass bottle away from light and heat."], note: "Because it is alcohol based, it stirs into cold and room-temperature foods where oil and butter will not go." },
+        { num: "04", title: "Cooking tincture", lead: "An alcohol extraction that keeps well and doses precisely.", steps: ["Place decarbed flower in a clean glass jar and cover it completely with a high-proof, food-grade grain alcohol.","Seal it tight and let it steep somewhere cool and dark. Once a day, give it a gentle swirl or a few easy turns of the jar. You are only trying to agitate it a little and move the plant material around, not shake it hard.","Give it 2 to 4 weeks. Some herbal methods run 6 to 8 weeks for a fuller extraction. If you want it the same day instead, warm the jar in a slow cooker or a water bath on low, around 160 to 180 degrees, for 2 to 6 hours.","Strain through cheesecloth, then again through a coffee filter for a cleaner pour.","Store in a dark glass bottle away from light and heat."], note: "Because it is alcohol based, it stirs into cold and room-temperature foods where oil and butter will not go." },
         { num: "05", title: "Cannasugar", lead: "A dry, free-flowing sugar that swaps in spoon for spoon.", steps: ["Start with the cooking tincture above.","Stir it a little at a time into granulated sugar until evenly moistened but not soupy.","Spread it in a thin layer on a parchment-lined tray.","Let it sit at room temperature until the alcohol fully evaporates, stirring and breaking up clumps, until completely dry. This can take several hours or overnight."], note: "Use it anywhere you would use regular sugar: stirred into coffee or tea, folded into baking, or brushed around the rim of a glass for a dosed cocktail." }
       ].map((s, i) => { const id = 'base-' + i; const open = !!st.prodOpen[id]; return { num: s.num, title: s.title, lead: s.lead, steps: s.steps, note: s.note, open, caret: open ? '\u2212' : '+', onToggle: () => this.toggleProd(id) }; }),
       recipeCats: (() => {

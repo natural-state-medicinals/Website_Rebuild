@@ -176,11 +176,26 @@ To verify a real submission, check the response sheet.
 - Performance: subset the fonts, serve photography as WebP or AVIF, lazy-load
   below the fold. Fold this into any Wix or Cloudflare migration.
 
+## Domains
+
+The living repository is **natural-state-medicinals** on GitHub. `mdedman-tech/Website_Rebuild`
+was where the rebuild started and is no longer the source of truth.
+
+Canonical and Open Graph URLs on all seven pages, plus `sitemap.xml` and `robots.txt`,
+declare **https://www.naturalstatemedicinals.com** — the domain this site will be served
+from. `naturalstatemeds.com` will redirect there. Until DNS is pointed, the github.io
+address serves the pages while the canonicals name the destination, which is the correct
+posture for a site about to move.
+
 ## Last sync
 
 date: 2026-09-03T00:00:00Z
 
 ### Updated in this project
+- Age gate on every page: 18-or-Arkansas-patient wording, remember me 30 days, rules.html for a no
+- Landing intro holds on the drawn outline behind the gate, then runs its normal sequence
+- Guide plays its own opening first, then the gate appears
+- Canonicals, Open Graph URLs, sitemap and robots repointed to www.naturalstatemedicinals.com
 - Find our flower page: search-by-store or by-product guidance added to the intro copy
 - Crew pile at 35 photos, six even rows, bottom row clamped inside the pile box
 - Letterpress headings across all six pages and both guide files
