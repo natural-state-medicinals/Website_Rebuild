@@ -192,6 +192,10 @@ posture for a site about to move.
 date: 2026-09-03T00:00:00Z
 
 ### Updated in this project
+- Guide: Live vs. Cured section in Plant to Product (fork, comparison switch, four combinations), live framed as the premium path
+- Guide: product family is a filterable grid with in-place expansion, no carousel
+- Guide: Gas / Fuel quiz answer, 19 strains mapped
+- Store finder: blocker message rewritten with a Refresh page button
 - Intro clears its own canvases before building, so a re-parsed host cannot stack a frozen frame over the live sequence
 - Gate host is removed from the page on pass and is hidden unless html.ns-gated is set, so no invisible overlay can be left behind
 - Page entrance animations pause while the gate is open, so the lockup no longer plays out behind it

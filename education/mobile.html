@@ -97,6 +97,44 @@
   @keyframes nsmTagIn { 0%{ opacity:0; transform:translateY(14px); letter-spacing:0.5em; } 100%{ opacity:1; transform:none; letter-spacing:0.24em; } }
   @keyframes nsmIntroOut { 0%{ opacity:1; } 100%{ opacity:0; visibility:hidden; } }
   @media (prefers-reduced-motion: reduce){ .nsm-exp{ animation:none; } img[data-src]{ filter:none; } }
+  /* Product family grid: every card visible at once, no horizontal scroll */
+  .nsm-pf-grid { display:grid; grid-template-columns:minmax(0,1fr); grid-auto-flow:row dense; gap:9px; align-items:start; }
+  .nsm-pf-card[data-open="1"] { grid-column:1 / -1; }
+  .nsm-pf-inner { display:grid; grid-template-columns:minmax(0,1fr); }
+  
+  .nsm-pf-card { transition:box-shadow .22s ease, translate .22s cubic-bezier(0.2,0.7,0.25,1), border-color .22s ease; }
+  .nsm-pf-card[data-open="1"] { border-color:var(--ns-bronze) !important; box-shadow:var(--shadow-md) !important; }
+  .nsm-pf-panel { animation:nsmPfIn .34s cubic-bezier(0.2,0.7,0.25,1) both; }
+  @keyframes nsmPfIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+  @media (hover:hover){ .nsm-pf-card:not([data-open="1"]):hover { translate:0 -2px; box-shadow:var(--shadow-md) !important; } }
+  .nsm-pf-hit:active { background:rgba(183,149,80,0.08) !important; }
+  .nsm-pf-hit:focus-visible, .nsm-pf-chip:focus-visible, .nsm-pf-panel button:focus-visible { outline:2px solid var(--ns-bronze); outline-offset:3px; }
+  @media (min-width:600px){ .nsm-pf-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+  @media (max-width:760px){ .nsm-pf-card[data-open="1"] .nsm-pf-inner { grid-template-columns:minmax(0,1fr); } }
+  
+  @media (prefers-reduced-motion: reduce){ .nsm-pf-card { transition:box-shadow .22s ease, border-color .22s ease; } .nsm-pf-card:hover { translate:none !important; } .nsm-pf-panel { animation:nsmPfFade .3s ease both; } }
+  @keyframes nsmPfFade { from { opacity:0; } to { opacity:1; } }
+
+  /* Live vs. Cured: the fork draws itself in once it scrolls into view */
+  .nsm-lc-fork [data-step], .nsm-lc-fork .nsm-lc-vline, .nsm-lc-fork .nsm-lc-hline { opacity:0; transition:opacity .55s ease var(--d,0ms), transform .65s cubic-bezier(0.2,0.7,0.25,1) var(--d,0ms); }
+  .nsm-lc-fork [data-step] { transform:translateY(10px); }
+  .nsm-lc-fork .nsm-lc-vline { transform:scaleY(0); transform-origin:top center; }
+  .nsm-lc-fork .nsm-lc-hline { transform:scaleX(0); transform-origin:center; }
+  .nsm-lc-fork[data-go] [data-step], .nsm-lc-fork[data-go] .nsm-lc-vline, .nsm-lc-fork[data-go] .nsm-lc-hline { opacity:1; transform:none; }
+  .nsm-lc-card { transition:opacity .35s ease, visibility .35s; }
+  .nsm-lc-bar { transition:width .7s cubic-bezier(0.2,0.7,0.25,1) .12s; }
+  .nsm-lc-thumb { transition:transform .4s cubic-bezier(0.2,0.7,0.25,1); }
+  .nsm-lc-flip { transform-style:preserve-3d; transition:transform .6s cubic-bezier(0.2,0.7,0.25,1); }
+  .nsm-lc-face { -webkit-backface-visibility:hidden; backface-visibility:hidden; }
+  @media (prefers-reduced-motion: reduce){
+    .nsm-lc-fork [data-step], .nsm-lc-fork .nsm-lc-vline, .nsm-lc-fork .nsm-lc-hline { transform:none !important; transition:opacity .5s ease var(--d,0ms); }
+    .nsm-lc-bar, .nsm-lc-thumb { transition:none; }
+    .nsm-lc-flip { transform:none !important; transition:none; }
+    .nsm-lc-face { -webkit-backface-visibility:visible; backface-visibility:visible; transform:none !important; transition:opacity .35s ease; }
+    .nsm-lc-flip[data-flipped="1"] .nsm-lc-front, .nsm-lc-flip[data-flipped="0"] .nsm-lc-back { opacity:0; }
+  }
+  @media print { .nsm-lc-fork [data-step], .nsm-lc-fork .nsm-lc-vline, .nsm-lc-fork .nsm-lc-hline { opacity:1 !important; transform:none !important; } }
+
 
   /* Letterpress, carried over from the landing page stations: a paper highlight
      under the glyph and a soft ink shade above it. Light and shadow only.
@@ -855,13 +893,18 @@
         <p style="margin:14px 0 0;font-family:var(--font-sans);font-size:calc(11.5px * var(--text-scale));line-height:1.6;color:var(--text-on-dark-mut);">Flavor, purity, and scale are rated relative to one another, not on an absolute scale. No method is best at all three, which is why we run more than one.</p>
       </div>
 
-      <!-- Product formats accordion -->
+      <!-- Product family grid -->
       <div style="margin-top:24px;">
         <span id="sec-formats" style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.16em;color:var(--ns-bronze);text-transform:uppercase;">Every format</span>
-        <div style="margin-top:12px;display:flex;flex-direction:column;gap:9px;">
-          <sc-for list="{{ productFormats }}" as="f" hint-placeholder-count="7">
-            <div style="border:1px solid var(--border-hairline);background:var(--ns-cream);box-shadow:var(--shadow-sm);overflow:hidden;">
-              <button onClick="{{ f.onToggle }}" style="display:flex;align-items:stretch;gap:0;width:100%;background:none;border:none;cursor:pointer;text-align:left;padding:0;">
+        <div role="group" aria-label="Filter products by how they are used" style="margin-top:12px;display:flex;flex-wrap:wrap;gap:7px;">
+          <sc-for list="{{ pf.chips }}" as="c" hint-placeholder-count="4">
+            <button class="nsm-pf-chip" onClick="{{ c.onClick }}" aria-pressed="{{ c.on }}" style="display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0 15px;border-radius:999px;border:1px solid {{ c.border }};background:{{ c.bg }};color:{{ c.color }};cursor:pointer;font-family:var(--font-sans);font-size:calc(12px * var(--text-scale));font-weight:600;letter-spacing:0.04em;transition:background .22s ease,color .22s ease,border-color .22s ease;">{{ c.label }} <span style="font-weight:400;opacity:0.7;">{{ c.count }}</span></button>
+          </sc-for>
+        </div>
+        <div class="nsm-pf-grid" style="margin-top:14px;">
+          <sc-for list="{{ pf.cards }}" as="f" hint-placeholder-count="7">
+            <article class="nsm-pf-card" data-pf-key="{{ f.key }}" data-open="{{ f.openFlag }}" style="display:{{ f.disp }};flex-direction:column;border:1px solid var(--border-hairline);background:var(--ns-cream);box-shadow:var(--shadow-sm);overflow:hidden;">
+              <button class="nsm-pf-hit" onClick="{{ f.onToggle }}" aria-expanded="{{ f.isOpen }}" aria-controls="{{ f.panelId }}" style="display:flex;align-items:stretch;gap:0;width:100%;background:none;border:none;cursor:pointer;text-align:left;padding:0;">
                 <sc-if value="{{ f.hasPhoto }}" hint-placeholder-val="{{ false }}">
                   <img data-src="{{ f.img }}" alt="{{ f.name }}" loading="lazy" style="width:88px;height:88px;object-fit:cover;flex:none;">
                 </sc-if>
@@ -871,16 +914,52 @@
                     <span style="font-family:var(--font-sans);font-size:calc(8.5px * var(--text-scale));font-weight:600;letter-spacing:0.08em;line-height:1.25;color:var(--ns-bronze);text-transform:uppercase;">Photo soon</span>
                   </span>
                 </sc-if>
-                <span style="flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:3px;padding:15px 16px;">
+                <span style="flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:4px;padding:13px 14px;">
                   <span style="font-family:var(--font-display);font-size:calc(20px * var(--text-scale));line-height:1;color:var(--text-strong);">{{ f.name }}</span>
-                  <span style="font-family:var(--font-sans);font-size:calc(12.5px * var(--text-scale));line-height:1.4;color:var(--text-muted);">{{ f.lead }}</span>
+                  <span style="font-family:var(--font-sans);font-size:calc(12.5px * var(--text-scale));line-height:1.4;color:var(--text-muted);">{{ f.kicker }}</span>
+                  <sc-if value="{{ f.hasForms }}" hint-placeholder-val="{{ true }}">
+                    <span style="font-family:var(--font-sans);font-size:calc(10.5px * var(--text-scale));font-weight:600;letter-spacing:0.08em;color:var(--ns-bronze);">View types &amp; dosages</span>
+                  </sc-if>
                 </span>
-                <span style="flex:none;display:grid;place-items:center;width:44px;color:var(--ns-bronze);font-size:calc(17px * var(--text-scale));">{{ f.caret }}</span>
+                <span aria-hidden="true" style="flex:none;display:grid;place-items:center;width:44px;color:var(--ns-bronze);font-size:calc(19px * var(--text-scale));">{{ f.pfCaret }}</span>
               </button>
-              <div style="overflow:hidden;transition:max-height .36s ease,opacity .3s ease;max-height:{{ f.maxH }};opacity:{{ f.op }};">
-                <p style="margin:0;padding:0 16px 16px;font-size:calc(14px * var(--text-scale));line-height:1.65;color:var(--text-body);">{{ f.desc }}</p>
-              </div>
-            </div>
+              <sc-if value="{{ f.isOpen }}" hint-placeholder-val="{{ false }}">
+                <div id="{{ f.panelId }}" class="nsm-pf-panel" role="region" aria-label="{{ f.name }}" style="display:flex;flex-direction:column;gap:14px;padding:4px 16px 18px;">
+                  <p style="margin:0;font-size:calc(14px * var(--text-scale));line-height:1.65;color:var(--text-body);">{{ f.description }}</p>
+                  <sc-if value="{{ f.hasLc }}" hint-placeholder-val="{{ false }}">
+                    <button onClick="{{ f.onLc }}" style="align-self:flex-start;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:999px;border:1px solid var(--ns-bronze);background:rgba(183,149,80,0.1);color:var(--text-strong);cursor:pointer;font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.12em;" style-active="background:var(--ns-bronze);">Live vs. Cured <span aria-hidden="true" style="color:#7A5F28;">&#8595;</span></button>
+                  </sc-if>
+                  <sc-if value="{{ f.hasForms }}" hint-placeholder-val="{{ false }}">
+                    <div style="border-top:1px solid var(--border-hairline);padding-top:13px;">
+                      <span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--ns-bronze);">Types &amp; dosages</span>
+                      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;">
+                        <sc-for list="{{ f.forms }}" as="fm" hint-placeholder-count="4">
+                          <span style="font-family:var(--font-sans);font-size:calc(12.5px * var(--text-scale));color:var(--text-strong);background:var(--ns-haze);border-radius:999px;padding:5px 12px;">{{ fm }}</span>
+                        </sc-for>
+                      </div>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{ f.hasTypeDetail }}" hint-placeholder-val="{{ false }}">
+                    <div style="display:flex;flex-direction:column;">
+                      <span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--ns-bronze);margin-bottom:4px;">What the oil types mean</span>
+                      <sc-for list="{{ f.typeDetail }}" as="t" hint-placeholder-count="3">
+                        <div style="border-top:1px solid var(--border-hairline);padding:12px 0;">
+                          <span style="font-family:var(--font-sans);font-size:calc(13.5px * var(--text-scale));color:var(--text-strong);">{{ t.name }}</span>
+                          <p style="margin:5px 0 0;font-size:calc(13px * var(--text-scale));line-height:1.58;color:var(--text-body);">{{ t.desc }}</p>
+                        </div>
+                      </sc-for>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{ f.howTo }}" hint-placeholder-val="{{ false }}">
+                    <div style="border-top:1px solid var(--border-hairline);padding-top:13px;">
+                      <span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--ns-bronze);">How to use</span>
+                      <p style="margin:8px 0 0;font-size:calc(13.5px * var(--text-scale));line-height:1.62;color:var(--text-body);">{{ f.howTo }}</p>
+                    </div>
+                  </sc-if>
+                  <button onClick="{{ f.onClose }}" aria-label="{{ f.closeAria }}" style="align-self:flex-end;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:999px;border:1px solid var(--border-hairline);background:var(--ns-arctic);color:var(--text-strong);cursor:pointer;font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.12em;">Close <span aria-hidden="true" style="font-size:calc(16px * var(--text-scale));line-height:1;">&#215;</span></button>
+                </div>
+              </sc-if>
+            </article>
           </sc-for>
         </div>
       </div>
@@ -923,6 +1002,117 @@
             <div style="display:flex;gap:12px;"><span style="flex:none;width:74px;font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ns-bronze);padding-top:2px;">Texture</span><span style="flex:1;font-family:var(--font-sans);font-size:calc(14px * var(--text-scale));line-height:1.5;color:rgba(245,244,225,0.82);">{{ conc.cur.texture }}</span></div>
             <div style="display:flex;gap:12px;"><span style="flex:none;width:74px;font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ns-bronze);padding-top:2px;">Tool</span><span style="flex:1;font-family:var(--font-sans);font-size:calc(14px * var(--text-scale));line-height:1.5;color:rgba(245,244,225,0.82);">{{ conc.cur.tool }}</span></div>
           </div>
+        </div>
+      </div>
+
+
+      <!-- Live vs. Cured -->
+      <div data-reveal="" style="opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;margin-top:30px;background:var(--ns-midnight);padding:24px 18px;">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:14px;">
+          <h3 id="sec-livecured" style="margin:0;font-family:var(--font-display);font-weight:400;font-size:calc(24px * var(--text-scale));line-height:1;color:var(--ns-arctic);">Live vs. Cured</h3>
+          <span style="font-family:var(--font-sans);font-size:calc(11.5px * var(--text-scale));color:var(--text-on-dark-mut);">It starts on harvest day.</span>
+        </div>
+        <p style="margin:0;font-family:var(--font-sans);font-size:calc(14.5px * var(--text-scale));line-height:1.68;color:rgba(245,244,225,0.82);">Cured material is dried and cured the traditional way before it is extracted. Live material is frozen within hours of the cut and never dried at all. Live is the premium path: more of the plant&rsquo;s terpenes make it into the jar, and you can taste it. Cured is the classic, familiar path.</p>
+
+        <div class="nsm-lc-fork" style="margin-top:24px;border-top:1px solid var(--border-on-dark);padding-top:24px;">
+          <div style="display:flex;flex-direction:column;align-items:center;text-align:center;">
+            <span data-step="" style="--d:0ms;display:grid;place-items:center;width:56px;height:56px;border-radius:50%;border:1.5px solid var(--ns-bronze);background:rgba(183,149,80,0.12);"><img src="../assets/brand/leaf-glyph-bronze.png" alt="" style="width:30px;height:30px;object-fit:contain;"></span>
+            <span data-step="" style="--d:90ms;margin-top:10px;font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.14em;text-transform:uppercase;letter-spacing:0.18em;color:var(--ns-bronze);">Harvest day</span>
+            <span data-step="" style="--d:150ms;margin-top:5px;font-family:var(--font-sans);font-size:calc(13.5px * var(--text-scale));color:var(--text-on-dark-mut);">The plant is cut. Here its path splits.</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <sc-for list="{{ lc.branches }}" as="b" hint-placeholder-count="2">
+              <div style="display:flex;flex-direction:column;align-items:center;">
+                <span class="nsm-lc-vline" aria-hidden="true" style="--d:240ms;display:block;width:2px;height:24px;margin-top:12px;background:rgba(183,149,80,0.7);"></span>
+                <div data-step="" style="--d:300ms;display:flex;flex-direction:column;align-items:center;gap:3px;border:1px solid var(--ns-bronze);border-radius:999px;padding:8px 22px 7px;">
+                  <span style="font-family:var(--font-display);font-weight:400;font-size:calc(20px * var(--text-scale));line-height:1;color:var(--ns-arctic);">{{ b.verb }}</span>
+                  <span style="font-family:var(--font-sans);font-size:calc(9px * var(--text-scale));font-weight:600;letter-spacing:0.14em;text-transform:uppercase;letter-spacing:0.2em;color:var(--ns-bronze);">{{ b.label }}</span>
+                </div>
+                <ol style="list-style:none;margin:18px 0 0;padding:0;width:100%;display:flex;flex-direction:column;">
+                  <sc-for list="{{ b.steps }}" as="s" hint-placeholder-count="3">
+                    <li data-step="" style="--d:{{ s.delay }};display:grid;grid-template-columns:24px minmax(0,1fr);gap:12px;position:relative;padding-bottom:16px;">
+                      <span aria-hidden="true" style="position:relative;display:block;">
+                        <span style="position:absolute;left:5px;top:4px;width:14px;height:14px;border-radius:50%;border:2px solid var(--ns-bronze);background:var(--ns-midnight);box-sizing:border-box;"></span>
+                        <span style="position:absolute;left:11px;top:20px;bottom:-14px;width:2px;background:rgba(183,149,80,0.35);opacity:{{ s.lineOp }};"></span>
+                      </span>
+                      <span style="display:flex;flex-direction:column;gap:3px;">
+                        <span style="display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;">
+                          <span style="font-family:var(--font-display);font-weight:400;font-size:calc(18px * var(--text-scale));line-height:1.05;color:var(--ns-arctic);">{{ s.title }}</span>
+                          <span style="font-family:var(--font-sans);font-size:calc(9.5px * var(--text-scale));font-weight:600;letter-spacing:0.14em;text-transform:uppercase;letter-spacing:0.1em;color:var(--ns-bronze);">{{ s.note }}</span>
+                        </span>
+                        <span style="font-family:var(--font-sans);font-size:calc(14px * var(--text-scale));line-height:1.55;color:rgba(245,244,225,0.78);">{{ s.text }}</span>
+                      </span>
+                    </li>
+                  </sc-for>
+                </ol>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="margin-top:10px;border-top:1px solid var(--border-on-dark);padding-top:22px;">
+          <span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.14em;text-transform:uppercase;letter-spacing:0.16em;color:var(--ns-bronze);">Side by side</span>
+          <p style="margin:8px 0 0;font-family:var(--font-sans);font-size:calc(14px * var(--text-scale));line-height:1.65;color:rgba(245,244,225,0.82);">Freezing holds on to more of the plant&rsquo;s terpenes, so live products taste fuller and truer to the strain, and pull smoother. Curing gives a deeper, earthier, more mellow profile, and is often the more budget-friendly option.</p>
+          <div role="group" aria-label="Show live or cured" style="position:relative;display:grid;grid-template-columns:1fr 1fr;margin-top:16px;border:1px solid var(--border-on-dark);border-radius:999px;padding:4px;background:rgba(245,244,225,0.04);">
+            <span class="nsm-lc-thumb" aria-hidden="true" style="position:absolute;top:4px;bottom:4px;left:4px;width:calc(50% - 4px);border-radius:999px;background:var(--ns-bronze);transform:translateX({{ lc.thumbX }});"></span>
+            <button onClick="{{ lc.setLive }}" aria-pressed="{{ lc.liveOn }}" style="position:relative;z-index:1;background:none;border:none;cursor:pointer;min-height:44px;font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.14em;text-transform:uppercase;letter-spacing:0.18em;color:{{ lc.liveColor }};transition:color .3s ease;">Live</button>
+            <button onClick="{{ lc.setCured }}" aria-pressed="{{ lc.curedOn }}" style="position:relative;z-index:1;background:none;border:none;cursor:pointer;min-height:44px;font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.14em;text-transform:uppercase;letter-spacing:0.18em;color:{{ lc.curedColor }};transition:color .3s ease;">Cured</button>
+          </div>
+          <div style="display:grid;margin-top:20px;">
+            <sc-for list="{{ lc.cards }}" as="c" hint-placeholder-count="1">
+              <div class="nsm-lc-card" aria-hidden="{{ c.ariaHidden }}" style="grid-area:1 / 1;opacity:{{ c.op }};visibility:{{ c.vis }};display:flex;flex-direction:column;gap:14px;">
+                <div><span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--ns-bronze);">{{ c.eyebrow }}</span><span style="display:block;margin-top:6px;font-family:var(--font-display);font-weight:400;font-size:calc(28px * var(--text-scale));line-height:1;color:var(--ns-arctic);">{{ c.title }}</span></div>
+                <div>
+                  <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:6px;"><span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-on-dark-mut);">Terpenes</span><span style="font-family:var(--font-sans);font-size:calc(12px * var(--text-scale));color:var(--text-on-dark-mut);">Aromatics kept in the jar</span></div>
+                  <span style="display:block;height:8px;background:rgba(245,244,225,0.1);border-radius:999px;overflow:hidden;position:relative;"><span class="nsm-lc-bar" style="position:absolute;top:0;bottom:0;left:0;width:{{ c.terpW }};background:linear-gradient(90deg,var(--ns-bronze),rgba(183,149,80,0.4));border-radius:999px;"></span></span>
+                </div>
+                <div>
+                  <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:6px;"><span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-on-dark-mut);">Brightness</span><span style="font-family:var(--font-sans);font-size:calc(12px * var(--text-scale));color:var(--text-on-dark-mut);">Fruit, zest, top notes</span></div>
+                  <span style="display:block;height:8px;background:rgba(245,244,225,0.1);border-radius:999px;overflow:hidden;position:relative;"><span class="nsm-lc-bar" style="position:absolute;top:0;bottom:0;left:0;width:{{ c.brightW }};background:linear-gradient(90deg,var(--ns-bronze),rgba(183,149,80,0.4));border-radius:999px;"></span></span>
+                </div>
+                <div>
+                  <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:6px;"><span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-on-dark-mut);">Depth</span><span style="font-family:var(--font-sans);font-size:calc(12px * var(--text-scale));color:var(--text-on-dark-mut);">Earth, spice, warmth</span></div>
+                  <span style="display:block;height:8px;background:rgba(245,244,225,0.1);border-radius:999px;overflow:hidden;position:relative;"><span class="nsm-lc-bar" style="position:absolute;top:0;bottom:0;left:0;width:{{ c.depthW }};background:linear-gradient(90deg,var(--ns-bronze),rgba(183,149,80,0.4));border-radius:999px;"></span></span>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px;">
+                  <sc-for list="{{ c.rows }}" as="r" hint-placeholder-count="4">
+                    <div style="display:flex;gap:12px;"><span style="flex:none;width:86px;font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ns-bronze);padding-top:2px;">{{ r.label }}</span><span style="flex:1;font-family:var(--font-sans);font-size:calc(14px * var(--text-scale));line-height:1.5;color:rgba(245,244,225,0.82);">{{ r.text }}</span></div>
+                  </sc-for>
+                  <div style="display:flex;gap:12px;align-items:flex-start;"><span style="flex:none;width:86px;font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ns-bronze);padding-top:13px;">Textures</span>
+                    <span style="flex:1;display:flex;flex-wrap:wrap;gap:7px;">
+                      <sc-for list="{{ c.textures }}" as="x" hint-placeholder-count="3">
+                        <button onClick="{{ x.onClick }}" aria-label="{{ x.aria }}" style="display:inline-flex;align-items:center;gap:6px;min-height:44px;background:none;border:1px solid var(--border-on-dark);border-radius:999px;padding:0 14px;cursor:pointer;font-family:var(--font-sans);font-size:calc(13px * var(--text-scale));font-weight:600;color:var(--ns-arctic);" style-active="background:rgba(183,149,80,0.16);border-color:var(--ns-bronze);">{{ x.name }} <span aria-hidden="true" style="color:var(--ns-bronze);">&#8593;</span></button>
+                      </sc-for>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="margin-top:24px;border-top:1px solid var(--border-on-dark);padding-top:22px;">
+          <span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.14em;text-transform:uppercase;letter-spacing:0.16em;color:var(--ns-bronze);">Four combinations</span>
+          <p style="margin:8px 0 0;font-family:var(--font-sans);font-size:calc(14px * var(--text-scale));line-height:1.65;color:rgba(245,244,225,0.82);">Resin is extracted with a solvent. Rosin is solventless, pressed with heat and pressure. Either can start live or cured. Tap a card to turn it over.</p>
+          <div style="margin-top:16px;display:grid;grid-template-columns:minmax(0,1fr);gap:10px;">
+            <sc-for list="{{ lc.combos }}" as="t" hint-placeholder-count="4">
+              <button onClick="{{ t.onClick }}" aria-pressed="{{ t.flipped }}" aria-label="{{ t.aria }}" style="display:block;width:100%;background:none;border:none;padding:0;cursor:pointer;text-align:left;perspective:1000px;">
+                <span class="nsm-lc-flip" data-flipped="{{ t.flag }}" style="display:grid;transform:{{ t.rot }};">
+                  <span class="nsm-lc-face nsm-lc-front" style="grid-area:1 / 1;display:flex;flex-direction:column;justify-content:space-between;gap:12px;border:1px solid var(--border-on-dark);background:rgba(245,244,225,0.03);padding:18px;min-height:128px;box-sizing:border-box;">
+                    <span style="font-family:var(--font-sans);font-size:calc(9.5px * var(--text-scale));font-weight:600;letter-spacing:0.14em;text-transform:uppercase;letter-spacing:0.14em;color:var(--ns-bronze);">{{ t.tag }}</span>
+                    <span style="font-family:var(--font-display);font-weight:400;font-size:calc(26px * var(--text-scale));line-height:1;color:var(--ns-arctic);">{{ t.name }}</span>
+                    <span style="font-family:var(--font-sans);font-size:calc(12px * var(--text-scale));color:var(--text-on-dark-mut);">How it is made <span aria-hidden="true" style="color:var(--ns-bronze);">&#8635;</span></span>
+                  </span>
+                  <span class="nsm-lc-face nsm-lc-back" aria-hidden="true" style="grid-area:1 / 1;transform:rotateY(180deg);display:flex;flex-direction:column;gap:8px;background:var(--ns-arctic);border:1px solid var(--ns-bronze);padding:18px;min-height:128px;box-sizing:border-box;">
+                    <span style="font-family:var(--font-sans);font-size:calc(9.5px * var(--text-scale));font-weight:600;letter-spacing:0.14em;text-transform:uppercase;letter-spacing:0.14em;color:#7A5F28;">{{ t.name }}</span>
+                    <span style="font-family:var(--font-sans);font-size:calc(15px * var(--text-scale));font-weight:600;line-height:1.4;color:var(--ns-midnight);">{{ t.line }}</span>
+                    <span style="font-family:var(--font-sans);font-size:calc(13.5px * var(--text-scale));line-height:1.58;color:rgba(32,37,58,0.8);">{{ t.how }}</span>
+                  </span>
+                </span>
+              </button>
+            </sc-for>
+          </div>
+          <p style="margin:16px 0 0;font-family:var(--font-sans);font-size:calc(12.5px * var(--text-scale));line-height:1.6;color:rgba(245,244,225,0.6);">These are general tendencies, not rules. The strain, the grower, and how it is handled shape flavor as much as the method does.</p>
         </div>
       </div>
 
@@ -1395,7 +1585,7 @@ class Component extends DCLogic {
     this.state = {
       navOpen:false,
       openCat:null,
-      concIdx:0,
+      concIdx:0, lcMode:'live', lcFlip:{}, pfFilter:'all', pfOpen:null,
       openTopic:null, openGrow:null, openRecipe:null,
       sheetKey:null,
       glossSectionOpen:false, onsetActive:0,
@@ -1422,6 +1612,9 @@ class Component extends DCLogic {
 
   componentDidMount(){
     try{ this.reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){}
+    setTimeout(()=>this._lcObserve(), 300);
+    this._pfKey=(e)=>{ if(e.key==='Escape'&&this.state.pfOpen) this.pfToggle(this.state.pfOpen,true); };
+    document.addEventListener('keydown', this._pfKey);
     try{ const sv=parseFloat(localStorage.getItem('nsm-text-scale')); if(sv&&sv>=0.9&&sv<=1.6){ this._applyScale(sv); this.setState({textScale:sv}); } }catch(e){}
     // intro (once per session, not for reduced-motion)
     try{ if(!this.reduced && !sessionStorage.getItem('nsm-intro')){ this.setState({introOpen:true}); this._introT=setTimeout(()=>this.dismissIntro(),2600); } else { this._startHero(); } }catch(e){ this._startHero(); }
@@ -1486,8 +1679,147 @@ class Component extends DCLogic {
     document.querySelectorAll('[data-ent-tick]').forEach((t,i)=>{ t.style.background=(active>=0&&i<=active)?'var(--ns-bronze)':'rgba(245,244,225,0.16)'; });
     const cnt=document.querySelector('[data-ent-count]'); if(cnt&&active>=0&&cnt.textContent!==labels[active]){ cnt.style.opacity='0'; setTimeout(()=>{ cnt.textContent=labels[active]; cnt.style.opacity='1'; },140); }
   }
-  componentDidUpdate(){ this._hydrateImgs(); if(this._io){ document.querySelectorAll('[data-reveal]').forEach(el=>{ if(!el._obs && !el._rev){ el._obs=1; this._io.observe(el); } }); } }
-  componentWillUnmount(){ if(this._onScroll) window.removeEventListener('scroll',this._onScroll); if(this._io) this._io.disconnect(); if(this._eio) this._eio.disconnect(); if(this._revealSafety) clearTimeout(this._revealSafety); if(this._introT) clearTimeout(this._introT); if(this._haptic) document.removeEventListener('click',this._haptic); }
+  componentDidUpdate(){ this._lcObserve(); this._pfFlipPlay(); this._hydrateImgs(); if(this._io){ document.querySelectorAll('[data-reveal]').forEach(el=>{ if(!el._obs && !el._rev){ el._obs=1; this._io.observe(el); } }); } }
+  componentWillUnmount(){ if(this._pfKey) document.removeEventListener('keydown',this._pfKey); if(this._lcIO) this._lcIO.disconnect(); if(this._onScroll) window.removeEventListener('scroll',this._onScroll); if(this._io) this._io.disconnect(); if(this._eio) this._eio.disconnect(); if(this._revealSafety) clearTimeout(this._revealSafety); if(this._introT) clearTimeout(this._introT); if(this._haptic) document.removeEventListener('click',this._haptic); }
+
+
+  // ---- Live vs. Cured (Plant to Product) ----
+  _lcObserve() {
+    const forks = document.querySelectorAll('.nsm-lc-fork:not([data-go])');
+    if (!forks.length) return;
+    if (typeof IntersectionObserver === 'undefined') { forks.forEach(el => el.setAttribute('data-go', '1')); return; }
+    if (!this._lcIO) this._lcIO = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.setAttribute('data-go', '1'); this._lcIO.unobserve(e.target); }
+    }), { threshold: 0.18 });
+    forks.forEach(el => { if (!el._lcObs) { el._lcObs = 1; this._lcIO.observe(el); } });
+  }
+  _lcVals() {
+    const st = this.state;
+    const mode = st.lcMode === 'cured' ? 'cured' : 'live';
+    const flips = st.lcFlip || {};
+    // texture names map to their stop on the consistency scale above
+    const CONC_IDX = { 'Sauce': 0, 'HTFS Raw': 1, 'Sugar': 2, 'Badder': 3, 'Wax': 4, 'Crumble': 5 };
+    const goTex = (n) => { this.setState({ concIdx: CONC_IDX[n] }); setTimeout(() => this._scrollToEl('sec-consistency', 70), 40); };
+    const step = (b, i, n, s) => ({ n: String(i + 1).padStart(2, '0'), title: s[0], note: s[1], text: s[2],
+      delay: (b + i * 170) + 'ms', lineOp: i === n - 1 ? '0' : '1' });
+    const LIVE = [
+      ['Harvest', 'Day one', 'Cut by hand at peak ripeness.'],
+      ['Freeze', 'Within hours', 'Frozen whole and kept frozen. It is never dried.'],
+      ['Extract', 'Straight from frozen', 'Made into live resin with a solvent, or live rosin with ice water, heat, and pressure.']
+    ];
+    const CURED = [
+      ['Harvest', 'Day one', 'Cut by hand at peak ripeness.'],
+      ['Hang dry', 'About 7 to 14 days', 'Hung in a cool, dark room with slow, steady air.'],
+      ['Cure', 'Weeks, sealed', 'Rested in sealed containers so moisture evens out and the flavor rounds.'],
+      ['Extract', 'From dried material', 'Made into cured resin with a solvent, or cured rosin with heat and pressure.']
+    ];
+    const branches = [
+      { verb: 'Freeze', label: 'Live', steps: LIVE.map((s, i) => step(560, i, LIVE.length, s)) },
+      { verb: 'Dry & Cure', label: 'Cured', steps: CURED.map((s, i) => step(560, i, CURED.length, s)) }
+    ];
+    const M = {
+      live: { eyebrow: 'Live \u00b7 Premium', title: 'Frozen at harvest', bright: 88, depth: 36, terp: 94,
+        rows: [['Terpenes', 'Higher. Frozen fresh, it keeps the lighter aromatics that drying and curing let fade.'],
+               ['Flavor', 'Fuller and truer to the strain, with bright top notes that land first.'],
+               ['Smoothness', 'Smoother on the draw, with a clean, flavorful finish.'],
+               ['Aroma', 'Bright and loud, closer to the smell of the living plant.'],
+               ['Color and look', 'Often lighter in color, glossy, and on the wetter side.'],
+               ['Price tier', 'Premium. Freezing, cold storage, and a tight harvest-day window take more care.']],
+        textures: ['Sauce', 'HTFS Raw', 'Badder'] },
+      cured: { eyebrow: 'Cured \u00b7 Classic', title: 'Dried and cured first', bright: 40, depth: 86, terp: 52,
+        rows: [['Terpenes', 'Lower. Some of the lighter aromatics fade during drying and curing.'],
+               ['Flavor', 'Mellow and warm: spice, wood, and toasted sweetness.'],
+               ['Smoothness', 'Smooth when well made, with a warmer, heavier finish.'],
+               ['Aroma', 'Deeper and earthier, with the rounded notes of well-cured flower.'],
+               ['Color and look', 'Often amber to deep gold, and drier to the touch.'],
+               ['Price tier', 'Often the more budget-friendly option.']],
+        textures: ['Sugar', 'Wax', 'Crumble'] }
+    };
+    const cards = ['live', 'cured'].map(k => {
+      const c = M[k], on = k === mode;
+      return { key: k, eyebrow: c.eyebrow, title: c.title, on,
+        op: on ? '1' : '0', vis: on ? 'visible' : 'hidden', ariaHidden: on ? 'false' : 'true',
+        brightW: on ? c.bright + '%' : '0%', depthW: on ? c.depth + '%' : '0%', terpW: on ? c.terp + '%' : '0%',
+        rows: c.rows.map(r => ({ label: r[0], text: r[1] })),
+        textures: c.textures.map(n => ({ name: n, aria: n + ', show on the consistency scale', onClick: () => goTex(n) })) };
+    });
+    const COMBOS = [
+      { k: 'lres', name: 'Live Resin', tag: 'Fresh frozen \u00b7 Solvent', line: 'Fresh-frozen plant, extracted with a solvent.',
+        how: 'Frozen at harvest, washed with a solvent such as butane or propane, then purged so the solvent is removed before it is finished.' },
+      { k: 'lros', name: 'Live Rosin', tag: 'Fresh frozen \u00b7 Solventless', line: 'Fresh-frozen plant, and no solvent at all.',
+        how: 'Frozen at harvest, washed in ice water into hash, freeze-dried, then pressed with heat and pressure.' },
+      { k: 'cres', name: 'Cured Resin', tag: 'Dried and cured \u00b7 Solvent', line: 'Dried and cured plant, extracted with a solvent.',
+        how: 'Hung to dry and cured, then solvent-extracted and purged. The flavor leans deep and familiar.' },
+      { k: 'cros', name: 'Cured Rosin', tag: 'Dried and cured \u00b7 Solventless', line: 'Dried and cured plant, pressed without solvent.',
+        how: 'Dried and cured flower or hash is pressed between heated plates until the oil flows out.' }
+    ];
+    const combos = COMBOS.map(c => {
+      const f = !!flips[c.k];
+      return Object.assign({}, c, { flipped: f, flag: f ? '1' : '0', rot: f ? 'rotateY(180deg)' : 'none',
+        aria: c.name + (f ? ', showing how it is made. Tap to turn back.' : '. Tap to see how it is made.'),
+        onClick: () => this.setState(p => ({ lcFlip: Object.assign({}, p.lcFlip, { [c.k]: !(p.lcFlip || {})[c.k] }) })) });
+    });
+    return { branches, cards, combos,
+      liveOn: mode === 'live', curedOn: mode === 'cured', thumbX: mode === 'live' ? '0%' : '100%',
+      liveColor: mode === 'live' ? 'var(--ns-midnight)' : 'rgba(245,244,225,0.72)',
+      curedColor: mode === 'cured' ? 'var(--ns-midnight)' : 'rgba(245,244,225,0.72)',
+      setLive: () => this.setState({ lcMode: 'live' }), setCured: () => this.setState({ lcMode: 'cured' }) };
+  }
+
+
+  // ---- Product family grid (Plant to Product) ----
+  _pfFlipStart() {
+    this._pfFirst = {};
+    document.querySelectorAll('[data-pf-key]').forEach(el => { if (el.offsetParent !== null) this._pfFirst[el.getAttribute('data-pf-key')] = el.getBoundingClientRect(); });
+  }
+  _pfFlipPlay() {
+    const first = this._pfFirst;
+    if (first) {
+      this._pfFirst = null;
+      document.querySelectorAll('[data-pf-key]').forEach(el => {
+        if (el.offsetParent === null || !el.animate) return;
+        const a = first[el.getAttribute('data-pf-key')], b = el.getBoundingClientRect();
+        if (!a) { el.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 300, easing: 'ease' }); return; }
+        const dx = a.left - b.left, dy = a.top - b.top;
+        if (Math.abs(dx) < 1 && Math.abs(dy) < 1) return;
+        if (this.reduced) { el.animate([{ opacity: 0.3 }, { opacity: 1 }], { duration: 260, easing: 'ease' }); return; }
+        el.animate([{ transform: 'translate(' + dx + 'px,' + dy + 'px)' }, { transform: 'translate(0,0)' }], { duration: 440, easing: 'cubic-bezier(0.2,0.7,0.25,1)' });
+      });
+    }
+    if (this._pfRefocus) {
+      const k = this._pfRefocus; this._pfRefocus = null;
+      const hit = document.querySelector('[data-pf-key="' + k + '"] .nsm-pf-hit');
+      if (hit) { try { hit.focus({ preventScroll: true }); } catch (e) { hit.focus(); } }
+    }
+  }
+  pfFilter(k) { this._pfFlipStart(); this.setState({ pfFilter: k, pfOpen: null }); }
+  pfToggle(raw, forceClose) {
+    this._pfFlipStart();
+    const next = (this.state.pfOpen === raw || forceClose) ? null : raw;
+    if (!next) this._pfRefocus = raw;
+    this.setState({ pfOpen: next });
+  }
+  _pfVals(items) {
+    const st = this.state;
+    // the route of use is the only grouping the product data carries
+    const CAT = { 'Carts': 'inhaled', 'Disposables': 'inhaled', 'Concentrates': 'inhaled', 'Troches': 'tongue', 'Tinctures': 'tongue', 'Topicals': 'body', 'Suppositories': 'body' };
+    const LABELS = [['all', 'All'], ['inhaled', 'Inhaled'], ['tongue', 'Under the tongue'], ['body', 'On the body']];
+    const LC = { 'Carts': 1, 'Disposables': 1, 'Concentrates': 1 };
+    const f = st.pfFilter || 'all', open = st.pfOpen || null;
+    const chips = LABELS.filter(([k]) => k === 'all' || items.some(p => CAT[p.raw] === k)).map(([k, l]) => {
+      const on = k === f, n = k === 'all' ? items.length : items.filter(p => CAT[p.raw] === k).length;
+      return { label: l, count: String(n), on, bg: on ? 'var(--ns-midnight)' : 'transparent', color: on ? 'var(--ns-arctic)' : 'var(--text-strong)',
+        border: on ? 'var(--ns-midnight)' : 'rgba(32,37,58,0.24)', onClick: () => this.pfFilter(k) };
+    });
+    const cards = items.map(p => {
+      const shown = f === 'all' || CAT[p.raw] === f, isOpen = shown && open === p.raw;
+      return Object.assign({}, p, { key: p.raw, disp: shown ? 'flex' : 'none', isOpen, openFlag: isOpen ? '1' : '0',
+        panelId: 'pf-panel-' + p.raw.toLowerCase(), pfCaret: isOpen ? '\u00d7' : '+', hasLc: !!LC[p.raw],
+        onToggle: () => this.pfToggle(p.raw), onClose: () => this.pfToggle(p.raw, true), closeAria: 'Close ' + p.name,
+        onLc: () => this._scrollToEl('sec-livecured', 70) });
+    });
+    return { chips, cards };
+  }
 
   _applyScale(v){ try{ document.documentElement.style.setProperty('--text-scale', String(v)); }catch(e){} }
   toggleA(){ this.setState(p=>({aOpen:!p.aOpen})); }
@@ -1528,6 +1860,8 @@ class Component extends DCLogic {
     const goalMap={sleep:['Sleepy'],pain:['Relaxed'],anxiety:['Relaxed'],appetite:['Hungry'],creative:['Creative'],goodvibes:['Euphoric']};
     const timeCat={morning:'Sativa',afternoon:'Hybrid',evening:'Indica',any:null};
     const flavorFamily={citrus:['Limonene','Valencene','Geraniol'],earthy:['Myrcene','Humulene','Cedrene','Camphene'],sweet:['Linalool','Bisabolol','Nerolidol','Ocimene'],spicy:['Caryophyllene','Sabinene','Pinene','Terpinolene','Borneol','Phellandrene']};
+    // Gas / Fuel: written aroma notes say gas, fuel, diesel, chem, or skunk (same list as desktop)
+    const GAS=new Set(["Blackwater","Boogie Man","Chemdog #1 × Gorilla Glue","Commerce City Kush","Crescendo #11","Critical","Dogtown","End Game","Flo Zilla","Lilac Diesel","MAC Daddy","Mookie B R1","OG Kush","Permanent Marker","Sloppy Topper","Sour Tangie","Strawberry Cough","Tahoe OG Kush","Total Eclipse"]);
     const terpEff={Myrcene:['sleep','pain','anxiety'],Limonene:['goodvibes','creative'],Caryophyllene:['pain','anxiety'],Pinene:['creative'],Terpinolene:['creative','goodvibes'],Ocimene:['goodvibes'],Linalool:['sleep','anxiety'],Humulene:['pain']};
     const wantEff=effMap[ans.intent]||[], wantGoal=goalMap[ans.intent]||[], wantCat=timeCat[ans.timeofday], wantFlavor=flavorFamily[ans.flavor]||[];
     let bestScore=-1, ties=[];
@@ -1537,6 +1871,7 @@ class Component extends DCLogic {
       const dom=(s.terpProfile&&s.terpProfile[0])?s.terpProfile[0].name:'';
       if(terpEff[dom]&&terpEff[dom].includes(ans.intent)) sc+=2;
       if(wantFlavor.includes(dom)) sc+=3;
+      if(ans.flavor==='gas'&&GAS.has(s.name)) sc+=3+(dom==='Caryophyllene'?1:0);
       if(ans.experience==='new'&&s.cat==='Hybrid') sc+=2;
       if((ans.experience==='regular'||ans.experience==='daily')&&s.cat!=='Hybrid') sc+=1;
       sc+=(s.photo?0.3:0);
@@ -1571,7 +1906,7 @@ class Component extends DCLogic {
       terpenes:[['The terpene explorer','chap-terpenes'],['Found in these strains','sec-terp-strains']],
       flower:[['The strain library','chap-flower']],
       grow:[['It starts with a cutting','sec-grow-clone'],['Harvest, by hand','sec-grow-harvest'],['Tested, then finished','sec-grow-finished']],
-      process:[['How extraction is done','chap-process'],['Every format, one craft','sec-formats'],['The consistency scale','sec-consistency']],
+      process:[['How extraction is done','chap-process'],['Every format, one craft','sec-formats'],['The consistency scale','sec-consistency'],['Live vs. Cured','sec-livecured']],
       practice:[['Onset explorer','sec-onset'],['Good to know','sec-goodtoknow']],
       journal:[['Choose what you track','sec-journal-fields']],
       recipes:[['Before you cook','sec-decarb'],['Edible milligram calculator','sec-calculator']]
@@ -1849,7 +2184,42 @@ class Component extends DCLogic {
 
     // ---- Product formats (accordion) ----
     const lImg={Carts:'../assets/lab/carts.jpg',Troches:'../assets/lab/troches.jpg',Topicals:'../assets/lab/topicals.jpg',Concentrates:'../assets/lab/concentrates-sm.jpg',Tinctures:'../assets/lab/tinctures.jpg',Disposables:'../assets/lab/disposables.jpg'};
-    const productFormats=(D.lab||[]).map((l,i)=>{ const id='fmt|'+l.name; const e=exp(id); const lead=(l.description||'').split('. ')[0]+'.'; const img=lImg[l.name]||''; return { name: l.name==='Carts'?'Cartridges':l.name, lead, img, hasPhoto:!!img, noPhoto:!img, initial:(l.name||'?').charAt(0), desc:l.description||'', ...e }; });
+    const pfItems=(()=>{
+      const kick = { 'Carts': 'Inhaled · fast onset', 'Disposables': 'All-in-one · ready to use', 'Troches': 'Sublingual · measured dose', 'Tinctures': 'Drops · flexible dosing', 'Topicals': 'On the skin · localized', 'Concentrates': 'Potent · dab or add', 'Suppositories': 'Targeted · high absorption' };
+      const formMap = {
+          'Carts': ['Full-spectrum sauce', 'High-terpene full-spectrum raw', 'High-terpene distillate'],
+          'Disposables': ['Full-spectrum sauce (Stones)', '2:1 CBD:THC disposable'],
+          'Troches': ['10mg per quarter tablet', 'Stevia-sweetened, sugar-free'],
+          'Tinctures': ['500mg · 30mL', '1000mg · 30mL', '2500mg · 30mL', 'Indica or Sativa'],
+          'Topicals': ['1:1 Anti-Inflammatory · 50mL', '3:1 Anti-Inflammatory · 50mL'],
+          'Concentrates': ['Badder', 'Crumble', 'Wax', 'Sugar', 'RSO 2.0 syringe · 1g', 'Full-spectrum syringe · 1g'],
+          'Suppositories': ['2:1 CBD:THC · 5 ct']
+        };
+      const typeDetailMap = {
+          'Carts': [
+            { name: 'Full-spectrum sauce', desc: 'The whole plant in a jar: cannabinoids and the strain\u2019s complete terpene profile, preserved together for the fullest flavor and the most rounded, entourage-driven effect.' },
+            { name: 'High-terpene full-spectrum raw (HTFS raw)', desc: 'A raw, minimally processed extract that keeps the highest level of native terpenes. The most aromatic and true-to-strain option, closest to the living flower.' },
+            { name: 'High-terpene distillate', desc: 'Purified distillate with terpenes reintroduced. Cleaner and more potent in THC, with a consistent, dependable flavor from batch to batch.' }
+          ],
+          'Disposables': [
+            { name: 'Full-spectrum sauce (Stones)', desc: 'The same whole-plant sauce as our cartridges, in a ready-to-go disposable. Nothing to charge or screw in, just draw and go.' },
+            { name: '2:1 CBD:THC disposable', desc: 'A balanced, two-parts-CBD-to-one-part-THC ratio for a gentler, clearer-headed experience, useful for daytime relief with less intensity.' }
+          ]
+        };
+      const howToMap = {
+          'Carts': 'Screw onto any standard 510 battery and take one small draw to start. Effects arrive within minutes, so wait a few before the next pull and let it settle where it lands.',
+          'Disposables': 'Nothing to set up: just draw. It is draw-activated and ready out of the box. Start with one small pull, wait a few minutes, and go from there.',
+          'Troches': 'Let a quarter or half tablet dissolve under the tongue rather than chewing it. Held there, it absorbs faster than a swallowed edible. Wait 30 to 45 minutes before taking more.',
+          'Tinctures': 'Place the drops under your tongue and hold for 30 to 60 seconds before swallowing, or stir into food or a drink. Under the tongue is faster. Start low, wait, then adjust.',
+          'Topicals': 'Rub a small amount into the skin over the area you want to reach, and reapply as needed. Topicals work locally and are not intoxicating.',
+          'Concentrates': 'Dab a piece the size of a grain of rice on a properly heated rig, or add to a bowl of flower. Very potent, so start with the smallest amount. RSO and full-spectrum syringes can also be taken orally, a grain of rice at a time.',
+          'Suppositories': 'Insert as directed for high, localized absorption with little to no head effect. A good option when inhaling or eating is not.'
+        };
+      return (D.lab||[]).map(l=>{ const img=lImg[l.name]||''; const forms=formMap[l.name]||[]; const typeDetail=typeDetailMap[l.name]||[];
+        return { raw:l.name, name:l.name==='Carts'?'Cartridges':l.name, kicker:kick[l.name]||'', description:l.description||'', img, hasPhoto:!!img, noPhoto:!img,
+          forms, hasForms:forms.length>0, typeDetail, hasTypeDetail:typeDetail.length>0, howTo:howToMap[l.name]||'' }; });
+    })();
+    const pf=this._pfVals(pfItems);
 
     // ---- Edibles ("+" grid) ----
     const ediblesExp=exp('edibles');
@@ -1964,7 +2334,7 @@ class Component extends DCLogic {
       {key:'experience',q:'New to cannabis, or a regular?',opts:[['new','New to it'],['occasional','Occasional'],['regular','Regular'],['daily','Daily']]},
       {key:'timeofday',q:'When are you reaching for this?',opts:[['morning','Morning'],['afternoon','Afternoon'],['evening','Evening'],['any','No preference']]},
       {key:'intent',q:'What do you want out of it?',opts:[['sleep','Sleep better'],['pain','Ease pain'],['anxiety','Quiet anxiety'],['appetite','Boost appetite'],['creative','Get creative'],['goodvibes','Good vibes']]},
-      {key:'flavor',q:'What sounds good to you?',opts:[['citrus','Citrusy & bright'],['earthy','Earthy & woody'],['sweet','Sweet & floral'],['spicy','Spicy & sharp'],['any','No preference']]}
+      {key:'flavor',q:'What sounds good to you?',opts:[['citrus','Citrusy & bright'],['earthy','Earthy & woody'],['sweet','Sweet & floral'],['spicy','Spicy & sharp'],['gas','Gas / Fuel'],['any','No preference']]}
     ];
     const qStep=st.quizStep, qAns=st.quizAns||{};
     const quizDone=qStep>=QUIZ.length;
@@ -1997,8 +2367,8 @@ class Component extends DCLogic {
       cannabinoids, types, terpTabs, activeTerp,
       strainCount:D.strains.length, strainFilters, effectFilters, shownCount:strains.length, strains, strainsEmpty:strains.length===0, productsUrl,
       practiceTopics, onsetRows, onset, practiceCards, growSteps, conc,
-      extraction, extractionExp, productFormats, edibles, ediblesExp, journalGroups,
-      recipeGroups, sheet, calc,
+      extraction, extractionExp, pf, edibles, ediblesExp, journalGroups,
+      lc:this._lcVals(), recipeGroups, sheet, calc,
       glossSectionOpen:st.glossSectionOpen, glossSectionClosed:!st.glossSectionOpen, glossSectionCaret: st.glossSectionOpen?'\u2212':'+', toggleGlossSection:()=>this.toggleGlossSection(),
       glossLetters, glossary, glossEmpty, glossCount:(D.glossary||[]).length,
       glQuery:st.glQuery, onGl:(e)=>this.setState({glQuery:e.target.value}),
