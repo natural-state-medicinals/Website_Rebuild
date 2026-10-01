@@ -253,11 +253,33 @@
   .nsm-lc-card { transition:opacity .35s ease, visibility .35s; }
   .nsm-lc-bar { transition:width .7s cubic-bezier(0.2,0.7,0.25,1) .12s; }
   .nsm-lc-thumb { transition:transform .4s cubic-bezier(0.2,0.7,0.25,1); }
+  .nsm-lc-dayfill { transition:width .2s linear; }
+  .nsm-prail-item:focus-visible { outline:2px solid var(--ns-bronze); outline-offset:4px; }
+  @media (max-width:1399px){ .nsm-prail-lab { display:none; } }
+  @media (max-width:1180px){ .nsm-prail { display:none !important; } }
+  @media (max-width:1024px){ .nsm-pmap { grid-template-columns:repeat(3,minmax(0,1fr)) !important; } .nsm-route-map { grid-template-columns:repeat(2,minmax(0,1fr)) !important; } }
+  @media (max-width:860px){ .nsm-pick { grid-template-columns:1fr !important; } .nsm-pick-res { position:static !important; } .nsm-grp-hd { grid-template-columns:1fr !important; } }
+  @media (max-width:560px){ .nsm-pmap, .nsm-route-map { grid-template-columns:1fr 1fr !important; } .nsm-step-hd { grid-template-columns:1fr !important; } }
+  .nsm-lc-fill { transition:height .5s cubic-bezier(0.2,0.7,0.25,1); }
+  .nsm-lc-note { transition:opacity .5s ease, transform .5s cubic-bezier(0.2,0.7,0.25,1), background-color .3s ease, border-color .3s ease, box-shadow .2s ease; }
+  .nsm-lc-bob { animation:nsmLcBob 3.8s ease-in-out infinite; animation-delay:var(--fd,0s); }
+  @keyframes nsmLcBob { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-3px); } }
+  .nsm-lc-range { -webkit-appearance:none; appearance:none; position:absolute; left:0; right:0; top:0; width:100%; height:44px; margin:0; background:transparent; cursor:grab; }
+  .nsm-lc-range:active { cursor:grabbing; }
+  .nsm-lc-range::-webkit-slider-runnable-track { height:44px; background:transparent; }
+  .nsm-lc-range::-moz-range-track { height:44px; background:transparent; }
+  .nsm-lc-range::-webkit-slider-thumb { -webkit-appearance:none; width:26px; height:26px; margin-top:9px; border-radius:50%; background:var(--ns-arctic); border:3px solid var(--ns-bronze); box-shadow:0 2px 10px rgba(14,17,28,0.45); }
+  .nsm-lc-range::-moz-range-thumb { width:20px; height:20px; border-radius:50%; background:var(--ns-arctic); border:3px solid var(--ns-bronze); box-shadow:0 2px 10px rgba(14,17,28,0.45); }
+  .nsm-lc-range:focus { outline:none; }
+  .nsm-lc-range:focus-visible::-webkit-slider-thumb { box-shadow:0 0 0 4px rgba(183,149,80,0.4); }
+  .nsm-lc-range:focus-visible::-moz-range-thumb { box-shadow:0 0 0 4px rgba(183,149,80,0.4); }
   .nsm-lc-flip { transform-style:preserve-3d; transition:transform .6s cubic-bezier(0.2,0.7,0.25,1); }
   .nsm-lc-face { -webkit-backface-visibility:hidden; backface-visibility:hidden; }
   @media (prefers-reduced-motion: reduce){
     .nsm-lc-fork [data-step], .nsm-lc-fork .nsm-lc-vline, .nsm-lc-fork .nsm-lc-hline { transform:none !important; transition:opacity .5s ease var(--d,0ms); }
-    .nsm-lc-bar, .nsm-lc-thumb { transition:none; }
+    .nsm-lc-bar, .nsm-lc-thumb, .nsm-lc-dayfill, .nsm-lc-fill { transition:none; }
+    .nsm-lc-bob { animation:none; }
+    .nsm-lc-note { transition:opacity .3s ease; }
     .nsm-lc-flip { transform:none !important; transition:none; }
     .nsm-lc-face { -webkit-backface-visibility:visible; backface-visibility:visible; transform:none !important; transition:opacity .35s ease; }
     .nsm-lc-flip[data-flipped="1"] .nsm-lc-front, .nsm-lc-flip[data-flipped="0"] .nsm-lc-back { opacity:0; }
@@ -337,8 +359,9 @@
     .nsm-terp-grid { grid-template-columns: 1fr !important; }
     .nsm-dose-hd, .nsm-onset-foot { grid-template-columns: 1fr !important; }
     .nsm-conc-detail { grid-template-columns: 1fr !important; }
-    .nsm-lc-cmp, .nsm-lc-combos, .nsm-lc-branches { grid-template-columns: 1fr !important; }
+    .nsm-lc-cmp, .nsm-lc-combos, .nsm-lc-branches, .nsm-lc-lanes, .nsm-lc-clockrow { grid-template-columns: 1fr !important; }
     .nsm-lc-hline { display: none !important; }
+    .nsm-lc-lanes { row-gap: 0 !important; }
     .nsm-cmp-radar { grid-template-columns: 1fr !important; justify-items: center; text-align: center; }
     .nsm-ext-head { display: none !important; }
     .nsm-ext-row { grid-template-columns: 1fr 1fr auto !important; row-gap: 8px !important; }
@@ -1604,12 +1627,161 @@
           <div style="margin-top:10px;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(26px * var(--text-scale)), calc(4.4vw * var(--text-scale)), calc(52px * var(--text-scale)));line-height:1;color:var(--ns-arctic);">From flower to finished</div>
         </figcaption>
       </figure>
-      <p data-reveal="" data-rd="80" style="opacity:0;transform:translateY(22px);margin:clamp(36px,5vh,60px) 0 clamp(32px,4vh,48px);max-width:56ch;font-size:clamp(calc(17px * var(--text-scale)), calc(1.7vw * var(--text-scale)), calc(21px * var(--text-scale)));line-height:1.7;color:rgba(245,244,225,0.86);">Before flower becomes a cartridge, a gummy, or a dabbable syringe, it is extracted. How that extraction is done shapes everything that follows.</p>
+      <p data-reveal="" data-rd="80" style="opacity:0;transform:translateY(22px);margin:clamp(36px,5vh,60px) 0 clamp(28px,4vh,40px);max-width:58ch;font-size:clamp(calc(17px * var(--text-scale)), calc(1.7vw * var(--text-scale)), calc(21px * var(--text-scale)));line-height:1.7;color:rgba(245,244,225,0.86);text-wrap:pretty;">Every product on the shelf starts as the same thing: the sticky resin on the flower, where the cannabinoids and terpenes from earlier in the guide actually live. This chapter follows that resin from harvest day to the jar, one step at a time. By the end, you will be able to read a label and pick a format with confidence.</p>
+      <nav aria-label="The five steps" data-reveal="" class="nsm-pmap" style="opacity:0;transform:translateY(22px);display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(8px,1.2vw,14px);">
+        <sc-for list="{{ psteps }}" as="r" hint-placeholder-count="5">
+          <button onClick="{{ r.go }}" style="display:flex;flex-direction:column;align-items:flex-start;gap:8px;min-height:120px;text-align:left;cursor:pointer;padding:18px 16px;border-radius:4px;border:1px solid var(--border-on-dark);background:rgba(245,244,225,0.03);transition:border-color .22s ease, background .22s ease, transform .22s ease;" style-hover="border-color:var(--ns-bronze);background:rgba(183,149,80,0.08);transform:translateY(-2px);">
+            <span style="font-family:var(--font-display);font-weight:400;font-size:calc(28px * var(--text-scale));line-height:1;color:var(--ns-bronze);">{{ r.num }}</span>
+            <span style="font-family:var(--font-sans);font-size:calc(15px * var(--text-scale));font-weight:600;color:var(--ns-arctic);">{{ r.title }}</span>
+            <span style="font-family:var(--font-sans);font-size:calc(12.5px * var(--text-scale));line-height:1.45;color:var(--text-on-dark-mut);">{{ r.sub }}</span>
+          </button>
+        </sc-for>
+      </nav>
+    </div>
+  </section>
 
-      <!-- sticky two-column extraction sequence (same pattern as How It's Grown) -->
+  <!-- step rail -->
+  <nav id="nsm-prail" class="nsm-prail" aria-label="Plant to Product steps" style="position:fixed;left:clamp(12px,1.6vw,28px);top:50%;transform:translateY(-50%);z-index:30;opacity:0;pointer-events:none;color:var(--ns-arctic);transition:opacity .35s ease, color .35s ease;">
+    <div style="position:relative;display:flex;flex-direction:column;gap:20px;">
+      <span aria-hidden="true" style="position:absolute;left:8px;top:9px;bottom:9px;width:2px;background:currentColor;opacity:0.22;"></span>
+      <sc-for list="{{ psteps }}" as="r" hint-placeholder-count="5">
+        <button class="nsm-prail-item" data-i="{{ r.i }}" onClick="{{ r.go }}" aria-label="{{ r.aria }}" style="position:relative;display:flex;align-items:center;gap:10px;min-height:24px;background:none;border:none;padding:0;cursor:pointer;color:inherit;opacity:0.6;transition:opacity .25s ease;">
+          <span class="nsm-prail-dot" aria-hidden="true" style="flex:none;width:18px;height:18px;border-radius:50%;border:2px solid var(--ns-bronze);background:var(--ns-midnight);box-sizing:border-box;transition:background .3s ease, box-shadow .3s ease;"></span>
+          <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.12em;">{{ r.num }}</span>
+          <span class="nsm-prail-lab" style="font-family:var(--font-sans);font-size:calc(12px * var(--text-scale));white-space:nowrap;">{{ r.label }}</span>
+        </button>
+      </sc-for>
+    </div>
+  </nav>
+
+  <!-- step 01 · the plant (midnight) -->
+  <section data-pstep="0" data-tone="dark" style="position:relative;background:var(--ns-midnight);padding:clamp(70px,10vh,120px) clamp(20px,6vw,80px);">
+    <div style="max-width:1180px;margin:0 auto;">
+      <div data-reveal="" class="nsm-step-hd" style="opacity:0;transform:translateY(22px);display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(18px,3vw,44px);align-items:start;margin-bottom:clamp(32px,5vh,56px);">
+        <span aria-hidden="true" style="font-family:var(--font-display);font-weight:400;font-size:clamp(calc(56px * var(--text-scale)), calc(7vw * var(--text-scale)), calc(96px * var(--text-scale)));line-height:0.82;color:var(--ns-bronze);">01</span>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--ns-bronze);">Step one · The plant</span>
+          <h3 id="sec-livecured" style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(30px * var(--text-scale)), calc(4vw * var(--text-scale)), calc(52px * var(--text-scale)));line-height:1.04;letter-spacing:-0.01em;color:var(--ns-arctic);">Start with the plant</h3>
+          <p style="margin:4px 0 0;max-width:62ch;font-family:var(--font-sans);font-size:clamp(calc(15.5px * var(--text-scale)), calc(1.6vw * var(--text-scale)), calc(19px * var(--text-scale)));line-height:1.7;color:rgba(245,244,225,0.84);text-wrap:pretty;">The difference starts on harvest day. Cured material is dried and cured the traditional way before it is extracted. Live material is frozen within hours of the cut and never dried at all. Live is the premium path: more of the plant&rsquo;s terpenes make it into the jar, and you can taste it. Cured is the classic, familiar path.</p>
+        </div>
+      </div>
+      <!-- harvest to jar: one interactive -->
+      <div data-reveal="" style="opacity:0;transform:translateY(22px);border:1px solid var(--border-on-dark);background:rgba(245,244,225,0.03);padding:clamp(26px,3.4vw,44px);margin-bottom:clamp(24px,3.4vh,36px);">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:clamp(20px,2.8vh,28px);">
+          <h3 style="margin:0;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(19px * var(--text-scale)), calc(2.2vw * var(--text-scale)), calc(26px * var(--text-scale)));color:var(--ns-arctic);">From harvest to jar</h3>
+          <span style="font-family:var(--font-sans);font-size:calc(13px * var(--text-scale));color:var(--text-on-dark-mut);">Press play, then pick a jar.</span>
+        </div>
+          <div class="nsm-lc-clockrow" style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(18px,3vw,40px);align-items:center;margin-bottom:clamp(26px,3.6vh,38px);">
+            <div style="display:flex;align-items:center;gap:16px;">
+              <button onClick="{{ lc.togglePlay }}" aria-label="{{ lc.playAria }}" style="flex:none;display:grid;place-items:center;width:52px;height:52px;border-radius:50%;border:1.5px solid var(--ns-bronze);background:{{ lc.playBg }};cursor:pointer;transition:background .22s ease;" style-hover="background:rgba(183,149,80,0.22);">
+                <sc-if value="{{ lc.playing }}" hint-placeholder-val="{{ false }}">
+                  <span aria-hidden="true" style="display:flex;gap:5px;"><span style="width:4px;height:15px;background:var(--ns-arctic);"></span><span style="width:4px;height:15px;background:var(--ns-arctic);"></span></span>
+                </sc-if>
+                <sc-if value="{{ lc.paused }}" hint-placeholder-val="{{ true }}">
+                  <span aria-hidden="true" style="display:block;width:0;height:0;margin-left:4px;border-style:solid;border-width:8px 0 8px 14px;border-color:transparent transparent transparent var(--ns-arctic);"></span>
+                </sc-if>
+              </button>
+              <div style="display:flex;flex-direction:column;gap:5px;min-width:130px;">
+                <span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--ns-bronze);">{{ lc.phase }}</span>
+                <span aria-live="polite" style="font-family:var(--font-display);font-weight:400;font-size:calc(36px * var(--text-scale));line-height:1;letter-spacing:-0.01em;color:var(--ns-arctic);">{{ lc.dayLabel }}</span>
+              </div>
+            </div>
+            <div>
+              <div style="position:relative;height:44px;">
+                <span aria-hidden="true" style="position:absolute;left:0;right:0;top:18px;height:8px;border-radius:999px;background:rgba(245,244,225,0.1);overflow:hidden;"><span class="nsm-lc-dayfill" style="position:absolute;left:0;top:0;bottom:0;width:calc(13px + (100% - 26px) * {{ lc.dayFrac }});background:var(--ns-bronze);border-radius:999px;"></span></span>
+                <input type="range" class="nsm-lc-range" min="0" max="30" step="1" value="{{ lc.day }}" onChange="{{ lc.onDay }}" aria-label="Days after harvest" aria-valuetext="{{ lc.dayAria }}">
+              </div>
+              <div style="display:flex;justify-content:space-between;margin:2px 13px 0;font-family:var(--font-sans);font-size:calc(12px * var(--text-scale));color:var(--text-on-dark-mut);"><span>Harvest</span><span>Day 30</span></div>
+            </div>
+          </div>
+        <div class="nsm-lc-fork">
+            <div style="display:flex;flex-direction:column;align-items:center;text-align:center;">
+              <span data-step="" style="--d:0ms;display:grid;place-items:center;width:54px;height:54px;border-radius:50%;border:1.5px solid var(--ns-bronze);background:rgba(183,149,80,0.12);"><img src="../assets/brand/leaf-glyph-bronze.png" alt="" style="width:30px;height:30px;object-fit:contain;"></span>
+              <span data-step="" style="--d:90ms;margin-top:8px;font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--ns-bronze);">Harvest day</span>
+              <span class="nsm-lc-vline" aria-hidden="true" style="--d:240ms;display:block;width:2px;height:24px;margin-top:12px;background:var(--ns-bronze);"></span>
+            </div>
+          <div class="nsm-lc-lanes" style="--lcg:clamp(14px,2vw,22px);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--lcg);">
+            <sc-for list="{{ lc.lanes }}" as="l" hint-placeholder-count="2">
+              <div data-step="" style="--d:460ms;position:relative;display:flex;flex-direction:column;align-items:center;">
+                <span class="nsm-lc-hline" aria-hidden="true" style="--d:340ms;position:absolute;top:0;height:2px;left:{{ l.hl }};right:{{ l.hr }};background:{{ l.line }};transition:background .3s ease;"></span>
+                <span aria-hidden="true" style="display:block;width:2px;height:22px;background:{{ l.line }};transition:background .3s ease;"></span>
+                <div style="width:100%;box-sizing:border-box;border:1px solid {{ l.border }};background:{{ l.bg }};padding:clamp(18px,2.2vw,26px);display:flex;flex-direction:column;align-items:center;gap:20px;transition:border-color .4s ease, background-color .4s ease;">
+                <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+                  <span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--ns-bronze);">{{ l.eyebrow }}</span>
+                  <span style="font-family:var(--font-display);font-weight:400;font-size:calc(26px * var(--text-scale));line-height:1;color:var(--ns-arctic);">{{ l.title }}</span>
+                </div>
+                <div style="display:flex;width:100%;">
+                  <sc-for list="{{ l.steps }}" as="s" hint-placeholder-count="3">
+                    <div style="flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;position:relative;">
+                      <span aria-hidden="true" style="position:absolute;top:7px;left:50%;width:100%;height:2px;background:{{ s.lineBg }};display:{{ s.lineDisp }};transition:background .4s ease;"></span>
+                      <span aria-hidden="true" style="position:relative;z-index:1;display:block;width:16px;height:16px;border-radius:50%;border:2px solid var(--ns-bronze);background:{{ s.dotBg }};box-shadow:{{ s.dotSh }};box-sizing:border-box;transition:background .3s ease, box-shadow .3s ease;"></span>
+                      <span style="font-family:var(--font-sans);font-size:calc(13.5px * var(--text-scale));font-weight:600;line-height:1.2;color:{{ s.tColor }};transition:color .3s ease;">{{ s.title }}</span>
+                      <span style="font-family:var(--font-sans);font-size:calc(12px * var(--text-scale));line-height:1.3;color:var(--text-on-dark-mut);">{{ s.note }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+                <div style="display:flex;align-items:center;gap:14px;">
+                  <span aria-hidden="true" style="display:flex;flex-direction:column;align-items:center;">
+                    <span style="display:block;width:30px;height:7px;border-radius:2px;background:rgba(183,149,80,0.6);"></span>
+                    <span style="position:relative;display:block;width:40px;height:58px;margin-top:-2px;border:1.5px solid rgba(245,244,225,0.45);border-radius:4px 4px 10px 10px;overflow:hidden;box-sizing:border-box;"><span class="nsm-lc-fill" style="position:absolute;left:0;right:0;bottom:0;height:{{ l.fill }};background:var(--ns-bronze);"></span></span>
+                  </span>
+                  <span style="display:flex;flex-direction:column;gap:4px;">
+                    <span style="font-family:var(--font-sans);font-size:calc(9.5px * var(--text-scale));font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-on-dark-mut);">Aroma kept</span>
+                    <span style="font-family:var(--font-display);font-weight:400;font-size:calc(20px * var(--text-scale));line-height:1;color:var(--ns-arctic);">{{ l.kept }}</span>
+                  </span>
+                </div>
+                <div style="width:100%;display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                  <sc-for list="{{ l.leaves }}" as="f" hint-placeholder-count="2">
+                    <button onClick="{{ f.onClick }}" aria-pressed="{{ f.sel }}" aria-label="{{ f.aria }}" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;width:100%;min-height:68px;text-align:center;cursor:pointer;padding:10px 8px;border-radius:4px;border:1px solid {{ f.bd }};background:{{ f.bg }};box-shadow:{{ f.sh }};transition:background .25s ease, border-color .25s ease, box-shadow .25s ease;" style-hover="border-color:var(--ns-bronze);">
+                      <span style="font-family:var(--font-display);font-weight:400;font-size:calc(19px * var(--text-scale));line-height:1.05;color:var(--ns-arctic);">{{ f.name }}</span>
+                      <span style="font-family:var(--font-sans);font-size:calc(11.5px * var(--text-scale));color:var(--text-on-dark-mut);">{{ f.method }}</span>
+                    </button>
+                  </sc-for>
+                </div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+              <div class="nsm-lc-cmp" aria-live="polite" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start;margin-top:clamp(24px,3.4vh,32px);padding-top:clamp(22px,3vh,30px);border-top:1px solid var(--ns-bronze);">
+                <div style="display:flex;flex-direction:column;gap:10px;">
+                  <span style="font-family:var(--font-display);font-weight:400;font-size:calc(34px * var(--text-scale));line-height:1;letter-spacing:-0.01em;color:var(--ns-arctic);">{{ lc.d.name }}</span>
+                  <span style="font-family:var(--font-sans);font-size:calc(15.5px * var(--text-scale));line-height:1.6;color:rgba(245,244,225,0.8);">{{ lc.d.how }}</span>
+                  <button onClick="{{ lc.d.onSwap }}" style="align-self:flex-start;display:inline-flex;align-items:center;gap:8px;min-height:44px;margin-top:4px;padding:0 18px;border-radius:999px;border:1px solid var(--ns-bronze);background:transparent;cursor:pointer;font-family:var(--font-sans);font-size:calc(10.5px * var(--text-scale));font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--ns-arctic);transition:background .22s ease;" style-hover="background:rgba(183,149,80,0.18);">{{ lc.d.swapLabel }} <span aria-hidden="true" style="color:var(--ns-bronze);">&#8644;</span></button>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:12px;">
+                  <sc-for list="{{ lc.d.rows }}" as="r" hint-placeholder-count="3">
+                    <div style="display:flex;gap:14px;"><span style="flex:none;width:96px;font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ns-bronze);padding-top:3px;">{{ r.label }}</span><span style="flex:1;font-family:var(--font-sans);font-size:calc(15px * var(--text-scale));line-height:1.5;color:rgba(245,244,225,0.82);">{{ r.text }}</span></div>
+                  </sc-for>
+                  <div style="display:flex;gap:14px;align-items:center;"><span style="flex:none;width:96px;font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ns-bronze);">Textures</span>
+                    <span style="flex:1;display:flex;flex-wrap:wrap;gap:8px;">
+                      <sc-for list="{{ lc.d.textures }}" as="x" hint-placeholder-count="3">
+                        <button onClick="{{ x.onClick }}" aria-label="{{ x.aria }}" style="display:inline-flex;align-items:center;min-height:36px;background:none;border:none;padding:0 4px;cursor:pointer;font-family:var(--font-sans);font-size:calc(13.5px * var(--text-scale));font-weight:600;color:var(--ns-arctic);text-decoration:underline;text-decoration-color:var(--ns-bronze);text-underline-offset:4px;" style-hover="color:var(--ns-bronze);">{{ x.name }}</button>
+                      </sc-for>
+                    </span>
+                  </div>
+                </div>
+              </div>
+        <p style="margin:clamp(18px,2.6vh,24px) 0 0;font-family:var(--font-sans);font-size:calc(12px * var(--text-scale));line-height:1.6;color:rgba(245,244,225,0.55);">Aroma levels are illustrative. Real terpene loss depends on the strain, the drying room, and how carefully the plant is handled.</p>
+      </div>
+      <p data-reveal="" style="opacity:0;transform:translateY(22px);margin:0;max-width:64ch;font-family:var(--font-sans);font-size:calc(13px * var(--text-scale));line-height:1.65;color:rgba(245,244,225,0.6);">These are general tendencies, not rules. The strain, the grower, and how it is handled shape flavor as much as the method does.</p>
+    </div>
+  </section>
+
+  <!-- step 02 · extraction (arctic) -->
+  <section data-pstep="1" data-tone="light" style="position:relative;background:var(--ns-arctic);padding:clamp(70px,10vh,120px) clamp(20px,6vw,80px);">
+    <div style="max-width:1180px;margin:0 auto;">
+      <div data-reveal="" class="nsm-step-hd" style="opacity:0;transform:translateY(22px);display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(18px,3vw,44px);align-items:start;margin-bottom:clamp(32px,5vh,56px);">
+        <span aria-hidden="true" style="font-family:var(--font-display);font-weight:400;font-size:clamp(calc(56px * var(--text-scale)), calc(7vw * var(--text-scale)), calc(96px * var(--text-scale)));line-height:0.82;color:var(--ns-bronze);">02</span>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--ns-bronze);">Step two · Extraction</span>
+          <h3 id="sec-extract" style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(30px * var(--text-scale)), calc(4vw * var(--text-scale)), calc(52px * var(--text-scale)));line-height:1.04;letter-spacing:-0.01em;color:var(--text-strong);">Get the resin out</h3>
+          <p style="margin:4px 0 0;max-width:62ch;font-family:var(--font-sans);font-size:clamp(calc(15.5px * var(--text-scale)), calc(1.6vw * var(--text-scale)), calc(19px * var(--text-scale)));line-height:1.7;color:var(--text-body);text-wrap:pretty;">Live or cured, the resin still has to come off the plant. Methods that use a <button class="nsm-gloss" data-term="Solvent" data-def="A liquid that dissolves the resin off the plant, such as butane, propane, or CO₂. It is purged away before the product is finished." data-pron="" style="font:inherit;font-weight:600;color:inherit;background:none;border:none;padding:0;cursor:help;border-bottom:1.5px dotted var(--ns-bronze);">solvent</button> make <strong style="font-weight:600;color:var(--text-strong);">resin</strong>. Methods that use only ice water, heat, and pressure make <strong style="font-weight:600;color:var(--text-strong);">rosin</strong>. Tap a method to see how it works and what it trades.</p>
+        </div>
+      </div>
       <!-- extraction comparison table -->
-      <div data-reveal="" style="opacity:0;transform:translateY(22px);border:1px solid var(--border-on-dark);">
-        <div class="nsm-ext-head" style="display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1.5fr) repeat(3,minmax(0,0.7fr)) 34px;gap:clamp(10px,1.6vw,22px);padding:14px clamp(16px,2.2vw,26px);border-bottom:1px solid var(--ns-bronze);background:rgba(245,244,225,0.03);">
+      <div data-reveal="" style="opacity:0;transform:translateY(22px);border:1px solid var(--border-hairline);background:var(--ns-cream);">
+        <div class="nsm-ext-head" style="display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1.5fr) repeat(3,minmax(0,0.7fr)) 34px;gap:clamp(10px,1.6vw,22px);padding:14px clamp(16px,2.2vw,26px);border-bottom:1px solid var(--ns-bronze);background:rgba(32,37,58,0.03);">
           <span style="font-family:var(--font-sans);font-size:calc(10.5px * var(--text-scale));font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--ns-bronze);">Method</span>
           <span style="font-family:var(--font-sans);font-size:calc(10.5px * var(--text-scale));font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--ns-bronze);">What does the separating</span>
           <span style="font-family:var(--font-sans);font-size:calc(10.5px * var(--text-scale));font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--ns-bronze);">Flavor</span>
@@ -1618,32 +1790,99 @@
           <span></span>
         </div>
         <sc-for list="{{ extraction }}" as="x" hint-placeholder-count="4">
-          <div style="border-bottom:1px solid var(--border-on-dark);">
+          <div style="border-bottom:1px solid var(--border-hairline);">
             <button onClick="{{ x.onToggle }}" aria-expanded="{{ x.open }}" class="nsm-ext-row" style="width:100%;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1.5fr) repeat(3,minmax(0,0.7fr)) 34px;gap:clamp(10px,1.6vw,22px);align-items:center;text-align:left;background:{{ x.rowBg }};border:none;cursor:pointer;padding:clamp(15px,1.9vw,20px) clamp(16px,2.2vw,26px);min-height:56px;transition:background .22s ease;" style-hover="background:rgba(183,149,80,0.07);">
               <span style="display:inline-flex;align-items:baseline;gap:10px;">
-                <span style="font-family:var(--font-sans);font-size:calc(12px * var(--text-scale));color:var(--ns-bronze);">{{ x.numDisp }}</span>
-                <span style="font-family:var(--font-sans);font-weight:500;font-size:clamp(calc(15px * var(--text-scale)), calc(1.7vw * var(--text-scale)), calc(19px * var(--text-scale)));color:var(--ns-arctic);">{{ x.name }}</span>
+                <span style="font-family:var(--font-sans);font-size:calc(12px * var(--text-scale));color:#7A5F28;">{{ x.numDisp }}</span>
+                <span style="font-family:var(--font-sans);font-weight:500;font-size:clamp(calc(15px * var(--text-scale)), calc(1.7vw * var(--text-scale)), calc(19px * var(--text-scale)));color:var(--text-strong);">{{ x.name }}</span>
               </span>
-              <span style="font-family:var(--font-sans);font-size:calc(13.5px * var(--text-scale));line-height:1.45;color:rgba(245,244,225,0.72);">{{ x.separator }}</span>
-              <span style="display:inline-flex;flex-direction:column;gap:5px;min-width:0;"><span style="font-family:var(--font-sans);font-size:calc(11.5px * var(--text-scale));color:rgba(245,244,225,0.72);">{{ x.flavor }}</span><span aria-hidden="true" style="display:block;height:4px;width:100%;max-width:74px;background:rgba(245,244,225,0.14);border-radius:999px;overflow:hidden;"><span style="display:block;height:100%;width:{{ x.flavorW }};background:var(--ns-bronze);border-radius:999px;"></span></span></span>
-              <span style="display:inline-flex;flex-direction:column;gap:5px;min-width:0;"><span style="font-family:var(--font-sans);font-size:calc(11.5px * var(--text-scale));color:rgba(245,244,225,0.72);">{{ x.purity }}</span><span aria-hidden="true" style="display:block;height:4px;width:100%;max-width:74px;background:rgba(245,244,225,0.14);border-radius:999px;overflow:hidden;"><span style="display:block;height:100%;width:{{ x.purityW }};background:var(--ns-bronze);border-radius:999px;"></span></span></span>
-              <span style="display:inline-flex;flex-direction:column;gap:5px;min-width:0;"><span style="font-family:var(--font-sans);font-size:calc(11.5px * var(--text-scale));color:rgba(245,244,225,0.72);">{{ x.scale }}</span><span aria-hidden="true" style="display:block;height:4px;width:100%;max-width:74px;background:rgba(245,244,225,0.14);border-radius:999px;overflow:hidden;"><span style="display:block;height:100%;width:{{ x.scaleW }};background:var(--ns-bronze);border-radius:999px;"></span></span></span>
+              <span style="font-family:var(--font-sans);font-size:calc(13.5px * var(--text-scale));line-height:1.45;color:var(--text-body);">{{ x.separator }}</span>
+              <span style="display:inline-flex;flex-direction:column;gap:5px;min-width:0;"><span style="font-family:var(--font-sans);font-size:calc(11.5px * var(--text-scale));color:var(--text-body);">{{ x.flavor }}</span><span aria-hidden="true" style="display:block;height:4px;width:100%;max-width:74px;background:rgba(32,37,58,0.12);border-radius:999px;overflow:hidden;"><span style="display:block;height:100%;width:{{ x.flavorW }};background:var(--ns-bronze);border-radius:999px;"></span></span></span>
+              <span style="display:inline-flex;flex-direction:column;gap:5px;min-width:0;"><span style="font-family:var(--font-sans);font-size:calc(11.5px * var(--text-scale));color:var(--text-body);">{{ x.purity }}</span><span aria-hidden="true" style="display:block;height:4px;width:100%;max-width:74px;background:rgba(32,37,58,0.12);border-radius:999px;overflow:hidden;"><span style="display:block;height:100%;width:{{ x.purityW }};background:var(--ns-bronze);border-radius:999px;"></span></span></span>
+              <span style="display:inline-flex;flex-direction:column;gap:5px;min-width:0;"><span style="font-family:var(--font-sans);font-size:calc(11.5px * var(--text-scale));color:var(--text-body);">{{ x.scale }}</span><span aria-hidden="true" style="display:block;height:4px;width:100%;max-width:74px;background:rgba(32,37,58,0.12);border-radius:999px;overflow:hidden;"><span style="display:block;height:100%;width:{{ x.scaleW }};background:var(--ns-bronze);border-radius:999px;"></span></span></span>
               <span aria-hidden="true" style="justify-self:end;flex:none;width:26px;height:26px;border:1px solid {{ x.caretBorder }};border-radius:999px;display:grid;place-items:center;font-family:var(--font-sans);font-size:calc(15px * var(--text-scale));line-height:1;color:var(--ns-bronze);background:{{ x.caretBg }};transition:background .22s ease,border-color .22s ease;">{{ x.caret }}</span>
             </button>
             <sc-if value="{{ x.open }}" hint-placeholder-val="{{ false }}">
               <div class="nsm-ext-open" style="display:grid;grid-template-columns:minmax(0,0.85fr) minmax(0,1.15fr);gap:clamp(20px,3vw,40px);align-items:start;padding:0 clamp(16px,2.2vw,26px) clamp(24px,3vw,32px);">
-                <img src="{{ x.photo }}" alt="{{ x.photoAlt }}" loading="lazy" style="display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border:1px solid var(--border-on-dark);">
+                <img src="{{ x.photo }}" alt="{{ x.photoAlt }}" loading="lazy" style="display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border:1px solid var(--border-hairline);background:var(--ns-cream);">
                 <div>
                   <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.2em;color:var(--ns-bronze);">{{ x.tag }}</span>
-                  <p style="margin:12px 0 0;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)), calc(1.55vw * var(--text-scale)), calc(18px * var(--text-scale)));line-height:1.72;color:rgba(245,244,225,0.82);text-wrap:pretty;">{{ x.desc }}</p>
-                  <p style="margin:16px 0 0;font-family:var(--font-sans);font-size:calc(13.5px * var(--text-scale));line-height:1.6;color:rgba(245,244,225,0.6);text-wrap:pretty;">{{ x.tradeoff }}</p>
+                  <p style="margin:12px 0 0;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)), calc(1.55vw * var(--text-scale)), calc(18px * var(--text-scale)));line-height:1.72;color:var(--text-body);text-wrap:pretty;">{{ x.desc }}</p>
+                  <p style="margin:16px 0 0;font-family:var(--font-sans);font-size:calc(13.5px * var(--text-scale));line-height:1.6;color:rgba(32,37,58,0.66);text-wrap:pretty;">{{ x.tradeoff }}</p>
                 </div>
               </div>
             </sc-if>
           </div>
         </sc-for>
       </div>
-      <p data-reveal="" style="opacity:0;transform:translateY(22px);margin:clamp(20px,3vh,28px) 0 0;max-width:64ch;font-family:var(--font-sans);font-size:calc(13px * var(--text-scale));line-height:1.65;color:rgba(245,244,225,0.6);">Flavor, purity, and scale are rated relative to one another, not on an absolute scale. No method is best at all three, which is why we run more than one.</p>
+      <p data-reveal="" style="opacity:0;transform:translateY(22px);margin:clamp(20px,3vh,28px) 0 0;max-width:64ch;font-family:var(--font-sans);font-size:calc(13px * var(--text-scale));line-height:1.65;color:rgba(32,37,58,0.66);">Flavor, purity, and scale are rated relative to one another, not on an absolute scale. No method is best at all three, which is why we run more than one.</p>
+    </div>
+  </section>
+
+  <!-- step 03 · texture (midnight) -->
+  <section data-pstep="2" data-tone="dark" style="position:relative;background:var(--ns-midnight);padding:clamp(70px,10vh,120px) clamp(20px,6vw,80px);">
+    <div style="max-width:1180px;margin:0 auto;">
+      <div data-reveal="" class="nsm-step-hd" style="opacity:0;transform:translateY(22px);display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(18px,3vw,44px);align-items:start;margin-bottom:clamp(32px,5vh,56px);">
+        <span aria-hidden="true" style="font-family:var(--font-display);font-weight:400;font-size:clamp(calc(56px * var(--text-scale)), calc(7vw * var(--text-scale)), calc(96px * var(--text-scale)));line-height:0.82;color:var(--ns-bronze);">03</span>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--ns-bronze);">Step three · Texture</span>
+          <h3 id="sec-texture" style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(30px * var(--text-scale)), calc(4vw * var(--text-scale)), calc(52px * var(--text-scale)));line-height:1.04;letter-spacing:-0.01em;color:var(--ns-arctic);">See what it becomes</h3>
+          <p style="margin:4px 0 0;max-width:62ch;font-family:var(--font-sans);font-size:clamp(calc(15.5px * var(--text-scale)), calc(1.6vw * var(--text-scale)), calc(19px * var(--text-scale)));line-height:1.7;color:rgba(245,244,225,0.84);text-wrap:pretty;">The same oil can be finished a dozen ways. Texture is mostly a matter of how it is agitated, <button class="nsm-gloss" data-term="Purged" data-def="Gently heated under vacuum until the solvent is gone. Every concentrate batch is then lab-tested for residual solvents." data-pron="" style="font:inherit;font-weight:600;color:inherit;background:none;border:none;padding:0;cursor:help;border-bottom:1.5px dotted var(--ns-bronze);">purged</button>, and held as it comes off the extraction, and it changes how a concentrate handles, tastes, and dabs. Here is the whole shelf, side by side.</p>
+        </div>
+      </div>
+
+      <div data-reveal="" style="opacity:0;transform:translateY(22px);display:flex;align-items:baseline;gap:clamp(12px,2vw,22px);flex-wrap:wrap;border:1px solid var(--ns-bronze);background:rgba(183,149,80,0.08);padding:clamp(16px,2vw,22px) clamp(18px,2.4vw,28px);margin-bottom:clamp(22px,3vh,32px);">
+        <span style="flex:none;font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--ns-bronze);">No rig? No problem.</span>
+        <p style="flex:1;min-width:260px;margin:0;font-family:var(--font-sans);font-size:calc(15.5px * var(--text-scale));line-height:1.6;color:rgba(245,244,225,0.86);">Texture only matters if you <button class="nsm-gloss" data-term="Dab" data-def="A small portion of concentrate, about the size of a grain of rice, vaporized on a hot surface. Also the verb for doing it." data-pron="" style="font:inherit;font-weight:600;color:inherit;background:none;border:none;padding:0;cursor:help;border-bottom:1.5px dotted var(--ns-bronze);">dab</button>. If you would rather not, carts and disposables use the same kind of oil, ready to go. A <button class="nsm-gloss" data-term="Rig" data-def="A small water pipe made for concentrates. A heated quartz dish, called a banger, vaporizes the dab." data-pron="" style="font:inherit;font-weight:600;color:inherit;background:none;border:none;padding:0;cursor:help;border-bottom:1.5px dotted var(--ns-bronze);">rig</button> is only needed for the formats below.</p>
+      </div>
+      <!-- consistency scale selector -->
+      <div data-reveal="" style="opacity:0;transform:translateY(22px);border:1px solid var(--border-on-dark);background:rgba(245,244,225,0.03);padding:clamp(26px,3.4vw,44px);margin-bottom:clamp(24px,3.4vh,36px);">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:clamp(26px,3.6vh,40px);">
+          <h3 id="sec-consistency" style="margin:0;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(19px * var(--text-scale)), calc(2.2vw * var(--text-scale)), calc(26px * var(--text-scale)));color:var(--ns-arctic);">The consistency scale</h3>
+          <span style="font-family:var(--font-sans);font-size:calc(13px * var(--text-scale));color:var(--text-on-dark-mut);">Pick a format to read it.</span>
+        </div>
+        <div class="nsm-conc-scale" style="position:relative;padding:0 6px;">
+          <div aria-hidden="true" style="position:absolute;left:6px;right:6px;top:9px;height:2px;background:linear-gradient(90deg,rgba(183,149,80,0.7),rgba(183,149,80,0.25));"></div>
+          <div style="position:relative;display:flex;justify-content:space-between;align-items:flex-start;gap:4px;">
+            <sc-for list="{{ conc.marks }}" as="m" hint-placeholder-count="6">
+              <button onClick="{{ m.onClick }}" aria-pressed="{{ m.active }}" style="flex:1;background:none;border:none;padding:0 2px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:12px;min-height:44px;">
+                <span aria-hidden="true" style="width:{{ m.dotSize }};height:{{ m.dotSize }};border-radius:50%;background:{{ m.dotBg }};border:2px solid var(--ns-bronze);box-shadow:{{ m.dotGlow }};transition:all .28s cubic-bezier(0.2,0.7,0.25,1);"></span>
+                <span style="font-family:var(--font-sans);font-size:calc(12.5px * var(--text-scale));font-weight:600;letter-spacing:0.02em;color:{{ m.labelColor }};text-align:center;line-height:1.25;transition:color .28s ease;">{{ m.name }}</span>
+              </button>
+            </sc-for>
+          </div>
+          <div style="display:flex;justify-content:space-between;margin-top:16px;">
+            <span style="font-family:var(--font-sans);font-size:calc(10.5px * var(--text-scale));font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-on-dark-mut);">Wet, liquid</span>
+            <span style="font-family:var(--font-sans);font-size:calc(10.5px * var(--text-scale));font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-on-dark-mut);">Dry, crumbly</span>
+          </div>
+        </div>
+        <div class="nsm-conc-detail" style="margin-top:clamp(30px,4vh,46px);border-top:1px solid var(--border-on-dark);padding-top:clamp(24px,3.2vh,34px);display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,0.95fr);gap:clamp(24px,4vw,60px);align-items:start;">
+          <div>
+            <div style="display:flex;align-items:baseline;gap:13px;flex-wrap:wrap;margin-bottom:14px;">
+              <span style="font-family:var(--font-display);font-weight:400;font-size:clamp(calc(28px * var(--text-scale)), calc(3.4vw * var(--text-scale)), calc(42px * var(--text-scale)));line-height:1;color:var(--ns-arctic);">{{ conc.cur.name }}</span>
+              <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.05em;color:var(--ns-bronze);border:1px solid var(--border-on-dark);border-radius:999px;padding:3px 11px;">{{ conc.cur.tag }}</span>
+            </div>
+            <p style="margin:0;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)), calc(1.55vw * var(--text-scale)), calc(18px * var(--text-scale)));line-height:1.72;color:rgba(245,244,225,0.82);text-wrap:pretty;">{{ conc.cur.description }}</p>
+            <sc-if value="{{ conc.cur.hasPhoto }}" hint-placeholder-val="{{ false }}">
+              <div style="margin-top:clamp(18px,2.4vh,26px);max-width:330px;background:#F5F4E1;border:1px solid var(--border-on-dark);overflow:hidden;">
+                <img src="{{ conc.cur.photo }}" alt="{{ conc.cur.name }}, Natural State Medicinals live concentrate" loading="lazy" style="display:block;width:100%;aspect-ratio:1/1;object-fit:cover;">
+              </div>
+            </sc-if>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div>
+              <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:7px;">
+                <span style="font-family:var(--font-sans);font-size:calc(10.5px * var(--text-scale));font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-on-dark-mut);">Dab temp</span>
+                <span style="font-family:var(--font-sans);font-size:calc(14px * var(--text-scale));color:var(--ns-arctic);">{{ conc.cur.temp }}</span>
+              </div>
+              <span style="display:block;height:8px;background:rgba(245,244,225,0.1);border-radius:999px;overflow:hidden;position:relative;"><span style="position:absolute;top:0;bottom:0;left:{{ conc.tempLeft }};width:{{ conc.tempW }};background:linear-gradient(90deg,var(--ns-bronze),rgba(183,149,80,0.4));border-radius:999px;transition:left .4s cubic-bezier(0.2,0.7,0.25,1),width .4s cubic-bezier(0.2,0.7,0.25,1);"></span></span>
+            </div>
+            <div style="display:flex;gap:14px;"><span style="flex:none;width:88px;font-family:var(--font-sans);font-size:calc(10.5px * var(--text-scale));font-weight:600;letter-spacing:0.12em;color:var(--ns-bronze);padding-top:2px;">Texture</span><span style="font-family:var(--font-sans);font-size:calc(15px * var(--text-scale));line-height:1.5;color:rgba(245,244,225,0.82);">{{ conc.cur.texture }}</span></div>
+            <div style="display:flex;gap:14px;"><span style="flex:none;width:88px;font-family:var(--font-sans);font-size:calc(10.5px * var(--text-scale));font-weight:600;letter-spacing:0.12em;color:var(--ns-bronze);padding-top:2px;">Tool</span><span style="font-family:var(--font-sans);font-size:calc(15px * var(--text-scale));line-height:1.5;color:rgba(245,244,225,0.82);">{{ conc.cur.tool }}</span></div>
+          </div>
+        </div>
+      </div>
+<p data-reveal="" style="opacity:0;transform:translateY(22px);margin:0;max-width:64ch;font-family:var(--font-sans);font-size:calc(13px * var(--text-scale));line-height:1.65;color:rgba(245,244,225,0.6);">A note on temperature: lower temps (roughly 500 to 580°F) preserve terpenes and flavor with a lighter vapor; higher temps (580 to 650°F) trade some flavor for bigger, warmer clouds. Terpene-heavy formats like sauce and raw reward the low end.</p>
     </div>
   </section>
 
@@ -1652,26 +1891,80 @@
     <img src="../assets/packaging/tins-hero.jpg" alt="Natural State Medicinals branded tin lids, medical-grade cannabis locally grown in Arkansas" style="display:block;width:100%;height:clamp(280px,46vh,560px);object-fit:cover;">
   </div>
 
-  <!-- formats listing -->
-  <section style="position:relative;background:var(--ns-arctic);padding:clamp(60px,9vh,110px) clamp(20px,6vw,80px) clamp(80px,11vh,140px);">
+  <!-- step 04 · formats (arctic) -->
+  <section data-pstep="3" data-tone="light" style="position:relative;background:var(--ns-arctic);padding:clamp(70px,10vh,120px) clamp(20px,6vw,80px);">
     <div style="max-width:1180px;margin:0 auto;">
-      <div data-reveal="" style="opacity:0;transform:translateY(22px);display:flex;flex-direction:column;align-items:center;text-align:center;margin-bottom:clamp(32px,4vh,48px);">
-        <span style="font-family:var(--font-sans);font-size:calc(12px * var(--text-scale));font-weight:600;letter-spacing:0.22em;color:var(--ns-bronze);">The product family</span>
-        <h3 id="sec-formats" style="margin:10px 0 0;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(24px * var(--text-scale)), calc(3.4vw * var(--text-scale)), calc(44px * var(--text-scale)));line-height:1;color:var(--text-strong);">Every format, one craft</h3>
+      <div data-reveal="" class="nsm-step-hd" style="opacity:0;transform:translateY(22px);display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(18px,3vw,44px);align-items:start;margin-bottom:clamp(32px,5vh,56px);">
+        <span aria-hidden="true" style="font-family:var(--font-display);font-weight:400;font-size:clamp(calc(56px * var(--text-scale)), calc(7vw * var(--text-scale)), calc(96px * var(--text-scale)));line-height:0.82;color:var(--ns-bronze);">04</span>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--ns-bronze);">Step four · Formats</span>
+          <h3 id="sec-formats" style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(30px * var(--text-scale)), calc(4vw * var(--text-scale)), calc(52px * var(--text-scale)));line-height:1.04;letter-spacing:-0.01em;color:var(--text-strong);">Choose how you take it</h3>
+          <p style="margin:4px 0 0;max-width:62ch;font-family:var(--font-sans);font-size:clamp(calc(15.5px * var(--text-scale)), calc(1.6vw * var(--text-scale)), calc(19px * var(--text-scale)));line-height:1.7;color:var(--text-body);text-wrap:pretty;">Concentrates are one way in. The same resin also goes into vapes, syringes, troches, tinctures, edibles, and topicals. What really separates them is the route: how it enters your body, and so how soon you feel it and how long it stays.</p>
+        </div>
       </div>
 
-      <!-- From the lab -->
-      <div data-reveal="" style="opacity:0;transform:translateY(22px);display:flex;align-items:baseline;gap:12px;border-bottom:1px solid var(--ns-bronze);padding-bottom:14px;margin-bottom:clamp(20px,3vh,30px);">
-        <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.2em;color:var(--ns-bronze);">From the lab</span>
+      <div data-reveal="" style="opacity:0;transform:translateY(22px);margin-bottom:clamp(26px,3.6vh,40px);">
+        <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:16px;">
+          <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#7A5F28;">Why ours</span>
+          <span style="font-family:var(--font-sans);font-size:calc(14px * var(--text-scale));color:var(--text-body);">The craft from steps one to three, and what it looks like on our shelf.</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;background:var(--border-hairline);border:1px solid var(--border-hairline);">
+          <div style="background:var(--ns-arctic);padding:clamp(16px,2vw,22px);display:flex;flex-direction:column;gap:8px;">
+            <span style="font-family:var(--font-display);font-weight:400;font-size:calc(21px * var(--text-scale));line-height:1.08;color:var(--text-strong);">Full-ceramic carts</span>
+            <span style="font-family:var(--font-sans);font-size:calc(13.5px * var(--text-scale));line-height:1.5;color:var(--text-body);">CCell EVO MAX hardware. No metal wick or cotton ever touches the oil.</span>
+          </div>
+          <div style="background:var(--ns-arctic);padding:clamp(16px,2vw,22px);display:flex;flex-direction:column;gap:8px;">
+            <span style="font-family:var(--font-display);font-weight:400;font-size:calc(21px * var(--text-scale));line-height:1.08;color:var(--text-strong);">99.9% pure CO₂</span>
+            <span style="font-family:var(--font-sans);font-size:calc(13.5px * var(--text-scale));line-height:1.5;color:var(--text-body);">Beverage-grade, the same technology used to decaffeinate coffee.</span>
+          </div>
+          <div style="background:var(--ns-arctic);padding:clamp(16px,2vw,22px);display:flex;flex-direction:column;gap:8px;">
+            <span style="font-family:var(--font-display);font-weight:400;font-size:calc(21px * var(--text-scale));line-height:1.08;color:var(--text-strong);">Tested, every batch</span>
+            <span style="font-family:var(--font-sans);font-size:calc(13.5px * var(--text-scale));line-height:1.5;color:var(--text-body);">Every concentrate is purged and lab-tested for residual solvents before it ships.</span>
+          </div>
+          <div style="background:var(--ns-arctic);padding:clamp(16px,2vw,22px);display:flex;flex-direction:column;gap:8px;">
+            <span style="font-family:var(--font-display);font-weight:400;font-size:calc(21px * var(--text-scale));line-height:1.08;color:var(--text-strong);">Arkansas’s first troche</span>
+            <span style="font-family:var(--font-sans);font-size:calc(13.5px * var(--text-scale));line-height:1.5;color:var(--text-body);">We were the first in the state to bring a sublingual troche to market.</span>
+          </div>
+          <div style="background:var(--ns-arctic);padding:clamp(16px,2vw,22px);display:flex;flex-direction:column;gap:8px;">
+            <span style="font-family:var(--font-display);font-weight:400;font-size:calc(21px * var(--text-scale));line-height:1.08;color:var(--text-strong);">In High Times</span>
+            <span style="font-family:var(--font-sans);font-size:calc(13.5px * var(--text-scale));line-height:1.5;color:var(--text-body);">Our 3:1 suppositories were featured in High Times Magazine.</span>
+          </div>
+        </div>
       </div>
-      <div style="margin-bottom:clamp(48px,7vh,82px);">
-        <div role="group" aria-label="Filter products by how they are used" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:clamp(18px,2.6vh,26px);">
-          <sc-for list="{{ pf.chips }}" as="c" hint-placeholder-count="4">
-            <button class="nsm-pf-chip" onClick="{{ c.onClick }}" aria-pressed="{{ c.on }}" style="display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 17px;border-radius:999px;border:1px solid {{ c.border }};background:{{ c.bg }};color:{{ c.color }};cursor:pointer;font-family:var(--font-sans);font-size:calc(12px * var(--text-scale));font-weight:600;letter-spacing:0.06em;transition:background .22s ease,color .22s ease,border-color .22s ease;">{{ c.label }} <span style="font-weight:400;opacity:0.7;">{{ c.count }}</span></button>
+
+      <div data-reveal="" style="opacity:0;transform:translateY(22px);border:1px solid var(--border-hairline);background:var(--ns-cream);padding:clamp(20px,2.8vw,32px);">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px;">
+          <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#7A5F28;">Four routes, from fastest to slowest</span>
+          <span style="font-family:var(--font-sans);font-size:calc(13px * var(--text-scale));color:rgba(32,37,58,0.66);">Tap one to jump to it.</span>
+        </div>
+        <div class="nsm-route-map" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(8px,1.2vw,14px);">
+          <sc-for list="{{ routes }}" as="r" hint-placeholder-count="4">
+            <button onClick="{{ r.go }}" style="display:flex;flex-direction:column;align-items:flex-start;gap:10px;text-align:left;cursor:pointer;padding:16px;border-radius:4px;border:1px solid var(--border-hairline);background:var(--ns-arctic);transition:border-color .22s ease, transform .22s ease, box-shadow .22s ease;" style-hover="border-color:var(--ns-bronze);transform:translateY(-2px);box-shadow:var(--shadow-md);">
+              <span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#7A5F28;">{{ r.tag }}</span>
+              <span style="font-family:var(--font-display);font-weight:400;font-size:calc(22px * var(--text-scale));line-height:1.05;color:var(--text-strong);">{{ r.title }}</span>
+              <span aria-hidden="true" style="position:relative;display:block;width:100%;height:6px;border-radius:999px;background:rgba(32,37,58,0.1);"><span style="position:absolute;top:-3px;left:{{ r.pos }};width:12px;height:12px;border-radius:50%;background:var(--ns-bronze);transform:translateX(-50%);display:{{ r.dotDisp }};"></span></span>
+              <span style="font-family:var(--font-sans);font-size:calc(13px * var(--text-scale));line-height:1.4;color:var(--text-body);">{{ r.when }}</span>
+            </button>
           </sc-for>
         </div>
+      </div>
+
+      <div id="grp-inhaled" data-reveal="" class="nsm-grp-hd" style="opacity:0;transform:translateY(22px);display:grid;grid-template-columns:minmax(0,0.85fr) minmax(0,1.15fr);gap:clamp(18px,3.4vw,48px);align-items:end;border-top:1px solid var(--ns-bronze);padding-top:22px;margin:clamp(44px,6.5vh,72px) 0 clamp(22px,3vh,30px);">
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--ns-bronze);">Route one · Breathe it in</span>
+          <h4 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(26px * var(--text-scale)), calc(3vw * var(--text-scale)), calc(38px * var(--text-scale)));line-height:1.04;letter-spacing:-0.01em;color:var(--text-strong);">Vapes and concentrates</h4>
+        </div>
+        <div>
+          <p style="margin:0;max-width:58ch;font-family:var(--font-sans);font-size:calc(16px * var(--text-scale));line-height:1.65;color:var(--text-body);text-wrap:pretty;">Inhaled through a vape or a dab. The fastest route and the easiest to adjust: one draw, wait, decide. This is where live and cured, resin and rosin, and texture all come into play.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:14px;">
+              <span style="display:flex;flex-direction:column;gap:3px;"><span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:rgba(32,37,58,0.62);">Onset</span><span style="font-family:var(--font-sans);font-size:calc(15px * var(--text-scale));font-weight:600;color:var(--text-strong);">Within minutes</span></span>
+              <span style="display:flex;flex-direction:column;gap:3px;"><span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:rgba(32,37,58,0.62);">Peak</span><span style="font-family:var(--font-sans);font-size:calc(15px * var(--text-scale));font-weight:600;color:var(--text-strong);">10 to 30 min</span></span>
+              <span style="display:flex;flex-direction:column;gap:3px;"><span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:rgba(32,37,58,0.62);">Lasts</span><span style="font-family:var(--font-sans);font-size:calc(15px * var(--text-scale));font-weight:600;color:var(--text-strong);">1 to 3 hours</span></span>
+            </div>
+        </div>
+      </div>
         <div class="nsm-pf-grid">
-          <sc-for list="{{ pf.cards }}" as="p" hint-placeholder-count="7">
+          <sc-for list="{{ pf.inhaled }}" as="p" hint-placeholder-count="4">
             <article class="nsm-pf-card" data-pf-key="{{ p.key }}" data-open="{{ p.openFlag }}" style="display:{{ p.disp }};flex-direction:column;background:var(--ns-cream);border:1px solid var(--border-hairline);box-shadow:var(--shadow-sm);overflow:hidden;">
               <div class="nsm-pf-inner">
                 <button class="nsm-pf-hit" onClick="{{ p.onToggle }}" aria-expanded="{{ p.isOpen }}" aria-controls="{{ p.panelId }}" style="display:flex;flex-direction:column;width:100%;background:none;border:none;padding:0;cursor:pointer;text-align:left;">
@@ -1738,217 +2031,114 @@
             </article>
           </sc-for>
         </div>
-      </div>
-      <div data-reveal="" style="opacity:0;transform:translateY(18px);margin-top:clamp(26px,3.5vh,40px);"><a href="{{ productsUrl }}" style="display:inline-flex;align-items:center;gap:9px;background:var(--ns-midnight);color:var(--ns-arctic);text-decoration:none;border-radius:4px;padding:13px 22px;font-family:var(--font-sans);font-size:calc(11.5px * var(--text-scale));font-weight:600;letter-spacing:0.12em;" style-hover="background:var(--ns-bronze);color:var(--ns-midnight);">Find our products <span style="font-size:calc(14px * var(--text-scale));">&#8594;</span></a></div>
-    </div>
-  </section>
 
-  <!-- formats: concentrates (midnight surface) -->
-  <section style="position:relative;background:var(--ns-midnight);padding:clamp(60px,9vh,110px) clamp(20px,6vw,80px);">
-    <div style="max-width:1180px;margin:0 auto;">
-
-      <!-- Concentrate format guide -->
-      <div data-reveal="" style="opacity:0;transform:translateY(22px);display:flex;align-items:baseline;gap:12px;border-bottom:1px solid var(--ns-bronze);padding-bottom:14px;margin:clamp(56px,8vh,96px) 0 clamp(20px,3vh,30px);">
-        <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.2em;color:var(--ns-bronze);">Know your concentrate</span>
-      </div>
-      <p data-reveal="" style="opacity:0;transform:translateY(22px);margin:0 0 clamp(28px,4vh,44px);max-width:64ch;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)), calc(1.6vw * var(--text-scale)), calc(18px * var(--text-scale)));line-height:1.7;color:rgba(245,244,225,0.82);">The same oil can be finished a dozen ways. Texture is mostly a matter of how it is agitated, purged, and held as it comes off the extraction, and it changes how a concentrate handles, tastes, and dabs. Here is the whole shelf, side by side.</p>
-      <!-- consistency scale selector -->
-      <div data-reveal="" style="opacity:0;transform:translateY(22px);border:1px solid var(--border-on-dark);background:rgba(245,244,225,0.03);padding:clamp(26px,3.4vw,44px);margin-bottom:clamp(24px,3.4vh,36px);">
-        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:clamp(26px,3.6vh,40px);">
-          <h3 id="sec-consistency" style="margin:0;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(19px * var(--text-scale)), calc(2.2vw * var(--text-scale)), calc(26px * var(--text-scale)));color:var(--ns-arctic);">The consistency scale</h3>
-          <span style="font-family:var(--font-sans);font-size:calc(13px * var(--text-scale));color:var(--text-on-dark-mut);">Pick a format to read it.</span>
+      <div id="grp-tongue" data-reveal="" class="nsm-grp-hd" style="opacity:0;transform:translateY(22px);display:grid;grid-template-columns:minmax(0,0.85fr) minmax(0,1.15fr);gap:clamp(18px,3.4vw,48px);align-items:end;border-top:1px solid var(--ns-bronze);padding-top:22px;margin:clamp(44px,6.5vh,72px) 0 clamp(22px,3vh,30px);">
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--ns-bronze);">Route two · Under the tongue</span>
+          <h4 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(26px * var(--text-scale)), calc(3vw * var(--text-scale)), calc(38px * var(--text-scale)));line-height:1.04;letter-spacing:-0.01em;color:var(--text-strong);">Troches and tinctures</h4>
         </div>
-        <div class="nsm-conc-scale" style="position:relative;padding:0 6px;">
-          <div aria-hidden="true" style="position:absolute;left:6px;right:6px;top:9px;height:2px;background:linear-gradient(90deg,rgba(183,149,80,0.7),rgba(183,149,80,0.25));"></div>
-          <div style="position:relative;display:flex;justify-content:space-between;align-items:flex-start;gap:4px;">
-            <sc-for list="{{ conc.marks }}" as="m" hint-placeholder-count="6">
-              <button onClick="{{ m.onClick }}" aria-pressed="{{ m.active }}" style="flex:1;background:none;border:none;padding:0 2px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:12px;min-height:44px;">
-                <span aria-hidden="true" style="width:{{ m.dotSize }};height:{{ m.dotSize }};border-radius:50%;background:{{ m.dotBg }};border:2px solid var(--ns-bronze);box-shadow:{{ m.dotGlow }};transition:all .28s cubic-bezier(0.2,0.7,0.25,1);"></span>
-                <span style="font-family:var(--font-sans);font-size:calc(12.5px * var(--text-scale));font-weight:600;letter-spacing:0.02em;color:{{ m.labelColor }};text-align:center;line-height:1.25;transition:color .28s ease;">{{ m.name }}</span>
-              </button>
-            </sc-for>
-          </div>
-          <div style="display:flex;justify-content:space-between;margin-top:16px;">
-            <span style="font-family:var(--font-sans);font-size:calc(10.5px * var(--text-scale));font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-on-dark-mut);">Wet, liquid</span>
-            <span style="font-family:var(--font-sans);font-size:calc(10.5px * var(--text-scale));font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-on-dark-mut);">Dry, crumbly</span>
-          </div>
-        </div>
-        <div class="nsm-conc-detail" style="margin-top:clamp(30px,4vh,46px);border-top:1px solid var(--border-on-dark);padding-top:clamp(24px,3.2vh,34px);display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,0.95fr);gap:clamp(24px,4vw,60px);align-items:start;">
-          <div>
-            <div style="display:flex;align-items:baseline;gap:13px;flex-wrap:wrap;margin-bottom:14px;">
-              <span style="font-family:var(--font-display);font-weight:400;font-size:clamp(calc(28px * var(--text-scale)), calc(3.4vw * var(--text-scale)), calc(42px * var(--text-scale)));line-height:1;color:var(--ns-arctic);">{{ conc.cur.name }}</span>
-              <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.05em;color:var(--ns-bronze);border:1px solid var(--border-on-dark);border-radius:999px;padding:3px 11px;">{{ conc.cur.tag }}</span>
+        <div>
+          <p style="margin:0;max-width:58ch;font-family:var(--font-sans);font-size:calc(16px * var(--text-scale));line-height:1.65;color:var(--text-body);text-wrap:pretty;">Held under the tongue, it absorbs through the mouth and skips most of digestion. Steadier than inhaling, quicker and more predictable than an edible, and no smoke or vapor.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:14px;">
+              <span style="display:flex;flex-direction:column;gap:3px;"><span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:rgba(32,37,58,0.62);">Onset</span><span style="font-family:var(--font-sans);font-size:calc(15px * var(--text-scale));font-weight:600;color:var(--text-strong);">15 to 45 minutes</span></span>
+              <span style="display:flex;flex-direction:column;gap:3px;"><span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:rgba(32,37,58,0.62);">Peak</span><span style="font-family:var(--font-sans);font-size:calc(15px * var(--text-scale));font-weight:600;color:var(--text-strong);">60 to 90 min</span></span>
+              <span style="display:flex;flex-direction:column;gap:3px;"><span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:rgba(32,37,58,0.62);">Lasts</span><span style="font-family:var(--font-sans);font-size:calc(15px * var(--text-scale));font-weight:600;color:var(--text-strong);">3 to 5 hours</span></span>
             </div>
-            <p style="margin:0;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)), calc(1.55vw * var(--text-scale)), calc(18px * var(--text-scale)));line-height:1.72;color:rgba(245,244,225,0.82);text-wrap:pretty;">{{ conc.cur.description }}</p>
-            <sc-if value="{{ conc.cur.hasPhoto }}" hint-placeholder-val="{{ false }}">
-              <div style="margin-top:clamp(18px,2.4vh,26px);max-width:330px;background:#F5F4E1;border:1px solid var(--border-on-dark);overflow:hidden;">
-                <img src="{{ conc.cur.photo }}" alt="{{ conc.cur.name }}, Natural State Medicinals live concentrate" loading="lazy" style="display:block;width:100%;aspect-ratio:1/1;object-fit:cover;">
-              </div>
-            </sc-if>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:16px;">
-            <div>
-              <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:7px;">
-                <span style="font-family:var(--font-sans);font-size:calc(10.5px * var(--text-scale));font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-on-dark-mut);">Dab temp</span>
-                <span style="font-family:var(--font-sans);font-size:calc(14px * var(--text-scale));color:var(--ns-arctic);">{{ conc.cur.temp }}</span>
-              </div>
-              <span style="display:block;height:8px;background:rgba(245,244,225,0.1);border-radius:999px;overflow:hidden;position:relative;"><span style="position:absolute;top:0;bottom:0;left:{{ conc.tempLeft }};width:{{ conc.tempW }};background:linear-gradient(90deg,var(--ns-bronze),rgba(183,149,80,0.4));border-radius:999px;transition:left .4s cubic-bezier(0.2,0.7,0.25,1),width .4s cubic-bezier(0.2,0.7,0.25,1);"></span></span>
-            </div>
-            <div style="display:flex;gap:14px;"><span style="flex:none;width:88px;font-family:var(--font-sans);font-size:calc(10.5px * var(--text-scale));font-weight:600;letter-spacing:0.12em;color:var(--ns-bronze);padding-top:2px;">Texture</span><span style="font-family:var(--font-sans);font-size:calc(15px * var(--text-scale));line-height:1.5;color:rgba(245,244,225,0.82);">{{ conc.cur.texture }}</span></div>
-            <div style="display:flex;gap:14px;"><span style="flex:none;width:88px;font-family:var(--font-sans);font-size:calc(10.5px * var(--text-scale));font-weight:600;letter-spacing:0.12em;color:var(--ns-bronze);padding-top:2px;">Tool</span><span style="font-family:var(--font-sans);font-size:calc(15px * var(--text-scale));line-height:1.5;color:rgba(245,244,225,0.82);">{{ conc.cur.tool }}</span></div>
-          </div>
         </div>
       </div>
-<p data-reveal="" style="opacity:0;transform:translateY(22px);margin:0;max-width:64ch;font-family:var(--font-sans);font-size:calc(13px * var(--text-scale));line-height:1.65;color:rgba(245,244,225,0.6);">A note on temperature: lower temps (roughly 500 to 580°F) preserve terpenes and flavor with a lighter vapor; higher temps (580 to 650°F) trade some flavor for bigger, warmer clouds. Terpene-heavy formats like sauce and raw reward the low end.</p>
-
-      <!-- Live vs. Cured -->
-      <div id="sec-livecured" data-reveal="" style="opacity:0;transform:translateY(22px);display:flex;align-items:baseline;gap:12px;border-bottom:1px solid var(--ns-bronze);padding-bottom:14px;margin:clamp(56px,8vh,96px) 0 clamp(20px,3vh,30px);">
-        <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.2em;color:var(--ns-bronze);">Live vs. Cured</span>
-      </div>
-      <p data-reveal="" style="opacity:0;transform:translateY(22px);margin:0 0 clamp(28px,4vh,44px);max-width:64ch;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)), calc(1.6vw * var(--text-scale)), calc(18px * var(--text-scale)));line-height:1.7;color:rgba(245,244,225,0.82);">The difference starts on harvest day. Cured material is dried and cured the traditional way before it is extracted. Live material is frozen within hours of the cut and never dried at all. Live is the premium path: more of the plant&rsquo;s terpenes make it into the jar, and you can taste it. Cured is the classic, familiar path.</p>
-
-      <!-- harvest day fork -->
-      <div data-reveal="" style="opacity:0;transform:translateY(22px);border:1px solid var(--border-on-dark);background:rgba(245,244,225,0.03);padding:clamp(26px,3.4vw,44px);margin-bottom:clamp(24px,3.4vh,36px);">
-        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:clamp(26px,3.6vh,40px);">
-          <h3 style="margin:0;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(19px * var(--text-scale)), calc(2.2vw * var(--text-scale)), calc(26px * var(--text-scale)));color:var(--ns-arctic);">The harvest day fork</h3>
-          <span style="font-family:var(--font-sans);font-size:calc(13px * var(--text-scale));color:var(--text-on-dark-mut);">One plant, two paths.</span>
-        </div>
-        <div class="nsm-lc-fork">
-          <div style="display:flex;flex-direction:column;align-items:center;text-align:center;">
-            <span data-step="" style="--d:0ms;display:grid;place-items:center;width:64px;height:64px;border-radius:50%;border:1.5px solid var(--ns-bronze);background:rgba(183,149,80,0.12);"><img src="../assets/brand/leaf-glyph-bronze.png" alt="" style="width:34px;height:34px;object-fit:contain;"></span>
-            <span data-step="" style="--d:90ms;margin-top:12px;font-family:var(--font-sans);font-size:calc(10.5px * var(--text-scale));font-weight:600;letter-spacing:0.14em;text-transform:uppercase;letter-spacing:0.18em;color:var(--ns-bronze);">Harvest day</span>
-            <span data-step="" style="--d:150ms;margin-top:6px;font-family:var(--font-sans);font-size:calc(14px * var(--text-scale));color:var(--text-on-dark-mut);">The plant is cut. Here its path splits.</span>
-            <span class="nsm-lc-vline" aria-hidden="true" style="--d:240ms;display:block;width:2px;height:34px;margin-top:16px;background:rgba(183,149,80,0.7);"></span>
-          </div>
-          <div class="nsm-lc-hline" aria-hidden="true" style="--d:340ms;height:2px;margin:0 25%;background:rgba(183,149,80,0.7);"></div>
-          <div class="nsm-lc-branches" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));">
-            <sc-for list="{{ lc.branches }}" as="b" hint-placeholder-count="2">
-              <div style="display:flex;flex-direction:column;align-items:center;padding:0 clamp(10px,1.6vw,24px);">
-                <span class="nsm-lc-vline" aria-hidden="true" style="--d:440ms;display:block;width:2px;height:28px;background:rgba(183,149,80,0.7);"></span>
-                <div data-step="" style="--d:500ms;display:flex;flex-direction:column;align-items:center;gap:3px;border:1px solid var(--ns-bronze);border-radius:999px;padding:9px 24px 8px;">
-                  <span style="font-family:var(--font-display);font-weight:400;font-size:clamp(calc(20px * var(--text-scale)), calc(2vw * var(--text-scale)), calc(24px * var(--text-scale)));line-height:1;color:var(--ns-arctic);">{{ b.verb }}</span>
-                  <span style="font-family:var(--font-sans);font-size:calc(9.5px * var(--text-scale));font-weight:600;letter-spacing:0.14em;text-transform:uppercase;letter-spacing:0.2em;color:var(--ns-bronze);">{{ b.label }}</span>
-                </div>
-                <ol style="list-style:none;margin:24px 0 0;padding:0;width:100%;max-width:360px;display:flex;flex-direction:column;">
-                  <sc-for list="{{ b.steps }}" as="s" hint-placeholder-count="3">
-                    <li data-step="" style="--d:{{ s.delay }};display:grid;grid-template-columns:28px minmax(0,1fr);gap:14px;position:relative;padding-bottom:20px;">
-                      <span aria-hidden="true" style="position:relative;display:block;">
-                        <span style="position:absolute;left:7px;top:5px;width:14px;height:14px;border-radius:50%;border:2px solid var(--ns-bronze);background:var(--ns-midnight);box-sizing:border-box;"></span>
-                        <span style="position:absolute;left:13px;top:21px;bottom:-18px;width:2px;background:rgba(183,149,80,0.35);opacity:{{ s.lineOp }};"></span>
-                      </span>
-                      <span style="display:flex;flex-direction:column;gap:4px;">
-                        <span style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;">
-                          <span style="font-family:var(--font-display);font-weight:400;font-size:clamp(calc(19px * var(--text-scale)), calc(1.9vw * var(--text-scale)), calc(22px * var(--text-scale)));line-height:1.05;color:var(--ns-arctic);">{{ s.title }}</span>
-                          <span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.14em;text-transform:uppercase;letter-spacing:0.12em;color:var(--ns-bronze);">{{ s.note }}</span>
-                        </span>
-                        <span style="font-family:var(--font-sans);font-size:calc(14.5px * var(--text-scale));line-height:1.55;color:rgba(245,244,225,0.78);">{{ s.text }}</span>
-                      </span>
-                    </li>
-                  </sc-for>
-                </ol>
-              </div>
-            </sc-for>
-          </div>
-        </div>
-      </div>
-
-      <!-- live / cured comparison -->
-      <div data-reveal="" style="opacity:0;transform:translateY(22px);border:1px solid var(--border-on-dark);background:rgba(245,244,225,0.03);padding:clamp(26px,3.4vw,44px);margin-bottom:clamp(24px,3.4vh,36px);">
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:clamp(18px,2.6vh,26px);">
-          <h3 style="margin:0;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(19px * var(--text-scale)), calc(2.2vw * var(--text-scale)), calc(26px * var(--text-scale)));color:var(--ns-arctic);">Side by side</h3>
-          <div role="group" aria-label="Show live or cured" style="position:relative;display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--border-on-dark);border-radius:999px;padding:4px;min-width:230px;background:rgba(245,244,225,0.04);">
-            <span class="nsm-lc-thumb" aria-hidden="true" style="position:absolute;top:4px;bottom:4px;left:4px;width:calc(50% - 4px);border-radius:999px;background:var(--ns-bronze);transform:translateX({{ lc.thumbX }});"></span>
-            <button onClick="{{ lc.setLive }}" aria-pressed="{{ lc.liveOn }}" style="position:relative;z-index:1;background:none;border:none;cursor:pointer;min-height:44px;padding:0 22px;font-family:var(--font-sans);font-size:calc(11.5px * var(--text-scale));font-weight:600;letter-spacing:0.14em;text-transform:uppercase;letter-spacing:0.18em;color:{{ lc.liveColor }};transition:color .3s ease;">Live</button>
-            <button onClick="{{ lc.setCured }}" aria-pressed="{{ lc.curedOn }}" style="position:relative;z-index:1;background:none;border:none;cursor:pointer;min-height:44px;padding:0 22px;font-family:var(--font-sans);font-size:calc(11.5px * var(--text-scale));font-weight:600;letter-spacing:0.14em;text-transform:uppercase;letter-spacing:0.18em;color:{{ lc.curedColor }};transition:color .3s ease;">Cured</button>
-          </div>
-        </div>
-        <p style="margin:0 0 clamp(26px,3.6vh,38px);max-width:64ch;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)), calc(1.55vw * var(--text-scale)), calc(18px * var(--text-scale)));line-height:1.72;color:rgba(245,244,225,0.82);text-wrap:pretty;">Freezing holds on to more of the plant&rsquo;s terpenes, the lighter aromatics that drying and curing let fade. That is why live products taste fuller and truer to the strain, and pull smoother. Curing gives a deeper, earthier, more mellow profile, and cured products are often the more budget-friendly option.</p>
-        <div style="display:grid;border-top:1px solid var(--border-on-dark);padding-top:clamp(24px,3.2vh,34px);">
-          <sc-for list="{{ lc.cards }}" as="c" hint-placeholder-count="1">
-            <div class="nsm-lc-card nsm-lc-cmp" aria-hidden="{{ c.ariaHidden }}" style="grid-area:1 / 1;opacity:{{ c.op }};visibility:{{ c.vis }};display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,60px);align-items:start;">
-              <div style="display:flex;flex-direction:column;gap:18px;">
-                <div>
-                  <span style="font-family:var(--font-sans);font-size:calc(10.5px * var(--text-scale));font-weight:600;letter-spacing:0.14em;text-transform:uppercase;letter-spacing:0.2em;color:var(--ns-bronze);">{{ c.eyebrow }}</span>
-                  <span style="display:block;margin-top:8px;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(28px * var(--text-scale)), calc(3.4vw * var(--text-scale)), calc(42px * var(--text-scale)));line-height:1;color:var(--ns-arctic);">{{ c.title }}</span>
-                </div>
-<div>
-                  <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:7px;"><span style="font-family:var(--font-sans);font-size:calc(10.5px * var(--text-scale));font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-on-dark-mut);">Terpenes</span><span style="font-family:var(--font-sans);font-size:calc(12.5px * var(--text-scale));color:var(--text-on-dark-mut);">Aromatics kept in the jar</span></div>
-                  <span style="display:block;height:8px;background:rgba(245,244,225,0.1);border-radius:999px;overflow:hidden;position:relative;"><span class="nsm-lc-bar" style="position:absolute;top:0;bottom:0;left:0;width:{{ c.terpW }};background:linear-gradient(90deg,var(--ns-bronze),rgba(183,149,80,0.4));border-radius:999px;"></span></span>
-                </div>
-                <div>
-                  <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:7px;">
-                    <span style="font-family:var(--font-sans);font-size:calc(10.5px * var(--text-scale));font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-on-dark-mut);">Brightness</span>
-                    <span style="font-family:var(--font-sans);font-size:calc(12.5px * var(--text-scale));color:var(--text-on-dark-mut);">Fruit, zest, top notes</span>
-                  </div>
-                  <span style="display:block;height:8px;background:rgba(245,244,225,0.1);border-radius:999px;overflow:hidden;position:relative;"><span class="nsm-lc-bar" style="position:absolute;top:0;bottom:0;left:0;width:{{ c.brightW }};background:linear-gradient(90deg,var(--ns-bronze),rgba(183,149,80,0.4));border-radius:999px;"></span></span>
-                </div>
-                <div>
-                  <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:7px;">
-                    <span style="font-family:var(--font-sans);font-size:calc(10.5px * var(--text-scale));font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-on-dark-mut);">Depth</span>
-                    <span style="font-family:var(--font-sans);font-size:calc(12.5px * var(--text-scale));color:var(--text-on-dark-mut);">Earth, spice, warmth</span>
-                  </div>
-                  <span style="display:block;height:8px;background:rgba(245,244,225,0.1);border-radius:999px;overflow:hidden;position:relative;"><span class="nsm-lc-bar" style="position:absolute;top:0;bottom:0;left:0;width:{{ c.depthW }};background:linear-gradient(90deg,var(--ns-bronze),rgba(183,149,80,0.4));border-radius:999px;"></span></span>
-                </div>
-              </div>
-              <div style="display:flex;flex-direction:column;gap:16px;">
-                <sc-for list="{{ c.rows }}" as="r" hint-placeholder-count="4">
-                  <div style="display:flex;gap:14px;"><span style="flex:none;width:112px;font-family:var(--font-sans);font-size:calc(10.5px * var(--text-scale));font-weight:600;letter-spacing:0.12em;color:var(--ns-bronze);padding-top:2px;">{{ r.label }}</span><span style="font-family:var(--font-sans);font-size:calc(15px * var(--text-scale));line-height:1.5;color:rgba(245,244,225,0.82);">{{ r.text }}</span></div>
-                </sc-for>
-                <div style="display:flex;gap:14px;align-items:flex-start;"><span style="flex:none;width:112px;font-family:var(--font-sans);font-size:calc(10.5px * var(--text-scale));font-weight:600;letter-spacing:0.12em;color:var(--ns-bronze);padding-top:12px;">Typical textures</span>
-                  <span style="display:flex;flex-wrap:wrap;gap:8px;">
-                    <sc-for list="{{ c.textures }}" as="x" hint-placeholder-count="3">
-                      <button onClick="{{ x.onClick }}" aria-label="{{ x.aria }}" style="display:inline-flex;align-items:center;gap:7px;min-height:40px;background:none;border:1px solid var(--border-on-dark);border-radius:999px;padding:0 15px;cursor:pointer;font-family:var(--font-sans);font-size:calc(13px * var(--text-scale));font-weight:600;color:var(--ns-arctic);transition:border-color .22s ease, background .22s ease;" style-hover="border-color:var(--ns-bronze);background:rgba(183,149,80,0.1);">{{ x.name }} <span aria-hidden="true" style="color:var(--ns-bronze);">&#8593;</span></button>
-                    </sc-for>
+        <div class="nsm-pf-grid">
+          <sc-for list="{{ pf.tongue }}" as="p" hint-placeholder-count="2">
+            <article class="nsm-pf-card" data-pf-key="{{ p.key }}" data-open="{{ p.openFlag }}" style="display:{{ p.disp }};flex-direction:column;background:var(--ns-cream);border:1px solid var(--border-hairline);box-shadow:var(--shadow-sm);overflow:hidden;">
+              <div class="nsm-pf-inner">
+                <button class="nsm-pf-hit" onClick="{{ p.onToggle }}" aria-expanded="{{ p.isOpen }}" aria-controls="{{ p.panelId }}" style="display:flex;flex-direction:column;width:100%;background:none;border:none;padding:0;cursor:pointer;text-align:left;">
+                  <sc-if value="{{ p.hasPhoto }}" hint-placeholder-val="{{ false }}">
+                    <span style="position:relative;display:block;width:100%;background:{{ p.photoBg }};">
+                      <img src="{{ p.photo }}" alt="{{ p.name }}, Natural State Medicinals" loading="lazy" style="width:100%;aspect-ratio:16/10;object-fit:{{ p.photoFit }};display:block;">
+                      <span style="position:absolute;left:14px;bottom:14px;font-family:var(--font-sans);font-size:calc(10.5px * var(--text-scale));letter-spacing:0.12em;color:var(--ns-arctic);background:rgba(32,37,58,0.78);border-radius:999px;padding:5px 12px;">{{ p.kicker }}</span>
+                    </span>
+                  </sc-if>
+                  <sc-if value="{{ p.noPhoto }}" hint-placeholder-val="{{ false }}">
+                    <span style="position:relative;display:flex;width:100%;aspect-ratio:16/10;background:var(--ns-midnight);align-items:center;justify-content:center;overflow:hidden;">
+                      <img src="../assets/brand/leaf-sativa.png" alt="" aria-hidden="true" loading="lazy" style="width:38%;height:auto;opacity:0.5;filter:drop-shadow(0 6px 16px rgba(0,0,0,0.35));">
+                      <span style="position:absolute;left:14px;top:14px;font-family:var(--font-sans);font-size:calc(9.5px * var(--text-scale));letter-spacing:0.14em;color:rgba(245,244,225,0.62);border:1px solid var(--border-on-dark);border-radius:999px;padding:4px 10px;">Photo coming soon</span>
+                      <span style="position:absolute;left:14px;bottom:14px;font-family:var(--font-sans);font-size:calc(10.5px * var(--text-scale));letter-spacing:0.12em;color:var(--ns-arctic);background:rgba(183,149,80,0.85);border-radius:999px;padding:5px 12px;">{{ p.kicker }}</span>
+                    </span>
+                  </sc-if>
+                  <span style="display:flex;flex-direction:column;gap:12px;padding:clamp(22px,2.4vw,30px);">
+                    <span style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
+                      <span style="font-family:var(--font-sans);font-weight:400;font-size:calc(24px * var(--text-scale));line-height:1.06;letter-spacing:0.005em;color:var(--text-strong);">{{ p.name }}</span>
+                      <span aria-hidden="true" style="font-family:var(--font-sans);font-size:calc(20px * var(--text-scale));line-height:1;color:var(--ns-bronze);flex:none;">{{ p.pfCaret }}</span>
+                    </span>
+                    <sc-if value="{{ p.hasForms }}" hint-placeholder-val="{{ true }}">
+                      <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.1em;color:var(--ns-bronze);">View types &amp; dosages &#8594;</span>
+                    </sc-if>
                   </span>
-                </div>
+                </button>
+                <sc-if value="{{ p.isOpen }}" hint-placeholder-val="{{ false }}">
+                  <div id="{{ p.panelId }}" class="nsm-pf-panel" role="region" aria-label="{{ p.name }}" style="position:relative;display:flex;flex-direction:column;gap:16px;padding:clamp(22px,2.6vw,34px);">
+                    <button onClick="{{ p.onClose }}" aria-label="{{ p.closeAria }}" style="position:absolute;top:clamp(12px,1.6vw,18px);right:clamp(12px,1.6vw,18px);width:44px;height:44px;border-radius:50%;border:1px solid var(--border-hairline);background:var(--ns-arctic);color:var(--text-strong);font-size:calc(20px * var(--text-scale));line-height:1;cursor:pointer;">&#215;</button>
+                    <p style="margin:0;padding-right:52px;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)), calc(1.5vw * var(--text-scale)), calc(17px * var(--text-scale)));line-height:1.7;color:var(--text-body);">{{ p.description }}</p>
+                    <sc-if value="{{ p.hasLc }}" hint-placeholder-val="{{ false }}">
+                      <button onClick="{{ p.onLc }}" style="align-self:flex-start;display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--ns-bronze);background:rgba(183,149,80,0.1);color:var(--text-strong);cursor:pointer;font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.12em;" style-hover="background:var(--ns-bronze);">Live vs. Cured <span aria-hidden="true" style="color:#7A5F28;">&#8595;</span></button>
+                    </sc-if>
+                    <sc-if value="{{ p.hasForms }}" hint-placeholder-val="{{ false }}">
+                      <div style="border-top:1px solid var(--border-hairline);padding-top:14px;">
+                        <span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.18em;color:var(--ns-bronze);">Types &amp; dosages</span>
+                        <div style="display:flex;flex-wrap:wrap;gap:7px;margin-top:11px;">
+                          <sc-for list="{{ p.forms }}" as="f" hint-placeholder-count="4">
+                            <span style="font-family:var(--font-sans);font-size:calc(12.5px * var(--text-scale));color:var(--text-strong);background:var(--ns-haze);border-radius:999px;padding:5px 13px;">{{ f }}</span>
+                          </sc-for>
+                        </div>
+                      </div>
+                    </sc-if>
+                    <sc-if value="{{ p.hasTypeDetail }}" hint-placeholder-val="{{ false }}">
+                      <div style="display:flex;flex-direction:column;">
+                        <span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.18em;color:var(--ns-bronze);margin-bottom:4px;">What the oil types mean</span>
+                        <sc-for list="{{ p.typeDetail }}" as="t" hint-placeholder-count="3">
+                          <div style="border-top:1px solid var(--border-hairline);padding:13px 0;">
+                            <span style="font-family:var(--font-sans);font-size:calc(13.5px * var(--text-scale));letter-spacing:0.01em;color:var(--text-strong);">{{ t.name }}</span>
+                            <p style="margin:5px 0 0;font-family:var(--font-sans);font-size:calc(13px * var(--text-scale));line-height:1.58;color:var(--text-body);">{{ t.desc }}</p>
+                          </div>
+                        </sc-for>
+                      </div>
+                    </sc-if>
+                    <sc-if value="{{ p.howTo }}" hint-placeholder-val="{{ false }}">
+                      <div style="border-top:1px solid var(--border-hairline);padding-top:14px;">
+                        <span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.18em;color:var(--ns-bronze);">How to use</span>
+                        <p style="margin:9px 0 0;font-family:var(--font-sans);font-size:calc(13.5px * var(--text-scale));line-height:1.62;color:var(--text-body);">{{ p.howTo }}</p>
+                      </div>
+                    </sc-if>
+                  </div>
+                </sc-if>
               </div>
-            </div>
+            </article>
           </sc-for>
         </div>
-      </div>
-
-      <!-- four combinations -->
-      <div data-reveal="" style="opacity:0;transform:translateY(22px);border:1px solid var(--border-on-dark);background:rgba(245,244,225,0.03);padding:clamp(26px,3.4vw,44px);margin-bottom:clamp(24px,3.4vh,36px);">
-        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:clamp(14px,2vh,20px);">
-          <h3 style="margin:0;font-family:var(--font-sans);font-weight:400;font-size:clamp(calc(19px * var(--text-scale)), calc(2.2vw * var(--text-scale)), calc(26px * var(--text-scale)));color:var(--ns-arctic);">Four combinations</h3>
-          <span style="font-family:var(--font-sans);font-size:calc(13px * var(--text-scale));color:var(--text-on-dark-mut);">Tap a tile to turn it over.</span>
-        </div>
-        <p style="margin:0 0 clamp(24px,3.4vh,34px);max-width:64ch;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)), calc(1.55vw * var(--text-scale)), calc(18px * var(--text-scale)));line-height:1.72;color:rgba(245,244,225,0.82);text-wrap:pretty;">Resin is extracted with a solvent. Rosin is solventless, pressed out with heat and pressure. Either one can start live or cured, which makes four combinations.</p>
-        <div class="nsm-lc-combos" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(12px,1.6vw,18px);">
-          <sc-for list="{{ lc.combos }}" as="t" hint-placeholder-count="4">
-            <button onClick="{{ t.onClick }}" aria-pressed="{{ t.flipped }}" aria-label="{{ t.aria }}" style="display:block;width:100%;background:none;border:none;padding:0;cursor:pointer;text-align:left;perspective:1200px;">
-              <span class="nsm-lc-flip" data-flipped="{{ t.flag }}" style="display:grid;transform:{{ t.rot }};">
-                <span class="nsm-lc-face nsm-lc-front" style="grid-area:1 / 1;display:flex;flex-direction:column;justify-content:space-between;gap:18px;border:1px solid var(--border-on-dark);background:rgba(245,244,225,0.03);padding:clamp(20px,2.6vw,30px);min-height:clamp(150px,18vh,190px);box-sizing:border-box;">
-                  <span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.14em;text-transform:uppercase;letter-spacing:0.16em;color:var(--ns-bronze);">{{ t.tag }}</span>
-                  <span style="font-family:var(--font-display);font-weight:400;font-size:clamp(calc(26px * var(--text-scale)), calc(3vw * var(--text-scale)), calc(38px * var(--text-scale)));line-height:1;color:var(--ns-arctic);">{{ t.name }}</span>
-                  <span style="font-family:var(--font-sans);font-size:calc(12.5px * var(--text-scale));color:var(--text-on-dark-mut);">How it is made <span aria-hidden="true" style="color:var(--ns-bronze);">&#8635;</span></span>
-                </span>
-                <span class="nsm-lc-face nsm-lc-back" aria-hidden="true" style="grid-area:1 / 1;transform:rotateY(180deg);display:flex;flex-direction:column;gap:10px;background:var(--ns-arctic);border:1px solid var(--ns-bronze);padding:clamp(20px,2.6vw,30px);min-height:clamp(150px,18vh,190px);box-sizing:border-box;">
-                  <span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.14em;text-transform:uppercase;letter-spacing:0.16em;color:#7A5F28;">{{ t.name }}</span>
-                  <span style="font-family:var(--font-sans);font-size:clamp(calc(16px * var(--text-scale)), calc(1.6vw * var(--text-scale)), calc(18px * var(--text-scale)));font-weight:600;line-height:1.4;color:var(--ns-midnight);">{{ t.line }}</span>
-                  <span style="font-family:var(--font-sans);font-size:calc(14px * var(--text-scale));line-height:1.6;color:rgba(32,37,58,0.8);">{{ t.how }}</span>
-                </span>
-              </span>
-            </button>
-          </sc-for>
-        </div>
-      </div>
-      <p data-reveal="" style="opacity:0;transform:translateY(22px);margin:0;max-width:64ch;font-family:var(--font-sans);font-size:calc(13px * var(--text-scale));line-height:1.65;color:rgba(245,244,225,0.6);">These are general tendencies, not rules. The strain, the grower, and how it is handled shape flavor as much as the method does.</p>
     </div>
   </section>
-
   <!-- formats: kitchen (cream surface) -->
-  <section style="position:relative;background:var(--ns-cream);padding:clamp(60px,9vh,110px) clamp(20px,6vw,80px) clamp(80px,11vh,140px);">
+  <section data-pstep="3" data-tone="light" style="position:relative;background:var(--ns-arctic);padding:clamp(56px,8vh,96px) clamp(20px,6vw,80px);">
     <div style="max-width:1180px;margin:0 auto;">
 
-      <!-- From the kitchen -->
-      <div data-reveal="" style="opacity:0;transform:translateY(22px);display:flex;align-items:baseline;gap:12px;border-bottom:1px solid var(--ns-bronze);padding-bottom:14px;margin-bottom:clamp(20px,3vh,30px);">
-        <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.2em;color:var(--ns-bronze);">From the kitchen</span>
+
+      <div id="grp-eat" data-reveal="" class="nsm-grp-hd" style="opacity:0;transform:translateY(22px);display:grid;grid-template-columns:minmax(0,0.85fr) minmax(0,1.15fr);gap:clamp(18px,3.4vw,48px);align-items:end;border-top:1px solid var(--ns-bronze);padding-top:22px;margin:0 0 clamp(22px,3vh,30px);">
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--ns-bronze);">Route three · Eat it</span>
+          <h4 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(26px * var(--text-scale)), calc(3vw * var(--text-scale)), calc(38px * var(--text-scale)));line-height:1.04;letter-spacing:-0.01em;color:var(--text-strong);">Edibles</h4>
+        </div>
+        <div>
+          <p style="margin:0;max-width:58ch;font-family:var(--font-sans);font-size:calc(16px * var(--text-scale));line-height:1.65;color:var(--text-body);text-wrap:pretty;">Eaten, it goes the long way, through digestion. It arrives late and stays long, so start low and wait a full two hours before taking more.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:14px;">
+              <span style="display:flex;flex-direction:column;gap:3px;"><span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:rgba(32,37,58,0.62);">Onset</span><span style="font-family:var(--font-sans);font-size:calc(15px * var(--text-scale));font-weight:600;color:var(--text-strong);">30 to 90 minutes</span></span>
+              <span style="display:flex;flex-direction:column;gap:3px;"><span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:rgba(32,37,58,0.62);">Peak</span><span style="font-family:var(--font-sans);font-size:calc(15px * var(--text-scale));font-weight:600;color:var(--text-strong);">2 to 4 hours</span></span>
+              <span style="display:flex;flex-direction:column;gap:3px;"><span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:rgba(32,37,58,0.62);">Lasts</span><span style="font-family:var(--font-sans);font-size:calc(15px * var(--text-scale));font-weight:600;color:var(--text-strong);">4 to 8 hours</span></span>
+            </div>
+        </div>
       </div>
-      <div style="position:relative;">
-        <div class="nsm-kitchen-track" style="display:flex;gap:clamp(16px,2vw,24px);overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:8px;scrollbar-width:none;">
+      <div>
+        <div class="nsm-pf-grid">
         <sc-for list="{{ kitchen }}" as="p" hint-placeholder-count="4">
-          <div data-reveal="" style="opacity:0;transform:translateY(18px);flex:0 0 clamp(258px,78vw,330px);scroll-snap-align:start;background:var(--ns-cream);border:1px solid var(--border-hairline);box-shadow:var(--shadow-sm);display:flex;flex-direction:column;overflow:hidden;">
+          <div data-reveal="" class="nsm-pf-card" style="opacity:0;transform:translateY(18px);background:var(--ns-cream);border:1px solid var(--border-hairline);box-shadow:var(--shadow-sm);display:flex;flex-direction:column;overflow:hidden;">
             <sc-if value="{{ p.hasPhoto }}" hint-placeholder-val="{{ false }}">
               <div onClick="{{ p.onToggle }}" style="position:relative;cursor:pointer;">
                 <img src="{{ p.photo }}" alt="{{ p.name }}, Natural State Medicinals" loading="lazy" style="width:100%;aspect-ratio:16/10;object-fit:cover;display:block;">
@@ -1962,7 +2152,7 @@
               </div>
               
               <sc-if value="{{ p.open }}" hint-placeholder-val="{{ true }}">
-                <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.1em;color:var(--ns-bronze);">View flavors {{ p.caret }}</span>
+                <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.1em;color:var(--ns-bronze);">View flavors &amp; dosages &#8594;</span>
               </sc-if>
             </button>
             <sc-if value="{{ p.open }}" hint-placeholder-val="{{ false }}">
@@ -1988,10 +2178,173 @@
           </div>
         </sc-for>
         </div>
-        <button class="nsm-kitchen-prev" aria-label="Previous" style="position:absolute;left:-6px;top:calc(50% - 22px);transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:none;background:var(--ns-midnight);color:var(--ns-arctic);font-size:calc(18px * var(--text-scale));line-height:1;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,0.25);transition:opacity .25s ease;">←</button>
-        <button class="nsm-kitchen-next" aria-label="Next" style="position:absolute;right:-6px;top:calc(50% - 22px);transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:none;background:var(--ns-midnight);color:var(--ns-arctic);font-size:calc(18px * var(--text-scale));line-height:1;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,0.25);transition:opacity .25s ease;">→</button>
       </div>
+    </div>
+  </section>
+
+  <!-- step 04 · on the body (arctic) -->
+  <section data-pstep="3" data-tone="light" style="position:relative;background:var(--ns-arctic);padding:clamp(20px,3vh,36px) clamp(20px,6vw,80px) clamp(70px,10vh,120px);">
+    <div style="max-width:1180px;margin:0 auto;">
+      <div id="grp-body" data-reveal="" class="nsm-grp-hd" style="opacity:0;transform:translateY(22px);display:grid;grid-template-columns:minmax(0,0.85fr) minmax(0,1.15fr);gap:clamp(18px,3.4vw,48px);align-items:end;border-top:1px solid var(--ns-bronze);padding-top:22px;margin:clamp(44px,6.5vh,72px) 0 clamp(22px,3vh,30px);">
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--ns-bronze);">Route four · On the body</span>
+          <h4 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(26px * var(--text-scale)), calc(3vw * var(--text-scale)), calc(38px * var(--text-scale)));line-height:1.04;letter-spacing:-0.01em;color:var(--text-strong);">Topicals and suppositories</h4>
+        </div>
+        <div>
+          <p style="margin:0;max-width:58ch;font-family:var(--font-sans);font-size:calc(16px * var(--text-scale));line-height:1.65;color:var(--text-body);text-wrap:pretty;">Not inhaled, not swallowed. Topicals work on the skin where you apply them, without a high for most patients. Suppositories absorb in the lower digestive tract, for patients who cannot take medicine by mouth.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:14px;">
+              <span style="display:flex;flex-direction:column;gap:3px;"><span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:rgba(32,37,58,0.62);">Topicals</span><span style="font-family:var(--font-sans);font-size:calc(15px * var(--text-scale));font-weight:600;color:var(--text-strong);">On the skin</span></span>
+              <span style="display:flex;flex-direction:column;gap:3px;"><span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:rgba(32,37,58,0.62);">Suppositories</span><span style="font-family:var(--font-sans);font-size:calc(15px * var(--text-scale));font-weight:600;color:var(--text-strong);">Lower GI tract</span></span>
+              <span style="display:flex;flex-direction:column;gap:3px;"><span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:rgba(32,37,58,0.62);">Both</span><span style="font-family:var(--font-sans);font-size:calc(15px * var(--text-scale));font-weight:600;color:var(--text-strong);">3:1 CBD to THC</span></span>
+            </div>
+        </div>
+      </div>
+        <div class="nsm-pf-grid">
+          <sc-for list="{{ pf.body }}" as="p" hint-placeholder-count="2">
+            <article class="nsm-pf-card" data-pf-key="{{ p.key }}" data-open="{{ p.openFlag }}" style="display:{{ p.disp }};flex-direction:column;background:var(--ns-cream);border:1px solid var(--border-hairline);box-shadow:var(--shadow-sm);overflow:hidden;">
+              <div class="nsm-pf-inner">
+                <button class="nsm-pf-hit" onClick="{{ p.onToggle }}" aria-expanded="{{ p.isOpen }}" aria-controls="{{ p.panelId }}" style="display:flex;flex-direction:column;width:100%;background:none;border:none;padding:0;cursor:pointer;text-align:left;">
+                  <sc-if value="{{ p.hasPhoto }}" hint-placeholder-val="{{ false }}">
+                    <span style="position:relative;display:block;width:100%;background:{{ p.photoBg }};">
+                      <img src="{{ p.photo }}" alt="{{ p.name }}, Natural State Medicinals" loading="lazy" style="width:100%;aspect-ratio:16/10;object-fit:{{ p.photoFit }};display:block;">
+                      <span style="position:absolute;left:14px;bottom:14px;font-family:var(--font-sans);font-size:calc(10.5px * var(--text-scale));letter-spacing:0.12em;color:var(--ns-arctic);background:rgba(32,37,58,0.78);border-radius:999px;padding:5px 12px;">{{ p.kicker }}</span>
+                    </span>
+                  </sc-if>
+                  <sc-if value="{{ p.noPhoto }}" hint-placeholder-val="{{ false }}">
+                    <span style="position:relative;display:flex;width:100%;aspect-ratio:16/10;background:var(--ns-midnight);align-items:center;justify-content:center;overflow:hidden;">
+                      <img src="../assets/brand/leaf-sativa.png" alt="" aria-hidden="true" loading="lazy" style="width:38%;height:auto;opacity:0.5;filter:drop-shadow(0 6px 16px rgba(0,0,0,0.35));">
+                      <span style="position:absolute;left:14px;top:14px;font-family:var(--font-sans);font-size:calc(9.5px * var(--text-scale));letter-spacing:0.14em;color:rgba(245,244,225,0.62);border:1px solid var(--border-on-dark);border-radius:999px;padding:4px 10px;">Photo coming soon</span>
+                      <span style="position:absolute;left:14px;bottom:14px;font-family:var(--font-sans);font-size:calc(10.5px * var(--text-scale));letter-spacing:0.12em;color:var(--ns-arctic);background:rgba(183,149,80,0.85);border-radius:999px;padding:5px 12px;">{{ p.kicker }}</span>
+                    </span>
+                  </sc-if>
+                  <span style="display:flex;flex-direction:column;gap:12px;padding:clamp(22px,2.4vw,30px);">
+                    <span style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
+                      <span style="font-family:var(--font-sans);font-weight:400;font-size:calc(24px * var(--text-scale));line-height:1.06;letter-spacing:0.005em;color:var(--text-strong);">{{ p.name }}</span>
+                      <span aria-hidden="true" style="font-family:var(--font-sans);font-size:calc(20px * var(--text-scale));line-height:1;color:var(--ns-bronze);flex:none;">{{ p.pfCaret }}</span>
+                    </span>
+                    <sc-if value="{{ p.hasForms }}" hint-placeholder-val="{{ true }}">
+                      <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.1em;color:var(--ns-bronze);">View types &amp; dosages &#8594;</span>
+                    </sc-if>
+                  </span>
+                </button>
+                <sc-if value="{{ p.isOpen }}" hint-placeholder-val="{{ false }}">
+                  <div id="{{ p.panelId }}" class="nsm-pf-panel" role="region" aria-label="{{ p.name }}" style="position:relative;display:flex;flex-direction:column;gap:16px;padding:clamp(22px,2.6vw,34px);">
+                    <button onClick="{{ p.onClose }}" aria-label="{{ p.closeAria }}" style="position:absolute;top:clamp(12px,1.6vw,18px);right:clamp(12px,1.6vw,18px);width:44px;height:44px;border-radius:50%;border:1px solid var(--border-hairline);background:var(--ns-arctic);color:var(--text-strong);font-size:calc(20px * var(--text-scale));line-height:1;cursor:pointer;">&#215;</button>
+                    <p style="margin:0;padding-right:52px;font-family:var(--font-sans);font-size:clamp(calc(15px * var(--text-scale)), calc(1.5vw * var(--text-scale)), calc(17px * var(--text-scale)));line-height:1.7;color:var(--text-body);">{{ p.description }}</p>
+                    <sc-if value="{{ p.hasLc }}" hint-placeholder-val="{{ false }}">
+                      <button onClick="{{ p.onLc }}" style="align-self:flex-start;display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--ns-bronze);background:rgba(183,149,80,0.1);color:var(--text-strong);cursor:pointer;font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.12em;" style-hover="background:var(--ns-bronze);">Live vs. Cured <span aria-hidden="true" style="color:#7A5F28;">&#8595;</span></button>
+                    </sc-if>
+                    <sc-if value="{{ p.hasForms }}" hint-placeholder-val="{{ false }}">
+                      <div style="border-top:1px solid var(--border-hairline);padding-top:14px;">
+                        <span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.18em;color:var(--ns-bronze);">Types &amp; dosages</span>
+                        <div style="display:flex;flex-wrap:wrap;gap:7px;margin-top:11px;">
+                          <sc-for list="{{ p.forms }}" as="f" hint-placeholder-count="4">
+                            <span style="font-family:var(--font-sans);font-size:calc(12.5px * var(--text-scale));color:var(--text-strong);background:var(--ns-haze);border-radius:999px;padding:5px 13px;">{{ f }}</span>
+                          </sc-for>
+                        </div>
+                      </div>
+                    </sc-if>
+                    <sc-if value="{{ p.hasTypeDetail }}" hint-placeholder-val="{{ false }}">
+                      <div style="display:flex;flex-direction:column;">
+                        <span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.18em;color:var(--ns-bronze);margin-bottom:4px;">What the oil types mean</span>
+                        <sc-for list="{{ p.typeDetail }}" as="t" hint-placeholder-count="3">
+                          <div style="border-top:1px solid var(--border-hairline);padding:13px 0;">
+                            <span style="font-family:var(--font-sans);font-size:calc(13.5px * var(--text-scale));letter-spacing:0.01em;color:var(--text-strong);">{{ t.name }}</span>
+                            <p style="margin:5px 0 0;font-family:var(--font-sans);font-size:calc(13px * var(--text-scale));line-height:1.58;color:var(--text-body);">{{ t.desc }}</p>
+                          </div>
+                        </sc-for>
+                      </div>
+                    </sc-if>
+                    <sc-if value="{{ p.howTo }}" hint-placeholder-val="{{ false }}">
+                      <div style="border-top:1px solid var(--border-hairline);padding-top:14px;">
+                        <span style="font-family:var(--font-sans);font-size:calc(10px * var(--text-scale));font-weight:600;letter-spacing:0.18em;color:var(--ns-bronze);">How to use</span>
+                        <p style="margin:9px 0 0;font-family:var(--font-sans);font-size:calc(13.5px * var(--text-scale));line-height:1.62;color:var(--text-body);">{{ p.howTo }}</p>
+                      </div>
+                    </sc-if>
+                  </div>
+                </sc-if>
+              </div>
+            </article>
+          </sc-for>
+        </div>
+
       <div data-reveal="" style="opacity:0;transform:translateY(18px);margin-top:clamp(26px,3.5vh,40px);"><a href="{{ productsUrl }}" style="display:inline-flex;align-items:center;gap:9px;background:var(--ns-midnight);color:var(--ns-arctic);text-decoration:none;border-radius:4px;padding:13px 22px;font-family:var(--font-sans);font-size:calc(11.5px * var(--text-scale));font-weight:600;letter-spacing:0.12em;" style-hover="background:var(--ns-bronze);color:var(--ns-midnight);">Find our products <span style="font-size:calc(14px * var(--text-scale));">&#8594;</span></a></div>
+    </div>
+  </section>
+
+  <!-- step 05 · build your pick (midnight) -->
+  <section data-pstep="4" data-tone="dark" style="position:relative;background:var(--ns-midnight);padding:clamp(70px,10vh,120px) clamp(20px,6vw,80px);">
+    <div style="max-width:1180px;margin:0 auto;">
+      <div data-reveal="" class="nsm-step-hd" style="opacity:0;transform:translateY(22px);display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(18px,3vw,44px);align-items:start;margin-bottom:clamp(32px,5vh,56px);">
+        <span aria-hidden="true" style="font-family:var(--font-display);font-weight:400;font-size:clamp(calc(56px * var(--text-scale)), calc(7vw * var(--text-scale)), calc(96px * var(--text-scale)));line-height:0.82;color:var(--ns-bronze);">05</span>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--ns-bronze);">Step five · Your pick</span>
+          <h3 id="sec-pick" style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(30px * var(--text-scale)), calc(4vw * var(--text-scale)), calc(52px * var(--text-scale)));line-height:1.04;letter-spacing:-0.01em;color:var(--ns-arctic);">Build your pick</h3>
+          <p style="margin:4px 0 0;max-width:62ch;font-family:var(--font-sans);font-size:clamp(calc(15.5px * var(--text-scale)), calc(1.6vw * var(--text-scale)), calc(19px * var(--text-scale)));line-height:1.7;color:rgba(245,244,225,0.84);text-wrap:pretty;">Put it all together. Each question comes from a step above. Answer as many as you like, skip the rest, and the formats re-rank as you go.</p>
+        </div>
+      </div>
+      <div data-reveal="" class="nsm-pick" style="opacity:0;transform:translateY(22px);display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,0.95fr);gap:clamp(24px,4vw,56px);align-items:start;">
+        <div style="display:flex;flex-direction:column;">
+          <sc-for list="{{ pk.qs }}" as="q" hint-placeholder-count="5">
+            <div style="border-top:1px solid var(--border-on-dark);padding:20px 0 22px;display:flex;flex-direction:column;gap:12px;">
+              <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+                <span style="font-family:var(--font-display);font-weight:400;font-size:clamp(calc(20px * var(--text-scale)), calc(2vw * var(--text-scale)), calc(24px * var(--text-scale)));line-height:1.1;color:var(--ns-arctic);">{{ q.title }}</span>
+                <button onClick="{{ q.back }}" style="background:none;border:none;padding:4px 0;cursor:pointer;font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ns-bronze);" style-hover="color:var(--ns-arctic);">{{ q.from }} <span aria-hidden="true">&#8593;</span></button>
+              </div>
+              <div role="group" aria-label="{{ q.title }}" style="display:flex;flex-wrap:wrap;gap:8px;">
+                <sc-for list="{{ q.opts }}" as="o" hint-placeholder-count="3">
+                  <button onClick="{{ o.onClick }}" aria-pressed="{{ o.on }}" style="min-height:44px;padding:0 17px;border-radius:999px;border:1px solid {{ o.bd }};background:{{ o.bg }};color:{{ o.color }};cursor:pointer;font-family:var(--font-sans);font-size:calc(13.5px * var(--text-scale));font-weight:600;transition:background .22s ease, color .22s ease, border-color .22s ease;" style-hover="border-color:var(--ns-bronze);">{{ o.label }}</button>
+                </sc-for>
+              </div>
+              <span style="font-family:var(--font-sans);font-size:calc(12.5px * var(--text-scale));line-height:1.5;color:var(--text-on-dark-mut);">{{ q.hint }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div class="nsm-pick-res" style="position:sticky;top:96px;display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;">
+            <span style="font-family:var(--font-sans);font-size:calc(11px * var(--text-scale));font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--ns-bronze);">Your matches</span>
+            <sc-if value="{{ pk.any }}" hint-placeholder-val="{{ false }}">
+              <button onClick="{{ pk.reset }}" style="background:none;border:none;cursor:pointer;min-height:36px;padding:0;font-family:var(--font-sans);font-size:calc(12.5px * var(--text-scale));color:var(--text-on-dark-mut);text-decoration:underline;text-underline-offset:3px;" style-hover="color:var(--ns-arctic);">Start over</button>
+            </sc-if>
+          </div>
+          <sc-if value="{{ pk.none }}" hint-placeholder-val="{{ true }}">
+            <div style="border:1px dashed var(--border-on-dark);padding:clamp(22px,3vw,32px);font-family:var(--font-sans);font-size:calc(15px * var(--text-scale));line-height:1.6;color:rgba(245,244,225,0.78);">{{ pk.emptyText }}</div>
+          </sc-if>
+          <sc-if value="{{ pk.hasTop }}" hint-placeholder-val="{{ false }}">
+            <div style="border:1px solid var(--ns-bronze);background:rgba(183,149,80,0.08);padding:clamp(20px,2.6vw,28px);display:flex;flex-direction:column;gap:12px;">
+              <span style="font-family:var(--font-sans);font-size:calc(10.5px * var(--text-scale));font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--ns-bronze);">Our top pick for you</span>
+              <span style="font-family:var(--font-display);font-weight:400;font-size:clamp(calc(28px * var(--text-scale)), calc(3vw * var(--text-scale)), calc(38px * var(--text-scale)));line-height:1;color:var(--ns-arctic);">{{ pk.top.name }}</span>
+              <span style="font-family:var(--font-sans);font-size:calc(15px * var(--text-scale));line-height:1.55;color:rgba(245,244,225,0.8);">{{ pk.top.what }}</span>
+              <ul style="list-style:none;margin:2px 0 0;padding:0;display:flex;flex-direction:column;gap:7px;">
+                <sc-for list="{{ pk.top.why }}" as="w" hint-placeholder-count="2">
+                  <li style="display:grid;grid-template-columns:14px minmax(0,1fr);gap:10px;font-family:var(--font-sans);font-size:calc(14px * var(--text-scale));line-height:1.5;color:rgba(245,244,225,0.86);"><span aria-hidden="true" style="width:6px;height:6px;margin-top:8px;border-radius:50%;background:var(--ns-bronze);"></span><span>{{ w }}</span></li>
+                </sc-for>
+              </ul>
+              <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:4px;">
+                <a href="{{ productsUrl }}" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:4px;background:var(--ns-bronze);color:var(--ns-midnight);text-decoration:none;font-family:var(--font-sans);font-size:calc(11.5px * var(--text-scale));font-weight:600;letter-spacing:0.14em;text-transform:uppercase;box-shadow:var(--shadow-bronze);" style-hover="background:var(--ns-bronze-dark);">Find it near you <span aria-hidden="true">&#8594;</span></a>
+                <button onClick="{{ pk.top.go }}" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:4px;border:1px solid var(--ns-bronze);background:transparent;cursor:pointer;font-family:var(--font-sans);font-size:calc(11.5px * var(--text-scale));font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ns-arctic);" style-hover="background:rgba(183,149,80,0.18);">Read about it <span aria-hidden="true" style="color:var(--ns-bronze);">&#8593;</span></button>
+              </div>
+            </div>
+          </sc-if>
+          <sc-if value="{{ pk.hasAlts }}" hint-placeholder-val="{{ false }}">
+            <span style="margin-top:6px;font-family:var(--font-sans);font-size:calc(10.5px * var(--text-scale));font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-on-dark-mut);">Also worth a look</span>
+            <sc-for list="{{ pk.alts }}" as="r" hint-placeholder-count="2">
+              <button onClick="{{ r.go }}" style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center;width:100%;text-align:left;cursor:pointer;padding:14px 18px;border:1px solid var(--border-on-dark);background:rgba(245,244,225,0.03);transition:border-color .22s ease;" style-hover="border-color:var(--ns-bronze);">
+                <span style="display:flex;flex-direction:column;gap:4px;"><span style="font-family:var(--font-display);font-weight:400;font-size:calc(20px * var(--text-scale));line-height:1.05;color:var(--ns-arctic);">{{ r.name }}</span><span style="font-family:var(--font-sans);font-size:calc(13px * var(--text-scale));line-height:1.45;color:var(--text-on-dark-mut);">{{ r.what }}</span></span>
+                <span aria-hidden="true" style="color:var(--ns-bronze);font-size:calc(16px * var(--text-scale));">&#8593;</span>
+              </button>
+            </sc-for>
+          </sc-if>
+          <p style="margin:6px 0 0;font-family:var(--font-sans);font-size:calc(12px * var(--text-scale));line-height:1.6;color:rgba(245,244,225,0.55);">A starting point for a conversation, not medical advice. Your doctor and your dispensary pharmacist can help you choose.</p>
+        </div>
+      </div>
+      <div data-reveal="" style="opacity:0;transform:translateY(22px);margin-top:clamp(48px,7vh,80px);border-top:1px solid var(--ns-bronze);padding-top:clamp(28px,4vh,40px);display:flex;align-items:center;justify-content:space-between;gap:clamp(18px,3vw,40px);flex-wrap:wrap;">
+        <div style="max-width:56ch;">
+          <span style="display:block;font-family:var(--font-display);font-weight:400;font-size:clamp(calc(28px * var(--text-scale)), calc(3.4vw * var(--text-scale)), calc(44px * var(--text-scale)));line-height:1.04;letter-spacing:-0.01em;color:var(--ns-arctic);">Ready when you are.</span>
+          <p style="margin:12px 0 0;font-family:var(--font-sans);font-size:calc(16px * var(--text-scale));line-height:1.65;color:rgba(245,244,225,0.82);">Take what you learned to your dispensary, or see what is on the shelf near you today.</p>
+        </div>
+        <a href="{{ productsUrl }}" style="display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 26px;border-radius:4px;background:var(--ns-bronze);color:var(--ns-midnight);text-decoration:none;font-family:var(--font-sans);font-size:calc(12px * var(--text-scale));font-weight:600;letter-spacing:0.16em;text-transform:uppercase;box-shadow:var(--shadow-bronze);" style-hover="background:var(--ns-bronze-dark);">Find Our Flower <span aria-hidden="true">&#8594;</span></a>
+      </div>
     </div>
   </section>
 
@@ -2799,7 +3152,7 @@ class Component extends DCLogic {
     textScale: 1,
     calc: { grams: '7', thc: '20', cbd: '', cups: '1', tsp: '3', servings: '12' },
     jFields: {},
-    concActive: 0, lcMode: 'live', lcFlip: {}, pfFilter: 'all', pfOpen: null,
+    concActive: 0, lcMode: 'live', lcFlip: {}, lcDay: 0, lcPlaying: false, lcNote: null, pk: {}, pfFilter: 'all', pfOpen: null,
     extOpen: 0,
     quizCopied: false,
     onsetActive: 0,
@@ -3291,6 +3644,100 @@ class Component extends DCLogic {
     }), { threshold: 0.18 });
     forks.forEach(el => { if (!el._lcObs) { el._lcObs = 1; this._lcIO.observe(el); } });
   }
+
+  _pstepScroll() {
+    const rail = document.getElementById('nsm-prail'); if (!rail) return;
+    const secs = [...document.querySelectorAll('[data-pstep]')]; if (!secs.length) return;
+    const vh = window.innerHeight, mid = vh * 0.45;
+    const f = secs[0].getBoundingClientRect(), l = secs[secs.length - 1].getBoundingClientRect();
+    const show = f.top < vh * 0.5 && l.bottom > vh * 0.5;
+    let act = 0, tone = 'dark';
+    secs.forEach(s => { const r = s.getBoundingClientRect(); if (r.top <= mid) act = +s.getAttribute('data-pstep'); if (r.top <= vh / 2 && r.bottom >= vh / 2) tone = s.getAttribute('data-tone') || 'dark'; });
+    const key = show + '|' + act + '|' + tone; if (this._pKey === key) return; this._pKey = key;
+    rail.style.opacity = show ? '1' : '0'; rail.style.pointerEvents = show ? 'auto' : 'none';
+    const dark = tone === 'dark';
+    rail.style.color = dark ? 'var(--ns-arctic)' : 'var(--ns-midnight)';
+    const bg = dark ? 'var(--ns-midnight)' : tone === 'cream' ? 'var(--ns-cream)' : 'var(--ns-arctic)';
+    rail.querySelectorAll('.nsm-prail-item').forEach(b => {
+      const i = +b.getAttribute('data-i'), on = i === act, done = i < act;
+      const d = b.querySelector('.nsm-prail-dot');
+      if (d) { d.style.background = on || done ? 'var(--ns-bronze)' : bg; d.style.boxShadow = on ? '0 0 0 5px rgba(183,149,80,0.25)' : 'none'; }
+      b.style.opacity = on ? '1' : '0.55';
+      if (on) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current');
+    });
+  }
+  _pickGo(key) {
+    if (key === '@kitchen') { this._scrollToEl('grp-eat', 70); return; }
+    this.setState({ pfOpen: key });
+    setTimeout(() => { const el = document.querySelector('[data-pf-key="' + key + '"]'); if (el) { const y = el.getBoundingClientRect().top + (window.scrollY || 0) - 90; window.scrollTo({ top: y, behavior: this.reduced ? 'auto' : 'smooth' }); } }, 60);
+  }
+  _pickVals() {
+    const a = this.state.pk || {};
+    const set = (k, v) => this.setState(p => { const n = Object.assign({}, p.pk); if (n[k] === v) delete n[k]; else n[k] = v;
+      if (n.route !== 'inhale') { delete n.device; delete n.path; delete n.method; delete n.tex; }
+      if (n.device !== 'dab') delete n.tex; return { pk: n }; });
+    const inh = a.route === 'inhale', dab = inh && a.device === 'dab';
+    const Q = [
+      { k: 'route', show: true, title: 'How would you like to take it?', from: 'Step 04', back: 'sec-formats', hint: 'The biggest choice. It decides how soon you feel it and how long it lasts.',
+        opts: [['inhale', 'Breathe it in'], ['tongue', 'Under the tongue'], ['eat', 'Eat it'], ['body', 'On the skin or body'], ['x', 'Not sure']] },
+      { k: 'speed', show: true, title: 'How soon do you want to feel it?', from: 'Step 04', back: 'sec-formats', hint: 'Faster usually means shorter. Slower usually means longer.',
+        opts: [['fast', 'Within minutes'], ['mid', 'Within an hour'], ['slow', 'I can wait, I want it to last'], ['x', 'Not sure']] },
+      { k: 'device', show: inh, title: 'Vape it, or dab it?', from: 'Step 03', back: 'sec-texture', hint: 'A vape is ready out of the box. Dabbing needs a rig, but opens up every texture.',
+        opts: [['vape', 'Vape, keep it simple'], ['dab', 'Dab, or add to a bowl'], ['x', 'Not sure']] },
+      { k: 'path', show: inh, title: 'Fullest flavor, or best value?', from: 'Step 01', back: 'sec-livecured', hint: 'Live is frozen at harvest for more flavor. Cured is the classic, and often easier on the budget.',
+        opts: [['live', 'Fullest flavor'], ['cured', 'Best value'], ['x', 'Not sure']] },
+      { k: 'method', show: inh, title: 'Does solventless matter to you?', from: 'Step 02', back: 'sec-extract', hint: 'Both are clean when done right. Solventless rosin uses only ice water, heat, and pressure.',
+        opts: [['any', 'Either is fine'], ['rosin', 'Solventless only'], ['x', 'Not sure']] },
+      { k: 'tex', show: dab, title: 'Which texture sounds easiest?', from: 'Step 03', back: 'sec-texture', hint: 'Soft textures are the most forgiving to handle.',
+        opts: [['soft', 'Soft: badder, sugar'], ['firm', 'Firm: wax, crumble'], ['runny', 'Runny: sauce, raw'], ['x', 'Not sure']] }
+    ].filter(q => q.show);
+    const qs = Q.map(q => ({ key: q.k, title: q.title, from: 'From ' + q.from, hint: q.hint, back: () => this._scrollToEl(q.back, 70),
+      opts: q.opts.map(([v, label]) => { const on = a[q.k] === v; return { key: v, label, on,
+        bg: on ? 'var(--ns-bronze)' : 'transparent', color: on ? 'var(--ns-midnight)' : 'var(--ns-arctic)', bd: on ? 'var(--ns-bronze)' : 'var(--border-on-dark)',
+        onClick: () => set(q.k, v) }; }) }));
+    const F = [
+      { k: 'Carts', name: 'Cartridges', route: 'inhale', speed: 'fast', oil: 1, what: 'A cartridge on a battery. CO\u2082 oil in 0.5g and 1g, on full-ceramic hardware.' },
+      { k: 'Disposables', name: 'Disposables', route: 'inhale', speed: 'fast', oil: 1, what: 'All in one, ready to draw. No battery or kit.' },
+      { k: 'Concentrates', name: 'Concentrates', route: 'inhale', speed: 'fast', conc: 1, what: 'Dabbed or added to a bowl. Badder, sugar, sauce, wax, crumble, and more.' },
+      { k: 'Syringes', name: 'Syringes', route: 'inhale', speed: 'fast', oral: 1, what: 'Oil in a 1g syringe. Dab it, add it to a bowl, or take it by mouth.' },
+      { k: 'Troches', name: 'Troches', route: 'tongue', speed: 'mid', what: 'Dissolves under the tongue. 10mg per quarter tablet.' },
+      { k: 'Tinctures', name: 'Tinctures', route: 'tongue', speed: 'mid', what: 'Drops under the tongue, or into food or a drink.' },
+      { k: '@kitchen', name: 'Edibles', route: 'eat', speed: 'slow', what: 'Gummies and chocolate, dosed per piece.' },
+      { k: 'Topicals', name: 'Topicals', route: 'body', speed: 'local', what: 'A cream for the skin. 3:1 CBD to THC.' },
+      { k: 'Suppositories', name: 'Suppositories', route: 'body', speed: 'local', what: 'Absorbs in the lower GI tract. 3:1 CBD to THC.' }
+    ];
+    const RW = { inhale: 'Inhaled, the way you picked.', tongue: 'Taken under the tongue, the way you picked.', eat: 'Eaten, the way you picked.', body: 'Used on the body, the way you picked.' };
+    const SW = { fast: 'Felt within minutes, and gone in 1 to 3 hours.', mid: 'Arrives in 15 to 45 minutes and lasts 3 to 5 hours.', slow: 'Builds over 30 to 90 minutes and lasts 4 to 8 hours.' };
+    const ORD = { fast: 0, mid: 1, slow: 2 };
+    const real = (k) => a[k] && a[k] !== 'x';
+    const any = Object.keys(a).some(real);
+    const scored = F.map(f => {
+      let s = 0; const why = [];
+      if (real('route')) { if (f.route === a.route) { s += 6; why.push(RW[f.route]); } else if (a.route === 'eat' && f.k === 'Tinctures') { s += 3; why.push('Can also go into food or a drink.'); } else if (a.route === 'eat' && f.oral) { s += 3; why.push('Can also be taken by mouth, like an edible.'); } else s -= 6; }
+      if (real('speed')) { if (f.speed === a.speed) { s += 4; why.push(SW[f.speed]); } else if (f.speed === 'local') s -= 1; else if (Math.abs(ORD[f.speed] - ORD[a.speed]) === 1) s += 1; else s -= 2; }
+      if (real('device')) { if (a.device === 'vape') { if (f.oil) { s += 4; why.push('Ready out of the box, nothing to learn.'); } else if (f.conc || f.oral) s -= 3; } else { if (f.conc) { s += 4; why.push('Every texture, dabbed or added to a bowl.'); } else if (f.oral) { s += 3; why.push('Easy to measure out for a dab or a bowl.'); } else if (f.oil) s -= 3; } }
+      if (real('path') && f.conc) { s += 2; why.push(a.path === 'live' ? 'Made from fresh-frozen flower too, for the fullest flavor.' : 'Made from cured flower too, the classic path.'); }
+      if (real('method') && a.method === 'rosin') { if (f.conc) { s += 1; why.push('Rosin is a concentrate. Ask your dispensary what is on the shelf.'); } else if (f.oil || f.oral) s -= 2; }
+      if (real('tex') && f.conc) { s += 2; why.push({ runny: 'Comes in sauce and high-terpene raw.', soft: 'Comes in badder and sugar.', firm: 'Comes in wax and crumble.' }[a.tex]); }
+      return { f, s, why: why.slice(0, 3) };
+    }).filter(x => x.s > 0).sort((x, y) => y.s - x.s).slice(0, 3);
+    const mk = (x) => ({ key: x.f.k, name: x.f.name, what: x.f.what, why: x.why.length ? x.why : ['A good match for what you picked.'], go: () => this._pickGo(x.f.k) });
+    const list = any ? scored.map(mk) : [];
+    return { qs, top: list[0] || { why: [] }, hasTop: !!list[0], alts: list.slice(1), hasAlts: list.length > 1, any: Object.keys(a).length > 0, none: list.length === 0,
+      emptyText: any ? 'Nothing fits every answer. Tap an answer again to clear it.' : 'Start with the first question. Your top pick shows up here.',
+      reset: () => this.setState({ pk: {} }) };
+  }
+  _lcStop() { if (this._lcTimer) { clearInterval(this._lcTimer); this._lcTimer = null; } }
+  lcTogglePlay() {
+    if (this._lcTimer) { this._lcStop(); this.setState({ lcPlaying: false }); return; }
+    const start = (this.state.lcDay || 0) >= 30 ? 0 : (this.state.lcDay || 0);
+    this.setState({ lcDay: start, lcPlaying: true });
+    this._lcTimer = setInterval(() => {
+      const d = (this.state.lcDay || 0) + 1;
+      if (d >= 30) { this._lcStop(); this.setState({ lcDay: 30, lcPlaying: false }); }
+      else this.setState({ lcDay: d });
+    }, 210);
+  }
   _lcVals() {
     const st = this.state;
     const mode = st.lcMode === 'cured' ? 'cured' : 'live';
@@ -3357,7 +3804,85 @@ class Component extends DCLogic {
         aria: c.name + (f ? ', showing how it is made. Tap to turn back.' : '. Tap to see how it is made.'),
         onClick: () => this.setState(p => ({ lcFlip: Object.assign({}, p.lcFlip, { [c.k]: !(p.lcFlip || {})[c.k] }) })) });
     });
-    return { branches, cards, combos,
+    const day = Math.max(0, Math.min(30, Math.round(st.lcDay || 0)));
+    const dry = Math.min(day, 14), cure = Math.max(0, day - 14);
+    const NOTES = [
+      { k: 'citrus', name: 'Citrus', terp: 'Limonene', rate: 0.05, floor: 0.16, info: 'A light monoterpene that lifts off fast. One of the first notes to fade in the drying room.' },
+      { k: 'herbal', name: 'Herbal', terp: 'Terpinolene', rate: 0.055, floor: 0.14, info: 'Fresh, green, and very volatile. Freezing at harvest is the surest way to keep it.' },
+      { k: 'pine', name: 'Pine', terp: 'Pinene', rate: 0.04, floor: 0.22, info: 'Sharp and resinous. It thins out steadily as the plant dries.' },
+      { k: 'floral', name: 'Floral', terp: 'Linalool', rate: 0.032, floor: 0.3, info: 'Soft, lavender-like. It holds a little longer, but still fades with time in the air.' },
+      { k: 'earth', name: 'Earth', terp: 'Myrcene', deep: true, rate: 0.014, floor: 0.6, info: 'Musky and earthy. It fades slowly, so it becomes a bigger share of a cured profile.' },
+      { k: 'pepper', name: 'Pepper', terp: 'Caryophyllene', deep: true, rate: 0, floor: 1, info: 'A heavier terpene that barely moves while drying. Much of the warm spice in cured products comes from it.' },
+      { k: 'wood', name: 'Wood', terp: 'Humulene', deep: true, rate: 0, floor: 1, info: 'Heavy and dry, with a hoppy edge. It stays put, so it reads stronger as the bright notes fade.' }
+    ];
+    const selNote = st.lcNote || null;
+    const pickNote = (k) => this.setState(p => ({ lcNote: p.lcNote === k ? null : k }));
+    const lane = (live) => {
+      const notes = NOTES.map((n, i) => {
+        const v = live ? (day === 0 || n.rate === 0 ? 1 : 0.96) : Math.max(n.floor, 1 - n.rate * dry - n.rate * 0.35 * cure);
+        const sel = selNote === n.k;
+        return { key: n.k, name: n.name, v, sel, fd: (i * 0.45).toFixed(2) + 's',
+          op: (0.24 + 0.76 * v).toFixed(3), tf: 'translateY(' + (-(1 - v) * 10).toFixed(1) + 'px) scale(' + (0.84 + 0.16 * v).toFixed(3) + ')',
+          bg: n.deep ? 'rgba(239,215,197,' + (0.03 + 0.08 * v).toFixed(3) + ')' : 'rgba(183,149,80,' + (0.04 + 0.2 * v).toFixed(3) + ')',
+          bd: sel ? 'var(--ns-bronze)' : (n.deep ? 'rgba(239,215,197,' + (0.25 + 0.35 * v).toFixed(3) + ')' : 'rgba(183,149,80,' + (0.3 + 0.6 * v).toFixed(3) + ')'),
+          sh: sel ? '0 0 0 3px rgba(183,149,80,0.3)' : 'none',
+          aria: n.name + ', ' + n.terp + (live ? ', live' : ', cured') + '. Show details.', onClick: () => pickNote(n.k) };
+      });
+      const avg = notes.reduce((a, n) => a + n.v, 0) / notes.length;
+      const kept = avg > 0.9 ? 'Nearly all' : avg > 0.75 ? 'Most' : avg > 0.62 ? 'Fading' : 'About half';
+      const status = day === 0 ? 'Harvest day' : live ? 'Frozen, holding still' : day <= 14 ? 'Hanging to dry' : 'Sealed to cure';
+      const active = day > 0;
+      return { key: live ? 'live' : 'cured', eyebrow: live ? 'Live' : 'Cured', title: live ? 'Frozen at harvest' : 'Dried and cured',
+        status, kept, fill: Math.round(avg * 100) + '%', notes,
+        border: active && live ? 'rgba(183,149,80,0.55)' : 'var(--border-on-dark)', bg: active && live ? 'rgba(183,149,80,0.06)' : 'transparent' };
+    };
+    const lanes = [lane(true), lane(false)];
+    const pick = ['lres', 'lros', 'cres', 'cros'].indexOf(st.lcPick) >= 0 ? st.lcPick : 'lres';
+    const pickLive = pick[0] === 'l';
+    const BRZ = 'var(--ns-bronze)', DIM = 'rgba(183,149,80,0.32)';
+    const actIdx = (live) => live ? (day === 0 ? 0 : day < 30 ? 1 : 2) : (day === 0 ? 0 : day <= 14 ? 1 : day < 30 ? 2 : 3);
+    lanes.forEach(l => {
+      const live = l.key === 'live', on = live === pickLive, src = live ? LIVE : CURED, ai = actIdx(live);
+      l.on = on; l.line = on ? BRZ : DIM; l.verb = live ? 'Freeze' : 'Dry & Cure';
+      l.hl = live ? '50%' : 'calc(var(--lcg) / -2)'; l.hr = live ? 'calc(var(--lcg) / -2)' : '50%';
+      l.tail = on ? BRZ : 'transparent';
+      l.pickAria = (live ? 'Live' : 'Cured') + (on ? ', selected' : '. Show this path.');
+      l.onPick = () => this.setState({ lcPick: (live ? 'l' : 'c') + pick.slice(1) });
+      l.border = on ? 'rgba(183,149,80,0.6)' : 'var(--border-on-dark)'; l.bg = on ? 'rgba(183,149,80,0.06)' : 'transparent';
+      l.pillBg = on ? 'rgba(183,149,80,0.16)' : 'transparent';
+      l.steps = src.map((s, i) => ({ key: i, title: s[0], note: s[1],
+        dotBg: i < ai ? BRZ : i === ai ? 'var(--ns-arctic)' : 'var(--ns-midnight)',
+        dotSh: i === ai ? '0 0 0 5px rgba(183,149,80,0.25)' : 'none',
+        tColor: i <= ai ? 'var(--ns-arctic)' : 'rgba(245,244,225,0.5)',
+        lineBg: i < ai ? BRZ : 'rgba(183,149,80,0.28)', lineDisp: i === src.length - 1 ? 'none' : 'block' }));
+      l.actTitle = src[ai][0]; l.actText = src[ai][2];
+      const lv = COMBOS.filter(c => (c.k[0] === 'l') === live);
+      l.leaves = lv.map(c => { const sel = c.k === pick; return { key: c.k, name: c.name, sel,
+        method: c.k.slice(1) === 'res' ? 'Made with a solvent' : 'Made without one',
+        bd: sel ? BRZ : 'var(--border-on-dark)', bg: sel ? 'rgba(183,149,80,0.16)' : 'rgba(245,244,225,0.03)',
+        sh: sel ? '0 0 0 3px rgba(183,149,80,0.22)' : 'none',
+        aria: c.name + (sel ? ', selected' : '. Show how it is made.'), onClick: () => this.setState({ lcPick: c.k }) }; });
+      const li = lv.findIndex(c => c.k === pick);
+      l.lineL = on && li === 0 ? BRZ : DIM; l.lineR = on && li === 1 ? BRZ : DIM;
+    });
+    const pc = COMBOS.find(c => c.k === pick), pm = M[pickLive ? 'live' : 'cured'];
+    const twin = (pickLive ? 'c' : 'l') + pick.slice(1);
+    const d = { tag: pc.tag, name: pc.name, line: pc.line, how: pc.how, eyebrow: pm.eyebrow,
+      rows: [0, 1, 5].map(i => ({ label: pm.rows[i][0], text: pm.rows[i][1] })),
+      textures: pm.textures.map(n => ({ name: n, aria: n + ', show on the consistency scale', onClick: () => goTex(n) })),
+      swapLabel: pickLive ? 'See it cured' : 'See it live', onSwap: () => this.setState({ lcPick: twin }) };
+    const leftLine = pickLive ? BRZ : DIM, rightLine = pickLive ? DIM : BRZ;
+    const sn = NOTES.find(n => n.k === selNote);
+    const playing = !!st.lcPlaying;
+    return { branches, cards, combos, lanes, day, d, leftLine, rightLine, dayFrac: (day / 30).toFixed(4),
+      dayLabel: day === 0 ? 'Harvest' : 'Day ' + day, dayAria: day === 0 ? 'Harvest day' : 'Day ' + day + ' after harvest',
+      phase: day === 0 ? 'Day one' : day <= 14 ? 'Hang dry' : 'Sealed cure',
+      playing, paused: !playing, playBg: playing ? 'rgba(183,149,80,0.22)' : 'transparent',
+      playAria: playing ? 'Pause the aroma clock' : 'Play the aroma clock',
+      togglePlay: () => this.lcTogglePlay(),
+      onDay: (e) => { this._lcStop(); this.setState({ lcDay: +e.target.value, lcPlaying: false }); },
+      noteHead: sn ? sn.name + ' \u00b7 ' + sn.terp : 'Tap a note',
+      noteText: sn ? sn.info : 'Each note is carried by a terpene. Tap one to see what it is, and why it stays or goes.',
       liveOn: mode === 'live', curedOn: mode === 'cured', thumbX: mode === 'live' ? '0%' : '100%',
       liveColor: mode === 'live' ? 'var(--ns-midnight)' : 'rgba(245,244,225,0.72)',
       curedColor: mode === 'cured' ? 'var(--ns-midnight)' : 'rgba(245,244,225,0.72)',
@@ -3400,7 +3925,7 @@ class Component extends DCLogic {
   _pfVals(items) {
     const st = this.state;
     // the route of use is the only grouping the product data carries
-    const CAT = { 'Carts': 'inhaled', 'Disposables': 'inhaled', 'Concentrates': 'inhaled', 'Troches': 'tongue', 'Tinctures': 'tongue', 'Topicals': 'body', 'Suppositories': 'body' };
+    const CAT = { 'Carts': 'inhaled', 'Disposables': 'inhaled', 'Concentrates': 'inhaled', 'Syringes': 'inhaled', 'Troches': 'tongue', 'Tinctures': 'tongue', 'Topicals': 'body', 'Suppositories': 'body' };
     const LABELS = [['all', 'All'], ['inhaled', 'Inhaled'], ['tongue', 'Under the tongue'], ['body', 'On the body']];
     const LC = { 'Carts': 1, 'Disposables': 1, 'Concentrates': 1 };
     const f = st.pfFilter || 'all', open = st.pfOpen || null;
@@ -3416,7 +3941,8 @@ class Component extends DCLogic {
         onToggle: () => this.pfToggle(p.raw), onClose: () => this.pfToggle(p.raw, true), closeAria: 'Close ' + p.name,
         onLc: () => this._scrollToEl('sec-livecured', 54) });
     });
-    return { chips, cards };
+    const grp = (k) => cards.filter(c => CAT[c.raw] === k).map(c => Object.assign({}, c, { disp: 'flex', isOpen: open === c.raw, openFlag: open === c.raw ? '1' : '0', pfCaret: open === c.raw ? '\u00d7' : '+' }));
+    return { chips, cards, inhaled: grp('inhaled'), tongue: grp('tongue'), body: grp('body') };
   }
 
   _concScroll() { return; }
@@ -3667,6 +4193,7 @@ class Component extends DCLogic {
     this._growScroll();
     this._extractScroll();
     this._concScroll();
+    this._pstepScroll();
     const tr = document.getElementById('nsm-hero-plant-tr');
     const bl = document.getElementById('nsm-hero-plant-bl');
     if (tr || bl) {
@@ -4110,7 +4637,7 @@ class Component extends DCLogic {
       terpenes: [['The terpene explorer', 'chap-terpenes'], ['Found in these strains', 'sec-terp-strains']],
       flower: [['The strain library', 'chap-flower'], ['Not sure where to start', 'sec-quiz']],
       grow: [['It starts with a cutting', 'sec-grow-clone'], ['Harvest, by hand', 'sec-grow-harvest'], ['Tested, then finished', 'sec-grow-finished']],
-      process: [['How extraction is done', 'chap-process'], ['Every format, one craft', 'sec-formats'], ['The consistency scale', 'sec-consistency'], ['Live vs. Cured', 'sec-livecured']],
+      process: [['It all starts as resin', 'chap-process'], ['01 Start with the plant', 'sec-livecured'], ['02 Get the resin out', 'sec-extract'], ['03 See what it becomes', 'sec-texture'], ['04 Choose how you take it', 'sec-formats'], ['05 Build your pick', 'sec-pick']],
       practice: [['Onset explorer', 'sec-onset'], ['The crossword', '@xword']],
       journal: [['Choose what you track', 'sec-journal-fields']],
       recipes: [['Before you cook', 'sec-decarb'], ['Edible milligram calculator', 'sec-calculator']]
@@ -4621,14 +5148,15 @@ class Component extends DCLogic {
       copyJournal: () => this.copyJournal(),
       copyLabel: st.copied ? 'Copied ✓' : 'Copy template',
       lab: (this._labArr = D.lab.map((p, i) => {
-        const kick = { 'Carts': 'Inhaled · fast onset', 'Disposables': 'All-in-one · ready to use', 'Troches': 'Sublingual · measured dose', 'Tinctures': 'Drops · flexible dosing', 'Topicals': 'On the skin · localized', 'Concentrates': 'Potent · dab or add', 'Suppositories': 'Targeted · high absorption' };
+        const kick = { 'Carts': 'Inhaled · fast onset', 'Disposables': 'All-in-one · ready to use', 'Troches': 'Sublingual · measured dose', 'Tinctures': 'Drops · flexible dosing', 'Topicals': 'On the skin · localized', 'Concentrates': 'Potent · dab or add', 'Syringes': 'Dab or by mouth · 1g', 'Suppositories': 'Targeted · high absorption' };
         const formMap = {
           'Carts': ['Full-spectrum sauce', 'High-terpene full-spectrum raw', 'High-terpene distillate'],
           'Disposables': ['Full-spectrum sauce (Stones)', '2:1 CBD:THC disposable'],
           'Troches': ['10mg per quarter tablet', 'Stevia-sweetened, sugar-free'],
           'Tinctures': ['500mg · 30mL', '1000mg · 30mL', '2500mg · 30mL', 'Indica or Sativa'],
           'Topicals': ['1:1 Anti-Inflammatory · 50mL', '3:1 Anti-Inflammatory · 50mL'],
-          'Concentrates': ['Badder', 'Crumble', 'Wax', 'Sugar', 'RSO 2.0 syringe · 1g', 'Full-spectrum syringe · 1g'],
+          'Concentrates': ['Badder', 'Crumble', 'Wax', 'Sugar'],
+          'Syringes': ['Full-spectrum · 1g', 'RSO 2.0 · 1g'],
           'Suppositories': ['2:1 CBD:THC · 5 ct']
         };
         const id = 'lab-' + i;
@@ -4649,12 +5177,13 @@ class Component extends DCLogic {
         const photoMap = { 'Carts': '../assets/lab/carts.jpg', 'Disposables': '../assets/lab/stone.jpg', 'Troches': '../assets/lab/troches.jpg', 'Topicals': '../assets/lab/topicals.jpg', 'Tinctures': '../assets/lab/tinctures-sativa.jpg', 'Concentrates': '../assets/lab/concentrates.jpg' };
         const containMap = { 'Disposables': true, 'Tinctures': true };
         const howToMap = {
-          'Carts': 'Screw onto any standard 510 battery and take one small draw to start. Effects arrive within minutes, so wait a few before the next pull and let it settle where it lands.',
+          'Carts': 'Screw onto any standard 510 battery (the common thread most vape batteries use) and take one small draw to start. Effects arrive within minutes, so wait a few before the next pull and let it settle where it lands.',
           'Disposables': 'Nothing to set up: just draw. It is draw-activated and ready out of the box. Start with one small pull, wait a few minutes, and go from there.',
           'Troches': 'Let a quarter or half tablet dissolve under the tongue rather than chewing it. Held there, it absorbs faster than a swallowed edible. Wait 30 to 45 minutes before taking more.',
           'Tinctures': 'Place the drops under your tongue and hold for 30 to 60 seconds before swallowing, or stir into food or a drink. Under the tongue is faster. Start low, wait, then adjust.',
           'Topicals': 'Rub a small amount into the skin over the area you want to reach, and reapply as needed. Topicals work locally and are not intoxicating.',
-          'Concentrates': 'Dab a piece the size of a grain of rice on a properly heated rig, or add to a bowl of flower. Very potent, so start with the smallest amount. RSO and full-spectrum syringes can also be taken orally, a grain of rice at a time.',
+          'Concentrates': 'Dab a piece the size of a grain of rice on a properly heated rig, or add to a bowl of flower. Very potent, so start with the smallest amount.',
+          'Syringes': 'Press out a portion the size of a grain of rice. Dab it on a properly heated rig, add it to a bowl, or take it by mouth. By mouth it acts like an edible: slower to arrive and longer to stay, so wait a full two hours before taking more.',
           'Suppositories': 'Insert as directed for high, localized absorption with little to no head effect. A good option when inhaling or eating is not.'
         };
         const photo = photoMap[p.name] ? ((window.__resources && window.__resources[photoMap[p.name]]) || photoMap[p.name]) : null;
@@ -4733,6 +5262,12 @@ class Component extends DCLogic {
       })()),
       concentrates: this._concData().map((c, i) => Object.assign({}, c, { i: i, numDisp: String(i + 1).padStart(2, '0') })),
       lc: this._lcVals(),
+      pk: this._pickVals(),
+      psteps: [['01', 'The plant', 'Start with the plant', 'Live or cured', 'sec-livecured'], ['02', 'Extraction', 'Get the resin out', 'Resin or rosin', 'sec-extract'], ['03', 'Texture', 'See what it becomes', 'Sauce to crumble', 'sec-texture'], ['04', 'Formats', 'Choose how you take it', 'Four routes', 'sec-formats'], ['05', 'Your pick', 'Build your pick', 'Put it together', 'sec-pick']]
+        .map((r, i) => ({ i: String(i), num: r[0], label: r[1], title: r[2], sub: r[3], aria: 'Step ' + r[0] + ', ' + r[1], go: () => this._scrollToEl(r[4], 70) })),
+      pgo: { extract: () => this._scrollToEl('sec-extract', 70), texture: () => this._scrollToEl('sec-texture', 70), format: () => this._scrollToEl('sec-formats', 70), pick: () => this._scrollToEl('sec-pick', 70) },
+      routes: [['Fastest', 'Breathe it in', '12%', 'block', 'Within minutes', 'grp-inhaled'], ['Steady', 'Under the tongue', '34%', 'block', '15 to 45 minutes', 'grp-tongue'], ['Slowest', 'Eat it', '72%', 'block', '30 to 90 minutes', 'grp-eat'], ['Targeted', 'On the body', '0%', 'none', 'Works where it is used', 'grp-body']]
+        .map(r => ({ tag: r[0], title: r[1], pos: r[2], dotDisp: r[3], when: r[4], go: () => this._scrollToEl(r[5], 70) })),
       conc: (() => {
         const rows = this._concData();
         // wet -> dry order, with dab-temp windows on a 480-660F axis
